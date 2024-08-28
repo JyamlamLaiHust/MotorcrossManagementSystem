@@ -9,6 +9,12 @@
 #include <QtSql/QSqlError>
 #include <QDebug>
 #include "database_api.h"
+#include "participantstablemodel.h"
+#include "admintablemodel.h"
+#include "rfidrecordstablemodel.h"
+#include "resultstablemodel.h"
+#include "matchestablemodel.h"
+#include "checkpointstablemodel.h"
 
 class DBManager : public QObject
 {
@@ -25,6 +31,9 @@ private:
 
     //创建数据库
     bool createDB();
+
+    //检测该表是否存在
+    bool tableExist(const QString &tableName);
 };
 
 #endif // DBMANAGER_H

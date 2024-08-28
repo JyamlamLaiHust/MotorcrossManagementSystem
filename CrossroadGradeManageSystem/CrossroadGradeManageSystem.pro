@@ -27,12 +27,24 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
         main.cpp \
         mainwindow.cpp \
-        database/dbmanager.cpp
+        database/dbmanager.cpp \
+        database/participantstablemodel.cpp \
+        database/admintablemodel.cpp \
+        database/rfidrecordstablemodel.cpp \
+        database/resultstablemodel.cpp \
+        database/matchestablemodel.cpp \
+        database/checkpointstablemodel.cpp
 
 HEADERS += \
         mainwindow.h \
         database/dbmanager.h \
-        database/database_api.h
+        database/database_api.h \
+        database/participantstablemodel.h \
+        database/admintablemodel.h \
+        database/rfidrecordstablemodel.h \
+        database/resultstablemodel.h \
+        database/matchestablemodel.h \
+        database/checkpointstablemodel.h
 
 FORMS += \
         mainwindow.ui

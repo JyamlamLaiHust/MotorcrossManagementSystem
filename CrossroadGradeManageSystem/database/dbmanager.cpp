@@ -4,8 +4,57 @@ DBManager::DBManager(QObject *parent) : QObject(parent)
 {
     if (this->createDB())
     {
-
+        if(!this->tableExist(TABLE_NAME_ADMINS))    //op AdminsTableModel
+        {
+            AdminTableModel admins;
+            admins.createTable();
+        }
+        if(!this->tableExist(TABLE_NAME_PARTICIPANTS))    //op ParticipantsTableModel
+        {
+            ParticipantsTableModel participants;
+            participants.createTable();
+        }
+        if(!this->tableExist(TABLE_NAME_MATCHES))    //op ParticipantsTableModel
+        {
+            MatchesTableModel results;
+            results.createTable();
+        }
+        if(!this->tableExist(TABLE_NAME_CHECKPOINTS))    //op ParticipantsTableModel
+        {
+            CheckPointsTableModel checkpoints;
+            checkpoints.createTable();
+        }
+        if(!this->tableExist(TABLE_NAME_RFIDRECORDS))    //op ParticipantsTableModel
+        {
+            RfidRecordsTableModel rfidrecords;
+            rfidrecords.createTable();
+        }
+        if(!this->tableExist(TABLE_NAME_RESULTS))    //op ParticipantsTableModel
+        {
+            ResultsTableModel results;
+            results.createTable();
+        }   
     }
+}
+
+/**
+ * @brief DBManager::tableExist
+ * @param tableName 表名
+ * @return  如果存在返回true，否则返回false
+ * 用于判断表是否存在
+ */
+bool DBManager::tableExist(const QString &tableName)    //judge DB exist
+{
+    int count = 0 ;
+    QString sqlText = QObject::tr("SELECT COUNT(*) FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'crossroadmanagesystem' AND TABLE_NAME = '%1';").arg(tableName);
+    QSqlQuery query;        // judge by select ans
+    query.exec(sqlText);
+    if(query.next())
+        count = query.value(0).toInt();
+    if(count > 0)
+        return true;
+    else
+        return false;
 }
 
 /**
