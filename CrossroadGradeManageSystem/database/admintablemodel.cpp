@@ -15,9 +15,9 @@ AdminTableModel::AdminTableModel(QObject *parent) : QObject(parent)
 }
 
 /**
- * @brief PersonTableModel::createTable
+ * @brief AdminTableModel::createTable
  * @param tableName 数据块表名称
- * 用于创建Person表
+ * 用于创建Admin表
  */
 void AdminTableModel::createTable()
 {

@@ -1,10 +1,12 @@
 HUST 物联网综合应用系统课程设计 —— 基于 RFID 技术的越野赛成绩管理系统设计与实现  
 
+github：https://github.com/JyamlamLaiHust/MotorcrossManagementSystem
+
 > references：
 >
 > - [Qt 连接 MySQL 数据库](https://blog.csdn.net/joey_ro/article/details/105411135)
 > - [TNF 100 越野赛规则](http://www.tnf100.cn/page-L51XZa20wAYzDAM6vG98.html)
-> - 
+> - [Qt 打包 .exe 文件](https://wenku.csdn.net/answer/e0052378b1c348dfb6f592e42dda03b1)
 
 # 01 需求分析
 
@@ -160,4 +162,9 @@ participants、matches、checkpoints、rfid、results 表的顺序
 
 > **引用外键必须参考已经建好的表，而且数据类型必须相同**
 
-# 03 
+
+
+# 03 页面设计
+
+**界面大小统一设置为 600 * 450 px**
+

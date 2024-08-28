@@ -5,7 +5,8 @@
 #-------------------------------------------------
 
 QT       += core gui \
-        sql
+        sql \
+        serialport
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -25,26 +26,45 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 
 SOURCES += \
-        main.cpp \
-        mainwindow.cpp \
-        database/dbmanager.cpp \
-        database/participantstablemodel.cpp \
-        database/admintablemodel.cpp \
-        database/rfidrecordstablemodel.cpp \
-        database/resultstablemodel.cpp \
-        database/matchestablemodel.cpp \
-        database/checkpointstablemodel.cpp
+    database/admintablemodel.cpp \
+    database/checkpointstablemodel.cpp \
+    database/dbmanager.cpp \
+    database/matchestablemodel.cpp \
+    database/participantstablemodel.cpp \
+    database/resultstablemodel.cpp \
+    database/rfidrecordstablemodel.cpp \
+    pages/export/exportdatas.cpp \
+    pages/welcome/mainpage.cpp \
+    serialThread/serialportthread.cpp \
+    tools/tools.cpp \
+    main.cpp \
+    mainwindow.cpp \
+    pages/connect/settingsdialog.cpp
 
 HEADERS += \
-        mainwindow.h \
-        database/dbmanager.h \
-        database/database_api.h \
-        database/participantstablemodel.h \
-        database/admintablemodel.h \
-        database/rfidrecordstablemodel.h \
-        database/resultstablemodel.h \
-        database/matchestablemodel.h \
-        database/checkpointstablemodel.h
+    database/admintablemodel.h \
+    database/checkpointstablemodel.h \
+    database/database_api.h \
+    database/dbmanager.h \
+    database/matchestablemodel.h \
+    database/participantstablemodel.h \
+    database/resultstablemodel.h \
+    database/rfidrecordstablemodel.h \
+    pages/export/exportdatas.h \
+    pages/welcome/mainpage.h \
+    serialThread/serialportthread.h \
+    tools/tools.h \
+    mainwindow.h \
+    inc/m1356dll.h \
+    inc/m1356dll_global.h \
+    pages/connect/settingsdialog.h
 
 FORMS += \
-        mainwindow.ui
+        mainwindow.ui \
+    pages/welcome/mainpage.ui \
+    pages/export/exportdatas.ui \
+    pages/connect/settingsdialog.ui
+
+DISTFILES += \
+    lib/libM1356Dll.a \
+    lib/M1356Dll.dll
