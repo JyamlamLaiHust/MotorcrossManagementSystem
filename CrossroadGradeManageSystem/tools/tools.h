@@ -11,7 +11,7 @@
 #include <QFileDialog>
 #include <QTextStream>
 //定义版本号
-#define CURRENT_VERSION "Hotel Management System V1.0"
+#define CURRENT_VERSION "Crossroad Grade Manage System V1.0"
 //获取当前日期和时间字符串
 extern QString CurrentDateTime();
 //将原字符串进行MD5编码

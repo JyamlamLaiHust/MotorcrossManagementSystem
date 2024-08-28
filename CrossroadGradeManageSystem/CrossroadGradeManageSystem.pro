@@ -39,7 +39,8 @@ SOURCES += \
     tools/tools.cpp \
     main.cpp \
     mainwindow.cpp \
-    pages/connect/settingsdialog.cpp
+    pages/connect/settingsdialog.cpp \
+    pages/login/loginpage.cpp
 
 HEADERS += \
     database/admintablemodel.h \
@@ -57,14 +58,19 @@ HEADERS += \
     mainwindow.h \
     inc/m1356dll.h \
     inc/m1356dll_global.h \
-    pages/connect/settingsdialog.h
+    pages/connect/settingsdialog.h \
+    pages/pages.h \
+    pages/login/loginpage.h
 
 FORMS += \
         mainwindow.ui \
     pages/welcome/mainpage.ui \
     pages/export/exportdatas.ui \
-    pages/connect/settingsdialog.ui
+    pages/connect/settingsdialog.ui \
+    pages/login/loginpage.ui
 
 DISTFILES += \
     lib/libM1356Dll.a \
     lib/M1356Dll.dll
+
+win32: LIBS += -L$$PWD/lib/ -lM1356Dll

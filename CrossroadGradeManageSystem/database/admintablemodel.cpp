@@ -24,7 +24,7 @@ void AdminTableModel::createTable()
     QSqlQuery query;
     QString str;
     str  = tr("CREATE TABLE ") + tableName + tr(" ( ");
-    str += header.at(0) + tr(" INT AUTO_INCREMENT PRIMARY KEY, ");
+    str += header.at(0) + tr(" VARCHAR(20) NOT NULL PRIMARY KEY, ");
     str += header.at(1) + tr(" VARCHAR(20) NOT NULL, ");
     str += header.at(2) + tr(" VARCHAR(20) NOT NULL); ");
     qDebug()<<"Sql: " << str.toUtf8().data();
@@ -63,10 +63,15 @@ QSqlTableModel* AdminTableModel::getModel(void)
 QSqlRecord AdminTableModel::findRecord(const QString &userName)
 {
     int count = model->rowCount();
+    qDebug() << count;
+
     for(int row=0; row < count; row++){
+//        qDebug() << model->data(model->index(row, 0)).toString();
         if(model->data(model->index(row, 0)).toString() == userName)
+            qDebug() << model->record(row);
             return model->record(row);
     }
+
     return QSqlRecord();
 }
 /**
@@ -79,14 +84,27 @@ QSqlRecord AdminTableModel::findRecord(const QString &userName)
  */
 int AdminTableModel::insertRecords(QString userName, QString pawd, QString remark)
 {
-    QSqlRecord record;
-    record.append(QSqlField(header.at(0), QVariant::String));
-    record.append(QSqlField(header.at(1), QVariant::String));
-    record.append(QSqlField(header.at(2), QVariant::String));
-    record.setValue(0, userName);
-    record.setValue(1, pawd);
-    record.setValue(2, remark);
-    model->insertRecord(-1,record);
+    QSqlQuery query;
+    bool ret = false;
+
+    // 准备 SQL 语句
+    query.prepare("INSERT INTO table_admins (用户名, 密码, 备注信息) VALUES (:username, :password, :remark);");
+
+    // 绑定参数
+    query.bindValue(":username", userName);
+    query.bindValue(":password", pawd);
+    query.bindValue(":remark", remark);
+
+    // 执行 SQL 语句
+    ret = query.exec();
+
+    // 提交更改
+    if (ret) {
+        qDebug() << "successfully insert";
+    }
+    else {
+        qDebug() << "failed insert";
+    }
     return model->rowCount();
 }
 /**

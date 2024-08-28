@@ -13,6 +13,7 @@ INPUT(
 ./release\main.o
 ./release\mainwindow.o
 ./release\settingsdialog.o
+./release\loginpage.o
 ./release\moc_admintablemodel.o
 ./release\moc_checkpointstablemodel.o
 ./release\moc_dbmanager.o
@@ -25,4 +26,5 @@ INPUT(
 ./release\moc_serialportthread.o
 ./release\moc_mainwindow.o
 ./release\moc_settingsdialog.o
+./release\moc_loginpage.o
 );

@@ -164,7 +164,25 @@ participants、matches、checkpoints、rfid、results 表的顺序
 
 
 
-# 03 页面设计
+# 03 功能实现
 
 **界面大小统一设置为 600 * 450 px**
 
+- 管理员登录
+
+- （读写器）连接
+
+  ```makefile
+  # 除加入头文件以外，还需要在.pro文件中加入库文件和指定库文件路径
+  DISTFILES += \
+      lib/libM1356Dll.a \
+      lib/M1356Dll.dll
+  
+  win32: LIBS += -L$$PWD/lib/ -lM1356Dll
+  ```
+
+  
+
+- 数据导出
+
+- 主页

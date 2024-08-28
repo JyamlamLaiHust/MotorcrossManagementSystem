@@ -18,30 +18,30 @@
 
 QT_BEGIN_NAMESPACE
 
-class Ui_mainpage
+class Ui_MainPage
 {
 public:
 
-    void setupUi(QWidget *mainpage)
+    void setupUi(QWidget *MainPage)
     {
-        if (mainpage->objectName().isEmpty())
-            mainpage->setObjectName(QStringLiteral("mainpage"));
-        mainpage->resize(400, 300);
+        if (MainPage->objectName().isEmpty())
+            MainPage->setObjectName(QStringLiteral("MainPage"));
+        MainPage->resize(400, 300);
 
-        retranslateUi(mainpage);
+        retranslateUi(MainPage);
 
-        QMetaObject::connectSlotsByName(mainpage);
+        QMetaObject::connectSlotsByName(MainPage);
     } // setupUi
 
-    void retranslateUi(QWidget *mainpage)
+    void retranslateUi(QWidget *MainPage)
     {
-        mainpage->setWindowTitle(QApplication::translate("mainpage", "Form", Q_NULLPTR));
+        MainPage->setWindowTitle(QApplication::translate("MainPage", "Form", Q_NULLPTR));
     } // retranslateUi
 
 };
 
 namespace Ui {
-    class mainpage: public Ui_mainpage {};
+    class MainPage: public Ui_MainPage {};
 } // namespace Ui
 
 QT_END_NAMESPACE

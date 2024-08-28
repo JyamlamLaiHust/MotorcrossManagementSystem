@@ -4,19 +4,19 @@
 #include <QWidget>
 
 namespace Ui {
-class mainpage;
+class MainPage;
 }
 
-class mainpage : public QWidget
+class MainPage : public QWidget
 {
     Q_OBJECT
 
 public:
-    explicit mainpage(QWidget *parent = 0);
-    ~mainpage();
+    explicit MainPage(QWidget *parent = 0);
+    ~MainPage();
 
 private:
-    Ui::mainpage *ui;
+    Ui::MainPage *ui;
 };
 
 #endif // MAINPAGE_H

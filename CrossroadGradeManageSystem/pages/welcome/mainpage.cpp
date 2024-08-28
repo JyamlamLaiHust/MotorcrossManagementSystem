@@ -5,14 +5,14 @@
  *日期: 2024-08-28
  *描述: 欢迎页显示图片
 ***************************************/
-mainpage::mainpage(QWidget *parent) :
+MainPage::MainPage(QWidget *parent) :
     QWidget(parent),
-    ui(new Ui::mainpage)
+    ui(new Ui::MainPage)
 {
     ui->setupUi(this);
 }
 
-mainpage::~mainpage()
+MainPage::~MainPage()
 {
     delete ui;
 }
