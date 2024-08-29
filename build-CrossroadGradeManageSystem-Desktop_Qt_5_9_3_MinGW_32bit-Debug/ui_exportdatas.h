@@ -23,7 +23,7 @@
 
 QT_BEGIN_NAMESPACE
 
-class Ui_exportdatas
+class Ui_ExportDatas
 {
 public:
     QWidget *horizontalLayoutWidget;
@@ -36,20 +36,27 @@ public:
     QSpacerItem *horizontalSpacer;
     QPushButton *btn_Return;
     QPushButton *btn_export;
+    QSpacerItem *horizontalSpacer_2;
 
-    void setupUi(QWidget *exportdatas)
+    void setupUi(QWidget *ExportDatas)
     {
-        if (exportdatas->objectName().isEmpty())
-            exportdatas->setObjectName(QStringLiteral("exportdatas"));
-        exportdatas->resize(400, 300);
-        horizontalLayoutWidget = new QWidget(exportdatas);
+        if (ExportDatas->objectName().isEmpty())
+            ExportDatas->setObjectName(QStringLiteral("ExportDatas"));
+        ExportDatas->resize(732, 450);
+        horizontalLayoutWidget = new QWidget(ExportDatas);
         horizontalLayoutWidget->setObjectName(QStringLiteral("horizontalLayoutWidget"));
-        horizontalLayoutWidget->setGeometry(QRect(10, 10, 381, 121));
+        horizontalLayoutWidget->setGeometry(QRect(10, 10, 711, 171));
         horizontalLayout = new QHBoxLayout(horizontalLayoutWidget);
+        horizontalLayout->setSpacing(0);
         horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
         horizontalLayout->setContentsMargins(0, 0, 0, 0);
         label = new QLabel(horizontalLayoutWidget);
         label->setObjectName(QStringLiteral("label"));
+        QFont font;
+        font.setPointSize(10);
+        label->setFont(font);
+        label->setLayoutDirection(Qt::LeftToRight);
+        label->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter);
 
         horizontalLayout->addWidget(label);
 
@@ -58,12 +65,15 @@ public:
 
         horizontalLayout->addWidget(comboBox);
 
-        label_2 = new QLabel(exportdatas);
+        label_2 = new QLabel(ExportDatas);
         label_2->setObjectName(QStringLiteral("label_2"));
-        label_2->setGeometry(QRect(50, 150, 300, 12));
-        horizontalLayoutWidget_2 = new QWidget(exportdatas);
+        label_2->setGeometry(QRect(10, 190, 901, 31));
+        label_2->setFont(font);
+        label_2->setTextFormat(Qt::RichText);
+        label_2->setIndent(5);
+        horizontalLayoutWidget_2 = new QWidget(ExportDatas);
         horizontalLayoutWidget_2->setObjectName(QStringLiteral("horizontalLayoutWidget_2"));
-        horizontalLayoutWidget_2->setGeometry(QRect(10, 180, 381, 111));
+        horizontalLayoutWidget_2->setGeometry(QRect(10, 230, 711, 211));
         horizontalLayout_2 = new QHBoxLayout(horizontalLayoutWidget_2);
         horizontalLayout_2->setObjectName(QStringLiteral("horizontalLayout_2"));
         horizontalLayout_2->setContentsMargins(0, 0, 0, 0);
@@ -81,25 +91,29 @@ public:
 
         horizontalLayout_2->addWidget(btn_export);
 
+        horizontalSpacer_2 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
-        retranslateUi(exportdatas);
+        horizontalLayout_2->addItem(horizontalSpacer_2);
 
-        QMetaObject::connectSlotsByName(exportdatas);
+
+        retranslateUi(ExportDatas);
+
+        QMetaObject::connectSlotsByName(ExportDatas);
     } // setupUi
 
-    void retranslateUi(QWidget *exportdatas)
+    void retranslateUi(QWidget *ExportDatas)
     {
-        exportdatas->setWindowTitle(QApplication::translate("exportdatas", "Form", Q_NULLPTR));
-        label->setText(QApplication::translate("exportdatas", "\350\241\250\345\220\215\357\274\232", Q_NULLPTR));
-        label_2->setText(QApplication::translate("exportdatas", "\346\217\220\347\244\272\357\274\232\345\257\274\345\207\272\344\270\272CSV\346\240\274\345\274\217\346\226\207\346\234\254\346\226\207\344\273\266\357\274\214\345\217\257\344\273\245\344\275\277\347\224\250excel\347\233\264\346\216\245\346\211\223\345\274\200\343\200\202", Q_NULLPTR));
-        btn_Return->setText(QApplication::translate("exportdatas", "\350\277\224\345\233\236", Q_NULLPTR));
-        btn_export->setText(QApplication::translate("exportdatas", "\345\257\274\345\207\272", Q_NULLPTR));
+        ExportDatas->setWindowTitle(QApplication::translate("ExportDatas", "Form", Q_NULLPTR));
+        label->setText(QApplication::translate("ExportDatas", "\350\241\250\345\220\215\357\274\232", Q_NULLPTR));
+        label_2->setText(QApplication::translate("ExportDatas", "\346\217\220\347\244\272\357\274\232\345\257\274\345\207\272\344\270\272CSV\346\240\274\345\274\217\346\226\207\346\234\254\346\226\207\344\273\266\357\274\214\345\217\257\344\273\245\344\275\277\347\224\250excel\347\233\264\346\216\245\346\211\223\345\274\200\343\200\202", Q_NULLPTR));
+        btn_Return->setText(QApplication::translate("ExportDatas", "\350\277\224\345\233\236", Q_NULLPTR));
+        btn_export->setText(QApplication::translate("ExportDatas", "\345\257\274\345\207\272", Q_NULLPTR));
     } // retranslateUi
 
 };
 
 namespace Ui {
-    class exportdatas: public Ui_exportdatas {};
+    class ExportDatas: public Ui_ExportDatas {};
 } // namespace Ui
 
 QT_END_NAMESPACE

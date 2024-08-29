@@ -5,8 +5,8 @@
 #include "database/dbmanager.h"
 #include <QMessageBox>
 /**************************************
- *作者: jianghj@up-tech.com
- *日期: 2016-09-20
+ *作者: JaylenLaiHUST
+ *日期: 2024-08-29
  *描述: 登陆页面,用于验证管理员,有些操作需要权限,只有登陆了才能进行操作
 ***************************************/
 LoginPage::LoginPage(QWidget *parent, QString *name) :QDialog(parent),ui(new Ui::LoginPage)

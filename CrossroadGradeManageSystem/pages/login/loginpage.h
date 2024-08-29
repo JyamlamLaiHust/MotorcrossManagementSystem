@@ -7,8 +7,8 @@ namespace Ui {
 class LoginPage;
 }
 /**************************************
- *作者: jianghj@up-tech.com
- *日期: 2016-09-20
+ *作者: JaylenLaiHUST
+ *日期: 2024-08-29
  *描述: 登陆页面
 ***************************************/
 class LoginPage : public QDialog

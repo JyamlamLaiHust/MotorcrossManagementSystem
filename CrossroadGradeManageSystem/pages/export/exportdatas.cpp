@@ -1,14 +1,41 @@
 #include "exportdatas.h"
 #include "ui_exportdatas.h"
+#include "database/dbmanager.h"
+#include "tools/tools.h"
+#include <QMessageBox>
 
-exportdatas::exportdatas(QWidget *parent) :
-    QWidget(parent),
-    ui(new Ui::exportdatas)
+ExportDatas::ExportDatas(QWidget *parent) :
+    QDialog(parent),
+    ui(new Ui::ExportDatas)
 {
     ui->setupUi(this);
 }
 
-exportdatas::~exportdatas()
+ExportDatas::~ExportDatas()
 {
     delete ui;
+}
+
+/**
+ * @brief ExportDatas::on_btn_export_clicked
+ * 导出按钮点击事件
+ */
+void ExportDatas::on_btn_export_clicked()
+{
+    if(export_table(ui->comboBox->currentText()))//调用导出方法
+    {
+         QMessageBox::information(this,tr("温馨提示"),ui->comboBox->currentText() + tr("保存成功"),QMessageBox::Ok);
+    }
+    else
+    {
+        QMessageBox::warning(this,tr("温馨提示"),ui->comboBox->currentText() + tr("保存失败！"),QMessageBox::Ok);
+    }
+}
+/**
+ * @brief ExportDatas::on_btn_Return_clicked
+ * 返回按钮点击事件
+ */
+void ExportDatas::on_btn_Return_clicked()
+{
+    this->close();
 }
