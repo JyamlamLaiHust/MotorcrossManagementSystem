@@ -26,7 +26,7 @@ public:
     {
         if (MainPage->objectName().isEmpty())
             MainPage->setObjectName(QStringLiteral("MainPage"));
-        MainPage->resize(400, 300);
+        MainPage->resize(749, 610);
 
         retranslateUi(MainPage);
 

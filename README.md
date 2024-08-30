@@ -166,7 +166,7 @@ participants、matches、checkpoints、rfid、results 表的顺序
 
 # 03 功能实现
 
-**界面大小统一设置为 600 * 450 px**
+**画面设置为 750px * 600px**
 
 - 管理员登录 Login
 
@@ -183,4 +183,44 @@ participants、matches、checkpoints、rfid、results 表的顺序
 
 - 数据导出 Export
 
-- 主页 Mainpage
+- 主页 Welcome
+
+---
+
+- 运动员报名 CheckIn
+
+  - 录入基本信息
+    - 运动员 id（自动生成，不需要录入）
+    - 填空：姓名、身份证、联系方式、紧急联系人姓名、紧急联系人联系方式
+    - 选择：性别、T恤尺码
+    - 自动识别：RFID 标签编号
+  -  ViewTable 实时展示已经录入的信息
+
+- 打卡 SignUp
+
+  > [数据库与 QtComboBox 关联](https://www.cnblogs.com/LyShark/p/15656095.html)
+
+  - 记录打卡时间 —— 插入成绩表记录
+  - 判断逻辑（打卡时间不得小于开门时间或者大于关门时间）
+
+- 比赛举行 HoldGames
+  - 越野赛路径绑定和打卡点设定 —— 插入赛事表记录
+    - 通过赛事 id 区分不同赛事的打卡点 —— 设计两个comboBox（赛事 id 和打卡点 id）
+    
+      ```cpp
+      // 让QDateEdit显示当前时间
+          ui->dateEdit->setDisplayFormat("yyyy-MM-dd");
+          ui->dateEdit->setDateTime(QDateTime::currentDateTime());
+      ```
+
+- 成绩表查询 Query
+  - 通过不同的筛选条件将数据库展现到前端页面
+
+- 发送成绩通知 Broadcast
+  - 完成所有打卡点 print 一个成绩单
+  - **MQTT 通信 ？**
+
+
+
+# 04服务器部署
+

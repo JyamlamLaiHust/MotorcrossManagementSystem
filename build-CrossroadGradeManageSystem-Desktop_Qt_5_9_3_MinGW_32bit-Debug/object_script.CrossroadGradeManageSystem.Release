@@ -14,6 +14,11 @@ INPUT(
 ./release\mainwindow.o
 ./release\settingsdialog.o
 ./release\loginpage.o
+./release\checkin.o
+./release\holdgamespages.o
+./release\signup.o
+./release\querypage.o
+./release\broadcastpage.o
 ./release\moc_admintablemodel.o
 ./release\moc_checkpointstablemodel.o
 ./release\moc_dbmanager.o
@@ -27,4 +32,9 @@ INPUT(
 ./release\moc_mainwindow.o
 ./release\moc_settingsdialog.o
 ./release\moc_loginpage.o
+./release\moc_checkin.o
+./release\moc_holdgamespages.o
+./release\moc_signup.o
+./release\moc_querypage.o
+./release\moc_broadcastpage.o
 );

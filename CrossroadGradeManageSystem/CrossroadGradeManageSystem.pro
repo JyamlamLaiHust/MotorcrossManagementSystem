@@ -40,7 +40,13 @@ SOURCES += \
     main.cpp \
     mainwindow.cpp \
     pages/connect/settingsdialog.cpp \
-    pages/login/loginpage.cpp
+    pages/login/loginpage.cpp \
+    pages/checkin/checkin.cpp \
+    pages/holdgames/holdgamespages.cpp \
+    pages/signup/signup.cpp \
+    pages/query/querypage.cpp \
+    pages/boradcast/broadcastpage.cpp
+
 
 HEADERS += \
     database/admintablemodel.h \
@@ -60,14 +66,26 @@ HEADERS += \
     inc/m1356dll_global.h \
     pages/connect/settingsdialog.h \
     pages/pages.h \
-    pages/login/loginpage.h
+    pages/login/loginpage.h \
+    pages/checkin/checkin.h \
+    pages/holdgames/holdgamespages.h \
+    pages/signup/signup.h \
+    pages/query/querypage.h \
+    pages/boradcast/broadcastpage.h
+
 
 FORMS += \
         mainwindow.ui \
     pages/welcome/mainpage.ui \
     pages/export/exportdatas.ui \
     pages/connect/settingsdialog.ui \
-    pages/login/loginpage.ui
+    pages/login/loginpage.ui \
+    pages/checkin/checkin.ui \
+    pages/holdgames/holdgamespages.ui \
+    pages/signup/signup.ui \
+    pages/query/querypage.ui \
+    pages/boradcast/broadcastpage.ui
+
 
 DISTFILES += \
     lib/libM1356Dll.a \

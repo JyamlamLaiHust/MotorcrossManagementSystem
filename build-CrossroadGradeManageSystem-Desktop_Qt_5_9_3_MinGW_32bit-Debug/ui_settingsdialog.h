@@ -62,7 +62,7 @@ public:
     {
         if (SettingsDialog->objectName().isEmpty())
             SettingsDialog->setObjectName(QStringLiteral("SettingsDialog"));
-        SettingsDialog->resize(600, 450);
+        SettingsDialog->resize(750, 500);
         SettingsDialog->setMaximumSize(QSize(1920, 1080));
         horizontalLayout_3 = new QHBoxLayout(SettingsDialog);
         horizontalLayout_3->setObjectName(QStringLiteral("horizontalLayout_3"));

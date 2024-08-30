@@ -14,6 +14,11 @@ INPUT(
 ./debug\mainwindow.o
 ./debug\settingsdialog.o
 ./debug\loginpage.o
+./debug\checkin.o
+./debug\holdgamespages.o
+./debug\signup.o
+./debug\querypage.o
+./debug\broadcastpage.o
 ./debug\moc_admintablemodel.o
 ./debug\moc_checkpointstablemodel.o
 ./debug\moc_dbmanager.o
@@ -27,4 +32,9 @@ INPUT(
 ./debug\moc_mainwindow.o
 ./debug\moc_settingsdialog.o
 ./debug\moc_loginpage.o
+./debug\moc_checkin.o
+./debug\moc_holdgamespages.o
+./debug\moc_signup.o
+./debug\moc_querypage.o
+./debug\moc_broadcastpage.o
 );
