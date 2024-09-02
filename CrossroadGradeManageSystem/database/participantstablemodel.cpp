@@ -69,41 +69,58 @@ QSqlTableModel* ParticipantsTableModel::getModel(void)
 
 /**
  * @brief ParticipantsTableModel::findRecord
- * @param participants_id 人员编号
+ * @param participantsName 运动员姓名
  * @return QSqlRecord型记录集
- * 根据运动员id查找记录
+ * 根据运动员姓名查找记录
  */
-QSqlRecord ParticipantsTableModel::findRecord(const int &participants_id)
+int ParticipantsTableModel::findRecord(QString participantName)
 {
     int count = model->rowCount();
     for(int row=0; row < count; row++){
-        if(model->data(model->index(row, 0)) == participants_id)
-            return model->record(row);
+        if((model->data(model->index(row, 0))).toString() == participantName)
+            return row;
     }
-    return QSqlRecord();
+    return -1;
+}
+
+
+/**
+ * @brief ParticipantsTableModel::findRecord
+ * @param idCard 运动员身份证
+ * @return QSqlRecord型记录集
+ * 根据身份证查找记录
+ */
+int ParticipantsTableModel::findRecordByIdCard(QString idCard)
+{
+    int count = model->rowCount();
+    for(int row=0; row < count; row++){
+        if(model->data(model->index(row, 0)) == idCard)
+            return row;
+    }
+    return -1;
 }
 
 /**
  * @brief ParticipantsTableModel::insertRecords
- * @param personName 人员名称
- * @param personType 身份类别
- * @param remark 备注信息
- * @param
- * @param
- * @param
- * @param
- * @param
- * @param
+ * @param name 运动员姓名
+ * @param gender 性别
+ * @param idCard 身份证号
+ * @param contactNumber 联系方式
+ * @param sizeTshirt T恤尺码
+ * @param rfidTag RFID标签卡号
+ * @param emergencyContactName 紧急联系人姓名
+ * @param emergencyContactNumber 紧急联系人电话
  * @return 插入记录的行号
  * 向表格中插入记录
  */
-int ParticipantsTableModel::insertRecords(int participants_id, QString name, QString gender,
-                                          QString id_number, QString contact_number, QString size_tshirt,
-                                          QString rfid_tag_id, QString emergency_contact_name, QString emergency_contact_number)
+int ParticipantsTableModel::insertRecords(QString name, QString gender,
+                                          QString idCard, QString contactNumber, QString sizeTshirt,
+                                          QString rfidTag, QString emergencyContactName, QString emergencyContactNumber)
 {
     QSqlRecord record;
 
-    record.append(QSqlField(header.at(0), QVariant::Int));
+//    record.append(QSqlField(header.at(0), QVariant::Int));
+    record.append(QSqlField(header.at(0), QVariant::String));
     record.append(QSqlField(header.at(1), QVariant::String));
     record.append(QSqlField(header.at(2), QVariant::String));
     record.append(QSqlField(header.at(3), QVariant::String));
@@ -111,41 +128,18 @@ int ParticipantsTableModel::insertRecords(int participants_id, QString name, QSt
     record.append(QSqlField(header.at(5), QVariant::String));
     record.append(QSqlField(header.at(6), QVariant::String));
     record.append(QSqlField(header.at(7), QVariant::String));
-    record.append(QSqlField(header.at(8), QVariant::String));
 
-    record.setValue(0, participants_id);
-    record.setValue(1, name);
-    record.setValue(2, gender);
-    record.setValue(3, id_number);
-    record.setValue(4, contact_number);
-    record.setValue(5, size_tshirt);
-    record.setValue(6, rfid_tag_id);
-    record.setValue(7, emergency_contact_name);
-    record.setValue(8, emergency_contact_number);
+//    record.setValue(0, participants_id);
+    record.setValue(0, name);
+    record.setValue(1, gender);
+    record.setValue(2, idCard);
+    record.setValue(3, contactNumber);
+    record.setValue(4, sizeTshirt);
+    record.setValue(5, rfidTag);
+    record.setValue(6, emergencyContactName);
+    record.setValue(7, emergencyContactNumber);
 
 
     model->insertRecord(-1,record);
     return model->rowCount();
 }
-
-///**
-// * @brief ParticipantsTableModel::updateRecords
-// * @param personName 用户名
-// * @param pwd 新密码
-// * @param time 更新的时间
-// * @return 如果更新成功返回true，否则false
-// * 更新密码
-// */
-//bool ParticipantsTableModel::updateRecords(QString personName,QString pwd,QString time)
-//{
-//    model->setFilter(tr("用户名 = '%1'").arg(personName));
-//    model->select();
-//    if (model->rowCount() == 1)
-//    {
-//        model->setData(model->index(0, 0), QVariant(personName));
-//        model->setData(model->index(0, 1), QVariant(pwd));
-//        model->setData(model->index(0, 2), QVariant(time));
-//        return model->submitAll();
-//    }
-//    return false;
-//}

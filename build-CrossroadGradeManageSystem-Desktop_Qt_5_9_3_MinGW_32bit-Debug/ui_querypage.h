@@ -14,11 +14,11 @@
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QComboBox>
-#include <QtWidgets/QDateTimeEdit>
 #include <QtWidgets/QGroupBox>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
+#include <QtWidgets/QLineEdit>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QTableView>
@@ -33,14 +33,13 @@ public:
     QGroupBox *groupBox_2;
     QWidget *horizontalLayoutWidget;
     QHBoxLayout *horizontalLayout;
-    QLabel *label;
+    QLabel *query_label;
     QComboBox *comboBox;
     QSpacerItem *horizontalSpacer;
-    QLabel *label_2;
-    QDateTimeEdit *dateTimeEdit;
-    QLabel *label_3;
-    QDateTimeEdit *dateTimeEdit_2;
-    QPushButton *pushButton;
+    QLabel *cardId_label;
+    QLineEdit *cardId_lineEdit;
+    QPushButton *btn_recognise;
+    QPushButton *btn_query;
     QTableView *tableView;
 
     void setupUi(QWidget *QueryPage)
@@ -60,10 +59,10 @@ public:
         horizontalLayout = new QHBoxLayout(horizontalLayoutWidget);
         horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
         horizontalLayout->setContentsMargins(0, 0, 0, 0);
-        label = new QLabel(horizontalLayoutWidget);
-        label->setObjectName(QStringLiteral("label"));
+        query_label = new QLabel(horizontalLayoutWidget);
+        query_label->setObjectName(QStringLiteral("query_label"));
 
-        horizontalLayout->addWidget(label);
+        horizontalLayout->addWidget(query_label);
 
         comboBox = new QComboBox(horizontalLayoutWidget);
         comboBox->setObjectName(QStringLiteral("comboBox"));
@@ -74,32 +73,25 @@ public:
 
         horizontalLayout->addItem(horizontalSpacer);
 
-        label_2 = new QLabel(horizontalLayoutWidget);
-        label_2->setObjectName(QStringLiteral("label_2"));
+        cardId_label = new QLabel(horizontalLayoutWidget);
+        cardId_label->setObjectName(QStringLiteral("cardId_label"));
 
-        horizontalLayout->addWidget(label_2);
+        horizontalLayout->addWidget(cardId_label);
 
-        dateTimeEdit = new QDateTimeEdit(horizontalLayoutWidget);
-        dateTimeEdit->setObjectName(QStringLiteral("dateTimeEdit"));
-        dateTimeEdit->setDateTime(QDateTime(QDate(2024, 9, 1), QTime(8, 0, 0)));
+        cardId_lineEdit = new QLineEdit(horizontalLayoutWidget);
+        cardId_lineEdit->setObjectName(QStringLiteral("cardId_lineEdit"));
 
-        horizontalLayout->addWidget(dateTimeEdit);
+        horizontalLayout->addWidget(cardId_lineEdit);
 
-        label_3 = new QLabel(horizontalLayoutWidget);
-        label_3->setObjectName(QStringLiteral("label_3"));
+        btn_recognise = new QPushButton(horizontalLayoutWidget);
+        btn_recognise->setObjectName(QStringLiteral("btn_recognise"));
 
-        horizontalLayout->addWidget(label_3);
+        horizontalLayout->addWidget(btn_recognise);
 
-        dateTimeEdit_2 = new QDateTimeEdit(horizontalLayoutWidget);
-        dateTimeEdit_2->setObjectName(QStringLiteral("dateTimeEdit_2"));
-        dateTimeEdit_2->setDateTime(QDateTime(QDate(2024, 9, 1), QTime(8, 0, 0)));
+        btn_query = new QPushButton(horizontalLayoutWidget);
+        btn_query->setObjectName(QStringLiteral("btn_query"));
 
-        horizontalLayout->addWidget(dateTimeEdit_2);
-
-        pushButton = new QPushButton(horizontalLayoutWidget);
-        pushButton->setObjectName(QStringLiteral("pushButton"));
-
-        horizontalLayout->addWidget(pushButton);
+        horizontalLayout->addWidget(btn_query);
 
         tableView = new QTableView(groupBox);
         tableView->setObjectName(QStringLiteral("tableView"));
@@ -115,10 +107,10 @@ public:
         QueryPage->setWindowTitle(QApplication::translate("QueryPage", "Form", Q_NULLPTR));
         groupBox->setTitle(QApplication::translate("QueryPage", "\346\237\245\350\257\242", Q_NULLPTR));
         groupBox_2->setTitle(QApplication::translate("QueryPage", "\346\235\241\344\273\266\347\255\233\351\200\211", Q_NULLPTR));
-        label->setText(QApplication::translate("QueryPage", "\346\237\245\350\257\242\344\276\235\346\215\256\357\274\232", Q_NULLPTR));
-        label_2->setText(QApplication::translate("QueryPage", "From\357\274\232", Q_NULLPTR));
-        label_3->setText(QApplication::translate("QueryPage", "To\357\274\232", Q_NULLPTR));
-        pushButton->setText(QApplication::translate("QueryPage", "\346\237\245\350\257\242", Q_NULLPTR));
+        query_label->setText(QApplication::translate("QueryPage", "\346\237\245\350\257\242\344\276\235\346\215\256\357\274\232", Q_NULLPTR));
+        cardId_label->setText(QApplication::translate("QueryPage", "\345\215\241\345\217\267\357\274\232", Q_NULLPTR));
+        btn_recognise->setText(QApplication::translate("QueryPage", "\350\257\206\345\210\253", Q_NULLPTR));
+        btn_query->setText(QApplication::translate("QueryPage", "\346\237\245\350\257\242", Q_NULLPTR));
     } // retranslateUi
 
 };

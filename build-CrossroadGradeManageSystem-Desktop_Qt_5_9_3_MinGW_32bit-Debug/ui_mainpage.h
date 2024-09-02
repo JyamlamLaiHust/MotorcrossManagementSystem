@@ -27,6 +27,7 @@ public:
         if (MainPage->objectName().isEmpty())
             MainPage->setObjectName(QStringLiteral("MainPage"));
         MainPage->resize(749, 610);
+        MainPage->setStyleSheet(QStringLiteral("border-image: url(url(:/new/prefix1/mainpage.png));"));
 
         retranslateUi(MainPage);
 

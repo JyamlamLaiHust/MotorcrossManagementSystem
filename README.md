@@ -185,6 +185,12 @@ participants、matches、checkpoints、rfid、results 表的顺序
 
 - 主页 Welcome
 
+  - 右键 【修改样式表】
+
+    ```
+    background-image:url(图片路径)
+    ```
+
 ---
 
 - 运动员报名 CheckIn
@@ -222,5 +228,17 @@ participants、matches、checkpoints、rfid、results 表的顺序
 
 
 
-# 04服务器部署
+# 04 服务器部署
 
+# 05 其它
+
+- `.ui`文件界面和运行显示界面不一样
+
+  ```
+  
+  .setAttribute(Qt::AA_EnableHighDpiScaling);
+  ```
+
+- QPushButton
+
+  > [QPushButton 用法](https://blog.csdn.net/Fdog_/article/details/113041687)

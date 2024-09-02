@@ -19,6 +19,8 @@ INPUT(
 ./debug\signup.o
 ./debug\querypage.o
 ./debug\broadcastpage.o
+./debug\checkout.o
+./debug\qrc_res.o
 ./debug\moc_admintablemodel.o
 ./debug\moc_checkpointstablemodel.o
 ./debug\moc_dbmanager.o
@@ -37,4 +39,5 @@ INPUT(
 ./debug\moc_signup.o
 ./debug\moc_querypage.o
 ./debug\moc_broadcastpage.o
+./debug\moc_checkout.o
 );

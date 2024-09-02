@@ -40,8 +40,8 @@ public:
     QLabel *participantName_label;
     QLineEdit *participantName_lineEdit;
     QHBoxLayout *horizontalLayout_2;
-    QLabel *sex_label;
-    QComboBox *sex_comboBox;
+    QLabel *gender_label;
+    QComboBox *gender_comboBox;
     QLabel *sizeTshirt_label;
     QComboBox *sizeTshirt_comboBox;
     QHBoxLayout *horizontalLayout_3;
@@ -92,7 +92,7 @@ public:
         frame->setFrameShadow(QFrame::Raised);
         groupBox_2 = new QGroupBox(frame);
         groupBox_2->setObjectName(QStringLiteral("groupBox_2"));
-        groupBox_2->setGeometry(QRect(10, 10, 361, 311));
+        groupBox_2->setGeometry(QRect(10, 10, 691, 311));
         verticalLayoutWidget = new QWidget(groupBox_2);
         verticalLayoutWidget->setObjectName(QStringLiteral("verticalLayoutWidget"));
         verticalLayoutWidget->setGeometry(QRect(0, 20, 361, 291));
@@ -126,22 +126,22 @@ public:
 
         horizontalLayout_2 = new QHBoxLayout();
         horizontalLayout_2->setObjectName(QStringLiteral("horizontalLayout_2"));
-        sex_label = new QLabel(verticalLayoutWidget);
-        sex_label->setObjectName(QStringLiteral("sex_label"));
-        sizePolicy1.setHeightForWidth(sex_label->sizePolicy().hasHeightForWidth());
-        sex_label->setSizePolicy(sizePolicy1);
+        gender_label = new QLabel(verticalLayoutWidget);
+        gender_label->setObjectName(QStringLiteral("gender_label"));
+        sizePolicy1.setHeightForWidth(gender_label->sizePolicy().hasHeightForWidth());
+        gender_label->setSizePolicy(sizePolicy1);
 
-        horizontalLayout_2->addWidget(sex_label);
+        horizontalLayout_2->addWidget(gender_label);
 
-        sex_comboBox = new QComboBox(verticalLayoutWidget);
-        sex_comboBox->setObjectName(QStringLiteral("sex_comboBox"));
+        gender_comboBox = new QComboBox(verticalLayoutWidget);
+        gender_comboBox->setObjectName(QStringLiteral("gender_comboBox"));
         QSizePolicy sizePolicy3(QSizePolicy::Preferred, QSizePolicy::Fixed);
         sizePolicy3.setHorizontalStretch(1);
         sizePolicy3.setVerticalStretch(0);
-        sizePolicy3.setHeightForWidth(sex_comboBox->sizePolicy().hasHeightForWidth());
-        sex_comboBox->setSizePolicy(sizePolicy3);
+        sizePolicy3.setHeightForWidth(gender_comboBox->sizePolicy().hasHeightForWidth());
+        gender_comboBox->setSizePolicy(sizePolicy3);
 
-        horizontalLayout_2->addWidget(sex_comboBox);
+        horizontalLayout_2->addWidget(gender_comboBox);
 
         sizeTshirt_label = new QLabel(verticalLayoutWidget);
         sizeTshirt_label->setObjectName(QStringLiteral("sizeTshirt_label"));
@@ -204,9 +204,9 @@ public:
 
         verticalLayout->addLayout(horizontalLayout_4);
 
-        verticalLayoutWidget_2 = new QWidget(frame);
+        verticalLayoutWidget_2 = new QWidget(groupBox_2);
         verticalLayoutWidget_2->setObjectName(QStringLiteral("verticalLayoutWidget_2"));
-        verticalLayoutWidget_2->setGeometry(QRect(380, 10, 321, 311));
+        verticalLayoutWidget_2->setGeometry(QRect(370, 20, 321, 291));
         verticalLayout_2 = new QVBoxLayout(verticalLayoutWidget_2);
         verticalLayout_2->setObjectName(QStringLiteral("verticalLayout_2"));
         verticalLayout_2->setContentsMargins(0, 0, 0, 0);
@@ -303,9 +303,9 @@ public:
         groupBox->setTitle(QApplication::translate("CheckIn", "\350\277\220\345\212\250\345\221\230\346\263\250\345\206\214", Q_NULLPTR));
         groupBox_2->setTitle(QApplication::translate("CheckIn", "\344\270\252\344\272\272\344\277\241\346\201\257\345\275\225\345\205\245", Q_NULLPTR));
         participantName_label->setText(QApplication::translate("CheckIn", "\345\247\223\345\220\215\357\274\232", Q_NULLPTR));
-        sex_label->setText(QApplication::translate("CheckIn", "\346\200\247\345\210\253\357\274\232", Q_NULLPTR));
-        sex_comboBox->clear();
-        sex_comboBox->insertItems(0, QStringList()
+        gender_label->setText(QApplication::translate("CheckIn", "\346\200\247\345\210\253\357\274\232", Q_NULLPTR));
+        gender_comboBox->clear();
+        gender_comboBox->insertItems(0, QStringList()
          << QString()
          << QApplication::translate("CheckIn", "\347\224\267", Q_NULLPTR)
          << QApplication::translate("CheckIn", "\345\245\263", Q_NULLPTR)

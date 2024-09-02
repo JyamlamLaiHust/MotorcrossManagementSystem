@@ -19,6 +19,8 @@ INPUT(
 ./release\signup.o
 ./release\querypage.o
 ./release\broadcastpage.o
+./release\checkout.o
+./release\qrc_res.o
 ./release\moc_admintablemodel.o
 ./release\moc_checkpointstablemodel.o
 ./release\moc_dbmanager.o
@@ -37,4 +39,5 @@ INPUT(
 ./release\moc_signup.o
 ./release\moc_querypage.o
 ./release\moc_broadcastpage.o
+./release\moc_checkout.o
 );

@@ -23,10 +23,11 @@ public:
     void createTable();//创建表
     void bindTable(void);//绑定表
     QSqlTableModel* getModel(void);//获取管理员表的model
-    QSqlRecord findRecord(const int &participants_id);//查找记录
-    int insertRecords(int participants_id, QString name, QString gender,
-                                              QString id_number, QString contact_number, QString size_tshirt,
-                                              QString rfid_tag_id, QString emergency_contact_name, QString emergency_contact_number);
+    int findRecord(QString participantName);//查找记录
+    int findRecordByIdCard(QString idCard);
+    int insertRecords(QString name, QString gender,
+                      QString idCard, QString contactNumber, QString sizeTshirt,
+                      QString rfidTag, QString emergencyContactName, QString emergencyContactNumber);
 //    bool updateRecords(QString personName, QString pwd, QString time);//更新记录
 
 //signals:
