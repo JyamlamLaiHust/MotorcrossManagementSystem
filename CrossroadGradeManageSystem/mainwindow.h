@@ -10,6 +10,7 @@
 #include <QLabel>
 #include <QDebug>
 
+
 namespace Ui {
 class MainWindow;
 }
@@ -37,9 +38,13 @@ private slots:
 
 //    void ViewTables(); //显示表
 
-//    void Register(); //用户注册
+    void checkIn(); // 运动员报名
 
 //    void WriteOff(); //人员注销
+
+    void holdCompetition(); // 举办比赛
+
+    void queryRecords(); // 查询成绩
 
     void Connect(); //连接
 

@@ -45,7 +45,8 @@ SOURCES += \
     pages/holdgames/holdgamespages.cpp \
     pages/signup/signup.cpp \
     pages/query/querypage.cpp \
-    pages/boradcast/broadcastpage.cpp
+    pages/boradcast/broadcastpage.cpp \
+    pages/checkout/checkout.cpp
 
 
 HEADERS += \
@@ -71,7 +72,8 @@ HEADERS += \
     pages/holdgames/holdgamespages.h \
     pages/signup/signup.h \
     pages/query/querypage.h \
-    pages/boradcast/broadcastpage.h
+    pages/boradcast/broadcastpage.h \
+    pages/checkout/checkout.h
 
 
 FORMS += \
@@ -84,11 +86,16 @@ FORMS += \
     pages/holdgames/holdgamespages.ui \
     pages/signup/signup.ui \
     pages/query/querypage.ui \
-    pages/boradcast/broadcastpage.ui
+    pages/boradcast/broadcastpage.ui \
+    pages/checkout/checkout.ui
 
 
 DISTFILES += \
     lib/libM1356Dll.a \
     lib/M1356Dll.dll
 
+
 win32: LIBS += -L$$PWD/lib/ -lM1356Dll
+
+RESOURCES += \
+    resources/res.qrc

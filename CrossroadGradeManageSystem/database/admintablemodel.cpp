@@ -27,7 +27,6 @@ void AdminTableModel::createTable()
     str += header.at(0) + tr(" VARCHAR(20) NOT NULL PRIMARY KEY, ");
     str += header.at(1) + tr(" VARCHAR(20) NOT NULL, ");
     str += header.at(2) + tr(" VARCHAR(20) NOT NULL); ");
-    qDebug()<<"Sql: " << str.toUtf8().data();
     bool ret = query.exec(str);
     if(ret == true){
         qDebug()<<tableName<<QObject::tr(" table create success");
@@ -63,12 +62,9 @@ QSqlTableModel* AdminTableModel::getModel(void)
 QSqlRecord AdminTableModel::findRecord(const QString &userName)
 {
     int count = model->rowCount();
-    qDebug() << count;
 
     for(int row=0; row < count; row++){
-//        qDebug() << model->data(model->index(row, 0)).toString();
         if(model->data(model->index(row, 0)).toString() == userName)
-            qDebug() << model->record(row);
             return model->record(row);
     }
 
@@ -98,13 +94,13 @@ int AdminTableModel::insertRecords(QString userName, QString pawd, QString remar
     // 执行 SQL 语句
     ret = query.exec();
 
-    // 提交更改
-    if (ret) {
-        qDebug() << "successfully insert";
-    }
-    else {
-        qDebug() << "failed insert";
-    }
+//    // 提交更改
+//    if (ret) {
+//        qDebug() << "successfully insert";
+//    }
+//    else {
+//        qDebug() << "failed insert";
+//    }
     return model->rowCount();
 }
 /**

@@ -24,18 +24,8 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>-1</number>
     </property>
-    <widget class="QWidget" name="widget">
-     <property name="enabled">
-      <bool>true</bool>
-     </property>
-    </widget>
-    <widget class="QWidget" name="widget_2">
-     <property name="enabled">
-      <bool>true</bool>
-     </property>
-    </widget>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
@@ -64,21 +54,28 @@
     <property name="title">
      <string>运动员管理</string>
     </property>
+    <addaction name="action_checkIn"/>
+    <addaction name="action_checkOut"/>
    </widget>
    <widget class="QMenu" name="menu_3">
     <property name="title">
      <string>赛事管理</string>
     </property>
+    <addaction name="action_holdCompetition"/>
+    <addaction name="action_cancelCompetition"/>
    </widget>
    <widget class="QMenu" name="menu_4">
     <property name="title">
      <string>查询</string>
     </property>
+    <addaction name="action_participants"/>
+    <addaction name="action_competition"/>
    </widget>
    <widget class="QMenu" name="menu_5">
     <property name="title">
      <string>帮助</string>
     </property>
+    <addaction name="actionabout"/>
    </widget>
    <addaction name="menu"/>
    <addaction name="menu_2"/>
@@ -141,6 +138,41 @@
    </property>
    <property name="toolTip">
     <string>exit</string>
+   </property>
+  </action>
+  <action name="action_checkIn">
+   <property name="text">
+    <string>报名参赛</string>
+   </property>
+  </action>
+  <action name="action_checkOut">
+   <property name="text">
+    <string>退出比赛</string>
+   </property>
+  </action>
+  <action name="action_holdCompetition">
+   <property name="text">
+    <string>举办比赛</string>
+   </property>
+  </action>
+  <action name="action_cancelCompetition">
+   <property name="text">
+    <string>取消比赛</string>
+   </property>
+  </action>
+  <action name="action_competition">
+   <property name="text">
+    <string>比赛查询</string>
+   </property>
+  </action>
+  <action name="action_participants">
+   <property name="text">
+    <string>运动员查询</string>
+   </property>
+  </action>
+  <action name="actionabout">
+   <property name="text">
+    <string>关于</string>
    </property>
   </action>
  </widget>

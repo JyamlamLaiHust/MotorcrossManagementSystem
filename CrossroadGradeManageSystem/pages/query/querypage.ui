@@ -48,7 +48,7 @@
      </property>
      <layout class="QHBoxLayout" name="horizontalLayout">
       <item>
-       <widget class="QLabel" name="label">
+       <widget class="QLabel" name="query_label">
         <property name="text">
          <string>查询依据：</string>
         </property>
@@ -71,49 +71,24 @@
        </spacer>
       </item>
       <item>
-       <widget class="QLabel" name="label_2">
+       <widget class="QLabel" name="cardId_label">
         <property name="text">
-         <string>From：</string>
+         <string>卡号：</string>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QDateTimeEdit" name="dateTimeEdit">
-        <property name="dateTime">
-         <datetime>
-          <hour>8</hour>
-          <minute>0</minute>
-          <second>0</second>
-          <year>2024</year>
-          <month>9</month>
-          <day>1</day>
-         </datetime>
-        </property>
-       </widget>
+       <widget class="QLineEdit" name="cardId_lineEdit"/>
       </item>
       <item>
-       <widget class="QLabel" name="label_3">
+       <widget class="QPushButton" name="btn_recognise">
         <property name="text">
-         <string>To：</string>
+         <string>识别</string>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QDateTimeEdit" name="dateTimeEdit_2">
-        <property name="dateTime">
-         <datetime>
-          <hour>8</hour>
-          <minute>0</minute>
-          <second>0</second>
-          <year>2024</year>
-          <month>9</month>
-          <day>1</day>
-         </datetime>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QPushButton" name="pushButton">
+       <widget class="QPushButton" name="btn_query">
         <property name="text">
          <string>查询</string>
         </property>

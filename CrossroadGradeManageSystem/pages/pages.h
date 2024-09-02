@@ -10,5 +10,9 @@
 #include "connect/settingsdialog.h"
 #include "export/exportdatas.h"
 #include "login/loginpage.h"
+#include "checkin/checkin.h"
+#include "query/querypage.h"
+#include "holdgames/holdgamespages.h"
+#include "query/querypage.h"
 
 #endif // PAGES

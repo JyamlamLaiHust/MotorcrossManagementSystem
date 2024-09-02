@@ -36,21 +36,20 @@ MainWindow::~MainWindow()
 void MainWindow::addWidgets()
 {
     MainPage *welcome = new MainPage(this);
-    ui->stackedWidget->addWidget(welcome);//0
+    ui->stackedWidget->addWidget(welcome); //0
 
+    CheckIn *checkin = new CheckIn(this);
+    connect(this,SIGNAL(sendCardId(QString)),checkin,SLOT(on_tagIdReceived(QString)));
+    ui->stackedWidget->addWidget(checkin); //1
 
-//    RegistorWidget *registWidget = new RegistorWidget(this,serialPortThread);
-//    connect(this,SIGNAL(sendCardId(QString)),registWidget,SLOT(on_tagIdReceived(QString)));
-//    ui->stackedWidget->addWidget(registWidget);//1
+    HoldGamesPages *holdgamespages = new HoldGamesPages(this);
+    ui->stackedWidget->addWidget(holdgamespages);//2
 
-    //    TableInfoPages *tableInfo = new TableInfoPages(this,serialPortThread);
-//    connect(this,SIGNAL(sendCardId(QString)),tableInfo,SLOT(on_tagIdReceived(QString)));
-//    connect(this,SIGNAL(sendAction(QAction*)),tableInfo,SLOT(currentAction(QAction*)));
-//    ui->stackedWidget->addWidget(tableInfo);//2
+    QueryPage *querypage = new QueryPage(this);
+    connect(this,SIGNAL(sendCardId(QString)),querypage,SLOT(on_tagIdReceived(QString)));
+    ui->stackedWidget->addWidget(querypage); //3
 
-    //    ConsumePage *consumePage = new ConsumePage(this,serialPortThread);
-//    connect(this,SIGNAL(sendCardId(QString)),consumePage,SLOT(on_cardIdReceived(QString)));
-//    ui->stackedWidget->addWidget(consumePage);//3
+//    qDebug() << "Current number of widgets in stackedWidget:" << ui->stackedWidget->count();
 }
 
 /**
@@ -66,9 +65,15 @@ void MainWindow::handConnect()
     connect(ui->action_exit,SIGNAL(triggered(bool)),this,SLOT(ExitApplication()));
     connect(ui->action_export,SIGNAL(triggered(bool)),this,SLOT(ExportTable()));
     connect(settingsDialog,SIGNAL(applySettings()),this,SLOT(updateConnect()));
+
     connect(serialPortThread,SIGNAL(sendMsg(char*,int)),this,SLOT(onSendMessage(char*,int)));
     connect(serialPortThread,SIGNAL(wirteMsgError(QString)),this,SLOT(onOperationError(QString)));
     connect(serialPortThread,SIGNAL(receivedMsg(QByteArray)),this,SLOT(on_serialMsgreceived(QByteArray)));
+
+    connect(ui->action_checkIn,SIGNAL(triggered(bool)),this,SLOT(checkIn()));
+    connect(ui->action_holdCompetition,SIGNAL(triggered(bool)),this,SLOT(holdCompetition()));
+    connect(ui->action_competition,SIGNAL(triggered(bool)),this,SLOT(queryRecords()));
+    connect(ui->action_participants,SIGNAL(triggered(bool)),this,SLOT(queryRecords()));
 }
 
 /**
@@ -80,6 +85,44 @@ void MainWindow::viewMainPage()
     ui->stackedWidget->setCurrentIndex(0);
     ui->statusBar->showMessage("返回到主页");
 }
+
+/**
+* @brief MainWindow::checkIn
+* 运动员注册
+*/
+void MainWindow::checkIn()
+{
+    if(!CheckLogin())
+        return;
+    ui->stackedWidget->setCurrentIndex(1);
+    ui->statusBar->showMessage("运动员注册");
+}
+
+/**
+* @brief MainWindow::holdCompetition
+* 举办比赛
+*/
+void MainWindow::holdCompetition()
+{
+    if(!CheckLogin())
+        return;
+    ui->stackedWidget->setCurrentIndex(2);
+    ui->statusBar->showMessage("举办比赛");
+}
+
+/**
+* @brief MainWindow::queryRecord
+* 查询页面
+*/
+void MainWindow::queryRecords()
+{
+    if(!CheckLogin())
+        return;
+    ui->stackedWidget->setCurrentIndex(3);
+    ui->statusBar->showMessage("记录查询");
+}
+
+
 
 //窗口关闭响应事件
 void MainWindow::closeEvent(QCloseEvent  *event)
@@ -119,23 +162,11 @@ void MainWindow::About()
 {
     QString text = tr("软件版本:%1\r\n作者:%2\r\n描述:%3")
             .arg(CURRENT_VERSION)
-            .arg(tr("ChenYingJie"))
+            .arg(tr("JaylenLaiHUST"))
             .arg(tr("Hotel Management System"));
     QMessageBox::information(this,tr("帮助"),text,QMessageBox::Yes);
 }
-///**
-// * @brief MainWindow::ChangePasswd
-// * 修改密码按钮点击事件
-// */
-//void MainWindow::ChangePasswd()
-//{
-//    if(!CheckLogin())
-//        return;
-//    ChangePassword *chagepwd = new ChangePassword(this);
-//    chagepwd->setWindowTitle("修改管理员密码");
-//    chagepwd->exec();
-//    delete chagepwd;
-//}
+
 /**
  * @brief MainWindow::ExportTable
  * 数据导出按钮点击事件

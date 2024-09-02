@@ -64,8 +64,6 @@ void LoginPage::on_btn_Login_clicked()
 
     QSqlRecord record = adminitable->findRecord(name);
 
-    qDebug() << record.count();
-
     if(record.count() == 0)
     {
         message.setText(tr("该用户不存在，请重新输入！"));

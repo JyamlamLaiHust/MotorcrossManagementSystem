@@ -15,6 +15,9 @@ public:
     explicit QueryPage(QWidget *parent = 0);
     ~QueryPage();
 
+private slots:
+    void on_tagIdReceived(QString tagId);//卡号接收槽
+
 private:
     Ui::QueryPage *ui;
 };
