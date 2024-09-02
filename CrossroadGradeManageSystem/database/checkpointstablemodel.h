@@ -7,6 +7,7 @@
 #include <QtSql/QSqlQuery>
 #include <QtSql/QSqlError>
 #include <QString>
+#include <QDateTime>
 #include <QDebug>
 
 class CheckPointsTableModel : public QObject
@@ -23,10 +24,9 @@ public:
     void createTable();//创建表
     void bindTable(void);//绑定表
     QSqlTableModel* getModel(void);//获取管理员表的model
-    QSqlRecord findRecord(const int &CheckPoints_id);//查找记录
-    int insertRecords(int CheckPoints_id, QString name, QString gender,
-                                              QString id_number, QString contact_number, QString size_tshirt,
-                                              QString rfid_tag_id, QString emergency_contact_name, QString emergency_contact_number);
+    int findRecord(QString checkPointName);//查找记录
+    int insertRecords(QString eventName, QString checkPointName, float segmentDistance,
+                      float segmentElevation, QDateTime openTime, QDateTime closeTime);
 //    bool updateRecords(QString personName, QString pwd, QString time);//更新记录
 
 //signals:

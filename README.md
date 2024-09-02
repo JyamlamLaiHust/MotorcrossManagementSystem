@@ -72,8 +72,8 @@ CREATE TABLE participants (
 CREATE TABLE matches (
     event_id INT AUTO_INCREMENT PRIMARY KEY,
     event_name VARCHAR(100) NOT NULL,
-    start_date DATETIME NOT NULL,
-    end_date DATETIME NOT NULL,
+    start_time DATETIME NOT NULL,
+    end_time DATETIME NOT NULL,
     race_distance FLOAT NOT NULL,
     total_elevation_gain FLOAT,
     registration_fee DECIMAL(10, 2)
@@ -235,10 +235,16 @@ participants、matches、checkpoints、rfid、results 表的顺序
 - `.ui`文件界面和运行显示界面不一样
 
   ```
-  
   .setAttribute(Qt::AA_EnableHighDpiScaling);
   ```
+
+  有用，但不多
 
 - QPushButton
 
   > [QPushButton 用法](https://blog.csdn.net/Fdog_/article/details/113041687)
+
+# 06 目前待解决问题
+
+- 前端变形
+- 数据库重构键

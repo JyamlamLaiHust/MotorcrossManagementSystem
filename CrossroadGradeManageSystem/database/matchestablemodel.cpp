@@ -67,18 +67,18 @@ QSqlTableModel* MatchesTableModel::getModel(void)
 
 /**
  * @brief MatchesTableModel::findRecord
- * @param MATCHES_id 人员编号
- * @return QSqlRecord型记录集
+ * @param eventName 比赛名称
+ * @return row 记录所在的行号
  * 根据运动员id查找记录
  */
-QSqlRecord MatchesTableModel::findRecord(const int &MATCHES_id)
+int MatchesTableModel::findRecord(QString eventName)
 {
     int count = model->rowCount();
     for(int row=0; row < count; row++){
-        if(model->data(model->index(row, 0)) == MATCHES_id)
-            return model->record(row);
+        if((model->data(model->index(row, 0))).toString() == eventName)
+            return row;
     }
-    return QSqlRecord();
+    return -1;
 }
 
 /**
@@ -95,32 +95,25 @@ QSqlRecord MatchesTableModel::findRecord(const int &MATCHES_id)
  * @return 插入记录的行号
  * 向表格中插入记录
  */
-int MatchesTableModel::insertRecords(int MATCHES_id, QString name, QString gender,
-                                          QString id_number, QString contact_number, QString size_tshirt,
-                                          QString rfid_tag_id, QString emergency_contact_name, QString emergency_contact_number)
+int MatchesTableModel::insertRecords(QString eventName, QDateTime startTime, QDateTime endTime,
+                                     float raceDistance, float elevationGain, float registerationFee)
 {
     QSqlRecord record;
 
     record.append(QSqlField(header.at(0), QVariant::Int));
-    record.append(QSqlField(header.at(1), QVariant::String));
-    record.append(QSqlField(header.at(2), QVariant::String));
-    record.append(QSqlField(header.at(3), QVariant::String));
-    record.append(QSqlField(header.at(4), QVariant::String));
-    record.append(QSqlField(header.at(5), QVariant::String));
-    record.append(QSqlField(header.at(6), QVariant::String));
-    record.append(QSqlField(header.at(7), QVariant::String));
-    record.append(QSqlField(header.at(8), QVariant::String));
+    record.append(QSqlField(header.at(1), QVariant::DateTime));
+    record.append(QSqlField(header.at(2), QVariant::DateTime));
+    record.append(QSqlField(header.at(3), QVariant::Double));
+    record.append(QSqlField(header.at(4), QVariant::Double));
+    record.append(QSqlField(header.at(5), QVariant::Double));
 
-    record.setValue(0, MATCHES_id);
-    record.setValue(1, name);
-    record.setValue(2, gender);
-    record.setValue(3, id_number);
-    record.setValue(4, contact_number);
-    record.setValue(5, size_tshirt);
-    record.setValue(6, rfid_tag_id);
-    record.setValue(7, emergency_contact_name);
-    record.setValue(8, emergency_contact_number);
 
+    record.setValue(0, eventName);
+    record.setValue(1, startTime);
+    record.setValue(2, endTime);
+    record.setValue(3, raceDistance);
+    record.setValue(4, elevationGain);
+    record.setValue(5, registerationFee);
 
     model->insertRecord(-1,record);
     return model->rowCount();

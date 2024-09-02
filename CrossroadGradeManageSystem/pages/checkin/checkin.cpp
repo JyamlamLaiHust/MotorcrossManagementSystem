@@ -34,56 +34,6 @@ void CheckIn::on_tagIdReceived(QString tagId){
 }
 
 /**
- * @brief CheckIn::on_btn_Reset_clicked
- * 重置按钮点击事件
- */
-void CheckIn::on_btn_reset_clicked()
-{
-    ui->participantName_lineEdit->clear();
-    ui->idCard_lineEdit->clear();
-    ui->telephone_lineEdit->clear();
-    ui->emergencyContactName_lineEdit->clear();
-    ui->emergencyContactPhone_lineEdit->clear();
-    ui->rfidTag_lineEdit->clear();
-}
-
-/**
- * @brief CheckIn::on_btn_Inventory_clicked
- * 识别按钮点击事件
- */
-void CheckIn::on_btn_Inventory_clicked()
-{
-    if(!serialThread->serialPortIsOpen())
-    {
-        QMessageBox::warning(this,tr("温馨提示"),tr("请先连接读卡器后再试！"),QMessageBox::Yes);
-        return;
-    }
-    uint16 frameLen;
-    quint8 buffer[1];
-    uint8 *p;
-    memset(buffer, 0, 1);
-    buffer[0] = RC632_14443_ALL;
-    p = m1356dll->RC632_SendCmdReq(RC632_CMD_REQUEST_A,buffer,1);
-    frameLen = BUILD_UINT16(p[0], p[1]);
-    serialThread->writeData((char *)(p + 2 ),frameLen);
-}
-
-/**
- * @brief CheckIn::on_btn_Refresh_clicked
- * 刷新按钮点击事件
- */
-void CheckIn::on_btn_refresh_clicked()
-{
-    ParticipantsTableModel *participantsTable= new ParticipantsTableModel(this);
-    participantsTable->bindTable();
-//    ui->tableView->setModel(participantsTable);
-//    ui->tableView->setEditTriggers(QTableView::NoEditTriggers);
-//    ui->tableView->resizeColumnsToContents();
-//    ui->tableView->horizontalHeader()->setStretchLastSection(true);
-}
-
-
-/**
  * @brief CheckIn::on_btn_register_clicked
  * 注册按钮点击事件
  */
@@ -152,3 +102,54 @@ void CheckIn::on_btn_register_clicked()
 
     delete participantsTable;
 }
+
+/**
+ * @brief CheckIn::on_btn_Reset_clicked
+ * 重置按钮点击事件
+ */
+void CheckIn::on_btn_reset_clicked()
+{
+    ui->participantName_lineEdit->clear();
+    ui->idCard_lineEdit->clear();
+    ui->telephone_lineEdit->clear();
+    ui->emergencyContactName_lineEdit->clear();
+    ui->emergencyContactPhone_lineEdit->clear();
+    ui->rfidTag_lineEdit->clear();
+}
+
+/**
+ * @brief CheckIn::on_btn_Inventory_clicked
+ * 识别按钮点击事件
+ */
+void CheckIn::on_btn_Inventory_clicked()
+{
+    if(!serialThread->serialPortIsOpen())
+    {
+        QMessageBox::warning(this,tr("温馨提示"),tr("请先连接读卡器后再试！"),QMessageBox::Yes);
+        return;
+    }
+    uint16 frameLen;
+    quint8 buffer[1];
+    uint8 *p;
+    memset(buffer, 0, 1);
+    buffer[0] = RC632_14443_ALL;
+    p = m1356dll->RC632_SendCmdReq(RC632_CMD_REQUEST_A,buffer,1);
+    frameLen = BUILD_UINT16(p[0], p[1]);
+    serialThread->writeData((char *)(p + 2 ),frameLen);
+}
+
+/**
+ * @brief CheckIn::on_btn_Refresh_clicked
+ * 刷新按钮点击事件
+ */
+void CheckIn::on_btn_refresh_clicked()
+{
+    ParticipantsTableModel *participantsTable= new ParticipantsTableModel(this);
+    participantsTable->bindTable();
+//    ui->tableView->setModel(participantsTable);
+//    ui->tableView->setEditTriggers(QTableView::NoEditTriggers);
+//    ui->tableView->resizeColumnsToContents();
+//    ui->tableView->horizontalHeader()->setStretchLastSection(true);
+}
+
+

@@ -36,51 +36,51 @@ public:
     QWidget *verticalLayoutWidget;
     QVBoxLayout *verticalLayout;
     QHBoxLayout *horizontalLayout;
-    QLabel *label;
-    QLineEdit *lineEdit;
+    QLabel *eventName_label;
+    QLineEdit *eventName_lineEdit;
     QHBoxLayout *horizontalLayout_2;
-    QLabel *label_2;
-    QDateTimeEdit *dateTimeEdit;
+    QLabel *startTime_label;
+    QDateTimeEdit *startTime_dateTimeEdit;
     QHBoxLayout *horizontalLayout_4;
-    QLabel *label_3;
-    QDateTimeEdit *dateTimeEdit_2;
+    QLabel *endTime_label;
+    QDateTimeEdit *endTime_dateTimeEdit;
     QHBoxLayout *horizontalLayout_5;
-    QLabel *label_4;
-    QLineEdit *lineEdit_2;
+    QLabel *raceDistance_label;
+    QLineEdit *raceDistance_lineEdit;
     QHBoxLayout *horizontalLayout_6;
-    QLabel *label_5;
-    QLineEdit *lineEdit_3;
+    QLabel *elevationGain_label;
+    QLineEdit *elevationGain_lineEdit;
     QHBoxLayout *horizontalLayout_8;
-    QLabel *label_6;
-    QLineEdit *lineEdit_4;
+    QLabel *registrationFee_label;
+    QLineEdit *registrationFee_lineEdit;
     QHBoxLayout *horizontalLayout_11;
     QSpacerItem *horizontalSpacer;
-    QPushButton *pushButton;
+    QPushButton *btn_create;
     QSpacerItem *horizontalSpacer_2;
     QGroupBox *groupBox_3;
     QWidget *verticalLayoutWidget_2;
     QVBoxLayout *verticalLayout_2;
     QHBoxLayout *horizontalLayout_9;
-    QLabel *label_7;
-    QComboBox *comboBox;
+    QLabel *eventName_label_2;
+    QComboBox *eventName_comboBox;
     QHBoxLayout *horizontalLayout_10;
-    QLabel *label_8;
-    QLineEdit *lineEdit_5;
+    QLabel *checkpointName_label;
+    QLineEdit *checkpointName_lineEdit;
     QHBoxLayout *horizontalLayout_12;
-    QLabel *label_9;
-    QLineEdit *lineEdit_6;
+    QLabel *segmentDistance_label;
+    QLineEdit *segmentDistance_lineEdit;
     QHBoxLayout *horizontalLayout_15;
-    QLabel *label_11;
-    QLineEdit *lineEdit_7;
+    QLabel *segmentElevation_label;
+    QLineEdit *segmentElevation_lineEdit;
     QHBoxLayout *horizontalLayout_14;
-    QLabel *label_10;
-    QDateTimeEdit *dateTimeEdit_3;
+    QLabel *openTime_label;
+    QDateTimeEdit *openTime_dateTimeEdit;
     QHBoxLayout *horizontalLayout_16;
-    QLabel *label_12;
-    QDateTimeEdit *dateTimeEdit_4;
+    QLabel *closeTime_label;
+    QDateTimeEdit *closeTime_dateTimeEdit;
     QHBoxLayout *horizontalLayout_17;
     QSpacerItem *horizontalSpacer_3;
-    QPushButton *pushButton_2;
+    QPushButton *btn_bond;
     QSpacerItem *horizontalSpacer_4;
 
     void setupUi(QWidget *HoldGamesPages)
@@ -102,104 +102,104 @@ public:
         verticalLayout->setContentsMargins(0, 0, 0, 0);
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
-        label = new QLabel(verticalLayoutWidget);
-        label->setObjectName(QStringLiteral("label"));
+        eventName_label = new QLabel(verticalLayoutWidget);
+        eventName_label->setObjectName(QStringLiteral("eventName_label"));
 
-        horizontalLayout->addWidget(label);
+        horizontalLayout->addWidget(eventName_label);
 
-        lineEdit = new QLineEdit(verticalLayoutWidget);
-        lineEdit->setObjectName(QStringLiteral("lineEdit"));
+        eventName_lineEdit = new QLineEdit(verticalLayoutWidget);
+        eventName_lineEdit->setObjectName(QStringLiteral("eventName_lineEdit"));
 
-        horizontalLayout->addWidget(lineEdit);
+        horizontalLayout->addWidget(eventName_lineEdit);
 
 
         verticalLayout->addLayout(horizontalLayout);
 
         horizontalLayout_2 = new QHBoxLayout();
         horizontalLayout_2->setObjectName(QStringLiteral("horizontalLayout_2"));
-        label_2 = new QLabel(verticalLayoutWidget);
-        label_2->setObjectName(QStringLiteral("label_2"));
+        startTime_label = new QLabel(verticalLayoutWidget);
+        startTime_label->setObjectName(QStringLiteral("startTime_label"));
 
-        horizontalLayout_2->addWidget(label_2);
+        horizontalLayout_2->addWidget(startTime_label);
 
-        dateTimeEdit = new QDateTimeEdit(verticalLayoutWidget);
-        dateTimeEdit->setObjectName(QStringLiteral("dateTimeEdit"));
+        startTime_dateTimeEdit = new QDateTimeEdit(verticalLayoutWidget);
+        startTime_dateTimeEdit->setObjectName(QStringLiteral("startTime_dateTimeEdit"));
         QSizePolicy sizePolicy(QSizePolicy::Minimum, QSizePolicy::Fixed);
         sizePolicy.setHorizontalStretch(3);
         sizePolicy.setVerticalStretch(0);
-        sizePolicy.setHeightForWidth(dateTimeEdit->sizePolicy().hasHeightForWidth());
-        dateTimeEdit->setSizePolicy(sizePolicy);
-        dateTimeEdit->setDateTime(QDateTime(QDate(2024, 9, 1), QTime(0, 0, 0)));
-        dateTimeEdit->setDate(QDate(2024, 9, 1));
-        dateTimeEdit->setMinimumDateTime(QDateTime(QDate(2024, 9, 1), QTime(0, 0, 0)));
-        dateTimeEdit->setCalendarPopup(false);
-        dateTimeEdit->setTimeSpec(Qt::LocalTime);
+        sizePolicy.setHeightForWidth(startTime_dateTimeEdit->sizePolicy().hasHeightForWidth());
+        startTime_dateTimeEdit->setSizePolicy(sizePolicy);
+        startTime_dateTimeEdit->setDateTime(QDateTime(QDate(2024, 9, 1), QTime(0, 0, 0)));
+        startTime_dateTimeEdit->setDate(QDate(2024, 9, 1));
+        startTime_dateTimeEdit->setMinimumDateTime(QDateTime(QDate(2024, 9, 1), QTime(0, 0, 0)));
+        startTime_dateTimeEdit->setCalendarPopup(false);
+        startTime_dateTimeEdit->setTimeSpec(Qt::LocalTime);
 
-        horizontalLayout_2->addWidget(dateTimeEdit);
+        horizontalLayout_2->addWidget(startTime_dateTimeEdit);
 
 
         verticalLayout->addLayout(horizontalLayout_2);
 
         horizontalLayout_4 = new QHBoxLayout();
         horizontalLayout_4->setObjectName(QStringLiteral("horizontalLayout_4"));
-        label_3 = new QLabel(verticalLayoutWidget);
-        label_3->setObjectName(QStringLiteral("label_3"));
+        endTime_label = new QLabel(verticalLayoutWidget);
+        endTime_label->setObjectName(QStringLiteral("endTime_label"));
 
-        horizontalLayout_4->addWidget(label_3);
+        horizontalLayout_4->addWidget(endTime_label);
 
-        dateTimeEdit_2 = new QDateTimeEdit(verticalLayoutWidget);
-        dateTimeEdit_2->setObjectName(QStringLiteral("dateTimeEdit_2"));
-        sizePolicy.setHeightForWidth(dateTimeEdit_2->sizePolicy().hasHeightForWidth());
-        dateTimeEdit_2->setSizePolicy(sizePolicy);
-        dateTimeEdit_2->setDate(QDate(2024, 9, 1));
-        dateTimeEdit_2->setMinimumDateTime(QDateTime(QDate(2024, 9, 1), QTime(0, 0, 0)));
+        endTime_dateTimeEdit = new QDateTimeEdit(verticalLayoutWidget);
+        endTime_dateTimeEdit->setObjectName(QStringLiteral("endTime_dateTimeEdit"));
+        sizePolicy.setHeightForWidth(endTime_dateTimeEdit->sizePolicy().hasHeightForWidth());
+        endTime_dateTimeEdit->setSizePolicy(sizePolicy);
+        endTime_dateTimeEdit->setDate(QDate(2024, 9, 1));
+        endTime_dateTimeEdit->setMinimumDateTime(QDateTime(QDate(2024, 9, 1), QTime(0, 0, 0)));
 
-        horizontalLayout_4->addWidget(dateTimeEdit_2);
+        horizontalLayout_4->addWidget(endTime_dateTimeEdit);
 
 
         verticalLayout->addLayout(horizontalLayout_4);
 
         horizontalLayout_5 = new QHBoxLayout();
         horizontalLayout_5->setObjectName(QStringLiteral("horizontalLayout_5"));
-        label_4 = new QLabel(verticalLayoutWidget);
-        label_4->setObjectName(QStringLiteral("label_4"));
+        raceDistance_label = new QLabel(verticalLayoutWidget);
+        raceDistance_label->setObjectName(QStringLiteral("raceDistance_label"));
 
-        horizontalLayout_5->addWidget(label_4);
+        horizontalLayout_5->addWidget(raceDistance_label);
 
-        lineEdit_2 = new QLineEdit(verticalLayoutWidget);
-        lineEdit_2->setObjectName(QStringLiteral("lineEdit_2"));
+        raceDistance_lineEdit = new QLineEdit(verticalLayoutWidget);
+        raceDistance_lineEdit->setObjectName(QStringLiteral("raceDistance_lineEdit"));
 
-        horizontalLayout_5->addWidget(lineEdit_2);
+        horizontalLayout_5->addWidget(raceDistance_lineEdit);
 
 
         verticalLayout->addLayout(horizontalLayout_5);
 
         horizontalLayout_6 = new QHBoxLayout();
         horizontalLayout_6->setObjectName(QStringLiteral("horizontalLayout_6"));
-        label_5 = new QLabel(verticalLayoutWidget);
-        label_5->setObjectName(QStringLiteral("label_5"));
+        elevationGain_label = new QLabel(verticalLayoutWidget);
+        elevationGain_label->setObjectName(QStringLiteral("elevationGain_label"));
 
-        horizontalLayout_6->addWidget(label_5);
+        horizontalLayout_6->addWidget(elevationGain_label);
 
-        lineEdit_3 = new QLineEdit(verticalLayoutWidget);
-        lineEdit_3->setObjectName(QStringLiteral("lineEdit_3"));
+        elevationGain_lineEdit = new QLineEdit(verticalLayoutWidget);
+        elevationGain_lineEdit->setObjectName(QStringLiteral("elevationGain_lineEdit"));
 
-        horizontalLayout_6->addWidget(lineEdit_3);
+        horizontalLayout_6->addWidget(elevationGain_lineEdit);
 
 
         verticalLayout->addLayout(horizontalLayout_6);
 
         horizontalLayout_8 = new QHBoxLayout();
         horizontalLayout_8->setObjectName(QStringLiteral("horizontalLayout_8"));
-        label_6 = new QLabel(verticalLayoutWidget);
-        label_6->setObjectName(QStringLiteral("label_6"));
+        registrationFee_label = new QLabel(verticalLayoutWidget);
+        registrationFee_label->setObjectName(QStringLiteral("registrationFee_label"));
 
-        horizontalLayout_8->addWidget(label_6);
+        horizontalLayout_8->addWidget(registrationFee_label);
 
-        lineEdit_4 = new QLineEdit(verticalLayoutWidget);
-        lineEdit_4->setObjectName(QStringLiteral("lineEdit_4"));
+        registrationFee_lineEdit = new QLineEdit(verticalLayoutWidget);
+        registrationFee_lineEdit->setObjectName(QStringLiteral("registrationFee_lineEdit"));
 
-        horizontalLayout_8->addWidget(lineEdit_4);
+        horizontalLayout_8->addWidget(registrationFee_lineEdit);
 
 
         verticalLayout->addLayout(horizontalLayout_8);
@@ -210,10 +210,10 @@ public:
 
         horizontalLayout_11->addItem(horizontalSpacer);
 
-        pushButton = new QPushButton(verticalLayoutWidget);
-        pushButton->setObjectName(QStringLiteral("pushButton"));
+        btn_create = new QPushButton(verticalLayoutWidget);
+        btn_create->setObjectName(QStringLiteral("btn_create"));
 
-        horizontalLayout_11->addWidget(pushButton);
+        horizontalLayout_11->addWidget(btn_create);
 
         horizontalSpacer_2 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
@@ -233,115 +233,115 @@ public:
         verticalLayout_2->setContentsMargins(0, 0, 0, 0);
         horizontalLayout_9 = new QHBoxLayout();
         horizontalLayout_9->setObjectName(QStringLiteral("horizontalLayout_9"));
-        label_7 = new QLabel(verticalLayoutWidget_2);
-        label_7->setObjectName(QStringLiteral("label_7"));
+        eventName_label_2 = new QLabel(verticalLayoutWidget_2);
+        eventName_label_2->setObjectName(QStringLiteral("eventName_label_2"));
         QSizePolicy sizePolicy1(QSizePolicy::Preferred, QSizePolicy::Preferred);
         sizePolicy1.setHorizontalStretch(1);
         sizePolicy1.setVerticalStretch(0);
-        sizePolicy1.setHeightForWidth(label_7->sizePolicy().hasHeightForWidth());
-        label_7->setSizePolicy(sizePolicy1);
+        sizePolicy1.setHeightForWidth(eventName_label_2->sizePolicy().hasHeightForWidth());
+        eventName_label_2->setSizePolicy(sizePolicy1);
 
-        horizontalLayout_9->addWidget(label_7);
+        horizontalLayout_9->addWidget(eventName_label_2);
 
-        comboBox = new QComboBox(verticalLayoutWidget_2);
-        comboBox->setObjectName(QStringLiteral("comboBox"));
+        eventName_comboBox = new QComboBox(verticalLayoutWidget_2);
+        eventName_comboBox->setObjectName(QStringLiteral("eventName_comboBox"));
         QSizePolicy sizePolicy2(QSizePolicy::Preferred, QSizePolicy::Fixed);
         sizePolicy2.setHorizontalStretch(3);
         sizePolicy2.setVerticalStretch(0);
-        sizePolicy2.setHeightForWidth(comboBox->sizePolicy().hasHeightForWidth());
-        comboBox->setSizePolicy(sizePolicy2);
+        sizePolicy2.setHeightForWidth(eventName_comboBox->sizePolicy().hasHeightForWidth());
+        eventName_comboBox->setSizePolicy(sizePolicy2);
 
-        horizontalLayout_9->addWidget(comboBox);
+        horizontalLayout_9->addWidget(eventName_comboBox);
 
 
         verticalLayout_2->addLayout(horizontalLayout_9);
 
         horizontalLayout_10 = new QHBoxLayout();
         horizontalLayout_10->setObjectName(QStringLiteral("horizontalLayout_10"));
-        label_8 = new QLabel(verticalLayoutWidget_2);
-        label_8->setObjectName(QStringLiteral("label_8"));
-        sizePolicy1.setHeightForWidth(label_8->sizePolicy().hasHeightForWidth());
-        label_8->setSizePolicy(sizePolicy1);
+        checkpointName_label = new QLabel(verticalLayoutWidget_2);
+        checkpointName_label->setObjectName(QStringLiteral("checkpointName_label"));
+        sizePolicy1.setHeightForWidth(checkpointName_label->sizePolicy().hasHeightForWidth());
+        checkpointName_label->setSizePolicy(sizePolicy1);
 
-        horizontalLayout_10->addWidget(label_8);
+        horizontalLayout_10->addWidget(checkpointName_label);
 
-        lineEdit_5 = new QLineEdit(verticalLayoutWidget_2);
-        lineEdit_5->setObjectName(QStringLiteral("lineEdit_5"));
+        checkpointName_lineEdit = new QLineEdit(verticalLayoutWidget_2);
+        checkpointName_lineEdit->setObjectName(QStringLiteral("checkpointName_lineEdit"));
         QSizePolicy sizePolicy3(QSizePolicy::Expanding, QSizePolicy::Fixed);
         sizePolicy3.setHorizontalStretch(3);
         sizePolicy3.setVerticalStretch(0);
-        sizePolicy3.setHeightForWidth(lineEdit_5->sizePolicy().hasHeightForWidth());
-        lineEdit_5->setSizePolicy(sizePolicy3);
+        sizePolicy3.setHeightForWidth(checkpointName_lineEdit->sizePolicy().hasHeightForWidth());
+        checkpointName_lineEdit->setSizePolicy(sizePolicy3);
 
-        horizontalLayout_10->addWidget(lineEdit_5);
+        horizontalLayout_10->addWidget(checkpointName_lineEdit);
 
 
         verticalLayout_2->addLayout(horizontalLayout_10);
 
         horizontalLayout_12 = new QHBoxLayout();
         horizontalLayout_12->setObjectName(QStringLiteral("horizontalLayout_12"));
-        label_9 = new QLabel(verticalLayoutWidget_2);
-        label_9->setObjectName(QStringLiteral("label_9"));
+        segmentDistance_label = new QLabel(verticalLayoutWidget_2);
+        segmentDistance_label->setObjectName(QStringLiteral("segmentDistance_label"));
 
-        horizontalLayout_12->addWidget(label_9);
+        horizontalLayout_12->addWidget(segmentDistance_label);
 
-        lineEdit_6 = new QLineEdit(verticalLayoutWidget_2);
-        lineEdit_6->setObjectName(QStringLiteral("lineEdit_6"));
+        segmentDistance_lineEdit = new QLineEdit(verticalLayoutWidget_2);
+        segmentDistance_lineEdit->setObjectName(QStringLiteral("segmentDistance_lineEdit"));
 
-        horizontalLayout_12->addWidget(lineEdit_6);
+        horizontalLayout_12->addWidget(segmentDistance_lineEdit);
 
 
         verticalLayout_2->addLayout(horizontalLayout_12);
 
         horizontalLayout_15 = new QHBoxLayout();
         horizontalLayout_15->setObjectName(QStringLiteral("horizontalLayout_15"));
-        label_11 = new QLabel(verticalLayoutWidget_2);
-        label_11->setObjectName(QStringLiteral("label_11"));
+        segmentElevation_label = new QLabel(verticalLayoutWidget_2);
+        segmentElevation_label->setObjectName(QStringLiteral("segmentElevation_label"));
 
-        horizontalLayout_15->addWidget(label_11);
+        horizontalLayout_15->addWidget(segmentElevation_label);
 
-        lineEdit_7 = new QLineEdit(verticalLayoutWidget_2);
-        lineEdit_7->setObjectName(QStringLiteral("lineEdit_7"));
+        segmentElevation_lineEdit = new QLineEdit(verticalLayoutWidget_2);
+        segmentElevation_lineEdit->setObjectName(QStringLiteral("segmentElevation_lineEdit"));
 
-        horizontalLayout_15->addWidget(lineEdit_7);
+        horizontalLayout_15->addWidget(segmentElevation_lineEdit);
 
 
         verticalLayout_2->addLayout(horizontalLayout_15);
 
         horizontalLayout_14 = new QHBoxLayout();
         horizontalLayout_14->setObjectName(QStringLiteral("horizontalLayout_14"));
-        label_10 = new QLabel(verticalLayoutWidget_2);
-        label_10->setObjectName(QStringLiteral("label_10"));
+        openTime_label = new QLabel(verticalLayoutWidget_2);
+        openTime_label->setObjectName(QStringLiteral("openTime_label"));
 
-        horizontalLayout_14->addWidget(label_10);
+        horizontalLayout_14->addWidget(openTime_label);
 
-        dateTimeEdit_3 = new QDateTimeEdit(verticalLayoutWidget_2);
-        dateTimeEdit_3->setObjectName(QStringLiteral("dateTimeEdit_3"));
-        sizePolicy.setHeightForWidth(dateTimeEdit_3->sizePolicy().hasHeightForWidth());
-        dateTimeEdit_3->setSizePolicy(sizePolicy);
-        dateTimeEdit_3->setDateTime(QDateTime(QDate(2024, 9, 1), QTime(0, 0, 0)));
-        dateTimeEdit_3->setMinimumDateTime(QDateTime(QDate(2024, 9, 1), QTime(0, 0, 0)));
+        openTime_dateTimeEdit = new QDateTimeEdit(verticalLayoutWidget_2);
+        openTime_dateTimeEdit->setObjectName(QStringLiteral("openTime_dateTimeEdit"));
+        sizePolicy.setHeightForWidth(openTime_dateTimeEdit->sizePolicy().hasHeightForWidth());
+        openTime_dateTimeEdit->setSizePolicy(sizePolicy);
+        openTime_dateTimeEdit->setDateTime(QDateTime(QDate(2024, 9, 1), QTime(0, 0, 0)));
+        openTime_dateTimeEdit->setMinimumDateTime(QDateTime(QDate(2024, 9, 1), QTime(0, 0, 0)));
 
-        horizontalLayout_14->addWidget(dateTimeEdit_3);
+        horizontalLayout_14->addWidget(openTime_dateTimeEdit);
 
 
         verticalLayout_2->addLayout(horizontalLayout_14);
 
         horizontalLayout_16 = new QHBoxLayout();
         horizontalLayout_16->setObjectName(QStringLiteral("horizontalLayout_16"));
-        label_12 = new QLabel(verticalLayoutWidget_2);
-        label_12->setObjectName(QStringLiteral("label_12"));
+        closeTime_label = new QLabel(verticalLayoutWidget_2);
+        closeTime_label->setObjectName(QStringLiteral("closeTime_label"));
 
-        horizontalLayout_16->addWidget(label_12);
+        horizontalLayout_16->addWidget(closeTime_label);
 
-        dateTimeEdit_4 = new QDateTimeEdit(verticalLayoutWidget_2);
-        dateTimeEdit_4->setObjectName(QStringLiteral("dateTimeEdit_4"));
-        sizePolicy.setHeightForWidth(dateTimeEdit_4->sizePolicy().hasHeightForWidth());
-        dateTimeEdit_4->setSizePolicy(sizePolicy);
-        dateTimeEdit_4->setDateTime(QDateTime(QDate(2024, 9, 1), QTime(0, 0, 0)));
-        dateTimeEdit_4->setMinimumDateTime(QDateTime(QDate(2024, 9, 1), QTime(0, 0, 0)));
+        closeTime_dateTimeEdit = new QDateTimeEdit(verticalLayoutWidget_2);
+        closeTime_dateTimeEdit->setObjectName(QStringLiteral("closeTime_dateTimeEdit"));
+        sizePolicy.setHeightForWidth(closeTime_dateTimeEdit->sizePolicy().hasHeightForWidth());
+        closeTime_dateTimeEdit->setSizePolicy(sizePolicy);
+        closeTime_dateTimeEdit->setDateTime(QDateTime(QDate(2024, 9, 1), QTime(0, 0, 0)));
+        closeTime_dateTimeEdit->setMinimumDateTime(QDateTime(QDate(2024, 9, 1), QTime(0, 0, 0)));
 
-        horizontalLayout_16->addWidget(dateTimeEdit_4);
+        horizontalLayout_16->addWidget(closeTime_dateTimeEdit);
 
 
         verticalLayout_2->addLayout(horizontalLayout_16);
@@ -352,10 +352,10 @@ public:
 
         horizontalLayout_17->addItem(horizontalSpacer_3);
 
-        pushButton_2 = new QPushButton(verticalLayoutWidget_2);
-        pushButton_2->setObjectName(QStringLiteral("pushButton_2"));
+        btn_bond = new QPushButton(verticalLayoutWidget_2);
+        btn_bond->setObjectName(QStringLiteral("btn_bond"));
 
-        horizontalLayout_17->addWidget(pushButton_2);
+        horizontalLayout_17->addWidget(btn_bond);
 
         horizontalSpacer_4 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
@@ -375,21 +375,21 @@ public:
         HoldGamesPages->setWindowTitle(QApplication::translate("HoldGamesPages", "Form", Q_NULLPTR));
         groupBox->setTitle(QApplication::translate("HoldGamesPages", "\350\265\233\344\272\213\347\256\241\347\220\206", Q_NULLPTR));
         groupBox_2->setTitle(QApplication::translate("HoldGamesPages", "\350\265\233\344\272\213\344\277\241\346\201\257\345\275\225\345\205\245", Q_NULLPTR));
-        label->setText(QApplication::translate("HoldGamesPages", "\350\265\233\344\272\213\345\220\215\347\247\260\357\274\232", Q_NULLPTR));
-        label_2->setText(QApplication::translate("HoldGamesPages", "\350\265\233\344\272\213\345\274\200\345\247\213\346\227\266\351\227\264\357\274\232", Q_NULLPTR));
-        label_3->setText(QApplication::translate("HoldGamesPages", "\350\265\233\344\272\213\347\273\223\346\235\237\346\227\266\351\227\264\357\274\232", Q_NULLPTR));
-        label_4->setText(QApplication::translate("HoldGamesPages", "\350\265\233\347\250\213\350\267\235\347\246\273\357\274\232", Q_NULLPTR));
-        label_5->setText(QApplication::translate("HoldGamesPages", "\346\224\200\345\215\207\351\253\230\345\272\246\357\274\232", Q_NULLPTR));
-        label_6->setText(QApplication::translate("HoldGamesPages", "\350\264\271\347\224\250\346\212\245\345\220\215\357\274\232", Q_NULLPTR));
-        pushButton->setText(QApplication::translate("HoldGamesPages", "\345\210\233\345\273\272", Q_NULLPTR));
+        eventName_label->setText(QApplication::translate("HoldGamesPages", "\350\265\233\344\272\213\345\220\215\347\247\260\357\274\232", Q_NULLPTR));
+        startTime_label->setText(QApplication::translate("HoldGamesPages", "\350\265\233\344\272\213\345\274\200\345\247\213\346\227\266\351\227\264\357\274\232", Q_NULLPTR));
+        endTime_label->setText(QApplication::translate("HoldGamesPages", "\350\265\233\344\272\213\347\273\223\346\235\237\346\227\266\351\227\264\357\274\232", Q_NULLPTR));
+        raceDistance_label->setText(QApplication::translate("HoldGamesPages", "\350\265\233\347\250\213\350\267\235\347\246\273\357\274\232", Q_NULLPTR));
+        elevationGain_label->setText(QApplication::translate("HoldGamesPages", "\346\224\200\345\215\207\351\253\230\345\272\246\357\274\232", Q_NULLPTR));
+        registrationFee_label->setText(QApplication::translate("HoldGamesPages", "\350\264\271\347\224\250\346\212\245\345\220\215\357\274\232", Q_NULLPTR));
+        btn_create->setText(QApplication::translate("HoldGamesPages", "\345\210\233\345\273\272", Q_NULLPTR));
         groupBox_3->setTitle(QApplication::translate("HoldGamesPages", "\346\211\223\345\215\241\347\202\271\344\277\241\346\201\257\347\273\221\345\256\232", Q_NULLPTR));
-        label_7->setText(QApplication::translate("HoldGamesPages", "\345\257\271\345\272\224\350\265\233\344\272\213\357\274\232", Q_NULLPTR));
-        label_8->setText(QApplication::translate("HoldGamesPages", "\346\211\223\345\215\241\347\202\271\345\220\215\347\247\260\357\274\232", Q_NULLPTR));
-        label_9->setText(QApplication::translate("HoldGamesPages", "\345\210\206\346\256\265\350\267\235\347\246\273\357\274\232", Q_NULLPTR));
-        label_11->setText(QApplication::translate("HoldGamesPages", "\345\210\206\346\256\265\346\224\200\345\215\207\357\274\232", Q_NULLPTR));
-        label_10->setText(QApplication::translate("HoldGamesPages", "\345\274\200\346\224\276\346\227\266\351\227\264\357\274\232", Q_NULLPTR));
-        label_12->setText(QApplication::translate("HoldGamesPages", "\345\205\263\351\227\250\346\227\266\351\227\264\357\274\232", Q_NULLPTR));
-        pushButton_2->setText(QApplication::translate("HoldGamesPages", "\347\273\221\345\256\232", Q_NULLPTR));
+        eventName_label_2->setText(QApplication::translate("HoldGamesPages", "\345\257\271\345\272\224\350\265\233\344\272\213\357\274\232", Q_NULLPTR));
+        checkpointName_label->setText(QApplication::translate("HoldGamesPages", "\346\211\223\345\215\241\347\202\271\345\220\215\347\247\260\357\274\232", Q_NULLPTR));
+        segmentDistance_label->setText(QApplication::translate("HoldGamesPages", "\345\210\206\346\256\265\350\267\235\347\246\273\357\274\232", Q_NULLPTR));
+        segmentElevation_label->setText(QApplication::translate("HoldGamesPages", "\345\210\206\346\256\265\346\224\200\345\215\207\357\274\232", Q_NULLPTR));
+        openTime_label->setText(QApplication::translate("HoldGamesPages", "\345\274\200\346\224\276\346\227\266\351\227\264\357\274\232", Q_NULLPTR));
+        closeTime_label->setText(QApplication::translate("HoldGamesPages", "\345\205\263\351\227\250\346\227\266\351\227\264\357\274\232", Q_NULLPTR));
+        btn_bond->setText(QApplication::translate("HoldGamesPages", "\347\273\221\345\256\232", Q_NULLPTR));
     } // retranslateUi
 
 };

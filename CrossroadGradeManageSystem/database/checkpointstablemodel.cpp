@@ -1,4 +1,4 @@
-#include "checkpointstablemodel.h".h"
+#include "checkpointstablemodel.h"
 #include "database/database_api.h"
 #include <QSqlRecord>
 #include <QSqlField>
@@ -70,18 +70,18 @@ QSqlTableModel* CheckPointsTableModel::getModel(void)
 
 /**
  * @brief CheckPointsTableModel::findRecord
- * @param CheckPoints_id 人员编号
- * @return QSqlRecord型记录集
- * 根据运动员id查找记录
+ * @param checkPointName 打卡点名称
+ * @return row 记录列号
+ * 根据打卡点名称查找记录
  */
-QSqlRecord CheckPointsTableModel::findRecord(const int &CheckPoints_id)
+int CheckPointsTableModel::findRecord(QString checkPointName)
 {
     int count = model->rowCount();
     for(int row=0; row < count; row++){
-        if(model->data(model->index(row, 0)) == CheckPoints_id)
-            return model->record(row);
+        if((model->data(model->index(row, 0))).toString() == checkPointName)
+            return row;
     }
-    return QSqlRecord();
+    return -1;
 }
 
 /**
@@ -98,31 +98,24 @@ QSqlRecord CheckPointsTableModel::findRecord(const int &CheckPoints_id)
  * @return 插入记录的行号
  * 向表格中插入记录
  */
-int CheckPointsTableModel::insertRecords(int CheckPoints_id, QString name, QString gender,
-                                          QString id_number, QString contact_number, QString size_tshirt,
-                                          QString rfid_tag_id, QString emergency_contact_name, QString emergency_contact_number)
+int CheckPointsTableModel::insertRecords(QString eventName, QString checkPointName, float segmentDistance,
+                                         float segmentElevation, QDateTime openTime, QDateTime closeTime)
 {
     QSqlRecord record;
 
-    record.append(QSqlField(header.at(0), QVariant::Int));
+    record.append(QSqlField(header.at(0), QVariant::String));
     record.append(QSqlField(header.at(1), QVariant::String));
-    record.append(QSqlField(header.at(2), QVariant::String));
-    record.append(QSqlField(header.at(3), QVariant::String));
-    record.append(QSqlField(header.at(4), QVariant::String));
-    record.append(QSqlField(header.at(5), QVariant::String));
-    record.append(QSqlField(header.at(6), QVariant::String));
-    record.append(QSqlField(header.at(7), QVariant::String));
-    record.append(QSqlField(header.at(8), QVariant::String));
+    record.append(QSqlField(header.at(2), QVariant::Double));
+    record.append(QSqlField(header.at(3), QVariant::Double));
+    record.append(QSqlField(header.at(4), QVariant::DateTime));
+    record.append(QSqlField(header.at(5), QVariant::DateTime));
 
-    record.setValue(0, CheckPoints_id);
-    record.setValue(1, name);
-    record.setValue(2, gender);
-    record.setValue(3, id_number);
-    record.setValue(4, contact_number);
-    record.setValue(5, size_tshirt);
-    record.setValue(6, rfid_tag_id);
-    record.setValue(7, emergency_contact_name);
-    record.setValue(8, emergency_contact_number);
+    record.setValue(0, eventName);
+    record.setValue(1, checkPointName);
+    record.setValue(2, segmentDistance);
+    record.setValue(3, segmentElevation);
+    record.setValue(4, openTime);
+    record.setValue(5, closeTime);
 
 
     model->insertRecord(-1,record);

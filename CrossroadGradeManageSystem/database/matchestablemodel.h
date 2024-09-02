@@ -7,6 +7,7 @@
 #include <QtSql/QSqlQuery>
 #include <QtSql/QSqlError>
 #include <QString>
+#include <QDateTime>
 #include <QDebug>
 
 class MatchesTableModel : public QObject
@@ -23,10 +24,9 @@ public:
     void createTable();//创建表
     void bindTable(void);//绑定表
     QSqlTableModel* getModel(void);//获取管理员表的model
-    QSqlRecord findRecord(const int &MATCHES_id);//查找记录
-    int insertRecords(int MATCHES_id, QString name, QString gender,
-                                              QString id_number, QString contact_number, QString size_tshirt,
-                                              QString rfid_tag_id, QString emergency_contact_name, QString emergency_contact_number);
+    int findRecord(QString eventName);//查找记录
+    int insertRecords(QString eventName, QDateTime startTime, QDateTime endTime,
+                      float raceDistance, float elevationGain, float registerationFee);
 //    bool updateRecords(QString personName, QString pwd, QString time);//更新记录
 
 //signals:
