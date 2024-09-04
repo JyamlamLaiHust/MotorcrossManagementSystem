@@ -43,13 +43,13 @@ public:
     QLabel *checkPointName_label;
     QComboBox *checkPoint_comboBox;
     QHBoxLayout *horizontalLayout_2;
-    QLabel *arrivalTime_label;
-    QTimeEdit *arrivalTime_timeEdit;
-    QPushButton *btn_arrivalTime;
+    QLabel *Time_label;
+    QTimeEdit *Time_timeEdit;
+    QPushButton *btn_Time;
     QHBoxLayout *horizontalLayout_3;
-    QLabel *departureTime_label;
-    QTimeEdit *departureTime_timeEdit;
-    QPushButton *btn_departmentTime;
+    QLabel *direction_label;
+    QLineEdit *direction_lineEdit;
+    QLabel *direction_label_2;
     QHBoxLayout *horizontalLayout_5;
     QLabel *sumTime_label;
     QLineEdit *sumTime_lineEdit;
@@ -125,40 +125,40 @@ public:
 
         horizontalLayout_2 = new QHBoxLayout();
         horizontalLayout_2->setObjectName(QStringLiteral("horizontalLayout_2"));
-        arrivalTime_label = new QLabel(verticalLayoutWidget);
-        arrivalTime_label->setObjectName(QStringLiteral("arrivalTime_label"));
+        Time_label = new QLabel(verticalLayoutWidget);
+        Time_label->setObjectName(QStringLiteral("Time_label"));
 
-        horizontalLayout_2->addWidget(arrivalTime_label);
+        horizontalLayout_2->addWidget(Time_label);
 
-        arrivalTime_timeEdit = new QTimeEdit(verticalLayoutWidget);
-        arrivalTime_timeEdit->setObjectName(QStringLiteral("arrivalTime_timeEdit"));
+        Time_timeEdit = new QTimeEdit(verticalLayoutWidget);
+        Time_timeEdit->setObjectName(QStringLiteral("Time_timeEdit"));
 
-        horizontalLayout_2->addWidget(arrivalTime_timeEdit);
+        horizontalLayout_2->addWidget(Time_timeEdit);
 
-        btn_arrivalTime = new QPushButton(verticalLayoutWidget);
-        btn_arrivalTime->setObjectName(QStringLiteral("btn_arrivalTime"));
+        btn_Time = new QPushButton(verticalLayoutWidget);
+        btn_Time->setObjectName(QStringLiteral("btn_Time"));
 
-        horizontalLayout_2->addWidget(btn_arrivalTime);
+        horizontalLayout_2->addWidget(btn_Time);
 
 
         verticalLayout->addLayout(horizontalLayout_2);
 
         horizontalLayout_3 = new QHBoxLayout();
         horizontalLayout_3->setObjectName(QStringLiteral("horizontalLayout_3"));
-        departureTime_label = new QLabel(verticalLayoutWidget);
-        departureTime_label->setObjectName(QStringLiteral("departureTime_label"));
+        direction_label = new QLabel(verticalLayoutWidget);
+        direction_label->setObjectName(QStringLiteral("direction_label"));
 
-        horizontalLayout_3->addWidget(departureTime_label);
+        horizontalLayout_3->addWidget(direction_label);
 
-        departureTime_timeEdit = new QTimeEdit(verticalLayoutWidget);
-        departureTime_timeEdit->setObjectName(QStringLiteral("departureTime_timeEdit"));
+        direction_lineEdit = new QLineEdit(verticalLayoutWidget);
+        direction_lineEdit->setObjectName(QStringLiteral("direction_lineEdit"));
 
-        horizontalLayout_3->addWidget(departureTime_timeEdit);
+        horizontalLayout_3->addWidget(direction_lineEdit);
 
-        btn_departmentTime = new QPushButton(verticalLayoutWidget);
-        btn_departmentTime->setObjectName(QStringLiteral("btn_departmentTime"));
+        direction_label_2 = new QLabel(verticalLayoutWidget);
+        direction_label_2->setObjectName(QStringLiteral("direction_label_2"));
 
-        horizontalLayout_3->addWidget(btn_departmentTime);
+        horizontalLayout_3->addWidget(direction_label_2);
 
 
         verticalLayout->addLayout(horizontalLayout_3);
@@ -255,13 +255,13 @@ public:
     {
         SignUp->setWindowTitle(QApplication::translate("SignUp", "Form", Q_NULLPTR));
         groupBox->setTitle(QApplication::translate("SignUp", "\346\211\223\345\215\241", Q_NULLPTR));
-        time_label->setText(QApplication::translate("SignUp", "\346\227\266\351\227\264\357\274\232", Q_NULLPTR));
+        time_label->setText(QApplication::translate("SignUp", "\345\256\236\346\227\266\346\227\266\351\227\264\357\274\232", Q_NULLPTR));
         eventName_label->setText(QApplication::translate("SignUp", "\350\265\233\344\272\213\345\220\215\347\247\260\357\274\232", Q_NULLPTR));
         checkPointName_label->setText(QApplication::translate("SignUp", "\346\211\223\345\215\241\347\202\271\345\220\215\347\247\260\357\274\232", Q_NULLPTR));
-        arrivalTime_label->setText(QApplication::translate("SignUp", "\345\210\260\350\276\276\346\227\266\351\227\264\357\274\232", Q_NULLPTR));
-        btn_arrivalTime->setText(QApplication::translate("SignUp", "\350\256\260\345\275\225", Q_NULLPTR));
-        departureTime_label->setText(QApplication::translate("SignUp", "\347\246\273\345\274\200\346\227\266\351\227\264\357\274\232", Q_NULLPTR));
-        btn_departmentTime->setText(QApplication::translate("SignUp", "\350\256\260\345\275\225", Q_NULLPTR));
+        Time_label->setText(QApplication::translate("SignUp", "\346\227\266\351\227\264\346\210\263\357\274\232", Q_NULLPTR));
+        btn_Time->setText(QApplication::translate("SignUp", "\350\256\260\345\275\225", Q_NULLPTR));
+        direction_label->setText(QApplication::translate("SignUp", "\346\226\271\345\220\221\357\274\232", Q_NULLPTR));
+        direction_label_2->setText(QApplication::translate("SignUp", "0\350\241\250\347\244\272\345\210\260\350\276\276\357\274\2141\350\241\250\347\244\272\347\246\273\345\274\200", Q_NULLPTR));
         sumTime_label->setText(QApplication::translate("SignUp", "\346\200\273\347\224\250\346\227\266\357\274\232", Q_NULLPTR));
         rank_label->setText(QApplication::translate("SignUp", "\345\220\215\346\254\241\357\274\232", Q_NULLPTR));
         rfidTag_label->setText(QApplication::translate("SignUp", "\345\215\241\345\217\267\357\274\232", Q_NULLPTR));

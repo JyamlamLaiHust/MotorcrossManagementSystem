@@ -7,12 +7,12 @@
  *日期: 2024-08-27
  *描述: 运动员表的model
 ***************************************/
-ParticipantsTableModel::ParticipantsTableModel(QObject *parent) : QObject(parent)
+ParticipantsTableModel::ParticipantsTableModel(QObject *parent) : QSqlTableModel(parent)
 {
     tableName = TABLE_NAME_PARTICIPANTS;
     header<<QObject::trUtf8("运动员id")<<QObject::trUtf8("姓名")<< QObject::trUtf8("性别")
          <<QObject::trUtf8("身份证")<<QObject::trUtf8("联系方式")<<QObject::trUtf8("T恤尺码")
-        <<QObject::trUtf8("RFID标签编码")<<QObject::trUtf8("紧急联系人姓名")<<QObject::trUtf8("紧急联系人联系方式");
+        <<QObject::trUtf8("rfid标签卡号")<<QObject::trUtf8("紧急联系人姓名")<<QObject::trUtf8("紧急联系人联系方式");
     model = new QSqlTableModel(this);
 }
 
@@ -90,11 +90,27 @@ int ParticipantsTableModel::findRecord(QString participantName)
  * @return QSqlRecord型记录集
  * 根据身份证查找记录
  */
-int ParticipantsTableModel::findRecordByIdCard(QString idCard)
+int ParticipantsTableModel::findRecordByIdCard(QString idcard)
 {
     int count = model->rowCount();
     for(int row=0; row < count; row++){
-        if(model->data(model->index(row, 0)) == idCard)
+        if(model->data(model->index(row, 0)) == idcard)
+            return row;
+    }
+    return -1;
+}
+
+/**
+ * @brief ParticipantsTableModel::findRecord
+ * @param idCard 运动员身份证
+ * @return QSqlRecord型记录集
+ * 根据身份证查找记录
+ */
+int ParticipantsTableModel::findRecordByRfidTag(QString RfidTag)
+{
+    int count = model->rowCount();
+    for(int row=0; row < count; row++){
+        if(model->data(model->index(row, 0)) == RfidTag)
             return row;
     }
     return -1;
@@ -120,7 +136,6 @@ int ParticipantsTableModel::insertRecords(QString name, QString gender,
     QSqlRecord record;
 
 //    record.append(QSqlField(header.at(0), QVariant::Int));
-    record.append(QSqlField(header.at(0), QVariant::String));
     record.append(QSqlField(header.at(1), QVariant::String));
     record.append(QSqlField(header.at(2), QVariant::String));
     record.append(QSqlField(header.at(3), QVariant::String));
@@ -128,6 +143,7 @@ int ParticipantsTableModel::insertRecords(QString name, QString gender,
     record.append(QSqlField(header.at(5), QVariant::String));
     record.append(QSqlField(header.at(6), QVariant::String));
     record.append(QSqlField(header.at(7), QVariant::String));
+    record.append(QSqlField(header.at(8), QVariant::String));
 
 //    record.setValue(0, participants_id);
     record.setValue(0, name);
@@ -142,4 +158,15 @@ int ParticipantsTableModel::insertRecords(QString name, QString gender,
 
     model->insertRecord(-1,record);
     return model->rowCount();
+}
+
+/**
+ * @brief ParticipantsTableModel::deleteRecords
+ * @param row 待删除的行
+ * @return  如果删除成功返回true，否则false
+ * 删除一行记录
+ */
+bool ParticipantsTableModel::deleteRecords(int row)
+{
+    return removeRow(row);
 }

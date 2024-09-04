@@ -38,8 +38,10 @@ public:
     QAction *action_holdCompetition;
     QAction *action_cancelCompetition;
     QAction *action_competition;
-    QAction *action_participants;
-    QAction *actionabout;
+    QAction *action_participants_one;
+    QAction *action_about;
+    QAction *action_result;
+    QAction *action_participants_two;
     QWidget *centralWidget;
     QStackedWidget *stackedWidget;
     QMenuBar *menuBar;
@@ -78,10 +80,14 @@ public:
         action_cancelCompetition->setObjectName(QStringLiteral("action_cancelCompetition"));
         action_competition = new QAction(MainWindow);
         action_competition->setObjectName(QStringLiteral("action_competition"));
-        action_participants = new QAction(MainWindow);
-        action_participants->setObjectName(QStringLiteral("action_participants"));
-        actionabout = new QAction(MainWindow);
-        actionabout->setObjectName(QStringLiteral("actionabout"));
+        action_participants_one = new QAction(MainWindow);
+        action_participants_one->setObjectName(QStringLiteral("action_participants_one"));
+        action_about = new QAction(MainWindow);
+        action_about->setObjectName(QStringLiteral("action_about"));
+        action_result = new QAction(MainWindow);
+        action_result->setObjectName(QStringLiteral("action_result"));
+        action_participants_two = new QAction(MainWindow);
+        action_participants_two->setObjectName(QStringLiteral("action_participants_two"));
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         stackedWidget = new QStackedWidget(centralWidget);
@@ -90,7 +96,7 @@ public:
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 750, 21));
+        menuBar->setGeometry(QRect(0, 0, 750, 17));
         menu = new QMenu(menuBar);
         menu->setObjectName(QStringLiteral("menu"));
         menu_2 = new QMenu(menuBar);
@@ -126,9 +132,12 @@ public:
         menu_2->addAction(action_checkOut);
         menu_3->addAction(action_holdCompetition);
         menu_3->addAction(action_cancelCompetition);
-        menu_4->addAction(action_participants);
+        menu_4->addAction(action_participants_one);
+        menu_4->addAction(action_participants_two);
+        menu_4->addSeparator();
         menu_4->addAction(action_competition);
-        menu_5->addAction(actionabout);
+        menu_4->addAction(action_result);
+        menu_5->addAction(action_about);
 
         retranslateUi(MainWindow);
 
@@ -170,8 +179,10 @@ public:
         action_holdCompetition->setText(QApplication::translate("MainWindow", "\344\270\276\345\212\236\346\257\224\350\265\233", Q_NULLPTR));
         action_cancelCompetition->setText(QApplication::translate("MainWindow", "\345\217\226\346\266\210\346\257\224\350\265\233", Q_NULLPTR));
         action_competition->setText(QApplication::translate("MainWindow", "\346\257\224\350\265\233\346\237\245\350\257\242", Q_NULLPTR));
-        action_participants->setText(QApplication::translate("MainWindow", "\350\277\220\345\212\250\345\221\230\346\237\245\350\257\242", Q_NULLPTR));
-        actionabout->setText(QApplication::translate("MainWindow", "\345\205\263\344\272\216", Q_NULLPTR));
+        action_participants_one->setText(QApplication::translate("MainWindow", "\350\277\220\345\212\250\345\221\230\346\237\245\350\257\242_\345\215\241\345\217\267", Q_NULLPTR));
+        action_about->setText(QApplication::translate("MainWindow", "\345\205\263\344\272\216", Q_NULLPTR));
+        action_result->setText(QApplication::translate("MainWindow", "\346\210\220\347\273\251\346\237\245\350\257\242", Q_NULLPTR));
+        action_participants_two->setText(QApplication::translate("MainWindow", "\350\277\220\345\212\250\345\221\230\346\237\245\350\257\242_\345\247\223\345\220\215", Q_NULLPTR));
         menu->setTitle(QApplication::translate("MainWindow", "\347\263\273\347\273\237\347\256\241\347\220\206", Q_NULLPTR));
         menu_2->setTitle(QApplication::translate("MainWindow", "\350\277\220\345\212\250\345\221\230\347\256\241\347\220\206", Q_NULLPTR));
         menu_3->setTitle(QApplication::translate("MainWindow", "\350\265\233\344\272\213\347\256\241\347\220\206", Q_NULLPTR));

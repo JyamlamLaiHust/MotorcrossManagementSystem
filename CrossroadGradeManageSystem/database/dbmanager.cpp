@@ -24,11 +24,11 @@ DBManager::DBManager(QObject *parent) : QObject(parent)
             CheckPointsTableModel checkpoints;
             checkpoints.createTable();
         }
-        if(!this->tableExist(TABLE_NAME_RFIDRECORDS))    //op ParticipantsTableModel
-        {
-            RfidRecordsTableModel rfidrecords;
-            rfidrecords.createTable();
-        }
+//        if(!this->tableExist(TABLE_NAME_RFIDRECORDS))    //op ParticipantsTableModel
+//        {
+//            RfidRecordsTableModel rfidrecords;
+//            rfidrecords.createTable();
+//        }
         if(!this->tableExist(TABLE_NAME_RESULTS))    //op ParticipantsTableModel
         {
             ResultsTableModel results;

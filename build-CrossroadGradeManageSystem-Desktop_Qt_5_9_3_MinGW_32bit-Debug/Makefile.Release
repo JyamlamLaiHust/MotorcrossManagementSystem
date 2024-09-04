@@ -65,7 +65,8 @@ SOURCES       = ..\CrossroadGradeManageSystem\database\admintablemodel.cpp \
 		..\CrossroadGradeManageSystem\pages\signup\signup.cpp \
 		..\CrossroadGradeManageSystem\pages\query\querypage.cpp \
 		..\CrossroadGradeManageSystem\pages\boradcast\broadcastpage.cpp \
-		..\CrossroadGradeManageSystem\pages\checkout\checkout.cpp release\qrc_res.cpp \
+		..\CrossroadGradeManageSystem\pages\exitgames\exitgames.cpp \
+		..\CrossroadGradeManageSystem\pages\cancelgames\cancelgames.cpp release\qrc_res.cpp \
 		release\moc_admintablemodel.cpp \
 		release\moc_checkpointstablemodel.cpp \
 		release\moc_dbmanager.cpp \
@@ -84,7 +85,8 @@ SOURCES       = ..\CrossroadGradeManageSystem\database\admintablemodel.cpp \
 		release\moc_signup.cpp \
 		release\moc_querypage.cpp \
 		release\moc_broadcastpage.cpp \
-		release\moc_checkout.cpp
+		release\moc_exitgames.cpp \
+		release\moc_cancelgames.cpp
 OBJECTS       = release/admintablemodel.o \
 		release/checkpointstablemodel.o \
 		release/dbmanager.o \
@@ -105,7 +107,8 @@ OBJECTS       = release/admintablemodel.o \
 		release/signup.o \
 		release/querypage.o \
 		release/broadcastpage.o \
-		release/checkout.o \
+		release/exitgames.o \
+		release/cancelgames.o \
 		release/qrc_res.o \
 		release/moc_admintablemodel.o \
 		release/moc_checkpointstablemodel.o \
@@ -125,7 +128,8 @@ OBJECTS       = release/admintablemodel.o \
 		release/moc_signup.o \
 		release/moc_querypage.o \
 		release/moc_broadcastpage.o \
-		release/moc_checkout.o
+		release/moc_exitgames.o \
+		release/moc_cancelgames.o
 
 DIST          = lib/libM1356Dll.a \
 		lib/M1356Dll.dll ..\CrossroadGradeManageSystem\database\admintablemodel.h \
@@ -151,7 +155,8 @@ DIST          = lib/libM1356Dll.a \
 		..\CrossroadGradeManageSystem\pages\signup\signup.h \
 		..\CrossroadGradeManageSystem\pages\query\querypage.h \
 		..\CrossroadGradeManageSystem\pages\boradcast\broadcastpage.h \
-		..\CrossroadGradeManageSystem\pages\checkout\checkout.h ..\CrossroadGradeManageSystem\database\admintablemodel.cpp \
+		..\CrossroadGradeManageSystem\pages\exitgames\exitgames.h \
+		..\CrossroadGradeManageSystem\pages\cancelgames\cancelgames.h ..\CrossroadGradeManageSystem\database\admintablemodel.cpp \
 		..\CrossroadGradeManageSystem\database\checkpointstablemodel.cpp \
 		..\CrossroadGradeManageSystem\database\dbmanager.cpp \
 		..\CrossroadGradeManageSystem\database\matchestablemodel.cpp \
@@ -171,7 +176,8 @@ DIST          = lib/libM1356Dll.a \
 		..\CrossroadGradeManageSystem\pages\signup\signup.cpp \
 		..\CrossroadGradeManageSystem\pages\query\querypage.cpp \
 		..\CrossroadGradeManageSystem\pages\boradcast\broadcastpage.cpp \
-		..\CrossroadGradeManageSystem\pages\checkout\checkout.cpp
+		..\CrossroadGradeManageSystem\pages\exitgames\exitgames.cpp \
+		..\CrossroadGradeManageSystem\pages\cancelgames\cancelgames.cpp
 QMAKE_TARGET  = CrossroadGradeManageSystem
 DESTDIR        = release\ #avoid trailing-slash linebreak
 TARGET         = CrossroadGradeManageSystem.exe
@@ -182,7 +188,7 @@ DESTDIR_TARGET = release\CrossroadGradeManageSystem.exe
 first: all
 all: Makefile.Release  $(DESTDIR_TARGET)
 
-$(DESTDIR_TARGET): ui_mainwindow.h ui_mainpage.h ui_exportdatas.h ui_settingsdialog.h ui_loginpage.h ui_checkin.h ui_holdgamespages.h ui_signup.h ui_querypage.h ui_broadcastpage.h ui_checkout.h $(OBJECTS) 
+$(DESTDIR_TARGET): ui_mainwindow.h ui_mainpage.h ui_exportdatas.h ui_settingsdialog.h ui_loginpage.h ui_checkin.h ui_holdgamespages.h ui_signup.h ui_querypage.h ui_broadcastpage.h ui_exitgames.h ui_cancelgames.h $(OBJECTS) 
 	$(LINKER) $(LFLAGS) -o $(DESTDIR_TARGET) object_script.CrossroadGradeManageSystem.Release  $(LIBS)
 
 qmake: FORCE
@@ -191,10 +197,10 @@ qmake: FORCE
 qmake_all: FORCE
 
 dist:
-	$(ZIP) CrossroadGradeManageSystem.zip $(SOURCES) $(DIST) ..\CrossroadGradeManageSystem\CrossroadGradeManageSystem.pro C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\features\spec_pre.prf C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\qdevice.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\features\device_config.prf C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\common\g++-base.conf C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\common\angle.conf C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\common\sanitize.conf C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\common\gcc-base.conf C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\qconfig.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_3danimation.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_3danimation_private.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_3dcore.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_3dcore_private.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_3dextras.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_3dextras_private.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_3dinput.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_3dinput_private.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_3dlogic.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_3dlogic_private.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_3dquick.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_3dquick_private.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_3dquickanimation.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_3dquickanimation_private.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_3dquickextras.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_3dquickextras_private.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_3dquickinput.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_3dquickinput_private.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_3dquickrender.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_3dquickrender_private.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_3dquickscene2d.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_3dquickscene2d_private.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_3drender.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_3drender_private.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_accessibility_support_private.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_axbase.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_axbase_private.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_axcontainer.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_axcontainer_private.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_axserver.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_axserver_private.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_bluetooth.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_bluetooth_private.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_bootstrap_private.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_concurrent.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_concurrent_private.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_core.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_core_private.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_dbus.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_dbus_private.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_designer.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_designer_private.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_designercomponents_private.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_devicediscovery_support_private.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_egl_support_private.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_eventdispatcher_support_private.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_fb_support_private.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_fontdatabase_support_private.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_gamepad.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_gamepad_private.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_gui.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_gui_private.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_help.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_help_private.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_location.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_location_private.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_multimedia.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_multimedia_private.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_multimediawidgets.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_multimediawidgets_private.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_network.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_network_private.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_nfc.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_nfc_private.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_opengl.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_opengl_private.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_openglextensions.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_openglextensions_private.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_packetprotocol_private.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_platformcompositor_support_private.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_positioning.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_positioning_private.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_printsupport.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_printsupport_private.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_qml.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_qml_private.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_qmldebug_private.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_qmldevtools_private.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_qmltest.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_qmltest_private.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_qtmultimediaquicktools_private.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_quick.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_quick_private.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_quickcontrols2.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_quickcontrols2_private.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_quickparticles_private.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_quicktemplates2_private.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_quickwidgets.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_quickwidgets_private.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_scxml.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_scxml_private.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_sensors.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_sensors_private.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_serialbus.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_serialbus_private.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_serialport.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_serialport_private.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_sql.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_sql_private.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_svg.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_svg_private.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_testlib.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_testlib_private.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_theme_support_private.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_uiplugin.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_uitools.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_uitools_private.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_webchannel.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_webchannel_private.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_websockets.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_websockets_private.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_widgets.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_widgets_private.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_winextras.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_winextras_private.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_xml.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_xml_private.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_xmlpatterns.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_xmlpatterns_private.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\features\qt_functions.prf C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\features\qt_config.prf C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\win32-g++\qmake.conf C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\features\spec_post.prf .qmake.stash C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\features\exclusive_builds.prf C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\features\toolchain.prf C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\features\default_pre.prf C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\features\win32\default_pre.prf C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\features\resolve_config.prf C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\features\exclusive_builds_post.prf C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\features\default_post.prf C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\features\build_pass.prf C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\features\qml_debug.prf C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\features\precompile_header.prf C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\features\warn_on.prf C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\features\qt.prf C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\features\resources.prf C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\features\moc.prf C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\features\win32\opengl.prf C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\features\uic.prf C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\features\qmake_use.prf C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\features\file_copies.prf C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\features\win32\windows.prf C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\features\testcase_targets.prf C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\features\exceptions.prf C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\features\yacc.prf C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\features\lex.prf ..\CrossroadGradeManageSystem\CrossroadGradeManageSystem.pro ..\CrossroadGradeManageSystem\resources\res.qrc C:\Qt\Qt5.9.3\5.9.3\mingw53_32\lib\qtmain.prl C:\Qt\Qt5.9.3\5.9.3\mingw53_32\lib\Qt5Widgets.prl C:\Qt\Qt5.9.3\5.9.3\mingw53_32\lib\Qt5Gui.prl C:\Qt\Qt5.9.3\5.9.3\mingw53_32\lib\Qt5Sql.prl C:\Qt\Qt5.9.3\5.9.3\mingw53_32\lib\Qt5SerialPort.prl C:\Qt\Qt5.9.3\5.9.3\mingw53_32\lib\Qt5Core.prl   ..\CrossroadGradeManageSystem\resources\res.qrc C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\features\data\dummy.cpp ..\CrossroadGradeManageSystem\database\admintablemodel.h ..\CrossroadGradeManageSystem\database\checkpointstablemodel.h ..\CrossroadGradeManageSystem\database\database_api.h ..\CrossroadGradeManageSystem\database\dbmanager.h ..\CrossroadGradeManageSystem\database\matchestablemodel.h ..\CrossroadGradeManageSystem\database\participantstablemodel.h ..\CrossroadGradeManageSystem\database\resultstablemodel.h ..\CrossroadGradeManageSystem\database\rfidrecordstablemodel.h ..\CrossroadGradeManageSystem\pages\export\exportdatas.h ..\CrossroadGradeManageSystem\pages\welcome\mainpage.h ..\CrossroadGradeManageSystem\serialThread\serialportthread.h ..\CrossroadGradeManageSystem\tools\tools.h ..\CrossroadGradeManageSystem\mainwindow.h ..\CrossroadGradeManageSystem\inc\m1356dll.h ..\CrossroadGradeManageSystem\inc\m1356dll_global.h ..\CrossroadGradeManageSystem\pages\connect\settingsdialog.h ..\CrossroadGradeManageSystem\pages\pages.h ..\CrossroadGradeManageSystem\pages\login\loginpage.h ..\CrossroadGradeManageSystem\pages\checkin\checkin.h ..\CrossroadGradeManageSystem\pages\holdgames\holdgamespages.h ..\CrossroadGradeManageSystem\pages\signup\signup.h ..\CrossroadGradeManageSystem\pages\query\querypage.h ..\CrossroadGradeManageSystem\pages\boradcast\broadcastpage.h ..\CrossroadGradeManageSystem\pages\checkout\checkout.h ..\CrossroadGradeManageSystem\database\admintablemodel.cpp ..\CrossroadGradeManageSystem\database\checkpointstablemodel.cpp ..\CrossroadGradeManageSystem\database\dbmanager.cpp ..\CrossroadGradeManageSystem\database\matchestablemodel.cpp ..\CrossroadGradeManageSystem\database\participantstablemodel.cpp ..\CrossroadGradeManageSystem\database\resultstablemodel.cpp ..\CrossroadGradeManageSystem\database\rfidrecordstablemodel.cpp ..\CrossroadGradeManageSystem\pages\export\exportdatas.cpp ..\CrossroadGradeManageSystem\pages\welcome\mainpage.cpp ..\CrossroadGradeManageSystem\serialThread\serialportthread.cpp ..\CrossroadGradeManageSystem\tools\tools.cpp ..\CrossroadGradeManageSystem\main.cpp ..\CrossroadGradeManageSystem\mainwindow.cpp ..\CrossroadGradeManageSystem\pages\connect\settingsdialog.cpp ..\CrossroadGradeManageSystem\pages\login\loginpage.cpp ..\CrossroadGradeManageSystem\pages\checkin\checkin.cpp ..\CrossroadGradeManageSystem\pages\holdgames\holdgamespages.cpp ..\CrossroadGradeManageSystem\pages\signup\signup.cpp ..\CrossroadGradeManageSystem\pages\query\querypage.cpp ..\CrossroadGradeManageSystem\pages\boradcast\broadcastpage.cpp ..\CrossroadGradeManageSystem\pages\checkout\checkout.cpp ..\CrossroadGradeManageSystem\mainwindow.ui ..\CrossroadGradeManageSystem\pages\welcome\mainpage.ui ..\CrossroadGradeManageSystem\pages\export\exportdatas.ui ..\CrossroadGradeManageSystem\pages\connect\settingsdialog.ui ..\CrossroadGradeManageSystem\pages\login\loginpage.ui ..\CrossroadGradeManageSystem\pages\checkin\checkin.ui ..\CrossroadGradeManageSystem\pages\holdgames\holdgamespages.ui ..\CrossroadGradeManageSystem\pages\signup\signup.ui ..\CrossroadGradeManageSystem\pages\query\querypage.ui ..\CrossroadGradeManageSystem\pages\boradcast\broadcastpage.ui ..\CrossroadGradeManageSystem\pages\checkout\checkout.ui    
+	$(ZIP) CrossroadGradeManageSystem.zip $(SOURCES) $(DIST) ..\CrossroadGradeManageSystem\CrossroadGradeManageSystem.pro C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\features\spec_pre.prf C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\qdevice.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\features\device_config.prf C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\common\g++-base.conf C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\common\angle.conf C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\common\sanitize.conf C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\common\gcc-base.conf C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\qconfig.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_3danimation.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_3danimation_private.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_3dcore.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_3dcore_private.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_3dextras.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_3dextras_private.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_3dinput.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_3dinput_private.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_3dlogic.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_3dlogic_private.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_3dquick.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_3dquick_private.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_3dquickanimation.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_3dquickanimation_private.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_3dquickextras.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_3dquickextras_private.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_3dquickinput.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_3dquickinput_private.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_3dquickrender.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_3dquickrender_private.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_3dquickscene2d.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_3dquickscene2d_private.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_3drender.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_3drender_private.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_accessibility_support_private.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_axbase.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_axbase_private.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_axcontainer.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_axcontainer_private.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_axserver.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_axserver_private.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_bluetooth.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_bluetooth_private.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_bootstrap_private.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_concurrent.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_concurrent_private.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_core.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_core_private.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_dbus.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_dbus_private.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_designer.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_designer_private.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_designercomponents_private.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_devicediscovery_support_private.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_egl_support_private.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_eventdispatcher_support_private.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_fb_support_private.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_fontdatabase_support_private.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_gamepad.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_gamepad_private.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_gui.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_gui_private.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_help.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_help_private.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_location.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_location_private.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_multimedia.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_multimedia_private.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_multimediawidgets.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_multimediawidgets_private.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_network.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_network_private.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_nfc.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_nfc_private.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_opengl.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_opengl_private.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_openglextensions.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_openglextensions_private.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_packetprotocol_private.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_platformcompositor_support_private.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_positioning.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_positioning_private.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_printsupport.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_printsupport_private.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_qml.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_qml_private.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_qmldebug_private.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_qmldevtools_private.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_qmltest.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_qmltest_private.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_qtmultimediaquicktools_private.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_quick.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_quick_private.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_quickcontrols2.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_quickcontrols2_private.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_quickparticles_private.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_quicktemplates2_private.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_quickwidgets.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_quickwidgets_private.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_scxml.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_scxml_private.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_sensors.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_sensors_private.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_serialbus.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_serialbus_private.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_serialport.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_serialport_private.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_sql.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_sql_private.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_svg.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_svg_private.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_testlib.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_testlib_private.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_theme_support_private.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_uiplugin.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_uitools.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_uitools_private.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_webchannel.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_webchannel_private.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_websockets.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_websockets_private.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_widgets.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_widgets_private.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_winextras.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_winextras_private.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_xml.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_xml_private.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_xmlpatterns.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\modules\qt_lib_xmlpatterns_private.pri C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\features\qt_functions.prf C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\features\qt_config.prf C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\win32-g++\qmake.conf C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\features\spec_post.prf .qmake.stash C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\features\exclusive_builds.prf C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\features\toolchain.prf C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\features\default_pre.prf C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\features\win32\default_pre.prf C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\features\resolve_config.prf C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\features\exclusive_builds_post.prf C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\features\default_post.prf C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\features\build_pass.prf C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\features\qml_debug.prf C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\features\precompile_header.prf C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\features\warn_on.prf C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\features\qt.prf C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\features\resources.prf C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\features\moc.prf C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\features\win32\opengl.prf C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\features\uic.prf C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\features\qmake_use.prf C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\features\file_copies.prf C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\features\win32\windows.prf C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\features\testcase_targets.prf C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\features\exceptions.prf C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\features\yacc.prf C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\features\lex.prf ..\CrossroadGradeManageSystem\CrossroadGradeManageSystem.pro ..\CrossroadGradeManageSystem\resources\res.qrc C:\Qt\Qt5.9.3\5.9.3\mingw53_32\lib\qtmain.prl C:\Qt\Qt5.9.3\5.9.3\mingw53_32\lib\Qt5Widgets.prl C:\Qt\Qt5.9.3\5.9.3\mingw53_32\lib\Qt5Gui.prl C:\Qt\Qt5.9.3\5.9.3\mingw53_32\lib\Qt5Sql.prl C:\Qt\Qt5.9.3\5.9.3\mingw53_32\lib\Qt5SerialPort.prl C:\Qt\Qt5.9.3\5.9.3\mingw53_32\lib\Qt5Core.prl   ..\CrossroadGradeManageSystem\resources\res.qrc C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\features\data\dummy.cpp ..\CrossroadGradeManageSystem\database\admintablemodel.h ..\CrossroadGradeManageSystem\database\checkpointstablemodel.h ..\CrossroadGradeManageSystem\database\database_api.h ..\CrossroadGradeManageSystem\database\dbmanager.h ..\CrossroadGradeManageSystem\database\matchestablemodel.h ..\CrossroadGradeManageSystem\database\participantstablemodel.h ..\CrossroadGradeManageSystem\database\resultstablemodel.h ..\CrossroadGradeManageSystem\database\rfidrecordstablemodel.h ..\CrossroadGradeManageSystem\pages\export\exportdatas.h ..\CrossroadGradeManageSystem\pages\welcome\mainpage.h ..\CrossroadGradeManageSystem\serialThread\serialportthread.h ..\CrossroadGradeManageSystem\tools\tools.h ..\CrossroadGradeManageSystem\mainwindow.h ..\CrossroadGradeManageSystem\inc\m1356dll.h ..\CrossroadGradeManageSystem\inc\m1356dll_global.h ..\CrossroadGradeManageSystem\pages\connect\settingsdialog.h ..\CrossroadGradeManageSystem\pages\pages.h ..\CrossroadGradeManageSystem\pages\login\loginpage.h ..\CrossroadGradeManageSystem\pages\checkin\checkin.h ..\CrossroadGradeManageSystem\pages\holdgames\holdgamespages.h ..\CrossroadGradeManageSystem\pages\signup\signup.h ..\CrossroadGradeManageSystem\pages\query\querypage.h ..\CrossroadGradeManageSystem\pages\boradcast\broadcastpage.h ..\CrossroadGradeManageSystem\pages\exitgames\exitgames.h ..\CrossroadGradeManageSystem\pages\cancelgames\cancelgames.h ..\CrossroadGradeManageSystem\database\admintablemodel.cpp ..\CrossroadGradeManageSystem\database\checkpointstablemodel.cpp ..\CrossroadGradeManageSystem\database\dbmanager.cpp ..\CrossroadGradeManageSystem\database\matchestablemodel.cpp ..\CrossroadGradeManageSystem\database\participantstablemodel.cpp ..\CrossroadGradeManageSystem\database\resultstablemodel.cpp ..\CrossroadGradeManageSystem\database\rfidrecordstablemodel.cpp ..\CrossroadGradeManageSystem\pages\export\exportdatas.cpp ..\CrossroadGradeManageSystem\pages\welcome\mainpage.cpp ..\CrossroadGradeManageSystem\serialThread\serialportthread.cpp ..\CrossroadGradeManageSystem\tools\tools.cpp ..\CrossroadGradeManageSystem\main.cpp ..\CrossroadGradeManageSystem\mainwindow.cpp ..\CrossroadGradeManageSystem\pages\connect\settingsdialog.cpp ..\CrossroadGradeManageSystem\pages\login\loginpage.cpp ..\CrossroadGradeManageSystem\pages\checkin\checkin.cpp ..\CrossroadGradeManageSystem\pages\holdgames\holdgamespages.cpp ..\CrossroadGradeManageSystem\pages\signup\signup.cpp ..\CrossroadGradeManageSystem\pages\query\querypage.cpp ..\CrossroadGradeManageSystem\pages\boradcast\broadcastpage.cpp ..\CrossroadGradeManageSystem\pages\exitgames\exitgames.cpp ..\CrossroadGradeManageSystem\pages\cancelgames\cancelgames.cpp ..\CrossroadGradeManageSystem\mainwindow.ui ..\CrossroadGradeManageSystem\pages\welcome\mainpage.ui ..\CrossroadGradeManageSystem\pages\export\exportdatas.ui ..\CrossroadGradeManageSystem\pages\connect\settingsdialog.ui ..\CrossroadGradeManageSystem\pages\login\loginpage.ui ..\CrossroadGradeManageSystem\pages\checkin\checkin.ui ..\CrossroadGradeManageSystem\pages\holdgames\holdgamespages.ui ..\CrossroadGradeManageSystem\pages\signup\signup.ui ..\CrossroadGradeManageSystem\pages\query\querypage.ui ..\CrossroadGradeManageSystem\pages\boradcast\broadcastpage.ui ..\CrossroadGradeManageSystem\pages\exitgames\exitgames.ui ..\CrossroadGradeManageSystem\pages\cancelgames\cancelgames.ui    
 
 clean: compiler_clean 
-	-$(DEL_FILE) release\admintablemodel.o release\checkpointstablemodel.o release\dbmanager.o release\matchestablemodel.o release\participantstablemodel.o release\resultstablemodel.o release\rfidrecordstablemodel.o release\exportdatas.o release\mainpage.o release\serialportthread.o release\tools.o release\main.o release\mainwindow.o release\settingsdialog.o release\loginpage.o release\checkin.o release\holdgamespages.o release\signup.o release\querypage.o release\broadcastpage.o release\checkout.o release\qrc_res.o release\moc_admintablemodel.o release\moc_checkpointstablemodel.o release\moc_dbmanager.o release\moc_matchestablemodel.o release\moc_participantstablemodel.o release\moc_resultstablemodel.o release\moc_rfidrecordstablemodel.o release\moc_exportdatas.o release\moc_mainpage.o release\moc_serialportthread.o release\moc_mainwindow.o release\moc_settingsdialog.o release\moc_loginpage.o release\moc_checkin.o release\moc_holdgamespages.o release\moc_signup.o release\moc_querypage.o release\moc_broadcastpage.o release\moc_checkout.o
+	-$(DEL_FILE) release\admintablemodel.o release\checkpointstablemodel.o release\dbmanager.o release\matchestablemodel.o release\participantstablemodel.o release\resultstablemodel.o release\rfidrecordstablemodel.o release\exportdatas.o release\mainpage.o release\serialportthread.o release\tools.o release\main.o release\mainwindow.o release\settingsdialog.o release\loginpage.o release\checkin.o release\holdgamespages.o release\signup.o release\querypage.o release\broadcastpage.o release\exitgames.o release\cancelgames.o release\qrc_res.o release\moc_admintablemodel.o release\moc_checkpointstablemodel.o release\moc_dbmanager.o release\moc_matchestablemodel.o release\moc_participantstablemodel.o release\moc_resultstablemodel.o release\moc_rfidrecordstablemodel.o release\moc_exportdatas.o release\moc_mainpage.o release\moc_serialportthread.o release\moc_mainwindow.o release\moc_settingsdialog.o release\moc_loginpage.o release\moc_checkin.o release\moc_holdgamespages.o release\moc_signup.o release\moc_querypage.o release\moc_broadcastpage.o release\moc_exitgames.o release\moc_cancelgames.o
 
 distclean: clean 
 	-$(DEL_FILE) .qmake.stash
@@ -225,9 +231,9 @@ compiler_moc_predefs_clean:
 release/moc_predefs.h: C:/Qt/Qt5.9.3/5.9.3/mingw53_32/mkspecs/features/data/dummy.cpp
 	g++ -fno-keep-inline-dllexport -O2 -std=gnu++11 -Wextra -Wall -W -dM -E -o release\moc_predefs.h C:\Qt\Qt5.9.3\5.9.3\mingw53_32\mkspecs\features\data\dummy.cpp
 
-compiler_moc_header_make_all: release/moc_admintablemodel.cpp release/moc_checkpointstablemodel.cpp release/moc_dbmanager.cpp release/moc_matchestablemodel.cpp release/moc_participantstablemodel.cpp release/moc_resultstablemodel.cpp release/moc_rfidrecordstablemodel.cpp release/moc_exportdatas.cpp release/moc_mainpage.cpp release/moc_serialportthread.cpp release/moc_mainwindow.cpp release/moc_settingsdialog.cpp release/moc_loginpage.cpp release/moc_checkin.cpp release/moc_holdgamespages.cpp release/moc_signup.cpp release/moc_querypage.cpp release/moc_broadcastpage.cpp release/moc_checkout.cpp
+compiler_moc_header_make_all: release/moc_admintablemodel.cpp release/moc_checkpointstablemodel.cpp release/moc_dbmanager.cpp release/moc_matchestablemodel.cpp release/moc_participantstablemodel.cpp release/moc_resultstablemodel.cpp release/moc_rfidrecordstablemodel.cpp release/moc_exportdatas.cpp release/moc_mainpage.cpp release/moc_serialportthread.cpp release/moc_mainwindow.cpp release/moc_settingsdialog.cpp release/moc_loginpage.cpp release/moc_checkin.cpp release/moc_holdgamespages.cpp release/moc_signup.cpp release/moc_querypage.cpp release/moc_broadcastpage.cpp release/moc_exitgames.cpp release/moc_cancelgames.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) release\moc_admintablemodel.cpp release\moc_checkpointstablemodel.cpp release\moc_dbmanager.cpp release\moc_matchestablemodel.cpp release\moc_participantstablemodel.cpp release\moc_resultstablemodel.cpp release\moc_rfidrecordstablemodel.cpp release\moc_exportdatas.cpp release\moc_mainpage.cpp release\moc_serialportthread.cpp release\moc_mainwindow.cpp release\moc_settingsdialog.cpp release\moc_loginpage.cpp release\moc_checkin.cpp release\moc_holdgamespages.cpp release\moc_signup.cpp release\moc_querypage.cpp release\moc_broadcastpage.cpp release\moc_checkout.cpp
+	-$(DEL_FILE) release\moc_admintablemodel.cpp release\moc_checkpointstablemodel.cpp release\moc_dbmanager.cpp release\moc_matchestablemodel.cpp release\moc_participantstablemodel.cpp release\moc_resultstablemodel.cpp release\moc_rfidrecordstablemodel.cpp release\moc_exportdatas.cpp release\moc_mainpage.cpp release\moc_serialportthread.cpp release\moc_mainwindow.cpp release\moc_settingsdialog.cpp release\moc_loginpage.cpp release\moc_checkin.cpp release\moc_holdgamespages.cpp release\moc_signup.cpp release\moc_querypage.cpp release\moc_broadcastpage.cpp release\moc_exitgames.cpp release\moc_cancelgames.cpp
 release/moc_admintablemodel.cpp: C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/QSqlTableModel \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/qsqltablemodel.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/qtsqlglobal.h \
@@ -382,6 +388,8 @@ release/moc_checkpointstablemodel.cpp: C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/Qt
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/QSqlError \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/qsqlerror.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QString \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QDateTime \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qdatetime.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QDebug \
 		../CrossroadGradeManageSystem/database/checkpointstablemodel.h \
 		release/moc_predefs.h \
@@ -469,7 +477,10 @@ release/moc_dbmanager.cpp: C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QObject
 		../CrossroadGradeManageSystem/database/admintablemodel.h \
 		../CrossroadGradeManageSystem/database/rfidrecordstablemodel.h \
 		../CrossroadGradeManageSystem/database/resultstablemodel.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QTime \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qdatetime.h \
 		../CrossroadGradeManageSystem/database/matchestablemodel.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QDateTime \
 		../CrossroadGradeManageSystem/database/checkpointstablemodel.h \
 		../CrossroadGradeManageSystem/database/dbmanager.h \
 		release/moc_predefs.h \
@@ -550,6 +561,8 @@ release/moc_matchestablemodel.cpp: C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/QSqlError \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/qsqlerror.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QString \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QDateTime \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qdatetime.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QDebug \
 		../CrossroadGradeManageSystem/database/matchestablemodel.h \
 		release/moc_predefs.h \
@@ -710,6 +723,8 @@ release/moc_resultstablemodel.cpp: C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/QSqlError \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/qsqlerror.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QString \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QTime \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qdatetime.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QDebug \
 		../CrossroadGradeManageSystem/database/resultstablemodel.h \
 		release/moc_predefs.h \
@@ -1267,8 +1282,26 @@ release/moc_mainwindow.cpp: C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/QMa
 		../CrossroadGradeManageSystem/pages/export/exportdatas.h \
 		../CrossroadGradeManageSystem/pages/login/loginpage.h \
 		../CrossroadGradeManageSystem/pages/checkin/checkin.h \
-		../CrossroadGradeManageSystem/pages/query/querypage.h \
-		../CrossroadGradeManageSystem/pages/holdgames/holdgamespages.h \
+		../CrossroadGradeManageSystem/database/dbmanager.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QObject \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/QSqlDatabase \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/QSqlRecord \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/qsqlrecord.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/QSqlQuery \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/qsqlquery.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/QSqlError \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/qsqlerror.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QDebug \
+		../CrossroadGradeManageSystem/database/participantstablemodel.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QString \
+		../CrossroadGradeManageSystem/database/admintablemodel.h \
+		../CrossroadGradeManageSystem/database/rfidrecordstablemodel.h \
+		../CrossroadGradeManageSystem/database/resultstablemodel.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QTime \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qdatetime.h \
+		../CrossroadGradeManageSystem/database/matchestablemodel.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QDateTime \
+		../CrossroadGradeManageSystem/database/checkpointstablemodel.h \
 		../CrossroadGradeManageSystem/serialThread/serialportthread.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QThread \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qthread.h \
@@ -1279,10 +1312,6 @@ release/moc_mainwindow.cpp: C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/QMa
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSerialPort/qserialportinfo.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QStringList \
 		../CrossroadGradeManageSystem/tools/tools.h \
-		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QString \
-		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QDateTime \
-		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qdatetime.h \
-		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QTime \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QDate \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QCryptographicHash \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qcryptographichash.h \
@@ -1295,7 +1324,10 @@ release/moc_mainwindow.cpp: C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/QMa
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QTextStream \
 		../CrossroadGradeManageSystem/inc/m1356dll.h \
 		../CrossroadGradeManageSystem/inc/m1356dll_global.h \
-		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QDebug \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/QMessageBox \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/qmessagebox.h \
+		../CrossroadGradeManageSystem/pages/query/querypage.h \
+		../CrossroadGradeManageSystem/pages/holdgames/holdgamespages.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/QLabel \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/qlabel.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/qframe.h \
@@ -1619,6 +1651,61 @@ release/moc_checkin.cpp: C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/QWidge
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qfiledevice.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtGui/qvector2d.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtGui/qtouchdevice.h \
+		../CrossroadGradeManageSystem/database/dbmanager.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QObject \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/QSqlTableModel \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/qsqltablemodel.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/qtsqlglobal.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/qsqldatabase.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/qsqlquerymodel.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qabstractitemmodel.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/QSqlDatabase \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/QSqlRecord \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/qsqlrecord.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/QSqlQuery \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/qsqlquery.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/QSqlError \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/qsqlerror.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QDebug \
+		../CrossroadGradeManageSystem/database/database_api.h \
+		../CrossroadGradeManageSystem/database/participantstablemodel.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QString \
+		../CrossroadGradeManageSystem/database/admintablemodel.h \
+		../CrossroadGradeManageSystem/database/rfidrecordstablemodel.h \
+		../CrossroadGradeManageSystem/database/resultstablemodel.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QTime \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qdatetime.h \
+		../CrossroadGradeManageSystem/database/matchestablemodel.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QDateTime \
+		../CrossroadGradeManageSystem/database/checkpointstablemodel.h \
+		../CrossroadGradeManageSystem/serialThread/serialportthread.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QThread \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qthread.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QTimer \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qtimer.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qbasictimer.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSerialPort/QSerialPort \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSerialPort/qserialport.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSerialPort/qserialportglobal.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSerialPort/QSerialPortInfo \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSerialPort/qserialportinfo.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QStringList \
+		../CrossroadGradeManageSystem/tools/tools.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QDate \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QCryptographicHash \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qcryptographichash.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QByteArray \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QFile \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/QFileDialog \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/qfiledialog.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qdir.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qfileinfo.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/qdialog.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QTextStream \
+		../CrossroadGradeManageSystem/inc/m1356dll.h \
+		../CrossroadGradeManageSystem/inc/m1356dll_global.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/QMessageBox \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/qmessagebox.h \
 		../CrossroadGradeManageSystem/pages/checkin/checkin.h \
 		release/moc_predefs.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/bin/moc.exe
@@ -1724,6 +1811,61 @@ release/moc_holdgamespages.cpp: C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qfiledevice.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtGui/qvector2d.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtGui/qtouchdevice.h \
+		../CrossroadGradeManageSystem/database/dbmanager.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QObject \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/QSqlTableModel \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/qsqltablemodel.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/qtsqlglobal.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/qsqldatabase.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/qsqlquerymodel.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qabstractitemmodel.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/QSqlDatabase \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/QSqlRecord \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/qsqlrecord.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/QSqlQuery \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/qsqlquery.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/QSqlError \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/qsqlerror.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QDebug \
+		../CrossroadGradeManageSystem/database/database_api.h \
+		../CrossroadGradeManageSystem/database/participantstablemodel.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QString \
+		../CrossroadGradeManageSystem/database/admintablemodel.h \
+		../CrossroadGradeManageSystem/database/rfidrecordstablemodel.h \
+		../CrossroadGradeManageSystem/database/resultstablemodel.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QTime \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qdatetime.h \
+		../CrossroadGradeManageSystem/database/matchestablemodel.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QDateTime \
+		../CrossroadGradeManageSystem/database/checkpointstablemodel.h \
+		../CrossroadGradeManageSystem/serialThread/serialportthread.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QThread \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qthread.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QTimer \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qtimer.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qbasictimer.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSerialPort/QSerialPort \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSerialPort/qserialport.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSerialPort/qserialportglobal.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSerialPort/QSerialPortInfo \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSerialPort/qserialportinfo.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QStringList \
+		../CrossroadGradeManageSystem/tools/tools.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QDate \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QCryptographicHash \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qcryptographichash.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QByteArray \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QFile \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/QFileDialog \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/qfiledialog.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qdir.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qfileinfo.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/qdialog.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QTextStream \
+		../CrossroadGradeManageSystem/inc/m1356dll.h \
+		../CrossroadGradeManageSystem/inc/m1356dll_global.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/QMessageBox \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/qmessagebox.h \
 		../CrossroadGradeManageSystem/pages/holdgames/holdgamespages.h \
 		release/moc_predefs.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/bin/moc.exe
@@ -1829,15 +1971,71 @@ release/moc_signup.cpp: C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/QWidget
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qfiledevice.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtGui/qvector2d.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtGui/qtouchdevice.h \
+		../CrossroadGradeManageSystem/database/dbmanager.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QObject \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/QSqlTableModel \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/qsqltablemodel.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/qtsqlglobal.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/qsqldatabase.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/qsqlquerymodel.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qabstractitemmodel.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/QSqlDatabase \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/QSqlRecord \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/qsqlrecord.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/QSqlQuery \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/qsqlquery.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/QSqlError \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/qsqlerror.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QDebug \
+		../CrossroadGradeManageSystem/database/database_api.h \
+		../CrossroadGradeManageSystem/database/participantstablemodel.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QString \
+		../CrossroadGradeManageSystem/database/admintablemodel.h \
+		../CrossroadGradeManageSystem/database/rfidrecordstablemodel.h \
+		../CrossroadGradeManageSystem/database/resultstablemodel.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QTime \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qdatetime.h \
+		../CrossroadGradeManageSystem/database/matchestablemodel.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QDateTime \
+		../CrossroadGradeManageSystem/database/checkpointstablemodel.h \
+		../CrossroadGradeManageSystem/serialThread/serialportthread.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QThread \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qthread.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QTimer \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qtimer.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qbasictimer.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSerialPort/QSerialPort \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSerialPort/qserialport.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSerialPort/qserialportglobal.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSerialPort/QSerialPortInfo \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSerialPort/qserialportinfo.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QStringList \
+		../CrossroadGradeManageSystem/tools/tools.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QDate \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QCryptographicHash \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qcryptographichash.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QByteArray \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QFile \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/QFileDialog \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/qfiledialog.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qdir.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qfileinfo.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/qdialog.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QTextStream \
+		../CrossroadGradeManageSystem/inc/m1356dll.h \
+		../CrossroadGradeManageSystem/inc/m1356dll_global.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/QMessageBox \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/qmessagebox.h \
 		../CrossroadGradeManageSystem/pages/signup/signup.h \
 		release/moc_predefs.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/bin/moc.exe
 	C:\Qt\Qt5.9.3\5.9.3\mingw53_32\bin\moc.exe $(DEFINES) --include release/moc_predefs.h -IC:/Qt/Qt5.9.3/5.9.3/mingw53_32/mkspecs/win32-g++ -IC:/Data/hust_lesson/Four/SysDesign/CrossroadGradeManageSystem -IC:/Qt/Qt5.9.3/5.9.3/mingw53_32/include -IC:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets -IC:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtGui -IC:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtANGLE -IC:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql -IC:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSerialPort -IC:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore -I. -IC:/Qt/Qt5.9.3/Tools/mingw530_32/lib/gcc/i686-w64-mingw32/5.3.0/include -IC:/Qt/Qt5.9.3/Tools/mingw530_32/lib/gcc/i686-w64-mingw32/5.3.0/include-fixed -IC:/Qt/Qt5.9.3/Tools/mingw530_32/i686-w64-mingw32/include -IC:/Qt/Qt5.9.3/Tools/mingw530_32/i686-w64-mingw32/include/c++ -IC:/Qt/Qt5.9.3/Tools/mingw530_32/i686-w64-mingw32/include/c++/i686-w64-mingw32 -IC:/Qt/Qt5.9.3/Tools/mingw530_32/i686-w64-mingw32/include/c++/backward ..\CrossroadGradeManageSystem\pages\signup\signup.h -o release\moc_signup.cpp
 
-release/moc_querypage.cpp: C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/QWidget \
-		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/qwidget.h \
-		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/qtwidgetsglobal.h \
-		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtGui/qtguiglobal.h \
+release/moc_querypage.cpp: ../CrossroadGradeManageSystem/database/dbmanager.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QObject \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qobject.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qobjectdefs.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qnamespace.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qglobal.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qconfig-bootstrapped.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qconfig.h \
@@ -1859,14 +2057,7 @@ release/moc_querypage.cpp: C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/QWid
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qmutex.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qnumeric.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qversiontagging.h \
-		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtGui/qtgui-config.h \
-		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/qtwidgets-config.h \
-		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtGui/qwindowdefs.h \
-		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qobjectdefs.h \
-		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qnamespace.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qobjectdefs_impl.h \
-		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtGui/qwindowdefs_win.h \
-		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qobject.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qstring.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qchar.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qbytearray.h \
@@ -1888,32 +2079,98 @@ release/moc_querypage.cpp: C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/QWid
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qvarlengtharray.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qcontainerfwd.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qobject_impl.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/QSqlTableModel \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/qsqltablemodel.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/qtsqlglobal.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/qsqldatabase.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/qsqlquerymodel.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qabstractitemmodel.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qvariant.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qmap.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qdebug.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qhash.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qtextstream.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qiodevice.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qlocale.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qshareddata.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qvector.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qpoint.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qset.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qcontiguouscache.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qsharedpointer.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qsharedpointer_impl.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/QSqlDatabase \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/QSqlRecord \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/qsqlrecord.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/QSqlQuery \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/qsqlquery.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/QSqlError \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/qsqlerror.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QDebug \
+		../CrossroadGradeManageSystem/database/database_api.h \
+		../CrossroadGradeManageSystem/database/participantstablemodel.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QString \
+		../CrossroadGradeManageSystem/database/admintablemodel.h \
+		../CrossroadGradeManageSystem/database/rfidrecordstablemodel.h \
+		../CrossroadGradeManageSystem/database/resultstablemodel.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QTime \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qdatetime.h \
+		../CrossroadGradeManageSystem/database/matchestablemodel.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QDateTime \
+		../CrossroadGradeManageSystem/database/checkpointstablemodel.h \
+		../CrossroadGradeManageSystem/serialThread/serialportthread.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QThread \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qthread.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QTimer \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qtimer.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qbasictimer.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSerialPort/QSerialPort \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSerialPort/qserialport.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSerialPort/qserialportglobal.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSerialPort/QSerialPortInfo \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSerialPort/qserialportinfo.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QStringList \
+		../CrossroadGradeManageSystem/tools/tools.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QDate \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QCryptographicHash \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qcryptographichash.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QByteArray \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QFile \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qfile.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qfiledevice.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/QFileDialog \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/qfiledialog.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/qtwidgetsglobal.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtGui/qtguiglobal.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtGui/qtgui-config.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/qtwidgets-config.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qdir.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qfileinfo.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qurl.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qurlquery.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/qdialog.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/qwidget.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtGui/qwindowdefs.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtGui/qwindowdefs_win.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qmargins.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtGui/qpaintdevice.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qrect.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qsize.h \
-		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qpoint.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtGui/qpalette.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtGui/qcolor.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtGui/qrgb.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtGui/qrgba64.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtGui/qbrush.h \
-		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qvector.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtGui/qmatrix.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtGui/qpolygon.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtGui/qregion.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qdatastream.h \
-		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qiodevice.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qline.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtGui/qtransform.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtGui/qpainterpath.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtGui/qimage.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtGui/qpixelformat.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtGui/qpixmap.h \
-		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qsharedpointer.h \
-		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qshareddata.h \
-		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qhash.h \
-		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qsharedpointer_impl.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtGui/qfont.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtGui/qfontmetrics.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtGui/qfontinfo.h \
@@ -1921,19 +2178,12 @@ release/moc_querypage.cpp: C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/QWid
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtGui/qcursor.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtGui/qkeysequence.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtGui/qevent.h \
-		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qvariant.h \
-		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qmap.h \
-		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qdebug.h \
-		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qtextstream.h \
-		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qlocale.h \
-		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qset.h \
-		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qcontiguouscache.h \
-		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qurl.h \
-		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qurlquery.h \
-		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qfile.h \
-		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qfiledevice.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtGui/qvector2d.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtGui/qtouchdevice.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QTextStream \
+		../CrossroadGradeManageSystem/inc/m1356dll.h \
+		../CrossroadGradeManageSystem/inc/m1356dll_global.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/QWidget \
 		../CrossroadGradeManageSystem/pages/query/querypage.h \
 		release/moc_predefs.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/bin/moc.exe
@@ -2044,8 +2294,8 @@ release/moc_broadcastpage.cpp: C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/bin/moc.exe
 	C:\Qt\Qt5.9.3\5.9.3\mingw53_32\bin\moc.exe $(DEFINES) --include release/moc_predefs.h -IC:/Qt/Qt5.9.3/5.9.3/mingw53_32/mkspecs/win32-g++ -IC:/Data/hust_lesson/Four/SysDesign/CrossroadGradeManageSystem -IC:/Qt/Qt5.9.3/5.9.3/mingw53_32/include -IC:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets -IC:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtGui -IC:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtANGLE -IC:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql -IC:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSerialPort -IC:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore -I. -IC:/Qt/Qt5.9.3/Tools/mingw530_32/lib/gcc/i686-w64-mingw32/5.3.0/include -IC:/Qt/Qt5.9.3/Tools/mingw530_32/lib/gcc/i686-w64-mingw32/5.3.0/include-fixed -IC:/Qt/Qt5.9.3/Tools/mingw530_32/i686-w64-mingw32/include -IC:/Qt/Qt5.9.3/Tools/mingw530_32/i686-w64-mingw32/include/c++ -IC:/Qt/Qt5.9.3/Tools/mingw530_32/i686-w64-mingw32/include/c++/i686-w64-mingw32 -IC:/Qt/Qt5.9.3/Tools/mingw530_32/i686-w64-mingw32/include/c++/backward ..\CrossroadGradeManageSystem\pages\boradcast\broadcastpage.h -o release\moc_broadcastpage.cpp
 
-release/moc_checkout.cpp: C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/QWidget \
-		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/qwidget.h \
+release/moc_exitgames.cpp: C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/QDialog \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/qdialog.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/qtwidgetsglobal.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtGui/qtguiglobal.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qglobal.h \
@@ -2071,6 +2321,7 @@ release/moc_checkout.cpp: C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/QWidg
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qversiontagging.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtGui/qtgui-config.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/qtwidgets-config.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/qwidget.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtGui/qwindowdefs.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qobjectdefs.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qnamespace.h \
@@ -2144,16 +2395,230 @@ release/moc_checkout.cpp: C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/QWidg
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qfiledevice.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtGui/qvector2d.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtGui/qtouchdevice.h \
-		../CrossroadGradeManageSystem/pages/checkout/checkout.h \
+		../CrossroadGradeManageSystem/serialThread/serialportthread.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QThread \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qthread.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QTimer \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qtimer.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qbasictimer.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSerialPort/QSerialPort \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSerialPort/qserialport.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSerialPort/qserialportglobal.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSerialPort/QSerialPortInfo \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSerialPort/qserialportinfo.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QStringList \
+		../CrossroadGradeManageSystem/tools/tools.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QString \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QDateTime \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qdatetime.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QTime \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QDate \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QCryptographicHash \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qcryptographichash.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QByteArray \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/QSqlTableModel \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/qsqltablemodel.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/qtsqlglobal.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/qsqldatabase.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/qsqlquerymodel.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qabstractitemmodel.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QFile \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/QFileDialog \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/qfiledialog.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qdir.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qfileinfo.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QTextStream \
+		../CrossroadGradeManageSystem/database/dbmanager.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QObject \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/QSqlDatabase \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/QSqlRecord \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/qsqlrecord.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/QSqlQuery \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/qsqlquery.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/QSqlError \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/qsqlerror.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QDebug \
+		../CrossroadGradeManageSystem/database/database_api.h \
+		../CrossroadGradeManageSystem/database/participantstablemodel.h \
+		../CrossroadGradeManageSystem/database/admintablemodel.h \
+		../CrossroadGradeManageSystem/database/rfidrecordstablemodel.h \
+		../CrossroadGradeManageSystem/database/resultstablemodel.h \
+		../CrossroadGradeManageSystem/database/matchestablemodel.h \
+		../CrossroadGradeManageSystem/database/checkpointstablemodel.h \
+		../CrossroadGradeManageSystem/inc/m1356dll.h \
+		../CrossroadGradeManageSystem/inc/m1356dll_global.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/QMessageBox \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/qmessagebox.h \
+		../CrossroadGradeManageSystem/pages/exitgames/exitgames.h \
 		release/moc_predefs.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/bin/moc.exe
-	C:\Qt\Qt5.9.3\5.9.3\mingw53_32\bin\moc.exe $(DEFINES) --include release/moc_predefs.h -IC:/Qt/Qt5.9.3/5.9.3/mingw53_32/mkspecs/win32-g++ -IC:/Data/hust_lesson/Four/SysDesign/CrossroadGradeManageSystem -IC:/Qt/Qt5.9.3/5.9.3/mingw53_32/include -IC:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets -IC:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtGui -IC:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtANGLE -IC:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql -IC:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSerialPort -IC:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore -I. -IC:/Qt/Qt5.9.3/Tools/mingw530_32/lib/gcc/i686-w64-mingw32/5.3.0/include -IC:/Qt/Qt5.9.3/Tools/mingw530_32/lib/gcc/i686-w64-mingw32/5.3.0/include-fixed -IC:/Qt/Qt5.9.3/Tools/mingw530_32/i686-w64-mingw32/include -IC:/Qt/Qt5.9.3/Tools/mingw530_32/i686-w64-mingw32/include/c++ -IC:/Qt/Qt5.9.3/Tools/mingw530_32/i686-w64-mingw32/include/c++/i686-w64-mingw32 -IC:/Qt/Qt5.9.3/Tools/mingw530_32/i686-w64-mingw32/include/c++/backward ..\CrossroadGradeManageSystem\pages\checkout\checkout.h -o release\moc_checkout.cpp
+	C:\Qt\Qt5.9.3\5.9.3\mingw53_32\bin\moc.exe $(DEFINES) --include release/moc_predefs.h -IC:/Qt/Qt5.9.3/5.9.3/mingw53_32/mkspecs/win32-g++ -IC:/Data/hust_lesson/Four/SysDesign/CrossroadGradeManageSystem -IC:/Qt/Qt5.9.3/5.9.3/mingw53_32/include -IC:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets -IC:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtGui -IC:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtANGLE -IC:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql -IC:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSerialPort -IC:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore -I. -IC:/Qt/Qt5.9.3/Tools/mingw530_32/lib/gcc/i686-w64-mingw32/5.3.0/include -IC:/Qt/Qt5.9.3/Tools/mingw530_32/lib/gcc/i686-w64-mingw32/5.3.0/include-fixed -IC:/Qt/Qt5.9.3/Tools/mingw530_32/i686-w64-mingw32/include -IC:/Qt/Qt5.9.3/Tools/mingw530_32/i686-w64-mingw32/include/c++ -IC:/Qt/Qt5.9.3/Tools/mingw530_32/i686-w64-mingw32/include/c++/i686-w64-mingw32 -IC:/Qt/Qt5.9.3/Tools/mingw530_32/i686-w64-mingw32/include/c++/backward ..\CrossroadGradeManageSystem\pages\exitgames\exitgames.h -o release\moc_exitgames.cpp
+
+release/moc_cancelgames.cpp: C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/QDialog \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/qdialog.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/qtwidgetsglobal.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtGui/qtguiglobal.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qglobal.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qconfig-bootstrapped.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qconfig.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qtcore-config.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qsystemdetection.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qprocessordetection.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qcompilerdetection.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qtypeinfo.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qsysinfo.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qlogging.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qflags.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qatomic.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qbasicatomic.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qatomic_bootstrap.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qgenericatomic.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qatomic_cxx11.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qatomic_msvc.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qglobalstatic.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qmutex.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qnumeric.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qversiontagging.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtGui/qtgui-config.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/qtwidgets-config.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/qwidget.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtGui/qwindowdefs.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qobjectdefs.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qnamespace.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qobjectdefs_impl.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtGui/qwindowdefs_win.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qobject.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qstring.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qchar.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qbytearray.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qrefcount.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qarraydata.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qstringbuilder.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qlist.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qalgorithms.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qiterator.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qhashfunctions.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qpair.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qbytearraylist.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qstringlist.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qregexp.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qstringmatcher.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qcoreevent.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qscopedpointer.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qmetatype.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qvarlengtharray.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qcontainerfwd.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qobject_impl.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qmargins.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtGui/qpaintdevice.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qrect.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qsize.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qpoint.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtGui/qpalette.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtGui/qcolor.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtGui/qrgb.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtGui/qrgba64.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtGui/qbrush.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qvector.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtGui/qmatrix.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtGui/qpolygon.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtGui/qregion.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qdatastream.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qiodevice.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qline.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtGui/qtransform.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtGui/qpainterpath.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtGui/qimage.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtGui/qpixelformat.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtGui/qpixmap.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qsharedpointer.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qshareddata.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qhash.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qsharedpointer_impl.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtGui/qfont.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtGui/qfontmetrics.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtGui/qfontinfo.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/qsizepolicy.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtGui/qcursor.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtGui/qkeysequence.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtGui/qevent.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qvariant.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qmap.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qdebug.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qtextstream.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qlocale.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qset.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qcontiguouscache.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qurl.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qurlquery.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qfile.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qfiledevice.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtGui/qvector2d.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtGui/qtouchdevice.h \
+		../CrossroadGradeManageSystem/serialThread/serialportthread.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QThread \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qthread.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QTimer \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qtimer.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qbasictimer.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSerialPort/QSerialPort \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSerialPort/qserialport.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSerialPort/qserialportglobal.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSerialPort/QSerialPortInfo \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSerialPort/qserialportinfo.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QStringList \
+		../CrossroadGradeManageSystem/tools/tools.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QString \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QDateTime \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qdatetime.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QTime \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QDate \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QCryptographicHash \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qcryptographichash.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QByteArray \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/QSqlTableModel \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/qsqltablemodel.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/qtsqlglobal.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/qsqldatabase.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/qsqlquerymodel.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qabstractitemmodel.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QFile \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/QFileDialog \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/qfiledialog.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qdir.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qfileinfo.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QTextStream \
+		../CrossroadGradeManageSystem/database/dbmanager.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QObject \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/QSqlDatabase \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/QSqlRecord \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/qsqlrecord.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/QSqlQuery \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/qsqlquery.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/QSqlError \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/qsqlerror.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QDebug \
+		../CrossroadGradeManageSystem/database/database_api.h \
+		../CrossroadGradeManageSystem/database/participantstablemodel.h \
+		../CrossroadGradeManageSystem/database/admintablemodel.h \
+		../CrossroadGradeManageSystem/database/rfidrecordstablemodel.h \
+		../CrossroadGradeManageSystem/database/resultstablemodel.h \
+		../CrossroadGradeManageSystem/database/matchestablemodel.h \
+		../CrossroadGradeManageSystem/database/checkpointstablemodel.h \
+		../CrossroadGradeManageSystem/inc/m1356dll.h \
+		../CrossroadGradeManageSystem/inc/m1356dll_global.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/QMessageBox \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/qmessagebox.h \
+		../CrossroadGradeManageSystem/pages/cancelgames/cancelgames.h \
+		release/moc_predefs.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/bin/moc.exe
+	C:\Qt\Qt5.9.3\5.9.3\mingw53_32\bin\moc.exe $(DEFINES) --include release/moc_predefs.h -IC:/Qt/Qt5.9.3/5.9.3/mingw53_32/mkspecs/win32-g++ -IC:/Data/hust_lesson/Four/SysDesign/CrossroadGradeManageSystem -IC:/Qt/Qt5.9.3/5.9.3/mingw53_32/include -IC:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets -IC:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtGui -IC:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtANGLE -IC:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql -IC:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSerialPort -IC:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore -I. -IC:/Qt/Qt5.9.3/Tools/mingw530_32/lib/gcc/i686-w64-mingw32/5.3.0/include -IC:/Qt/Qt5.9.3/Tools/mingw530_32/lib/gcc/i686-w64-mingw32/5.3.0/include-fixed -IC:/Qt/Qt5.9.3/Tools/mingw530_32/i686-w64-mingw32/include -IC:/Qt/Qt5.9.3/Tools/mingw530_32/i686-w64-mingw32/include/c++ -IC:/Qt/Qt5.9.3/Tools/mingw530_32/i686-w64-mingw32/include/c++/i686-w64-mingw32 -IC:/Qt/Qt5.9.3/Tools/mingw530_32/i686-w64-mingw32/include/c++/backward ..\CrossroadGradeManageSystem\pages\cancelgames\cancelgames.h -o release\moc_cancelgames.cpp
 
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
-compiler_uic_make_all: ui_mainwindow.h ui_mainpage.h ui_exportdatas.h ui_settingsdialog.h ui_loginpage.h ui_checkin.h ui_holdgamespages.h ui_signup.h ui_querypage.h ui_broadcastpage.h ui_checkout.h
+compiler_uic_make_all: ui_mainwindow.h ui_mainpage.h ui_exportdatas.h ui_settingsdialog.h ui_loginpage.h ui_checkin.h ui_holdgamespages.h ui_signup.h ui_querypage.h ui_broadcastpage.h ui_exitgames.h ui_cancelgames.h
 compiler_uic_clean:
-	-$(DEL_FILE) ui_mainwindow.h ui_mainpage.h ui_exportdatas.h ui_settingsdialog.h ui_loginpage.h ui_checkin.h ui_holdgamespages.h ui_signup.h ui_querypage.h ui_broadcastpage.h ui_checkout.h
+	-$(DEL_FILE) ui_mainwindow.h ui_mainpage.h ui_exportdatas.h ui_settingsdialog.h ui_loginpage.h ui_checkin.h ui_holdgamespages.h ui_signup.h ui_querypage.h ui_broadcastpage.h ui_exitgames.h ui_cancelgames.h
 ui_mainwindow.h: ../CrossroadGradeManageSystem/mainwindow.ui \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/bin/uic.exe
 	C:\Qt\Qt5.9.3\5.9.3\mingw53_32\bin\uic.exe ..\CrossroadGradeManageSystem\mainwindow.ui -o ui_mainwindow.h
@@ -2194,9 +2659,13 @@ ui_broadcastpage.h: ../CrossroadGradeManageSystem/pages/boradcast/broadcastpage.
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/bin/uic.exe
 	C:\Qt\Qt5.9.3\5.9.3\mingw53_32\bin\uic.exe ..\CrossroadGradeManageSystem\pages\boradcast\broadcastpage.ui -o ui_broadcastpage.h
 
-ui_checkout.h: ../CrossroadGradeManageSystem/pages/checkout/checkout.ui \
+ui_exitgames.h: ../CrossroadGradeManageSystem/pages/exitgames/exitgames.ui \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/bin/uic.exe
-	C:\Qt\Qt5.9.3\5.9.3\mingw53_32\bin\uic.exe ..\CrossroadGradeManageSystem\pages\checkout\checkout.ui -o ui_checkout.h
+	C:\Qt\Qt5.9.3\5.9.3\mingw53_32\bin\uic.exe ..\CrossroadGradeManageSystem\pages\exitgames\exitgames.ui -o ui_exitgames.h
+
+ui_cancelgames.h: ../CrossroadGradeManageSystem/pages/cancelgames/cancelgames.ui \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/bin/uic.exe
+	C:\Qt\Qt5.9.3\5.9.3\mingw53_32\bin\uic.exe ..\CrossroadGradeManageSystem\pages\cancelgames\cancelgames.ui -o ui_cancelgames.h
 
 compiler_yacc_decl_make_all:
 compiler_yacc_decl_clean:
@@ -2366,7 +2835,12 @@ release/checkpointstablemodel.o: ../CrossroadGradeManageSystem/database/checkpoi
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/QSqlError \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/qsqlerror.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QString \
-		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QDebug
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QDateTime \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qdatetime.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QDebug \
+		../CrossroadGradeManageSystem/database/database_api.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/QSqlField \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/qsqlfield.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\checkpointstablemodel.o ..\CrossroadGradeManageSystem\database\checkpointstablemodel.cpp
 
 release/dbmanager.o: ../CrossroadGradeManageSystem/database/dbmanager.cpp ../CrossroadGradeManageSystem/database/dbmanager.h \
@@ -2451,7 +2925,10 @@ release/dbmanager.o: ../CrossroadGradeManageSystem/database/dbmanager.cpp ../Cro
 		../CrossroadGradeManageSystem/database/admintablemodel.h \
 		../CrossroadGradeManageSystem/database/rfidrecordstablemodel.h \
 		../CrossroadGradeManageSystem/database/resultstablemodel.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QTime \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qdatetime.h \
 		../CrossroadGradeManageSystem/database/matchestablemodel.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QDateTime \
 		../CrossroadGradeManageSystem/database/checkpointstablemodel.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\dbmanager.o ..\CrossroadGradeManageSystem\database\dbmanager.cpp
 
@@ -2530,6 +3007,8 @@ release/matchestablemodel.o: ../CrossroadGradeManageSystem/database/matchestable
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/QSqlError \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/qsqlerror.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QString \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QDateTime \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qdatetime.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QDebug \
 		../CrossroadGradeManageSystem/database/database_api.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/QSqlField \
@@ -2692,6 +3171,8 @@ release/resultstablemodel.o: ../CrossroadGradeManageSystem/database/resultstable
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/QSqlError \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/qsqlerror.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QString \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QTime \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qdatetime.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QDebug \
 		../CrossroadGradeManageSystem/database/database_api.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/QSqlField \
@@ -2949,12 +3430,12 @@ release/exportdatas.o: ../CrossroadGradeManageSystem/pages/export/exportdatas.cp
 		../CrossroadGradeManageSystem/database/admintablemodel.h \
 		../CrossroadGradeManageSystem/database/rfidrecordstablemodel.h \
 		../CrossroadGradeManageSystem/database/resultstablemodel.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QTime \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qdatetime.h \
 		../CrossroadGradeManageSystem/database/matchestablemodel.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QDateTime \
 		../CrossroadGradeManageSystem/database/checkpointstablemodel.h \
 		../CrossroadGradeManageSystem/tools/tools.h \
-		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QDateTime \
-		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qdatetime.h \
-		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QTime \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QDate \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QCryptographicHash \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qcryptographichash.h \
@@ -3492,8 +3973,26 @@ release/main.o: ../CrossroadGradeManageSystem/main.cpp ../CrossroadGradeManageSy
 		../CrossroadGradeManageSystem/pages/export/exportdatas.h \
 		../CrossroadGradeManageSystem/pages/login/loginpage.h \
 		../CrossroadGradeManageSystem/pages/checkin/checkin.h \
-		../CrossroadGradeManageSystem/pages/query/querypage.h \
-		../CrossroadGradeManageSystem/pages/holdgames/holdgamespages.h \
+		../CrossroadGradeManageSystem/database/dbmanager.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QObject \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/QSqlDatabase \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/QSqlRecord \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/qsqlrecord.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/QSqlQuery \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/qsqlquery.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/QSqlError \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/qsqlerror.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QDebug \
+		../CrossroadGradeManageSystem/database/participantstablemodel.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QString \
+		../CrossroadGradeManageSystem/database/admintablemodel.h \
+		../CrossroadGradeManageSystem/database/rfidrecordstablemodel.h \
+		../CrossroadGradeManageSystem/database/resultstablemodel.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QTime \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qdatetime.h \
+		../CrossroadGradeManageSystem/database/matchestablemodel.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QDateTime \
+		../CrossroadGradeManageSystem/database/checkpointstablemodel.h \
 		../CrossroadGradeManageSystem/serialThread/serialportthread.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QThread \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qthread.h \
@@ -3504,10 +4003,6 @@ release/main.o: ../CrossroadGradeManageSystem/main.cpp ../CrossroadGradeManageSy
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSerialPort/qserialportinfo.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QStringList \
 		../CrossroadGradeManageSystem/tools/tools.h \
-		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QString \
-		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QDateTime \
-		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qdatetime.h \
-		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QTime \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QDate \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QCryptographicHash \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qcryptographichash.h \
@@ -3520,7 +4015,10 @@ release/main.o: ../CrossroadGradeManageSystem/main.cpp ../CrossroadGradeManageSy
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QTextStream \
 		../CrossroadGradeManageSystem/inc/m1356dll.h \
 		../CrossroadGradeManageSystem/inc/m1356dll_global.h \
-		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QDebug \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/QMessageBox \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/qmessagebox.h \
+		../CrossroadGradeManageSystem/pages/query/querypage.h \
+		../CrossroadGradeManageSystem/pages/holdgames/holdgamespages.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/QLabel \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/qlabel.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/qframe.h \
@@ -3558,7 +4056,6 @@ release/main.o: ../CrossroadGradeManageSystem/main.cpp ../CrossroadGradeManageSy
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qexception.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qfactoryinterface.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qfileselector.h \
-		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QObject \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qfilesystemwatcher.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qfinalstate.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qfuture.h \
@@ -3760,8 +4257,26 @@ release/mainwindow.o: ../CrossroadGradeManageSystem/mainwindow.cpp ../CrossroadG
 		../CrossroadGradeManageSystem/pages/export/exportdatas.h \
 		../CrossroadGradeManageSystem/pages/login/loginpage.h \
 		../CrossroadGradeManageSystem/pages/checkin/checkin.h \
-		../CrossroadGradeManageSystem/pages/query/querypage.h \
-		../CrossroadGradeManageSystem/pages/holdgames/holdgamespages.h \
+		../CrossroadGradeManageSystem/database/dbmanager.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QObject \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/QSqlDatabase \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/QSqlRecord \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/qsqlrecord.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/QSqlQuery \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/qsqlquery.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/QSqlError \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/qsqlerror.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QDebug \
+		../CrossroadGradeManageSystem/database/participantstablemodel.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QString \
+		../CrossroadGradeManageSystem/database/admintablemodel.h \
+		../CrossroadGradeManageSystem/database/rfidrecordstablemodel.h \
+		../CrossroadGradeManageSystem/database/resultstablemodel.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QTime \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qdatetime.h \
+		../CrossroadGradeManageSystem/database/matchestablemodel.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QDateTime \
+		../CrossroadGradeManageSystem/database/checkpointstablemodel.h \
 		../CrossroadGradeManageSystem/serialThread/serialportthread.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QThread \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qthread.h \
@@ -3772,10 +4287,6 @@ release/mainwindow.o: ../CrossroadGradeManageSystem/mainwindow.cpp ../CrossroadG
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSerialPort/qserialportinfo.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QStringList \
 		../CrossroadGradeManageSystem/tools/tools.h \
-		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QString \
-		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QDateTime \
-		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qdatetime.h \
-		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QTime \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QDate \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QCryptographicHash \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qcryptographichash.h \
@@ -3788,7 +4299,10 @@ release/mainwindow.o: ../CrossroadGradeManageSystem/mainwindow.cpp ../CrossroadG
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QTextStream \
 		../CrossroadGradeManageSystem/inc/m1356dll.h \
 		../CrossroadGradeManageSystem/inc/m1356dll_global.h \
-		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QDebug \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/QMessageBox \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/qmessagebox.h \
+		../CrossroadGradeManageSystem/pages/query/querypage.h \
+		../CrossroadGradeManageSystem/pages/holdgames/holdgamespages.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/QLabel \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/qlabel.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/qframe.h \
@@ -3831,8 +4345,6 @@ release/mainwindow.o: ../CrossroadGradeManageSystem/mainwindow.cpp ../CrossroadG
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/qstatusbar.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/QToolBar \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/qtoolbar.h \
-		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/QMessageBox \
-		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/qmessagebox.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/QHBoxLayout \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/qboxlayout.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/qlayout.h \
@@ -4302,6 +4814,61 @@ release/checkin.o: ../CrossroadGradeManageSystem/pages/checkin/checkin.cpp ../Cr
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qfiledevice.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtGui/qvector2d.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtGui/qtouchdevice.h \
+		../CrossroadGradeManageSystem/database/dbmanager.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QObject \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/QSqlTableModel \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/qsqltablemodel.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/qtsqlglobal.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/qsqldatabase.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/qsqlquerymodel.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qabstractitemmodel.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/QSqlDatabase \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/QSqlRecord \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/qsqlrecord.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/QSqlQuery \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/qsqlquery.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/QSqlError \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/qsqlerror.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QDebug \
+		../CrossroadGradeManageSystem/database/database_api.h \
+		../CrossroadGradeManageSystem/database/participantstablemodel.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QString \
+		../CrossroadGradeManageSystem/database/admintablemodel.h \
+		../CrossroadGradeManageSystem/database/rfidrecordstablemodel.h \
+		../CrossroadGradeManageSystem/database/resultstablemodel.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QTime \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qdatetime.h \
+		../CrossroadGradeManageSystem/database/matchestablemodel.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QDateTime \
+		../CrossroadGradeManageSystem/database/checkpointstablemodel.h \
+		../CrossroadGradeManageSystem/serialThread/serialportthread.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QThread \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qthread.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QTimer \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qtimer.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qbasictimer.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSerialPort/QSerialPort \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSerialPort/qserialport.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSerialPort/qserialportglobal.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSerialPort/QSerialPortInfo \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSerialPort/qserialportinfo.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QStringList \
+		../CrossroadGradeManageSystem/tools/tools.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QDate \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QCryptographicHash \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qcryptographichash.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QByteArray \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QFile \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/QFileDialog \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/qfiledialog.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qdir.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qfileinfo.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/qdialog.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QTextStream \
+		../CrossroadGradeManageSystem/inc/m1356dll.h \
+		../CrossroadGradeManageSystem/inc/m1356dll_global.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/QMessageBox \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/qmessagebox.h \
 		ui_checkin.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QVariant \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/QAction \
@@ -4331,7 +4898,6 @@ release/checkin.o: ../CrossroadGradeManageSystem/pages/checkin/checkin.cpp ../Cr
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/qtabwidget.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/qrubberband.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/qframe.h \
-		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qabstractitemmodel.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/QFrame \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/QGroupBox \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/qgroupbox.h \
@@ -4463,9 +5029,62 @@ release/holdgamespages.o: ../CrossroadGradeManageSystem/pages/holdgames/holdgame
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qfiledevice.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtGui/qvector2d.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtGui/qtouchdevice.h \
-		ui_holdgamespages.h \
-		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QDate \
+		../CrossroadGradeManageSystem/database/dbmanager.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QObject \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/QSqlTableModel \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/qsqltablemodel.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/qtsqlglobal.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/qsqldatabase.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/qsqlquerymodel.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qabstractitemmodel.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/QSqlDatabase \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/QSqlRecord \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/qsqlrecord.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/QSqlQuery \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/qsqlquery.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/QSqlError \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/qsqlerror.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QDebug \
+		../CrossroadGradeManageSystem/database/database_api.h \
+		../CrossroadGradeManageSystem/database/participantstablemodel.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QString \
+		../CrossroadGradeManageSystem/database/admintablemodel.h \
+		../CrossroadGradeManageSystem/database/rfidrecordstablemodel.h \
+		../CrossroadGradeManageSystem/database/resultstablemodel.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QTime \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qdatetime.h \
+		../CrossroadGradeManageSystem/database/matchestablemodel.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QDateTime \
+		../CrossroadGradeManageSystem/database/checkpointstablemodel.h \
+		../CrossroadGradeManageSystem/serialThread/serialportthread.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QThread \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qthread.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QTimer \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qtimer.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qbasictimer.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSerialPort/QSerialPort \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSerialPort/qserialport.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSerialPort/qserialportglobal.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSerialPort/QSerialPortInfo \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSerialPort/qserialportinfo.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QStringList \
+		../CrossroadGradeManageSystem/tools/tools.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QDate \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QCryptographicHash \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qcryptographichash.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QByteArray \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QFile \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/QFileDialog \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/qfiledialog.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qdir.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qfileinfo.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/qdialog.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QTextStream \
+		../CrossroadGradeManageSystem/inc/m1356dll.h \
+		../CrossroadGradeManageSystem/inc/m1356dll_global.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/QMessageBox \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/qmessagebox.h \
+		ui_holdgamespages.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QVariant \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/QAction \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/qaction.h \
@@ -4494,7 +5113,6 @@ release/holdgamespages.o: ../CrossroadGradeManageSystem/pages/holdgames/holdgame
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/qtabwidget.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/qrubberband.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/qframe.h \
-		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qabstractitemmodel.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/QDateTimeEdit \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/qdatetimeedit.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/QGroupBox \
@@ -4625,9 +5243,62 @@ release/signup.o: ../CrossroadGradeManageSystem/pages/signup/signup.cpp ../Cross
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qfiledevice.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtGui/qvector2d.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtGui/qtouchdevice.h \
-		ui_signup.h \
-		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QDate \
+		../CrossroadGradeManageSystem/database/dbmanager.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QObject \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/QSqlTableModel \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/qsqltablemodel.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/qtsqlglobal.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/qsqldatabase.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/qsqlquerymodel.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qabstractitemmodel.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/QSqlDatabase \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/QSqlRecord \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/qsqlrecord.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/QSqlQuery \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/qsqlquery.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/QSqlError \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/qsqlerror.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QDebug \
+		../CrossroadGradeManageSystem/database/database_api.h \
+		../CrossroadGradeManageSystem/database/participantstablemodel.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QString \
+		../CrossroadGradeManageSystem/database/admintablemodel.h \
+		../CrossroadGradeManageSystem/database/rfidrecordstablemodel.h \
+		../CrossroadGradeManageSystem/database/resultstablemodel.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QTime \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qdatetime.h \
+		../CrossroadGradeManageSystem/database/matchestablemodel.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QDateTime \
+		../CrossroadGradeManageSystem/database/checkpointstablemodel.h \
+		../CrossroadGradeManageSystem/serialThread/serialportthread.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QThread \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qthread.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QTimer \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qtimer.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qbasictimer.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSerialPort/QSerialPort \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSerialPort/qserialport.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSerialPort/qserialportglobal.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSerialPort/QSerialPortInfo \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSerialPort/qserialportinfo.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QStringList \
+		../CrossroadGradeManageSystem/tools/tools.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QDate \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QCryptographicHash \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qcryptographichash.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QByteArray \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QFile \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/QFileDialog \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/qfiledialog.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qdir.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qfileinfo.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/qdialog.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QTextStream \
+		../CrossroadGradeManageSystem/inc/m1356dll.h \
+		../CrossroadGradeManageSystem/inc/m1356dll_global.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/QMessageBox \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/qmessagebox.h \
+		ui_signup.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QVariant \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/QAction \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/qaction.h \
@@ -4656,9 +5327,6 @@ release/signup.o: ../CrossroadGradeManageSystem/pages/signup/signup.cpp ../Cross
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/qtabwidget.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/qrubberband.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/qframe.h \
-		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qabstractitemmodel.h \
-		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/QDateTimeEdit \
-		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/qdatetimeedit.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/QGroupBox \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/qgroupbox.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/QHBoxLayout \
@@ -4685,14 +5353,17 @@ release/signup.o: ../CrossroadGradeManageSystem/pages/signup/signup.cpp ../Cross
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/QSpacerItem \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/QTableView \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/qtableview.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/QTimeEdit \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/qdatetimeedit.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/QVBoxLayout
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\signup.o ..\CrossroadGradeManageSystem\pages\signup\signup.cpp
 
 release/querypage.o: ../CrossroadGradeManageSystem/pages/query/querypage.cpp ../CrossroadGradeManageSystem/pages/query/querypage.h \
-		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/QWidget \
-		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/qwidget.h \
-		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/qtwidgetsglobal.h \
-		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtGui/qtguiglobal.h \
+		../CrossroadGradeManageSystem/database/dbmanager.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QObject \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qobject.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qobjectdefs.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qnamespace.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qglobal.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qconfig-bootstrapped.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qconfig.h \
@@ -4714,14 +5385,7 @@ release/querypage.o: ../CrossroadGradeManageSystem/pages/query/querypage.cpp ../
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qmutex.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qnumeric.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qversiontagging.h \
-		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtGui/qtgui-config.h \
-		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/qtwidgets-config.h \
-		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtGui/qwindowdefs.h \
-		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qobjectdefs.h \
-		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qnamespace.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qobjectdefs_impl.h \
-		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtGui/qwindowdefs_win.h \
-		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qobject.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qstring.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qchar.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qbytearray.h \
@@ -4743,32 +5407,98 @@ release/querypage.o: ../CrossroadGradeManageSystem/pages/query/querypage.cpp ../
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qvarlengtharray.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qcontainerfwd.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qobject_impl.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/QSqlTableModel \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/qsqltablemodel.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/qtsqlglobal.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/qsqldatabase.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/qsqlquerymodel.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qabstractitemmodel.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qvariant.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qmap.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qdebug.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qhash.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qtextstream.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qiodevice.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qlocale.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qshareddata.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qvector.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qpoint.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qset.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qcontiguouscache.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qsharedpointer.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qsharedpointer_impl.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/QSqlDatabase \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/QSqlRecord \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/qsqlrecord.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/QSqlQuery \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/qsqlquery.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/QSqlError \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/qsqlerror.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QDebug \
+		../CrossroadGradeManageSystem/database/database_api.h \
+		../CrossroadGradeManageSystem/database/participantstablemodel.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QString \
+		../CrossroadGradeManageSystem/database/admintablemodel.h \
+		../CrossroadGradeManageSystem/database/rfidrecordstablemodel.h \
+		../CrossroadGradeManageSystem/database/resultstablemodel.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QTime \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qdatetime.h \
+		../CrossroadGradeManageSystem/database/matchestablemodel.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QDateTime \
+		../CrossroadGradeManageSystem/database/checkpointstablemodel.h \
+		../CrossroadGradeManageSystem/serialThread/serialportthread.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QThread \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qthread.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QTimer \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qtimer.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qbasictimer.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSerialPort/QSerialPort \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSerialPort/qserialport.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSerialPort/qserialportglobal.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSerialPort/QSerialPortInfo \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSerialPort/qserialportinfo.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QStringList \
+		../CrossroadGradeManageSystem/tools/tools.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QDate \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QCryptographicHash \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qcryptographichash.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QByteArray \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QFile \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qfile.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qfiledevice.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/QFileDialog \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/qfiledialog.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/qtwidgetsglobal.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtGui/qtguiglobal.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtGui/qtgui-config.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/qtwidgets-config.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qdir.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qfileinfo.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qurl.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qurlquery.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/qdialog.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/qwidget.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtGui/qwindowdefs.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtGui/qwindowdefs_win.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qmargins.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtGui/qpaintdevice.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qrect.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qsize.h \
-		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qpoint.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtGui/qpalette.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtGui/qcolor.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtGui/qrgb.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtGui/qrgba64.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtGui/qbrush.h \
-		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qvector.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtGui/qmatrix.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtGui/qpolygon.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtGui/qregion.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qdatastream.h \
-		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qiodevice.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qline.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtGui/qtransform.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtGui/qpainterpath.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtGui/qimage.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtGui/qpixelformat.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtGui/qpixmap.h \
-		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qsharedpointer.h \
-		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qshareddata.h \
-		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qhash.h \
-		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qsharedpointer_impl.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtGui/qfont.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtGui/qfontmetrics.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtGui/qfontinfo.h \
@@ -4776,19 +5506,12 @@ release/querypage.o: ../CrossroadGradeManageSystem/pages/query/querypage.cpp ../
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtGui/qcursor.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtGui/qkeysequence.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtGui/qevent.h \
-		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qvariant.h \
-		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qmap.h \
-		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qdebug.h \
-		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qtextstream.h \
-		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qlocale.h \
-		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qset.h \
-		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qcontiguouscache.h \
-		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qurl.h \
-		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qurlquery.h \
-		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qfile.h \
-		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qfiledevice.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtGui/qvector2d.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtGui/qtouchdevice.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QTextStream \
+		../CrossroadGradeManageSystem/inc/m1356dll.h \
+		../CrossroadGradeManageSystem/inc/m1356dll_global.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/QWidget \
 		ui_querypage.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QVariant \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/QAction \
@@ -4818,7 +5541,6 @@ release/querypage.o: ../CrossroadGradeManageSystem/pages/query/querypage.cpp ../
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/qtabwidget.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/qrubberband.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/qframe.h \
-		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qabstractitemmodel.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/QGroupBox \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/qgroupbox.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/QHBoxLayout \
@@ -4844,7 +5566,11 @@ release/querypage.o: ../CrossroadGradeManageSystem/pages/query/querypage.cpp ../
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/qabstractbutton.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/QSpacerItem \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/QTableView \
-		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/qtableview.h
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/qtableview.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/QMessageBox \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/qmessagebox.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QRegExp \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtGui/QRegExpValidator
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\querypage.o ..\CrossroadGradeManageSystem\pages\query\querypage.cpp
 
 release/broadcastpage.o: ../CrossroadGradeManageSystem/pages/boradcast/broadcastpage.cpp ../CrossroadGradeManageSystem/pages/boradcast/broadcastpage.h \
@@ -4997,9 +5723,9 @@ release/broadcastpage.o: ../CrossroadGradeManageSystem/pages/boradcast/broadcast
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/qabstractbutton.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\broadcastpage.o ..\CrossroadGradeManageSystem\pages\boradcast\broadcastpage.cpp
 
-release/checkout.o: ../CrossroadGradeManageSystem/pages/checkout/checkout.cpp ../CrossroadGradeManageSystem/pages/checkout/checkout.h \
-		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/QWidget \
-		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/qwidget.h \
+release/exitgames.o: ../CrossroadGradeManageSystem/pages/exitgames/exitgames.cpp ../CrossroadGradeManageSystem/pages/exitgames/exitgames.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/QDialog \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/qdialog.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/qtwidgetsglobal.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtGui/qtguiglobal.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qglobal.h \
@@ -5025,6 +5751,7 @@ release/checkout.o: ../CrossroadGradeManageSystem/pages/checkout/checkout.cpp ..
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qversiontagging.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtGui/qtgui-config.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/qtwidgets-config.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/qwidget.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtGui/qwindowdefs.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qobjectdefs.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qnamespace.h \
@@ -5098,7 +5825,61 @@ release/checkout.o: ../CrossroadGradeManageSystem/pages/checkout/checkout.cpp ..
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qfiledevice.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtGui/qvector2d.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtGui/qtouchdevice.h \
-		ui_checkout.h \
+		../CrossroadGradeManageSystem/serialThread/serialportthread.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QThread \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qthread.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QTimer \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qtimer.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qbasictimer.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSerialPort/QSerialPort \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSerialPort/qserialport.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSerialPort/qserialportglobal.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSerialPort/QSerialPortInfo \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSerialPort/qserialportinfo.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QStringList \
+		../CrossroadGradeManageSystem/tools/tools.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QString \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QDateTime \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qdatetime.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QTime \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QDate \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QCryptographicHash \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qcryptographichash.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QByteArray \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/QSqlTableModel \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/qsqltablemodel.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/qtsqlglobal.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/qsqldatabase.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/qsqlquerymodel.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qabstractitemmodel.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QFile \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/QFileDialog \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/qfiledialog.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qdir.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qfileinfo.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QTextStream \
+		../CrossroadGradeManageSystem/database/dbmanager.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QObject \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/QSqlDatabase \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/QSqlRecord \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/qsqlrecord.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/QSqlQuery \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/qsqlquery.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/QSqlError \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/qsqlerror.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QDebug \
+		../CrossroadGradeManageSystem/database/database_api.h \
+		../CrossroadGradeManageSystem/database/participantstablemodel.h \
+		../CrossroadGradeManageSystem/database/admintablemodel.h \
+		../CrossroadGradeManageSystem/database/rfidrecordstablemodel.h \
+		../CrossroadGradeManageSystem/database/resultstablemodel.h \
+		../CrossroadGradeManageSystem/database/matchestablemodel.h \
+		../CrossroadGradeManageSystem/database/checkpointstablemodel.h \
+		../CrossroadGradeManageSystem/inc/m1356dll.h \
+		../CrossroadGradeManageSystem/inc/m1356dll_global.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/QMessageBox \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/qmessagebox.h \
+		ui_exitgames.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QVariant \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/QAction \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/qaction.h \
@@ -5113,12 +5894,18 @@ release/checkout.o: ../CrossroadGradeManageSystem/pages/checkout/checkout.cpp ..
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtGui/qinputmethod.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/QButtonGroup \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/qbuttongroup.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/QGroupBox \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/qgroupbox.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/qframe.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/QHBoxLayout \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/qboxlayout.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/qlayout.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/qlayoutitem.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/qgridlayout.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/QHeaderView \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/qheaderview.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/qabstractitemview.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/qabstractscrollarea.h \
-		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/qframe.h \
-		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qabstractitemmodel.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qitemselectionmodel.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/qabstractitemdelegate.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/qstyleoption.h \
@@ -5130,8 +5917,229 @@ release/checkout.o: ../CrossroadGradeManageSystem/pages/checkout/checkout.cpp ..
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/qstyle.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/qtabbar.h \
 		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/qtabwidget.h \
-		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/qrubberband.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\checkout.o ..\CrossroadGradeManageSystem\pages\checkout\checkout.cpp
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/qrubberband.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/QLabel \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/qlabel.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/QLineEdit \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/qlineedit.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtGui/qtextcursor.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtGui/qtextformat.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtGui/qpen.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtGui/qtextoption.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/QPushButton \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/qpushbutton.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/qabstractbutton.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/QSpacerItem \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/QVBoxLayout \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/QWidget
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\exitgames.o ..\CrossroadGradeManageSystem\pages\exitgames\exitgames.cpp
+
+release/cancelgames.o: ../CrossroadGradeManageSystem/pages/cancelgames/cancelgames.cpp ../CrossroadGradeManageSystem/pages/cancelgames/cancelgames.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/QDialog \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/qdialog.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/qtwidgetsglobal.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtGui/qtguiglobal.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qglobal.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qconfig-bootstrapped.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qconfig.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qtcore-config.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qsystemdetection.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qprocessordetection.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qcompilerdetection.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qtypeinfo.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qsysinfo.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qlogging.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qflags.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qatomic.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qbasicatomic.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qatomic_bootstrap.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qgenericatomic.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qatomic_cxx11.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qatomic_msvc.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qglobalstatic.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qmutex.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qnumeric.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qversiontagging.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtGui/qtgui-config.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/qtwidgets-config.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/qwidget.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtGui/qwindowdefs.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qobjectdefs.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qnamespace.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qobjectdefs_impl.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtGui/qwindowdefs_win.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qobject.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qstring.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qchar.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qbytearray.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qrefcount.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qarraydata.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qstringbuilder.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qlist.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qalgorithms.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qiterator.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qhashfunctions.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qpair.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qbytearraylist.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qstringlist.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qregexp.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qstringmatcher.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qcoreevent.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qscopedpointer.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qmetatype.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qvarlengtharray.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qcontainerfwd.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qobject_impl.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qmargins.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtGui/qpaintdevice.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qrect.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qsize.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qpoint.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtGui/qpalette.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtGui/qcolor.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtGui/qrgb.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtGui/qrgba64.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtGui/qbrush.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qvector.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtGui/qmatrix.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtGui/qpolygon.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtGui/qregion.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qdatastream.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qiodevice.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qline.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtGui/qtransform.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtGui/qpainterpath.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtGui/qimage.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtGui/qpixelformat.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtGui/qpixmap.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qsharedpointer.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qshareddata.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qhash.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qsharedpointer_impl.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtGui/qfont.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtGui/qfontmetrics.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtGui/qfontinfo.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/qsizepolicy.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtGui/qcursor.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtGui/qkeysequence.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtGui/qevent.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qvariant.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qmap.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qdebug.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qtextstream.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qlocale.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qset.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qcontiguouscache.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qurl.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qurlquery.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qfile.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qfiledevice.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtGui/qvector2d.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtGui/qtouchdevice.h \
+		../CrossroadGradeManageSystem/serialThread/serialportthread.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QThread \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qthread.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QTimer \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qtimer.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qbasictimer.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSerialPort/QSerialPort \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSerialPort/qserialport.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSerialPort/qserialportglobal.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSerialPort/QSerialPortInfo \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSerialPort/qserialportinfo.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QStringList \
+		../CrossroadGradeManageSystem/tools/tools.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QString \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QDateTime \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qdatetime.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QTime \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QDate \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QCryptographicHash \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qcryptographichash.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QByteArray \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/QSqlTableModel \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/qsqltablemodel.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/qtsqlglobal.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/qsqldatabase.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/qsqlquerymodel.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qabstractitemmodel.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QFile \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/QFileDialog \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/qfiledialog.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qdir.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qfileinfo.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QTextStream \
+		../CrossroadGradeManageSystem/database/dbmanager.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QObject \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/QSqlDatabase \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/QSqlRecord \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/qsqlrecord.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/QSqlQuery \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/qsqlquery.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/QSqlError \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtSql/qsqlerror.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QDebug \
+		../CrossroadGradeManageSystem/database/database_api.h \
+		../CrossroadGradeManageSystem/database/participantstablemodel.h \
+		../CrossroadGradeManageSystem/database/admintablemodel.h \
+		../CrossroadGradeManageSystem/database/rfidrecordstablemodel.h \
+		../CrossroadGradeManageSystem/database/resultstablemodel.h \
+		../CrossroadGradeManageSystem/database/matchestablemodel.h \
+		../CrossroadGradeManageSystem/database/checkpointstablemodel.h \
+		../CrossroadGradeManageSystem/inc/m1356dll.h \
+		../CrossroadGradeManageSystem/inc/m1356dll_global.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/QMessageBox \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/qmessagebox.h \
+		ui_cancelgames.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/QVariant \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/QAction \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/qaction.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtGui/qicon.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/qactiongroup.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/QApplication \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/qapplication.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qcoreapplication.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qeventloop.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/qdesktopwidget.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtGui/qguiapplication.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtGui/qinputmethod.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/QButtonGroup \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/qbuttongroup.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/QComboBox \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/qcombobox.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/qabstractitemdelegate.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/qstyleoption.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/qabstractspinbox.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtGui/qvalidator.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qregularexpression.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/qslider.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/qabstractslider.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/qstyle.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/qtabbar.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/qtabwidget.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/qrubberband.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/qframe.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/QGroupBox \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/qgroupbox.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/QHBoxLayout \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/qboxlayout.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/qlayout.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/qlayoutitem.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/qgridlayout.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/QHeaderView \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/qheaderview.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/qabstractitemview.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/qabstractscrollarea.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtCore/qitemselectionmodel.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/QLabel \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/qlabel.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/QPushButton \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/qpushbutton.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/qabstractbutton.h \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/QSpacerItem \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/QVBoxLayout \
+		C:/Qt/Qt5.9.3/5.9.3/mingw53_32/include/QtWidgets/QWidget
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\cancelgames.o ..\CrossroadGradeManageSystem\pages\cancelgames\cancelgames.cpp
 
 release/qrc_res.o: release/qrc_res.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\qrc_res.o release\qrc_res.cpp
@@ -5190,8 +6198,11 @@ release/moc_querypage.o: release/moc_querypage.cpp
 release/moc_broadcastpage.o: release/moc_broadcastpage.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\moc_broadcastpage.o release\moc_broadcastpage.cpp
 
-release/moc_checkout.o: release/moc_checkout.cpp 
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\moc_checkout.o release\moc_checkout.cpp
+release/moc_exitgames.o: release/moc_exitgames.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\moc_exitgames.o release\moc_exitgames.cpp
+
+release/moc_cancelgames.o: release/moc_cancelgames.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\moc_cancelgames.o release\moc_cancelgames.cpp
 
 ####### Install
 

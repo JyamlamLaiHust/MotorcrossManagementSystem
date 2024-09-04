@@ -63,7 +63,7 @@ void MatchesTableModel::qt_static_metacall(QObject *_o, QMetaObject::Call _c, in
 }
 
 const QMetaObject MatchesTableModel::staticMetaObject = {
-    { &QObject::staticMetaObject, qt_meta_stringdata_MatchesTableModel.data,
+    { &QSqlTableModel::staticMetaObject, qt_meta_stringdata_MatchesTableModel.data,
       qt_meta_data_MatchesTableModel,  qt_static_metacall, nullptr, nullptr}
 };
 
@@ -78,12 +78,12 @@ void *MatchesTableModel::qt_metacast(const char *_clname)
     if (!_clname) return nullptr;
     if (!strcmp(_clname, qt_meta_stringdata_MatchesTableModel.stringdata0))
         return static_cast<void*>(this);
-    return QObject::qt_metacast(_clname);
+    return QSqlTableModel::qt_metacast(_clname);
 }
 
 int MatchesTableModel::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 {
-    _id = QObject::qt_metacall(_c, _id, _a);
+    _id = QSqlTableModel::qt_metacall(_c, _id, _a);
     return _id;
 }
 QT_WARNING_POP

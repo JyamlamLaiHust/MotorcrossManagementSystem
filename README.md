@@ -80,34 +80,6 @@ CREATE TABLE matches (
 );
 ```
 
-- 成绩表
-  - 成绩记录 id
-  - 赛事 id
-  - 运动员 id
-  - 打卡点 id
-  - 到达时间
-  - 离开时间
-  - 总用时
-  - 名次
-
-```mysql
-CREATE TABLE results (
-    result_id INT AUTO_INCREMENT PRIMARY KEY,
-    participant_id INT NOT NULL,
-    event_id INT NOT NULL,
-    checkpoint_id INT NOT NULL,
-    arrival_time DATETIME,
-    departure_time DATETIME,
-    total_time TIME,
-    ranking INT,
-    FOREIGN KEY (participant_id) REFERENCES participants(participant_id),
-    FOREIGN KEY (event_id) REFERENCES events(event_id),
-    FOREIGN KEY (checkpoint_id) REFERENCES checkpoints(checkpoint_id)
-);
-```
-
-> **rank 是一个 SQL 标准函数，不能用于键命名。**
-
 - 打卡点表
   - 打卡点 id
   - 对应赛事 id
@@ -135,7 +107,33 @@ CREATE TABLE checkpoints (
 
 ```
 
-- RFID 标签记录表
+- 成绩表
+  - 成绩记录 id
+  - 赛事名称
+  - 打卡点名称
+  - 时间戳
+  - 方向
+  - 总用时 （现在的时间 - 比赛开始时间）
+  - 名次 （对参加同一比赛的所有运动员排序，返回名次）
+  - **rfid 卡号**
+
+```mysql
+CREATE TABLE results (
+    result_id INT AUTO_INCREMENT PRIMARY KEY,
+    participant_id INT NOT NULL,
+    event_id INT NOT NULL,
+    checkpoint_id INT NOT NULL,
+    timeStamp DATETIME,
+    direction CHAR(1) NOT NULL,
+    total_time TIME,
+    ranking INT,
+    rfid标签卡号 VARCHAR(20) UNIQUE NOT NULL,
+);
+```
+
+> **rank 是一个 SQL 标准函数，不能用于键命名。**
+
+- RFID 标签记录表（弃用）
   - 标签 id
   - 标签卡号
   - 检查站 id
@@ -161,6 +159,8 @@ participants、matches、checkpoints、rfid、results 表的顺序
 - participants、checkpoints 要在 rfid 前面
 
 > **引用外键必须参考已经建好的表，而且数据类型必须相同**
+>
+> **只能引用别表的主键作为外键**
 
 
 
@@ -248,12 +248,18 @@ participants、matches、checkpoints、rfid、results 表的顺序
 # 06 目前待解决问题
 
 - 前端变形（暂时忽略）
-- 数据库重构
-- 打卡功能（缺后端）
-  - 打卡的 findRecord 怎么写啊
-- 运动员退出比赛、取消比赛和查询成绩表功能（缺前后端）
+- ~~数据库重构~~
+- 打卡功能
+  - ~~打卡的 findRecord 计算 总用时和计算名次 —— sql 查询语句~~
+- 查询成绩表
+  - ~~首先要设计几个 Widget~~
+  - ~~然后修改变量名称应该就能跑起来~~
+- 运动员退出比赛
+  - ~~两个函数 findRecordByRfidTag 和 deleteRecord~~
+- 取消比赛
+  - ~~用 eventName 查询 —— sql语句~~
 - HoldGames 结合 mqtt 发送消息
-- 项目转移到visual studio（选做，结果不可预示，假如工作量很大就算了）
+- 项目转移到 visual studio（选做，结果不可预示，假如工作量很大就算了）
   - [vs 插件](https://365.kdocs.cn/l/csI0iin9yuKS?openfrom=docs)
   - [Google Test 和 OpenCppCoverage](https://365.kdocs.cn/l/cocxP3zIxuA4?openfrom=docs)
 - tomcat 上线

@@ -7,7 +7,7 @@
  *日期: 2024-08-27
  *描述: 运动员表的model
 ***************************************/
-MatchesTableModel::MatchesTableModel(QObject *parent) : QObject(parent)
+MatchesTableModel::MatchesTableModel(QObject *parent) : QSqlTableModel(parent)
 {
     tableName = TABLE_NAME_MATCHES;
     header<<QObject::trUtf8("赛事id")<<QObject::trUtf8("赛事名称")<< QObject::trUtf8("赛事开始时间")
@@ -75,7 +75,7 @@ int MatchesTableModel::findRecord(QString eventName)
 {
     int count = model->rowCount();
     for(int row=0; row < count; row++){
-        if((model->data(model->index(row, 0))).toString() == eventName)
+        if((model->data(model->index(row, 1))).toString() == eventName)
             return row;
     }
     return -1;
@@ -100,12 +100,12 @@ int MatchesTableModel::insertRecords(QString eventName, QDateTime startTime, QDa
 {
     QSqlRecord record;
 
-    record.append(QSqlField(header.at(0), QVariant::Int));
-    record.append(QSqlField(header.at(1), QVariant::DateTime));
+    record.append(QSqlField(header.at(1), QVariant::Int));
     record.append(QSqlField(header.at(2), QVariant::DateTime));
-    record.append(QSqlField(header.at(3), QVariant::Double));
+    record.append(QSqlField(header.at(3), QVariant::DateTime));
     record.append(QSqlField(header.at(4), QVariant::Double));
     record.append(QSqlField(header.at(5), QVariant::Double));
+    record.append(QSqlField(header.at(6), QVariant::Double));
 
 
     record.setValue(0, eventName);
@@ -117,6 +117,44 @@ int MatchesTableModel::insertRecords(QString eventName, QDateTime startTime, QDa
 
     model->insertRecord(-1,record);
     return model->rowCount();
+}
+
+bool MatchesTableModel::deleteRecord(QString eventName)
+{
+    // 添加一个查询记录逻辑
+    QSqlQuery query;
+    QString sql = "DELETE FROM table_matches WHERE 赛事名称 = :eventName;";
+
+    // 准备 SQL 语句
+    query.prepare(sql);
+    query.bindValue(":eventName", eventName);
+
+    if(query.exec()) {
+        qDebug() << "Delete operation failed:" << query.lastError().text();
+    } else {
+        qDebug() << "Record deleted successfully.";
+    }
+}
+
+/**
+    根据比赛名称查找开始时间
+*/
+QDateTime MatchesTableModel::getStartTime(const QString &eventName)
+{
+    QSqlQuery query;
+    QString sql = "SELECT 赛事开始时间 FROM table_matches WHERE 赛事名称 = :eventName;";
+    query.prepare(sql);
+    query.bindValue(":eventName", eventName);
+
+    if (query.exec()) {
+        if (query.next()) {
+            return query.value(0).toDateTime();
+        }
+    } else {
+        qDebug() << "Query execution failed:" << query.lastError().text();
+    }
+
+    return QDateTime(); // 返回默认的 QDateTime 对象
 }
 
 ///**

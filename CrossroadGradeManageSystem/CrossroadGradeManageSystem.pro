@@ -46,7 +46,8 @@ SOURCES += \
     pages/signup/signup.cpp \
     pages/query/querypage.cpp \
     pages/boradcast/broadcastpage.cpp \
-    pages/checkout/checkout.cpp
+    pages/exitgames/exitgames.cpp \
+    pages/cancelgames/cancelgames.cpp
 
 
 HEADERS += \
@@ -73,7 +74,9 @@ HEADERS += \
     pages/signup/signup.h \
     pages/query/querypage.h \
     pages/boradcast/broadcastpage.h \
-    pages/checkout/checkout.h
+    pages/exitgames/exitgames.h \
+    pages/cancelgames/cancelgames.h
+
 
 
 FORMS += \
@@ -87,7 +90,8 @@ FORMS += \
     pages/signup/signup.ui \
     pages/query/querypage.ui \
     pages/boradcast/broadcastpage.ui \
-    pages/checkout/checkout.ui
+    pages/exitgames/exitgames.ui \
+    pages/cancelgames/cancelgames.ui
 
 
 DISTFILES += \

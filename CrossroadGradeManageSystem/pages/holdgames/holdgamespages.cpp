@@ -122,7 +122,7 @@ void HoldGamesPages::on_btn_bond_clicked()
     }
 
 
-    if(!checkPointTable->insertRecords(eventName, checkPointName, segmentDistance, segmentElevation, openTime, closeTime))
+    if(!checkPointTable->insertRecords(checkPointName, segmentDistance, segmentElevation, openTime, closeTime))
     {
         message.setText(tr("比赛创建失败，请重试!"));
         message.exec();

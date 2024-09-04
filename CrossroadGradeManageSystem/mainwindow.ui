@@ -34,7 +34,7 @@
      <x>0</x>
      <y>0</y>
      <width>750</width>
-     <height>21</height>
+     <height>17</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu">
@@ -68,14 +68,17 @@
     <property name="title">
      <string>查询</string>
     </property>
-    <addaction name="action_participants"/>
+    <addaction name="action_participants_one"/>
+    <addaction name="action_participants_two"/>
+    <addaction name="separator"/>
     <addaction name="action_competition"/>
+    <addaction name="action_result"/>
    </widget>
    <widget class="QMenu" name="menu_5">
     <property name="title">
      <string>帮助</string>
     </property>
-    <addaction name="actionabout"/>
+    <addaction name="action_about"/>
    </widget>
    <addaction name="menu"/>
    <addaction name="menu_2"/>
@@ -165,14 +168,24 @@
     <string>比赛查询</string>
    </property>
   </action>
-  <action name="action_participants">
+  <action name="action_participants_one">
    <property name="text">
-    <string>运动员查询</string>
+    <string>运动员查询_卡号</string>
    </property>
   </action>
-  <action name="actionabout">
+  <action name="action_about">
    <property name="text">
     <string>关于</string>
+   </property>
+  </action>
+  <action name="action_result">
+   <property name="text">
+    <string>成绩查询</string>
+   </property>
+  </action>
+  <action name="action_participants_two">
+   <property name="text">
+    <string>运动员查询_姓名</string>
    </property>
   </action>
  </widget>

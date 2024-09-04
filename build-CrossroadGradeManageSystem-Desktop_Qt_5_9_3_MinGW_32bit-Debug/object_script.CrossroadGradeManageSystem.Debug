@@ -19,7 +19,8 @@ INPUT(
 ./debug\signup.o
 ./debug\querypage.o
 ./debug\broadcastpage.o
-./debug\checkout.o
+./debug\exitgames.o
+./debug\cancelgames.o
 ./debug\qrc_res.o
 ./debug\moc_admintablemodel.o
 ./debug\moc_checkpointstablemodel.o
@@ -39,5 +40,6 @@ INPUT(
 ./debug\moc_signup.o
 ./debug\moc_querypage.o
 ./debug\moc_broadcastpage.o
-./debug\moc_checkout.o
+./debug\moc_exitgames.o
+./debug\moc_cancelgames.o
 );

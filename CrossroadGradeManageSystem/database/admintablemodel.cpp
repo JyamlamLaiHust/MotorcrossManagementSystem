@@ -94,13 +94,6 @@ int AdminTableModel::insertRecords(QString userName, QString pawd, QString remar
     // 执行 SQL 语句
     ret = query.exec();
 
-//    // 提交更改
-//    if (ret) {
-//        qDebug() << "successfully insert";
-//    }
-//    else {
-//        qDebug() << "failed insert";
-//    }
     return model->rowCount();
 }
 /**

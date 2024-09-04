@@ -7,12 +7,11 @@
  *日期: 2024-08-27
  *描述: 运动员表的model
 ***************************************/
-ResultsTableModel::ResultsTableModel(QObject *parent) : QObject(parent)
+ResultsTableModel::ResultsTableModel(QObject *parent) : QSqlTableModel(parent)
 {
     tableName = TABLE_NAME_RESULTS;
-    header<<QObject::trUtf8("成绩记录id")<<QObject::trUtf8("赛事id")<< QObject::trUtf8("运动员id")
-         <<QObject::trUtf8("打卡点id")<<QObject::trUtf8("到达时间")<<QObject::trUtf8("离开时间")
-        <<QObject::trUtf8("总用时")<<QObject::trUtf8("名词");
+    header<<QObject::trUtf8("成绩记录id")<<QObject::trUtf8("赛事名称")<< QObject::trUtf8("打卡点名称")
+         <<QObject::trUtf8("时间戳")<<QObject::trUtf8("方向")<<QObject::trUtf8("总用时")<<QObject::trUtf8("名次")<<QObject::trUtf8("rfid标签卡号");
     model = new QSqlTableModel(this);
 }
 
@@ -28,16 +27,13 @@ void ResultsTableModel::createTable()
 
     str  = tr("CREATE TABLE ") + tableName + tr(" ( ");
     str += header.at(0) + tr(" INT AUTO_INCREMENT PRIMARY KEY, ");
-    str += header.at(1) + tr(" INT NOT NULL, ");
-    str += header.at(2) + tr(" INT NOT NULL, ");
-    str += header.at(3) + tr(" INT NOT NULL, ");
-    str += header.at(4) + tr(" DATETIME, ");
-    str += header.at(5) + tr(" DATETIME, ");
-    str += header.at(6) + tr(" TIME, ");
-    str += header.at(7) + tr(" INT, ");
-    str += tr(" FOREIGN KEY (运动员id) REFERENCES table_participants(运动员id),");
-    str += tr(" FOREIGN KEY (赛事id) REFERENCES table_matches(赛事id),");
-    str += tr(" FOREIGN KEY (打卡点id) REFERENCES table_checkpoints(打卡点id));");
+    str += header.at(1) + tr(" VARCHAR(100) NOT NULL, ");
+    str += header.at(2) + tr(" VARCHAR(100) NOT NULL, ");
+    str += header.at(3) + tr(" TIME, ");
+    str += header.at(4) + tr(" CHAR(1) NOT NULL, ");
+    str += header.at(5) + tr(" INT, ");
+    str += header.at(6) + tr(" INT, ");
+    str += header.at(7) + tr(" VARCHAR(20) UNIQUE NOT NULL);");
 
     qDebug()<<"Sql: " << str.toUtf8().data();
     bool ret = query.exec(str);
@@ -75,11 +71,11 @@ QSqlTableModel* ResultsTableModel::getModel(void)
  * @return QSqlRecord型记录集
  * 根据运动员id查找记录
  */
-int ResultsTableModel::findRecord(QString rfidTag)
+int ResultsTableModel::findRecord(QString rfidTag, QString direction)
 {
     int count = model->rowCount();
     for(int row=0; row < count; row++){
-        if((model->data(model->index(row, 0))).toString() == rfidTag)
+        if((model->data(model->index(row, 7))).toString() == rfidTag && model->data(model->index(row, 4)) == direction)
             return row;
     }
     return -1;
@@ -99,26 +95,58 @@ int ResultsTableModel::findRecord(QString rfidTag)
  * @return 插入记录的行号
  * 向表格中插入记录
  */
-int ResultsTableModel::insertRecords(QString eventName, QString checkPointName, QTime departureTime, QTime sumTime, int rank, QString rfidTag)
+int ResultsTableModel::insertRecords(QString eventName, QString checkPointName, QTime time, QString direction, int sumTime, int rank, QString rfidTag)
 {
     QSqlRecord record;
 
-    record.append(QSqlField(header.at(0), QVariant::String));
     record.append(QSqlField(header.at(1), QVariant::String));
-    record.append(QSqlField(header.at(2), QVariant::Time));
+    record.append(QSqlField(header.at(2), QVariant::String));
     record.append(QSqlField(header.at(3), QVariant::Time));
-    record.append(QSqlField(header.at(4), QVariant::Int));
-    record.append(QSqlField(header.at(5), QVariant::String));
+    record.append(QSqlField(header.at(4), QVariant::String));
+    record.append(QSqlField(header.at(5), QVariant::Int));
+    record.append(QSqlField(header.at(6), QVariant::Int));
+    record.append(QSqlField(header.at(7), QVariant::String));
 
     record.setValue(0, eventName);
     record.setValue(1, checkPointName);
-    record.setValue(2, departureTime);
-    record.setValue(3, sumTime);
-    record.setValue(4, rank);
-    record.setValue(5, rfidTag);
+    record.setValue(2, time);
+    record.setValue(3, direction);
+    record.setValue(4, sumTime);
+    record.setValue(5, rank);
+    record.setValue(6, rfidTag);
 
     model->insertRecord(-1,record);
     return model->rowCount();
+}
+
+int ResultsTableModel::getRank(const QString &matchName, const QString &checkpointName, const QString &direction, int totalTime)
+{
+    QSqlQuery query;
+    QString sql = "SELECT COUNT(*) "
+                  "FROM (SELECT r1.* "
+                  "      FROM table_results r1 "
+                  "      WHERE r1.赛事名称 = :matchName "
+                  "        AND r1.打卡点名称 = :checkpointName "
+                  "        AND r1.方向 = :direction "
+                  "        AND r1.总用时 <= :totalTime "
+                  "      ORDER BY r1.总用时 ASC) subquery "
+                  "WHERE subquery.总用时 < :totalTime";
+
+    query.prepare(sql);
+    query.bindValue(":matchName", matchName);
+    query.bindValue(":checkpointName", checkpointName);
+    query.bindValue(":direction", direction);
+    query.bindValue(":totalTime", totalTime);
+
+    if (query.exec()) {
+        if (query.next()) {
+            return query.value(0).toInt() + 1; // 加1是因为当前记录也算在内
+        }
+    } else {
+        qDebug() << "Query execution failed:" << query.lastError().text();
+    }
+
+    return -1; // 如果查询失败或其他原因，返回-1表示无法确定排名
 }
 
 ///**

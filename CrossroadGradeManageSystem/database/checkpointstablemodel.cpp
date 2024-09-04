@@ -78,7 +78,7 @@ int CheckPointsTableModel::findRecord(QString checkPointName)
 {
     int count = model->rowCount();
     for(int row=0; row < count; row++){
-        if((model->data(model->index(row, 0))).toString() == checkPointName)
+        if((model->data(model->index(row, 2))).toString() == checkPointName)
             return row;
     }
     return -1;
@@ -98,24 +98,22 @@ int CheckPointsTableModel::findRecord(QString checkPointName)
  * @return 插入记录的行号
  * 向表格中插入记录
  */
-int CheckPointsTableModel::insertRecords(QString eventName, QString checkPointName, float segmentDistance,
+int CheckPointsTableModel::insertRecords(QString checkPointName, float segmentDistance,
                                          float segmentElevation, QDateTime openTime, QDateTime closeTime)
 {
     QSqlRecord record;
 
-    record.append(QSqlField(header.at(0), QVariant::String));
-    record.append(QSqlField(header.at(1), QVariant::String));
-    record.append(QSqlField(header.at(2), QVariant::Double));
+    record.append(QSqlField(header.at(2), QVariant::String));
     record.append(QSqlField(header.at(3), QVariant::Double));
-    record.append(QSqlField(header.at(4), QVariant::DateTime));
+    record.append(QSqlField(header.at(4), QVariant::Double));
     record.append(QSqlField(header.at(5), QVariant::DateTime));
+    record.append(QSqlField(header.at(6), QVariant::DateTime));
 
-    record.setValue(0, eventName);
-    record.setValue(1, checkPointName);
-    record.setValue(2, segmentDistance);
-    record.setValue(3, segmentElevation);
-    record.setValue(4, openTime);
-    record.setValue(5, closeTime);
+    record.setValue(0, checkPointName);
+    record.setValue(1, segmentDistance);
+    record.setValue(2, segmentElevation);
+    record.setValue(3, openTime);
+    record.setValue(4, closeTime);
 
 
     model->insertRecord(-1,record);

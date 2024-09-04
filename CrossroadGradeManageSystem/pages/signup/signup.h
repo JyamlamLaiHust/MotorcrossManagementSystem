@@ -22,10 +22,8 @@ public:
     ~SignUp();
 
 private slots:
-    
-    void on_btn_arrivalTime_clicked();
 
-    void on_btn_departmentTime_clicked();
+    void on_btn_Time_clicked();
 
     void on_btn_refresh_clicked();
 

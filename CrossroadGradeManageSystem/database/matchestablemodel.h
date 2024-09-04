@@ -10,7 +10,7 @@
 #include <QDateTime>
 #include <QDebug>
 
-class MatchesTableModel : public QObject
+class MatchesTableModel : public QSqlTableModel
 {
     Q_OBJECT
 private:
@@ -27,6 +27,8 @@ public:
     int findRecord(QString eventName);//查找记录
     int insertRecords(QString eventName, QDateTime startTime, QDateTime endTime,
                       float raceDistance, float elevationGain, float registerationFee);
+    bool deleteRecord(QString eventName);
+    QDateTime getStartTime(const QString &eventName);
 //    bool updateRecords(QString personName, QString pwd, QString time);//更新记录
 
 //signals:

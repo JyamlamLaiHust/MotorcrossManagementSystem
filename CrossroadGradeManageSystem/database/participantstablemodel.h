@@ -9,7 +9,7 @@
 #include <QString>
 #include <QDebug>
 
-class ParticipantsTableModel : public QObject
+class ParticipantsTableModel : public QSqlTableModel
 {
     Q_OBJECT
 private:
@@ -24,10 +24,12 @@ public:
     void bindTable(void);//绑定表
     QSqlTableModel* getModel(void);//获取管理员表的model
     int findRecord(QString participantName);//查找记录
-    int findRecordByIdCard(QString idCard);
+    int findRecordByRfidTag(QString RfidTag);
+    int findRecordByIdCard(QString idcard);
     int insertRecords(QString name, QString gender,
                       QString idCard, QString contactNumber, QString sizeTshirt,
                       QString rfidTag, QString emergencyContactName, QString emergencyContactNumber);
+    bool deleteRecords(int row);
 //    bool updateRecords(QString personName, QString pwd, QString time);//更新记录
 
 //signals:

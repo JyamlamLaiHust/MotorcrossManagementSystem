@@ -10,7 +10,7 @@
 #include <QTime>
 #include <QDebug>
 
-class ResultsTableModel : public QObject
+class ResultsTableModel : public QSqlTableModel
 {
     Q_OBJECT
 private:
@@ -24,9 +24,10 @@ public:
     void createTable();//创建表
     void bindTable(void);//绑定表
     QSqlTableModel* getModel(void);//获取管理员表的model
-    int findRecord(QString rfidTag);//查找记录
-    int insertRecords(QString eventName, QString checkPointName, QTime departureTime, QTime sumTime, int rank, QString rfidTag);
-//    bool updateRecords(QString personName, QString pwd, QString time);//更新记录
+    int findRecord(QString rfidTag, QString direction);//查找记录
+    int insertRecords(QString eventName, QString checkPointName, QTime time, QString direction, int sumTime, int rank, QString rfidTag);
+    int getRank(const QString &matchName, const QString &checkpointName, const QString &direction, int totalTime);
+    //    bool updateRecords(QString personName, QString pwd, QString time);//更新记录
 
 //signals:
 

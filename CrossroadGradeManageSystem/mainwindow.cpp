@@ -73,7 +73,9 @@ void MainWindow::handConnect()
     connect(ui->action_checkIn,SIGNAL(triggered(bool)),this,SLOT(checkIn()));
     connect(ui->action_holdCompetition,SIGNAL(triggered(bool)),this,SLOT(holdCompetition()));
     connect(ui->action_competition,SIGNAL(triggered(bool)),this,SLOT(queryRecords()));
-    connect(ui->action_participants,SIGNAL(triggered(bool)),this,SLOT(queryRecords()));
+    connect(ui->action_participants_one,SIGNAL(triggered(bool)),this,SLOT(queryRecords()));
+    connect(ui->action_participants_two,SIGNAL(triggered(bool)),this,SLOT(queryRecords()));
+    connect(ui->action_result,SIGNAL(triggered(bool)),this,SLOT(queryRecords()));
 }
 
 /**

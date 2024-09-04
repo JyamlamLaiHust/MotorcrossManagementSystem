@@ -19,7 +19,8 @@ INPUT(
 ./release\signup.o
 ./release\querypage.o
 ./release\broadcastpage.o
-./release\checkout.o
+./release\exitgames.o
+./release\cancelgames.o
 ./release\qrc_res.o
 ./release\moc_admintablemodel.o
 ./release\moc_checkpointstablemodel.o
@@ -39,5 +40,6 @@ INPUT(
 ./release\moc_signup.o
 ./release\moc_querypage.o
 ./release\moc_broadcastpage.o
-./release\moc_checkout.o
+./release\moc_exitgames.o
+./release\moc_cancelgames.o
 );
