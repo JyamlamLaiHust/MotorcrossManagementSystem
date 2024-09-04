@@ -30,7 +30,7 @@
      <rect>
       <x>10</x>
       <y>30</y>
-      <width>351</width>
+      <width>356</width>
       <height>331</height>
      </rect>
     </property>
@@ -38,76 +38,55 @@
      <item>
       <layout class="QHBoxLayout" name="horizontalLayout_4">
        <item>
-        <widget class="QLabel" name="label_3">
+        <widget class="QLabel" name="time_label">
          <property name="text">
           <string>时间：</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QLineEdit" name="lineEdit"/>
+        <widget class="QLineEdit" name="time_lineEdit"/>
        </item>
       </layout>
      </item>
      <item>
       <layout class="QHBoxLayout" name="horizontalLayout">
        <item>
-        <widget class="QLabel" name="label">
+        <widget class="QLabel" name="eventName_label">
          <property name="text">
           <string>赛事名称：</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QComboBox" name="comboBox"/>
+        <widget class="QComboBox" name="eventName_comboBox"/>
        </item>
        <item>
-        <widget class="QLabel" name="label_2">
+        <widget class="QLabel" name="checkPointName_label">
          <property name="text">
           <string>打卡点名称：</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QComboBox" name="comboBox_2"/>
+        <widget class="QComboBox" name="checkPoint_comboBox"/>
        </item>
       </layout>
      </item>
      <item>
       <layout class="QHBoxLayout" name="horizontalLayout_2">
        <item>
-        <widget class="QLabel" name="label_4">
+        <widget class="QLabel" name="arrivalTime_label">
          <property name="text">
           <string>到达时间：</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QDateTimeEdit" name="dateTimeEdit">
-         <property name="dateTime">
-          <datetime>
-           <hour>0</hour>
-           <minute>0</minute>
-           <second>0</second>
-           <year>2024</year>
-           <month>9</month>
-           <day>1</day>
-          </datetime>
-         </property>
-         <property name="minimumDateTime">
-          <datetime>
-           <hour>0</hour>
-           <minute>0</minute>
-           <second>0</second>
-           <year>2024</year>
-           <month>9</month>
-           <day>1</day>
-          </datetime>
-         </property>
-        </widget>
+        <widget class="QTimeEdit" name="arrivalTime_timeEdit"/>
        </item>
        <item>
-        <widget class="QPushButton" name="pushButton">
+        <widget class="QPushButton" name="btn_arrivalTime">
          <property name="text">
           <string>记录</string>
          </property>
@@ -118,45 +97,17 @@
      <item>
       <layout class="QHBoxLayout" name="horizontalLayout_3">
        <item>
-        <widget class="QLabel" name="label_5">
+        <widget class="QLabel" name="departureTime_label">
          <property name="text">
           <string>离开时间：</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QDateTimeEdit" name="dateTimeEdit_2">
-         <property name="dateTime">
-          <datetime>
-           <hour>0</hour>
-           <minute>0</minute>
-           <second>0</second>
-           <year>2024</year>
-           <month>9</month>
-           <day>1</day>
-          </datetime>
-         </property>
-         <property name="date">
-          <date>
-           <year>2024</year>
-           <month>9</month>
-           <day>1</day>
-          </date>
-         </property>
-         <property name="minimumDateTime">
-          <datetime>
-           <hour>0</hour>
-           <minute>0</minute>
-           <second>0</second>
-           <year>2024</year>
-           <month>9</month>
-           <day>1</day>
-          </datetime>
-         </property>
-        </widget>
+        <widget class="QTimeEdit" name="departureTime_timeEdit"/>
        </item>
        <item>
-        <widget class="QPushButton" name="pushButton_2">
+        <widget class="QPushButton" name="btn_departmentTime">
          <property name="text">
           <string>记录</string>
          </property>
@@ -167,28 +118,28 @@
      <item>
       <layout class="QHBoxLayout" name="horizontalLayout_5">
        <item>
-        <widget class="QLabel" name="label_6">
+        <widget class="QLabel" name="sumTime_label">
          <property name="text">
           <string>总用时：</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QLineEdit" name="lineEdit_2"/>
+        <widget class="QLineEdit" name="sumTime_lineEdit"/>
        </item>
       </layout>
      </item>
      <item>
       <layout class="QHBoxLayout" name="horizontalLayout_6">
        <item>
-        <widget class="QLabel" name="label_7">
+        <widget class="QLabel" name="rank_label">
          <property name="text">
           <string>名次：</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QLineEdit" name="lineEdit_3"/>
+        <widget class="QLineEdit" name="rank_lineEdit"/>
        </item>
       </layout>
      </item>
@@ -207,17 +158,17 @@
      <item>
       <layout class="QHBoxLayout" name="horizontalLayout_7">
        <item>
-        <widget class="QLabel" name="label_8">
+        <widget class="QLabel" name="rfidTag_label">
          <property name="text">
           <string>卡号：</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QLineEdit" name="lineEdit_4"/>
+        <widget class="QLineEdit" name="rfidTag_lineEdit"/>
        </item>
        <item>
-        <widget class="QPushButton" name="pushButton_3">
+        <widget class="QPushButton" name="btn_recognize">
          <property name="text">
           <string>识别</string>
          </property>
@@ -241,27 +192,14 @@
         </spacer>
        </item>
        <item>
-        <widget class="QPushButton" name="pushButton_4">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="text">
-          <string>打卡</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QPushButton" name="pushButton_5">
+        <widget class="QPushButton" name="btn_refresh">
          <property name="text">
           <string>刷新打卡表</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="pushButton_6">
+        <widget class="QPushButton" name="btn_reset">
          <property name="text">
           <string>重置</string>
          </property>

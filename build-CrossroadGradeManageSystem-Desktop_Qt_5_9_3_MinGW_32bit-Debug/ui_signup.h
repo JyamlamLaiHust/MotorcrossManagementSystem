@@ -9,13 +9,11 @@
 #ifndef UI_SIGNUP_H
 #define UI_SIGNUP_H
 
-#include <QtCore/QDate>
 #include <QtCore/QVariant>
 #include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QComboBox>
-#include <QtWidgets/QDateTimeEdit>
 #include <QtWidgets/QGroupBox>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
@@ -24,6 +22,7 @@
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QTableView>
+#include <QtWidgets/QTimeEdit>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
@@ -36,38 +35,37 @@ public:
     QWidget *verticalLayoutWidget;
     QVBoxLayout *verticalLayout;
     QHBoxLayout *horizontalLayout_4;
-    QLabel *label_3;
-    QLineEdit *lineEdit;
+    QLabel *time_label;
+    QLineEdit *time_lineEdit;
     QHBoxLayout *horizontalLayout;
-    QLabel *label;
-    QComboBox *comboBox;
-    QLabel *label_2;
-    QComboBox *comboBox_2;
+    QLabel *eventName_label;
+    QComboBox *eventName_comboBox;
+    QLabel *checkPointName_label;
+    QComboBox *checkPoint_comboBox;
     QHBoxLayout *horizontalLayout_2;
-    QLabel *label_4;
-    QDateTimeEdit *dateTimeEdit;
-    QPushButton *pushButton;
+    QLabel *arrivalTime_label;
+    QTimeEdit *arrivalTime_timeEdit;
+    QPushButton *btn_arrivalTime;
     QHBoxLayout *horizontalLayout_3;
-    QLabel *label_5;
-    QDateTimeEdit *dateTimeEdit_2;
-    QPushButton *pushButton_2;
+    QLabel *departureTime_label;
+    QTimeEdit *departureTime_timeEdit;
+    QPushButton *btn_departmentTime;
     QHBoxLayout *horizontalLayout_5;
-    QLabel *label_6;
-    QLineEdit *lineEdit_2;
+    QLabel *sumTime_label;
+    QLineEdit *sumTime_lineEdit;
     QHBoxLayout *horizontalLayout_6;
-    QLabel *label_7;
-    QLineEdit *lineEdit_3;
+    QLabel *rank_label;
+    QLineEdit *rank_lineEdit;
     QWidget *verticalLayoutWidget_2;
     QVBoxLayout *verticalLayout_2;
     QHBoxLayout *horizontalLayout_7;
-    QLabel *label_8;
-    QLineEdit *lineEdit_4;
-    QPushButton *pushButton_3;
+    QLabel *rfidTag_label;
+    QLineEdit *rfidTag_lineEdit;
+    QPushButton *btn_recognize;
     QHBoxLayout *horizontalLayout_8;
     QSpacerItem *horizontalSpacer;
-    QPushButton *pushButton_4;
-    QPushButton *pushButton_5;
-    QPushButton *pushButton_6;
+    QPushButton *btn_refresh;
+    QPushButton *btn_reset;
     QSpacerItem *horizontalSpacer_2;
     QTableView *tableView;
 
@@ -81,121 +79,116 @@ public:
         groupBox->setGeometry(QRect(10, 0, 731, 591));
         verticalLayoutWidget = new QWidget(groupBox);
         verticalLayoutWidget->setObjectName(QStringLiteral("verticalLayoutWidget"));
-        verticalLayoutWidget->setGeometry(QRect(10, 30, 351, 331));
+        verticalLayoutWidget->setGeometry(QRect(10, 30, 356, 331));
         verticalLayout = new QVBoxLayout(verticalLayoutWidget);
         verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
         verticalLayout->setContentsMargins(0, 0, 0, 0);
         horizontalLayout_4 = new QHBoxLayout();
         horizontalLayout_4->setObjectName(QStringLiteral("horizontalLayout_4"));
-        label_3 = new QLabel(verticalLayoutWidget);
-        label_3->setObjectName(QStringLiteral("label_3"));
+        time_label = new QLabel(verticalLayoutWidget);
+        time_label->setObjectName(QStringLiteral("time_label"));
 
-        horizontalLayout_4->addWidget(label_3);
+        horizontalLayout_4->addWidget(time_label);
 
-        lineEdit = new QLineEdit(verticalLayoutWidget);
-        lineEdit->setObjectName(QStringLiteral("lineEdit"));
+        time_lineEdit = new QLineEdit(verticalLayoutWidget);
+        time_lineEdit->setObjectName(QStringLiteral("time_lineEdit"));
 
-        horizontalLayout_4->addWidget(lineEdit);
+        horizontalLayout_4->addWidget(time_lineEdit);
 
 
         verticalLayout->addLayout(horizontalLayout_4);
 
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
-        label = new QLabel(verticalLayoutWidget);
-        label->setObjectName(QStringLiteral("label"));
+        eventName_label = new QLabel(verticalLayoutWidget);
+        eventName_label->setObjectName(QStringLiteral("eventName_label"));
 
-        horizontalLayout->addWidget(label);
+        horizontalLayout->addWidget(eventName_label);
 
-        comboBox = new QComboBox(verticalLayoutWidget);
-        comboBox->setObjectName(QStringLiteral("comboBox"));
+        eventName_comboBox = new QComboBox(verticalLayoutWidget);
+        eventName_comboBox->setObjectName(QStringLiteral("eventName_comboBox"));
 
-        horizontalLayout->addWidget(comboBox);
+        horizontalLayout->addWidget(eventName_comboBox);
 
-        label_2 = new QLabel(verticalLayoutWidget);
-        label_2->setObjectName(QStringLiteral("label_2"));
+        checkPointName_label = new QLabel(verticalLayoutWidget);
+        checkPointName_label->setObjectName(QStringLiteral("checkPointName_label"));
 
-        horizontalLayout->addWidget(label_2);
+        horizontalLayout->addWidget(checkPointName_label);
 
-        comboBox_2 = new QComboBox(verticalLayoutWidget);
-        comboBox_2->setObjectName(QStringLiteral("comboBox_2"));
+        checkPoint_comboBox = new QComboBox(verticalLayoutWidget);
+        checkPoint_comboBox->setObjectName(QStringLiteral("checkPoint_comboBox"));
 
-        horizontalLayout->addWidget(comboBox_2);
+        horizontalLayout->addWidget(checkPoint_comboBox);
 
 
         verticalLayout->addLayout(horizontalLayout);
 
         horizontalLayout_2 = new QHBoxLayout();
         horizontalLayout_2->setObjectName(QStringLiteral("horizontalLayout_2"));
-        label_4 = new QLabel(verticalLayoutWidget);
-        label_4->setObjectName(QStringLiteral("label_4"));
+        arrivalTime_label = new QLabel(verticalLayoutWidget);
+        arrivalTime_label->setObjectName(QStringLiteral("arrivalTime_label"));
 
-        horizontalLayout_2->addWidget(label_4);
+        horizontalLayout_2->addWidget(arrivalTime_label);
 
-        dateTimeEdit = new QDateTimeEdit(verticalLayoutWidget);
-        dateTimeEdit->setObjectName(QStringLiteral("dateTimeEdit"));
-        dateTimeEdit->setDateTime(QDateTime(QDate(2024, 9, 1), QTime(0, 0, 0)));
-        dateTimeEdit->setMinimumDateTime(QDateTime(QDate(2024, 9, 1), QTime(0, 0, 0)));
+        arrivalTime_timeEdit = new QTimeEdit(verticalLayoutWidget);
+        arrivalTime_timeEdit->setObjectName(QStringLiteral("arrivalTime_timeEdit"));
 
-        horizontalLayout_2->addWidget(dateTimeEdit);
+        horizontalLayout_2->addWidget(arrivalTime_timeEdit);
 
-        pushButton = new QPushButton(verticalLayoutWidget);
-        pushButton->setObjectName(QStringLiteral("pushButton"));
+        btn_arrivalTime = new QPushButton(verticalLayoutWidget);
+        btn_arrivalTime->setObjectName(QStringLiteral("btn_arrivalTime"));
 
-        horizontalLayout_2->addWidget(pushButton);
+        horizontalLayout_2->addWidget(btn_arrivalTime);
 
 
         verticalLayout->addLayout(horizontalLayout_2);
 
         horizontalLayout_3 = new QHBoxLayout();
         horizontalLayout_3->setObjectName(QStringLiteral("horizontalLayout_3"));
-        label_5 = new QLabel(verticalLayoutWidget);
-        label_5->setObjectName(QStringLiteral("label_5"));
+        departureTime_label = new QLabel(verticalLayoutWidget);
+        departureTime_label->setObjectName(QStringLiteral("departureTime_label"));
 
-        horizontalLayout_3->addWidget(label_5);
+        horizontalLayout_3->addWidget(departureTime_label);
 
-        dateTimeEdit_2 = new QDateTimeEdit(verticalLayoutWidget);
-        dateTimeEdit_2->setObjectName(QStringLiteral("dateTimeEdit_2"));
-        dateTimeEdit_2->setDateTime(QDateTime(QDate(2024, 9, 1), QTime(0, 0, 0)));
-        dateTimeEdit_2->setDate(QDate(2024, 9, 1));
-        dateTimeEdit_2->setMinimumDateTime(QDateTime(QDate(2024, 9, 1), QTime(0, 0, 0)));
+        departureTime_timeEdit = new QTimeEdit(verticalLayoutWidget);
+        departureTime_timeEdit->setObjectName(QStringLiteral("departureTime_timeEdit"));
 
-        horizontalLayout_3->addWidget(dateTimeEdit_2);
+        horizontalLayout_3->addWidget(departureTime_timeEdit);
 
-        pushButton_2 = new QPushButton(verticalLayoutWidget);
-        pushButton_2->setObjectName(QStringLiteral("pushButton_2"));
+        btn_departmentTime = new QPushButton(verticalLayoutWidget);
+        btn_departmentTime->setObjectName(QStringLiteral("btn_departmentTime"));
 
-        horizontalLayout_3->addWidget(pushButton_2);
+        horizontalLayout_3->addWidget(btn_departmentTime);
 
 
         verticalLayout->addLayout(horizontalLayout_3);
 
         horizontalLayout_5 = new QHBoxLayout();
         horizontalLayout_5->setObjectName(QStringLiteral("horizontalLayout_5"));
-        label_6 = new QLabel(verticalLayoutWidget);
-        label_6->setObjectName(QStringLiteral("label_6"));
+        sumTime_label = new QLabel(verticalLayoutWidget);
+        sumTime_label->setObjectName(QStringLiteral("sumTime_label"));
 
-        horizontalLayout_5->addWidget(label_6);
+        horizontalLayout_5->addWidget(sumTime_label);
 
-        lineEdit_2 = new QLineEdit(verticalLayoutWidget);
-        lineEdit_2->setObjectName(QStringLiteral("lineEdit_2"));
+        sumTime_lineEdit = new QLineEdit(verticalLayoutWidget);
+        sumTime_lineEdit->setObjectName(QStringLiteral("sumTime_lineEdit"));
 
-        horizontalLayout_5->addWidget(lineEdit_2);
+        horizontalLayout_5->addWidget(sumTime_lineEdit);
 
 
         verticalLayout->addLayout(horizontalLayout_5);
 
         horizontalLayout_6 = new QHBoxLayout();
         horizontalLayout_6->setObjectName(QStringLiteral("horizontalLayout_6"));
-        label_7 = new QLabel(verticalLayoutWidget);
-        label_7->setObjectName(QStringLiteral("label_7"));
+        rank_label = new QLabel(verticalLayoutWidget);
+        rank_label->setObjectName(QStringLiteral("rank_label"));
 
-        horizontalLayout_6->addWidget(label_7);
+        horizontalLayout_6->addWidget(rank_label);
 
-        lineEdit_3 = new QLineEdit(verticalLayoutWidget);
-        lineEdit_3->setObjectName(QStringLiteral("lineEdit_3"));
+        rank_lineEdit = new QLineEdit(verticalLayoutWidget);
+        rank_lineEdit->setObjectName(QStringLiteral("rank_lineEdit"));
 
-        horizontalLayout_6->addWidget(lineEdit_3);
+        horizontalLayout_6->addWidget(rank_lineEdit);
 
 
         verticalLayout->addLayout(horizontalLayout_6);
@@ -208,20 +201,20 @@ public:
         verticalLayout_2->setContentsMargins(0, 0, 0, 0);
         horizontalLayout_7 = new QHBoxLayout();
         horizontalLayout_7->setObjectName(QStringLiteral("horizontalLayout_7"));
-        label_8 = new QLabel(verticalLayoutWidget_2);
-        label_8->setObjectName(QStringLiteral("label_8"));
+        rfidTag_label = new QLabel(verticalLayoutWidget_2);
+        rfidTag_label->setObjectName(QStringLiteral("rfidTag_label"));
 
-        horizontalLayout_7->addWidget(label_8);
+        horizontalLayout_7->addWidget(rfidTag_label);
 
-        lineEdit_4 = new QLineEdit(verticalLayoutWidget_2);
-        lineEdit_4->setObjectName(QStringLiteral("lineEdit_4"));
+        rfidTag_lineEdit = new QLineEdit(verticalLayoutWidget_2);
+        rfidTag_lineEdit->setObjectName(QStringLiteral("rfidTag_lineEdit"));
 
-        horizontalLayout_7->addWidget(lineEdit_4);
+        horizontalLayout_7->addWidget(rfidTag_lineEdit);
 
-        pushButton_3 = new QPushButton(verticalLayoutWidget_2);
-        pushButton_3->setObjectName(QStringLiteral("pushButton_3"));
+        btn_recognize = new QPushButton(verticalLayoutWidget_2);
+        btn_recognize->setObjectName(QStringLiteral("btn_recognize"));
 
-        horizontalLayout_7->addWidget(pushButton_3);
+        horizontalLayout_7->addWidget(btn_recognize);
 
 
         verticalLayout_2->addLayout(horizontalLayout_7);
@@ -232,25 +225,15 @@ public:
 
         horizontalLayout_8->addItem(horizontalSpacer);
 
-        pushButton_4 = new QPushButton(verticalLayoutWidget_2);
-        pushButton_4->setObjectName(QStringLiteral("pushButton_4"));
-        QSizePolicy sizePolicy(QSizePolicy::Preferred, QSizePolicy::Fixed);
-        sizePolicy.setHorizontalStretch(0);
-        sizePolicy.setVerticalStretch(0);
-        sizePolicy.setHeightForWidth(pushButton_4->sizePolicy().hasHeightForWidth());
-        pushButton_4->setSizePolicy(sizePolicy);
+        btn_refresh = new QPushButton(verticalLayoutWidget_2);
+        btn_refresh->setObjectName(QStringLiteral("btn_refresh"));
 
-        horizontalLayout_8->addWidget(pushButton_4);
+        horizontalLayout_8->addWidget(btn_refresh);
 
-        pushButton_5 = new QPushButton(verticalLayoutWidget_2);
-        pushButton_5->setObjectName(QStringLiteral("pushButton_5"));
+        btn_reset = new QPushButton(verticalLayoutWidget_2);
+        btn_reset->setObjectName(QStringLiteral("btn_reset"));
 
-        horizontalLayout_8->addWidget(pushButton_5);
-
-        pushButton_6 = new QPushButton(verticalLayoutWidget_2);
-        pushButton_6->setObjectName(QStringLiteral("pushButton_6"));
-
-        horizontalLayout_8->addWidget(pushButton_6);
+        horizontalLayout_8->addWidget(btn_reset);
 
         horizontalSpacer_2 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
@@ -272,20 +255,19 @@ public:
     {
         SignUp->setWindowTitle(QApplication::translate("SignUp", "Form", Q_NULLPTR));
         groupBox->setTitle(QApplication::translate("SignUp", "\346\211\223\345\215\241", Q_NULLPTR));
-        label_3->setText(QApplication::translate("SignUp", "\346\227\266\351\227\264\357\274\232", Q_NULLPTR));
-        label->setText(QApplication::translate("SignUp", "\350\265\233\344\272\213\345\220\215\347\247\260\357\274\232", Q_NULLPTR));
-        label_2->setText(QApplication::translate("SignUp", "\346\211\223\345\215\241\347\202\271\345\220\215\347\247\260\357\274\232", Q_NULLPTR));
-        label_4->setText(QApplication::translate("SignUp", "\345\210\260\350\276\276\346\227\266\351\227\264\357\274\232", Q_NULLPTR));
-        pushButton->setText(QApplication::translate("SignUp", "\350\256\260\345\275\225", Q_NULLPTR));
-        label_5->setText(QApplication::translate("SignUp", "\347\246\273\345\274\200\346\227\266\351\227\264\357\274\232", Q_NULLPTR));
-        pushButton_2->setText(QApplication::translate("SignUp", "\350\256\260\345\275\225", Q_NULLPTR));
-        label_6->setText(QApplication::translate("SignUp", "\346\200\273\347\224\250\346\227\266\357\274\232", Q_NULLPTR));
-        label_7->setText(QApplication::translate("SignUp", "\345\220\215\346\254\241\357\274\232", Q_NULLPTR));
-        label_8->setText(QApplication::translate("SignUp", "\345\215\241\345\217\267\357\274\232", Q_NULLPTR));
-        pushButton_3->setText(QApplication::translate("SignUp", "\350\257\206\345\210\253", Q_NULLPTR));
-        pushButton_4->setText(QApplication::translate("SignUp", "\346\211\223\345\215\241", Q_NULLPTR));
-        pushButton_5->setText(QApplication::translate("SignUp", "\345\210\267\346\226\260\346\211\223\345\215\241\350\241\250", Q_NULLPTR));
-        pushButton_6->setText(QApplication::translate("SignUp", "\351\207\215\347\275\256", Q_NULLPTR));
+        time_label->setText(QApplication::translate("SignUp", "\346\227\266\351\227\264\357\274\232", Q_NULLPTR));
+        eventName_label->setText(QApplication::translate("SignUp", "\350\265\233\344\272\213\345\220\215\347\247\260\357\274\232", Q_NULLPTR));
+        checkPointName_label->setText(QApplication::translate("SignUp", "\346\211\223\345\215\241\347\202\271\345\220\215\347\247\260\357\274\232", Q_NULLPTR));
+        arrivalTime_label->setText(QApplication::translate("SignUp", "\345\210\260\350\276\276\346\227\266\351\227\264\357\274\232", Q_NULLPTR));
+        btn_arrivalTime->setText(QApplication::translate("SignUp", "\350\256\260\345\275\225", Q_NULLPTR));
+        departureTime_label->setText(QApplication::translate("SignUp", "\347\246\273\345\274\200\346\227\266\351\227\264\357\274\232", Q_NULLPTR));
+        btn_departmentTime->setText(QApplication::translate("SignUp", "\350\256\260\345\275\225", Q_NULLPTR));
+        sumTime_label->setText(QApplication::translate("SignUp", "\346\200\273\347\224\250\346\227\266\357\274\232", Q_NULLPTR));
+        rank_label->setText(QApplication::translate("SignUp", "\345\220\215\346\254\241\357\274\232", Q_NULLPTR));
+        rfidTag_label->setText(QApplication::translate("SignUp", "\345\215\241\345\217\267\357\274\232", Q_NULLPTR));
+        btn_recognize->setText(QApplication::translate("SignUp", "\350\257\206\345\210\253", Q_NULLPTR));
+        btn_refresh->setText(QApplication::translate("SignUp", "\345\210\267\346\226\260\346\211\223\345\215\241\350\241\250", Q_NULLPTR));
+        btn_reset->setText(QApplication::translate("SignUp", "\351\207\215\347\275\256", Q_NULLPTR));
     } // retranslateUi
 
 };

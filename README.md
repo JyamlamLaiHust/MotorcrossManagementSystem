@@ -212,19 +212,20 @@ participants、matches、checkpoints、rfid、results 表的顺序
 - 比赛举行 HoldGames
   - 越野赛路径绑定和打卡点设定 —— 插入赛事表记录
     - 通过赛事 id 区分不同赛事的打卡点 —— 设计两个comboBox（赛事 id 和打卡点 id）
-    
+  
       ```cpp
       // 让QDateEdit显示当前时间
           ui->dateEdit->setDisplayFormat("yyyy-MM-dd");
           ui->dateEdit->setDateTime(QDateTime::currentDateTime());
       ```
 
-- 成绩表查询 Query
-  - 通过不同的筛选条件将数据库展现到前端页面
-
-- 发送成绩通知 Broadcast
-  - 完成所有打卡点 print 一个成绩单
-  - **MQTT 通信 ？**
+    - 发送成绩通知
+  
+      - 完成所有打卡点 print 一个成绩单通过 **MQTT 通信** 发送到每个用户
+  
+  - 成绩表查询 Query
+  
+    - 通过不同的筛选条件将数据库展现到前端页面
 
 
 
@@ -246,5 +247,13 @@ participants、matches、checkpoints、rfid、results 表的顺序
 
 # 06 目前待解决问题
 
-- 前端变形
-- 数据库重构键
+- 前端变形（暂时忽略）
+- 数据库重构
+- 打卡功能（缺后端）
+  - 打卡的 findRecord 怎么写啊
+- 运动员退出比赛、取消比赛和查询成绩表功能（缺前后端）
+- HoldGames 结合 mqtt 发送消息
+- 项目转移到visual studio（选做，结果不可预示，假如工作量很大就算了）
+  - [vs 插件](https://365.kdocs.cn/l/csI0iin9yuKS?openfrom=docs)
+  - [Google Test 和 OpenCppCoverage](https://365.kdocs.cn/l/cocxP3zIxuA4?openfrom=docs)
+- tomcat 上线

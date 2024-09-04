@@ -71,18 +71,18 @@ QSqlTableModel* ResultsTableModel::getModel(void)
 
 /**
  * @brief ResultsTableModel::findRecord
- * @param Results_id 人员编号
+ * @param rfidTag 标签卡号
  * @return QSqlRecord型记录集
  * 根据运动员id查找记录
  */
-QSqlRecord ResultsTableModel::findRecord(const int &Results_id)
+int ResultsTableModel::findRecord(QString rfidTag)
 {
     int count = model->rowCount();
     for(int row=0; row < count; row++){
-        if(model->data(model->index(row, 0)) == Results_id)
-            return model->record(row);
+        if((model->data(model->index(row, 0))).toString() == rfidTag)
+            return row;
     }
-    return QSqlRecord();
+    return -1;
 }
 
 /**
@@ -99,32 +99,23 @@ QSqlRecord ResultsTableModel::findRecord(const int &Results_id)
  * @return 插入记录的行号
  * 向表格中插入记录
  */
-int ResultsTableModel::insertRecords(int Results_id, QString name, QString gender,
-                                          QString id_number, QString contact_number, QString size_tshirt,
-                                          QString rfid_tag_id, QString emergency_contact_name, QString emergency_contact_number)
+int ResultsTableModel::insertRecords(QString eventName, QString checkPointName, QTime departureTime, QTime sumTime, int rank, QString rfidTag)
 {
     QSqlRecord record;
 
-    record.append(QSqlField(header.at(0), QVariant::Int));
+    record.append(QSqlField(header.at(0), QVariant::String));
     record.append(QSqlField(header.at(1), QVariant::String));
-    record.append(QSqlField(header.at(2), QVariant::String));
-    record.append(QSqlField(header.at(3), QVariant::String));
-    record.append(QSqlField(header.at(4), QVariant::String));
+    record.append(QSqlField(header.at(2), QVariant::Time));
+    record.append(QSqlField(header.at(3), QVariant::Time));
+    record.append(QSqlField(header.at(4), QVariant::Int));
     record.append(QSqlField(header.at(5), QVariant::String));
-    record.append(QSqlField(header.at(6), QVariant::String));
-    record.append(QSqlField(header.at(7), QVariant::String));
-    record.append(QSqlField(header.at(8), QVariant::String));
 
-    record.setValue(0, Results_id);
-    record.setValue(1, name);
-    record.setValue(2, gender);
-    record.setValue(3, id_number);
-    record.setValue(4, contact_number);
-    record.setValue(5, size_tshirt);
-    record.setValue(6, rfid_tag_id);
-    record.setValue(7, emergency_contact_name);
-    record.setValue(8, emergency_contact_number);
-
+    record.setValue(0, eventName);
+    record.setValue(1, checkPointName);
+    record.setValue(2, departureTime);
+    record.setValue(3, sumTime);
+    record.setValue(4, rank);
+    record.setValue(5, rfidTag);
 
     model->insertRecord(-1,record);
     return model->rowCount();

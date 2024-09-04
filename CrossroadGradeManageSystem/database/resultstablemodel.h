@@ -7,6 +7,7 @@
 #include <QtSql/QSqlQuery>
 #include <QtSql/QSqlError>
 #include <QString>
+#include <QTime>
 #include <QDebug>
 
 class ResultsTableModel : public QObject
@@ -23,10 +24,8 @@ public:
     void createTable();//创建表
     void bindTable(void);//绑定表
     QSqlTableModel* getModel(void);//获取管理员表的model
-    QSqlRecord findRecord(const int &Results_id);//查找记录
-    int insertRecords(int Results_id, QString name, QString gender,
-                                              QString id_number, QString contact_number, QString size_tshirt,
-                                              QString rfid_tag_id, QString emergency_contact_name, QString emergency_contact_number);
+    int findRecord(QString rfidTag);//查找记录
+    int insertRecords(QString eventName, QString checkPointName, QTime departureTime, QTime sumTime, int rank, QString rfidTag);
 //    bool updateRecords(QString personName, QString pwd, QString time);//更新记录
 
 //signals:
