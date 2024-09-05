@@ -3,6 +3,7 @@
 #include "QMessageBox"
 #include <QRegExp>
 #include <QRegExpValidator>
+#include <QAction>
 
 QueryPage::QueryPage(QWidget *parent) :
     QWidget(parent),

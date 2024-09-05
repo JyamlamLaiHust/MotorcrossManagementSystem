@@ -131,9 +131,11 @@ bool MatchesTableModel::deleteRecord(QString eventName)
 
     if(query.exec()) {
         qDebug() << "Delete operation failed:" << query.lastError().text();
+        return false;
     } else {
         qDebug() << "Record deleted successfully.";
     }
+    return true;
 }
 
 /**

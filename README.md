@@ -259,7 +259,30 @@ participants、matches、checkpoints、rfid、results 表的顺序
 - 取消比赛
   - ~~用 eventName 查询 —— sql语句~~
 - HoldGames 结合 mqtt 发送消息
+  - [qt + mqtt](https://blog.csdn.net/luoyayun361/article/details/104671603)
+  - broadcast 后端还没有头绪怎么做
 - 项目转移到 visual studio（选做，结果不可预示，假如工作量很大就算了）
   - [vs 插件](https://365.kdocs.cn/l/csI0iin9yuKS?openfrom=docs)
+  - [qt 插件](https://download.qt.io/archive/vsaddin/2.0.0/)
   - [Google Test 和 OpenCppCoverage](https://365.kdocs.cn/l/cocxP3zIxuA4?openfrom=docs)
 - tomcat 上线
+
+# 07 转移到 visual studio
+
+这个有点夸张的，我觉得值得单开一章说明一下。
+
+> 参考：
+>
+> - [vs Qt 插件安装](https://365.kdocs.cn/l/csI0iin9yuKS?openfrom=docs)
+> - [用 vs 打开 Qt 项目 .pro 文件](https://blog.csdn.net/shuilan0066/article/details/110232474)
+> - [Qt 旧版本下载 百度网盘链接](https://blog.csdn.net/haigear/article/details/128696201)
+> - [从 mingw 转换为 MSVC 编译报错](https://blog.csdn.net/qq_38141255/article/details/130871675)
+> - [MSVC 编辑器安装](https://blog.csdn.net/Copperxcx/article/details/122540629)
+> - [安装 Windows Development Kits](https://blog.csdn.net/u014779536/article/details/106848863)
+
+# 08 还没来得及看的资料
+
+- [QT 使用 mqtt 协议 部署 mosiquitto 作为 mqtt 的服务器](https://blog.csdn.net/m0_55686284/article/details/131179948)
+- [从 dll 文件中导出相应的 lib 文件](https://www.cnblogs.com/tocy/p/export-lib-from-dll-in-windows.html)
+- [Windows 安装 mosquitto 并测试](https://blog.csdn.net/xhm0924/article/details/109151357)
+- [MQTT 协议入门指南](http://www.steves-internet-guide.com/mqtt/)

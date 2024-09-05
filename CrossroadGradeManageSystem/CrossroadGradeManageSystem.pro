@@ -100,6 +100,8 @@ DISTFILES += \
 
 
 win32: LIBS += -L$$PWD/lib/ -lM1356Dll
+msvc:QMAKE_CXXFLAGS += -execution-charset:utf-8
+msvc:QMAKE_CXXFLAGS += -source-charset:utf-8
 
 RESOURCES += \
     resources/res.qrc
