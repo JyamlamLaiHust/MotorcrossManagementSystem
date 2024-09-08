@@ -11,8 +11,10 @@
 #include "export/exportdatas.h"
 #include "login/loginpage.h"
 #include "checkin/checkin.h"
+#include "exitgames/exitgames.h"
 #include "query/querypage.h"
 #include "holdgames/holdgamespages.h"
 #include "query/querypage.h"
+#include "cancelgames/cancelgames.h"
 
 #endif // PAGES

@@ -11,12 +11,12 @@ namespace Ui {
 class ExitGames;
 }
 
-class ExitGames : public QWidget
+class ExitGames : public QDialog
 {
     Q_OBJECT
 
 public:
-    explicit ExitGames(QWidget *parent = 0);
+    explicit ExitGames(QWidget *parent = 0, QString *rfidTag = 0, SerialPortThread *serial = 0);
     ~ExitGames();
 
 private slots:
@@ -29,9 +29,11 @@ private slots:
 private:
     Ui::ExitGames *ui;
 
-    SerialPortThread *serialPortThread;//串口线程
+    SerialPortThread *serialThread;//串口线程
 
     M1356Dll *m1356dll;//13.56MHz模块库
+
+    QString *rfidTag;//用户名
 };
 
 #endif // EXITGAMES_H

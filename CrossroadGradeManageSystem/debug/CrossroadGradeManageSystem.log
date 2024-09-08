@@ -1,0 +1,11 @@
+﻿checkin.obj : error LNK2019: 无法解析的外部符号 "__declspec(dllimport) public: __cdecl M1356Dll::M1356Dll(void)" (__imp_??0M1356Dll@@QEAA@XZ)，函数 "public: __cdecl CheckIn::CheckIn(class QWidget *,class SerialPortThread *)" (??0CheckIn@@QEAA@PEAVQWidget@@PEAVSerialPortThread@@@Z) 中引用了该符号
+exitgames.obj : error LNK2001: 无法解析的外部符号 "__declspec(dllimport) public: __cdecl M1356Dll::M1356Dll(void)" (__imp_??0M1356Dll@@QEAA@XZ)
+mainwindow.obj : error LNK2001: 无法解析的外部符号 "__declspec(dllimport) public: __cdecl M1356Dll::M1356Dll(void)" (__imp_??0M1356Dll@@QEAA@XZ)
+querypage.obj : error LNK2001: 无法解析的外部符号 "__declspec(dllimport) public: __cdecl M1356Dll::M1356Dll(void)" (__imp_??0M1356Dll@@QEAA@XZ)
+checkin.obj : error LNK2019: 无法解析的外部符号 "__declspec(dllimport) public: unsigned char * __cdecl M1356Dll::RC632_SendCmdReq(unsigned short,unsigned char const *,unsigned short)" (__imp_?RC632_SendCmdReq@M1356Dll@@QEAAPEAEGPEBEG@Z)，函数 "private: void __cdecl CheckIn::on_btn_Inventory_clicked(void)" (?on_btn_Inventory_clicked@CheckIn@@AEAAXXZ) 中引用了该符号
+exitgames.obj : error LNK2001: 无法解析的外部符号 "__declspec(dllimport) public: unsigned char * __cdecl M1356Dll::RC632_SendCmdReq(unsigned short,unsigned char const *,unsigned short)" (__imp_?RC632_SendCmdReq@M1356Dll@@QEAAPEAEGPEBEG@Z)
+mainwindow.obj : error LNK2001: 无法解析的外部符号 "__declspec(dllimport) public: unsigned char * __cdecl M1356Dll::RC632_SendCmdReq(unsigned short,unsigned char const *,unsigned short)" (__imp_?RC632_SendCmdReq@M1356Dll@@QEAAPEAEGPEBEG@Z)
+querypage.obj : error LNK2001: 无法解析的外部符号 "__declspec(dllimport) public: unsigned char * __cdecl M1356Dll::RC632_SendCmdReq(unsigned short,unsigned char const *,unsigned short)" (__imp_?RC632_SendCmdReq@M1356Dll@@QEAAPEAEGPEBEG@Z)
+mainwindow.obj : error LNK2019: 无法解析的外部符号 "__declspec(dllimport) public: struct M1356_RspFrame_t __cdecl M1356Dll::M1356_RspFrameConstructor(class QByteArray)" (__imp_?M1356_RspFrameConstructor@M1356Dll@@QEAA?AUM1356_RspFrame_t@@VQByteArray@@@Z)，函数 "private: void __cdecl MainWindow::on_serialMsgreceived(class QByteArray)" (?on_serialMsgreceived@MainWindow@@AEAAXVQByteArray@@@Z) 中引用了该符号
+.\lib\M1356Dll.lib : warning LNK4272: 库计算机类型“x86”与目标计算机类型“x64”冲突
+debug\\CrossroadGradeManageSystem.exe : fatal error LNK1120: 3 个无法解析的外部命令

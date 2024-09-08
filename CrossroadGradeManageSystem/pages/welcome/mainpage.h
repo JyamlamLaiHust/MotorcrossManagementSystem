@@ -13,6 +13,7 @@ class MainPage : public QWidget
 
 public:
     explicit MainPage(QWidget *parent = 0);
+//    void paintEvent(QPaintEvent* event);
     ~MainPage();
 
 private:

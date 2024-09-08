@@ -24,9 +24,9 @@ void AdminTableModel::createTable()
     QSqlQuery query;
     QString str;
     str  = tr("CREATE TABLE ") + tableName + tr(" ( ");
-    str += header.at(0) + tr(" VARCHAR(20) NOT NULL PRIMARY KEY, ");
-    str += header.at(1) + tr(" VARCHAR(20) NOT NULL, ");
-    str += header.at(2) + tr(" VARCHAR(20) NOT NULL); ");
+    str += header.at(0) + tr(" VARCHAR(100) NOT NULL PRIMARY KEY, ");
+    str += header.at(1) + tr(" VARCHAR(100) NOT NULL, ");
+    str += header.at(2) + tr(" VARCHAR(100) NOT NULL); ");
     bool ret = query.exec(str);
     if(ret == true){
         qDebug()<<tableName<<QObject::tr(" table create success");
@@ -91,8 +91,19 @@ int AdminTableModel::insertRecords(QString userName, QString pawd, QString remar
     query.bindValue(":password", pawd);
     query.bindValue(":remark", remark);
 
+    // 执行 SQL 语句前打印查询语句
+    qDebug() << "Prepared Query:" << query.executedQuery();
+
     // 执行 SQL 语句
     ret = query.exec();
+
+    // 执行 SQL 语句后打印结果
+    if (ret) {
+        qDebug() << "Record inserted successfully.";
+    } else {
+        QSqlError error = query.lastError();
+        qDebug() << "Insertion failed:" << error.text();
+    }
 
     return model->rowCount();
 }

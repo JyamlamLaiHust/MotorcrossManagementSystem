@@ -40,9 +40,11 @@ private slots:
 
     void checkIn(); // 运动员报名
 
-//    void WriteOff(); //人员注销
+    void checkOut(); // 退出比赛
 
     void holdCompetition(); // 举办比赛
+
+    void cancelGames();
 
     void queryRecords(); // 查询成绩
 
@@ -81,6 +83,8 @@ private:
     Ui::MainWindow *ui;
 
     QString adminName;//管理员
+
+    QString rfidTags; // rfid 标签卡号
 
     bool IsLogin;//登陆标志
 

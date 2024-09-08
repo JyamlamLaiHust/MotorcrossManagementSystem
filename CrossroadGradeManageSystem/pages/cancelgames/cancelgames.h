@@ -11,12 +11,12 @@ namespace Ui {
 class CancelGames;
 }
 
-class CancelGames : public QWidget
+class CancelGames : public QDialog
 {
     Q_OBJECT
 
 public:
-    explicit CancelGames(QWidget *parent = 0);
+    explicit CancelGames(QDialog *parent = 0);
     ~CancelGames();
 
 private slots:

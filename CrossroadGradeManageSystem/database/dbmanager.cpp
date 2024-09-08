@@ -67,9 +67,9 @@ bool DBManager::createDB() // createDB by name
     QSqlDatabase db = QSqlDatabase::addDatabase("QMYSQL");
     db.setHostName("127.0.0.1");
     db.setPort(3306);
-    db.setDatabaseName("CrossroadManageSystem");
+    db.setDatabaseName("crossroadmanagesystem");
     db.setUserName("root");
-    db.setPassword("admin");
+    db.setPassword("123456");
     bool ok = db.open();
     if (ok){
 //        QMessageBox::information(this, "infor", "success");
@@ -101,13 +101,30 @@ void DBManager::dbClose()
 QStringList DBManager::getTableNames()
 {
     QStringList tables; // get table by name
-    QString sqlText = QObject::tr("select name from sqlite_master where type='table' order by name;");
+    QString sqlText = QObject::tr("SELECT TABLE_NAME "
+                                  "FROM INFORMATION_SCHEMA.TABLES "
+                                  "WHERE TABLE_SCHEMA = DATABASE() "
+                                  "ORDER BY TABLE_NAME;");
     QSqlQuery query;
-    query.exec(sqlText);
-    while(query.next())
-    {
+
+//    // 打印 SQL 查询语句
+//    qDebug() << "Executing SQL query:" << sqlText;
+
+//    if (!query.exec(sqlText)) {
+//        // 如果查询失败，打印错误信息
+//        qDebug() << "Query execution failed:" << query.lastError().text();
+//        return tables;
+//    }
+
+//    // 查询成功
+//    qDebug() << "Query executed successfully.";
+
+    while (query.next()) {
         tables << query.value(0).toString();
     }
+
+//    // 打印获取到的表名数量
+//    qDebug() << "Number of tables found:" << tables.size();
     return tables;
 }
 

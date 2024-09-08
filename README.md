@@ -4,7 +4,13 @@ github：https://github.com/JyamlamLaiHust/MotorcrossManagementSystem
 
 > references：
 >
-> - [Qt 连接 MySQL 数据库](https://blog.csdn.net/joey_ro/article/details/105411135)
+> 数据库：
+>
+> - [Qt 连接 MySQL 数据库](https://blog.csdn.net/bailang_zhizun/article/details/116232802)
+> - [MySQL 服务无法启动](https://blog.csdn.net/ks_1998/article/details/103384795)
+>
+> 
+>
 > - [TNF 100 越野赛规则](http://www.tnf100.cn/page-L51XZa20wAYzDAM6vG98.html)
 > - [Qt 打包 .exe 文件](https://wenku.csdn.net/answer/e0052378b1c348dfb6f592e42dda03b1)
 
@@ -166,11 +172,16 @@ participants、matches、checkpoints、rfid、results 表的顺序
 
 # 03 功能实现
 
-**画面设置为 750px * 600px**
+~~**画面设置为 750px * 600px**~~
 
 - 管理员登录 Login
 
+  - 采用简单的 MD5 加密，数据库中无法直接看到密码明文。
+  - 设置不能重复登录 **New**
+
 - （读写器）连接 Connect
+
+  需要调整读写器选中 高频13.56MHz
 
   ```makefile
   # 除加入头文件以外，还需要在.pro文件中加入库文件和指定库文件路径
@@ -183,12 +194,22 @@ participants、matches、checkpoints、rfid、results 表的顺序
 
 - 数据导出 Export
 
+  ```sql
+  SELECT TABLE_NAME 
+  FROM INFORMATION_SCHEMA.TABLES 
+  WHERE TABLE_SCHEMA = DATABASE() 
+  ORDER BY TABLE_NAME;
+  ```
+
 - 主页 Welcome
 
-  - 右键 【修改样式表】
+  - 新增一个 Frame -> 右键 【修改样式表】
 
-    ```
-    background-image:url(图片路径)
+    ```css
+    QFrame
+    {
+    	border-image: url(:/new/prefix1/mainpage.png);
+    }
     ```
 
 ---
@@ -202,29 +223,50 @@ participants、matches、checkpoints、rfid、results 表的顺序
     - 自动识别：RFID 标签编号
   -  ViewTable 实时展示已经录入的信息
 
-- 打卡 SignUp
+- 运动员退出比赛 ExitGames
 
-  > [数据库与 QtComboBox 关联](https://www.cnblogs.com/LyShark/p/15656095.html)
+  根据 rfid卡号寻找运动员记录，并删除该记录。
 
-  - 记录打卡时间 —— 插入成绩表记录
-  - 判断逻辑（打卡时间不得小于开门时间或者大于关门时间）
+  ```cpp
+  /**
+   * @brief RegistorWidget::on_tagIdReceived
+   * @param tagId 标签ID(卡号)
+   * 当读取到卡号时调用该方法
+   */
+  void ExitGames::on_tagIdReceived(QString tagId){
+      if (rfidTag) {
+          *rfidTag = tagId; // 更新rfidTag的值
+          ui->rfidTag_lineEdit->setText(tagId); // 更新界面上的显示
+      }
+  }
+  ```
 
 - 比赛举行 HoldGames
   - 越野赛路径绑定和打卡点设定 —— 插入赛事表记录
     - 通过赛事 id 区分不同赛事的打卡点 —— 设计两个comboBox（赛事 id 和打卡点 id）
-  
+
       ```cpp
       // 让QDateEdit显示当前时间
           ui->dateEdit->setDisplayFormat("yyyy-MM-dd");
           ui->dateEdit->setDateTime(QDateTime::currentDateTime());
       ```
 
-    - 发送成绩通知
-  
-      - 完成所有打卡点 print 一个成绩单通过 **MQTT 通信** 发送到每个用户
-  
+- 取消比赛 cancelGames
+
+  根据 比赛名称 寻找比赛记录，并删除该记录。
+
+- 打卡 SignUp
+
+  > [数据库与 QtComboBox 关联](https://www.cnblogs.com/LyShark/p/15656095.html) 
+
+  - 记录打卡时间 —— 插入成绩表记录
+  - 判断逻辑（打卡时间不得小于开门时间或者大于关门时间）
+  - 发送成绩通知
+
+    - 完成所有打卡点 print 一个成绩单通过 **MQTT 通信** 发送到每个用户
+
   - 成绩表查询 Query
-  
+
     - 通过不同的筛选条件将数据库展现到前端页面
 
 
@@ -247,29 +289,36 @@ participants、matches、checkpoints、rfid、results 表的顺序
 
 # 06 目前待解决问题
 
-- 前端变形（暂时忽略）
+- ~~前端变形（暂时忽略）~~
+  - 尺寸统一修改为 500 * 375
+
 - ~~数据库重构~~
-- 打卡功能
+- ~~打卡功能~~
   - ~~打卡的 findRecord 计算 总用时和计算名次 —— sql 查询语句~~
-- 查询成绩表
+- ~~查询成绩表~~
   - ~~首先要设计几个 Widget~~
   - ~~然后修改变量名称应该就能跑起来~~
-- 运动员退出比赛
+- ~~运动员退出比赛~~
   - ~~两个函数 findRecordByRfidTag 和 deleteRecord~~
-- 取消比赛
+- ~~取消比赛~~
   - ~~用 eventName 查询 —— sql语句~~
 - HoldGames 结合 mqtt 发送消息
   - [qt + mqtt](https://blog.csdn.net/luoyayun361/article/details/104671603)
-  - broadcast 后端还没有头绪怎么做
-- 项目转移到 visual studio（选做，结果不可预示，假如工作量很大就算了）
+  - broadcast 后端
+    - 查询比赛是否结束，结束则公示成绩单
+    - 
+- ~~项目转移到 visual studio（选做，结果不可预示，假如工作量很大就算了）~~
   - [vs 插件](https://365.kdocs.cn/l/csI0iin9yuKS?openfrom=docs)
   - [qt 插件](https://download.qt.io/archive/vsaddin/2.0.0/)
   - [Google Test 和 OpenCppCoverage](https://365.kdocs.cn/l/cocxP3zIxuA4?openfrom=docs)
+  - **结论：不要痴心妄想，库文件是 32 位的，你不要去挑战未知**
 - tomcat 上线
 
 # 07 转移到 visual studio
 
 这个有点夸张的，我觉得值得单开一章说明一下。
+
+**OK，从入坑到放弃**
 
 > 参考：
 >
@@ -279,10 +328,18 @@ participants、matches、checkpoints、rfid、results 表的顺序
 > - [从 mingw 转换为 MSVC 编译报错](https://blog.csdn.net/qq_38141255/article/details/130871675)
 > - [MSVC 编辑器安装](https://blog.csdn.net/Copperxcx/article/details/122540629)
 > - [安装 Windows Development Kits](https://blog.csdn.net/u014779536/article/details/106848863)
+> - [正确配置 MSVC](https://blog.csdn.net/zx19890621/article/details/113781756)
+> - [编译源码 制作 .lib 库](https://blog.csdn.net/sj2050/article/details/81700183)
 
 # 08 还没来得及看的资料
 
-- [QT 使用 mqtt 协议 部署 mosiquitto 作为 mqtt 的服务器](https://blog.csdn.net/m0_55686284/article/details/131179948)
-- [从 dll 文件中导出相应的 lib 文件](https://www.cnblogs.com/tocy/p/export-lib-from-dll-in-windows.html)
-- [Windows 安装 mosquitto 并测试](https://blog.csdn.net/xhm0924/article/details/109151357)
 - [MQTT 协议入门指南](http://www.steves-internet-guide.com/mqtt/)
+- 
+
+# 09 Mosquitto 和 MQTT
+
+> reference：
+>
+> - [Qt 官方文档翻译](https://blog.csdn.net/kouqi627/article/details/115109871)
+> - [mqtt 源码编译](https://blog.csdn.net/qq_38141255/article/details/135215186)
+> - [QT 使用 mqtt 协议 部署 mosiquitto 作为 mqtt 的服务器](https://blog.csdn.net/m0_55686284/article/details/131179948)

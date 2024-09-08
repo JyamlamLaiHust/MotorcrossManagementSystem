@@ -49,11 +49,12 @@ signals:
 
 private slots:
     void showPortInfo(int idx);//处理显示串口信息
-    void apply();//apply
     void checkCustomBaudRatePolicy(int idx);
     void checkCustomDevicePathPolicy(int idx);
 
     void on_btn_Refresh_clicked();//刷新
+
+    void on_btn_Apply_clicked();
 
 private:
     void fillPortsParameters();//填充串口参数

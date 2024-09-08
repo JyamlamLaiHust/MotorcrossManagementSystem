@@ -2,9 +2,12 @@
 #include "database/database_api.h"
 #include <QApplication>
 #include <QtCore>
+#include <QCoreApplication>
 
 int main(int argc, char *argv[])
 {
+    QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling,true);
+
     QApplication a(argc, argv);
     a.setAttribute(Qt::AA_EnableHighDpiScaling);
     MainWindow w;

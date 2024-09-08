@@ -49,7 +49,7 @@ void MainWindow::addWidgets()
     connect(this,SIGNAL(sendCardId(QString)),querypage,SLOT(on_tagIdReceived(QString)));
     ui->stackedWidget->addWidget(querypage); //3
 
-//    qDebug() << "Current number of widgets in stackedWidget:" << ui->stackedWidget->count();
+    qDebug() << "Current number of widgets in stackedWidget:" << ui->stackedWidget->count();
 }
 
 /**
@@ -60,6 +60,7 @@ void MainWindow::handConnect()
 {
     connect(ui->action_index,SIGNAL(triggered(bool)),this,SLOT(viewMainPage()));
     connect(ui->action_login,SIGNAL(triggered(bool)),this,SLOT(Login()));
+
     connect(ui->action_connect,SIGNAL(triggered(bool)),this,SLOT(Connect()));
     connect(ui->action_disconnect,SIGNAL(triggered(bool)),this,SLOT(Disconnect()));
     connect(ui->action_exit,SIGNAL(triggered(bool)),this,SLOT(ExitApplication()));
@@ -70,12 +71,19 @@ void MainWindow::handConnect()
     connect(serialPortThread,SIGNAL(wirteMsgError(QString)),this,SLOT(onOperationError(QString)));
     connect(serialPortThread,SIGNAL(receivedMsg(QByteArray)),this,SLOT(on_serialMsgreceived(QByteArray)));
 
-    connect(ui->action_checkIn,SIGNAL(triggered(bool)),this,SLOT(checkIn()));
-    connect(ui->action_holdCompetition,SIGNAL(triggered(bool)),this,SLOT(holdCompetition()));
+    connect(ui->action_checkIn,SIGNAL(triggered(bool)),this,SLOT(checkIn())); // 报名参赛
+    connect(ui->action_checkOut,SIGNAL(triggered(bool)),this,SLOT(checkOut())); // 退出比赛
+
+    connect(ui->action_holdCompetition,SIGNAL(triggered(bool)),this,SLOT(holdCompetition())); // 举办比赛
+    connect(ui->action_cancelCompetition,SIGNAL(triggered(bool)),this,SLOT(cancelGames())); // 取消比赛
+
     connect(ui->action_competition,SIGNAL(triggered(bool)),this,SLOT(queryRecords()));
     connect(ui->action_participants_one,SIGNAL(triggered(bool)),this,SLOT(queryRecords()));
     connect(ui->action_participants_two,SIGNAL(triggered(bool)),this,SLOT(queryRecords()));
     connect(ui->action_result,SIGNAL(triggered(bool)),this,SLOT(queryRecords()));
+
+
+    connect(ui->action_broadcast,SIGNAL(triggered(bool)),this,SLOT(queryRecords()));
 }
 
 /**
@@ -84,7 +92,11 @@ void MainWindow::handConnect()
  */
 void MainWindow::viewMainPage()
 {
+    int currentIndex = ui->stackedWidget->currentIndex();
+    qDebug() << "Current index before setting:" << currentIndex;
     ui->stackedWidget->setCurrentIndex(0);
+    int newIndex = ui->stackedWidget->currentIndex();
+    qDebug() << "New index after setting:" << newIndex;
     ui->statusBar->showMessage("返回到主页");
 }
 
@@ -101,6 +113,22 @@ void MainWindow::checkIn()
 }
 
 /**
+* @brief MainWindow::checkOut
+* 运动员退出比赛
+*/
+void MainWindow::checkOut()
+{
+    QMessageBox message;
+
+    ExitGames *exitgame = new ExitGames(this,  &rfidTags, serialPortThread);
+    exitgame->setWindowTitle("运动员退出比赛");
+    exitgame->exec();
+
+    delete exitgame;
+}
+
+
+/**
 * @brief MainWindow::holdCompetition
 * 举办比赛
 */
@@ -111,6 +139,23 @@ void MainWindow::holdCompetition()
     ui->stackedWidget->setCurrentIndex(2);
     ui->statusBar->showMessage("举办比赛");
 }
+
+
+/**
+* @brief MainWindow::cancelGames
+* 取消比赛
+*/
+void MainWindow::cancelGames()
+{
+    QMessageBox message;
+
+    CancelGames *cancelgame = new CancelGames();
+    cancelgame->setWindowTitle("运动员退出比赛");
+    cancelgame->exec();
+
+    delete cancelgame;
+}
+
 
 /**
 * @brief MainWindow::queryRecord
@@ -188,6 +233,14 @@ void MainWindow::ExportTable()
  */
 void MainWindow::Login()
 {
+    QMessageBox message;
+//    qDebug() << IsLogin;
+    if(IsLogin)
+    {
+        message.setText(tr("您已经登入系统，请不要重复登录。"));
+        message.exec();
+        return;
+    }
     LoginPage *loginpage = new LoginPage(this,&adminName);
     loginpage->setWindowTitle("管理员登录");
     loginpage->exec();

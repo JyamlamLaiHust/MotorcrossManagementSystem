@@ -15,7 +15,7 @@ LoginPage::LoginPage(QWidget *parent, QString *name) :QDialog(parent),ui(new Ui:
     this->name = name;
     QWidget::setTabOrder(ui->lineEdit_Name, ui->lineEdit_Passwd);
     QWidget::setTabOrder(ui->lineEdit_Passwd, ui->btn_Login);
-    QWidget::setTabOrder( ui->btn_Login, ui->btn_Return);
+    QWidget::setTabOrder(ui->btn_Login, ui->btn_Return);
 }
 
 LoginPage::~LoginPage()
@@ -37,11 +37,14 @@ void LoginPage::on_btn_Return_clicked()
 void LoginPage::on_btn_Login_clicked()
 {
     QMessageBox message;
+
     QString name = ui->lineEdit_Name->text();
     QString pwd = ui->lineEdit_Passwd->text();
     message.setStandardButtons(QMessageBox::Yes);
     message.setWindowTitle(tr("温馨提示"));
     message.setIcon(QMessageBox::Warning);
+
+
     //校验用户名的长度，采用utf8编码，汉语占用2个字符的宽度
     if(name.toUtf8().length() < 4)
     {
@@ -57,10 +60,6 @@ void LoginPage::on_btn_Login_clicked()
     }
     AdminTableModel *adminitable = new AdminTableModel(this);
     adminitable->bindTable();
-    if(adminitable->getModel()->rowCount() == 0)
-    {
-        adminitable->insertRecords(tr("admin"),GetMD5String(tr("123456")),CurrentDateTime());
-    }
 
     QSqlRecord record = adminitable->findRecord(name);
 
@@ -73,7 +72,7 @@ void LoginPage::on_btn_Login_clicked()
 
     else
     {
-        if(GetMD5String(pwd) == GetMD5String(record.value(1).toString()))//密码采用简单的MD5加密,在实际的使用中需要结合多种加密技术
+        if(GetMD5String(pwd) == record.value(1).toString())//密码采用简单的MD5加密,在实际的使用中需要结合多种加密技术
         {
             *(this->name) = name;
             this->close();

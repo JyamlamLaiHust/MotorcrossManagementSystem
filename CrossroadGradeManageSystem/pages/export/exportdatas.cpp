@@ -9,6 +9,7 @@ ExportDatas::ExportDatas(QWidget *parent) :
     ui(new Ui::ExportDatas)
 {
     ui->setupUi(this);
+    ui->comboBox->addItems(getTableNames());
 }
 
 ExportDatas::~ExportDatas()

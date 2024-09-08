@@ -12,8 +12,8 @@ QT_USE_NAMESPACE
  */
 static const char blankString[] = QT_TRANSLATE_NOOP("SettingsDialog", "N/A");
 /**************************************
- *作者: jianghj@up-tech.com
- *日期: 2016-09-20
+ *作者: JaylenLaiHUST
+ *日期: 2024-09-06
  *描述: 串口连接对话框,通过此页面可以对串口进行详细的配置
 ***************************************/
 SettingsDialog::SettingsDialog(QWidget *parent) :
@@ -63,16 +63,6 @@ void SettingsDialog::showPortInfo(int idx)
     ui->locationLabel->setText(tr("位置: %1").arg(list.count() > 4 ? list.at(4) : tr(blankString)));
     ui->vidLabel->setText(tr("厂商标识: %1").arg(list.count() > 5 ? list.at(5) : tr(blankString)));
     ui->pidLabel->setText(tr("产品ID: %1").arg(list.count() > 6 ? list.at(6) : tr(blankString)));
-}
-/**
- * @brief SettingsDialog::apply
- * 应用按钮点击事件
- */
-void SettingsDialog::apply()
-{
-    updateSettings();
-    hide();
-    emit applySettings();
 }
 /**
  * @brief SettingsDialog::checkCustomBaudRatePolicy
@@ -203,4 +193,11 @@ void SettingsDialog::updateSettings()
 void SettingsDialog::on_btn_Refresh_clicked()
 {
     this->fillPortsInfo();
+}
+
+void SettingsDialog::on_btn_Apply_clicked()
+{
+    updateSettings();
+    hide();
+    emit applySettings();
 }

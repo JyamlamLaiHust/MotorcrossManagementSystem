@@ -6,7 +6,8 @@
 
 QT       += core gui \
         sql \
-        serialport
+        serialport \
+        mqtt
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -33,6 +34,7 @@ SOURCES += \
     database/participantstablemodel.cpp \
     database/resultstablemodel.cpp \
     database/rfidrecordstablemodel.cpp \
+    pages/broadcast/broadcast.cpp \
     pages/export/exportdatas.cpp \
     pages/welcome/mainpage.cpp \
     serialThread/serialportthread.cpp \
@@ -45,7 +47,6 @@ SOURCES += \
     pages/holdgames/holdgamespages.cpp \
     pages/signup/signup.cpp \
     pages/query/querypage.cpp \
-    pages/boradcast/broadcastpage.cpp \
     pages/exitgames/exitgames.cpp \
     pages/cancelgames/cancelgames.cpp
 
@@ -59,6 +60,7 @@ HEADERS += \
     database/participantstablemodel.h \
     database/resultstablemodel.h \
     database/rfidrecordstablemodel.h \
+    pages/broadcast/broadcast.h \
     pages/export/exportdatas.h \
     pages/welcome/mainpage.h \
     serialThread/serialportthread.h \
@@ -73,14 +75,14 @@ HEADERS += \
     pages/holdgames/holdgamespages.h \
     pages/signup/signup.h \
     pages/query/querypage.h \
-    pages/boradcast/broadcastpage.h \
     pages/exitgames/exitgames.h \
     pages/cancelgames/cancelgames.h
 
 
 
 FORMS += \
-        mainwindow.ui \
+    mainwindow.ui \
+    pages/broadcast/broadcast.ui \
     pages/welcome/mainpage.ui \
     pages/export/exportdatas.ui \
     pages/connect/settingsdialog.ui \
@@ -89,19 +91,24 @@ FORMS += \
     pages/holdgames/holdgamespages.ui \
     pages/signup/signup.ui \
     pages/query/querypage.ui \
-    pages/boradcast/broadcastpage.ui \
     pages/exitgames/exitgames.ui \
     pages/cancelgames/cancelgames.ui
 
 
 DISTFILES += \
     lib/libM1356Dll.a \
-    lib/M1356Dll.dll
+    lib/M1356Dll.dll \
+    lib/libQt5Mqttd.a
 
 
 win32: LIBS += -L$$PWD/lib/ -lM1356Dll
-msvc:QMAKE_CXXFLAGS += -execution-charset:utf-8
-msvc:QMAKE_CXXFLAGS += -source-charset:utf-8
 
 RESOURCES += \
     resources/res.qrc
+
+win32:CONFIG(release, debug|release): LIBS += -L$$PWD/lib/ -lQt5Mqtt
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/lib/ -lQt5Mqttd
+else:unix: LIBS += -L$$PWD/lib/ -lQt5Mqtt
+
+INCLUDEPATH += $$PWD/inc
+DEPENDPATH += $$PWD/inc
