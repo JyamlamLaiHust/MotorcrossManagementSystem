@@ -269,8 +269,6 @@ participants、matches、checkpoints、rfid、results 表的顺序
 
     - 通过不同的筛选条件将数据库展现到前端页面
 
-
-
 # 04 服务器部署
 
 # 05 其它
@@ -290,11 +288,11 @@ participants、matches、checkpoints、rfid、results 表的顺序
 # 06 目前待解决问题
 
 - ~~前端变形（暂时忽略）~~
-  - 尺寸统一修改为 500 * 375
+  - **尺寸统一修改为 500 * 375**
 
 - ~~数据库重构~~
-- ~~打卡功能~~
-  - ~~打卡的 findRecord 计算 总用时和计算名次 —— sql 查询语句~~
+- 打卡功能
+  - 打卡的 findRecord 计算 总用时和计算名次 —— sql 查询语句
 - ~~查询成绩表~~
   - ~~首先要设计几个 Widget~~
   - ~~然后修改变量名称应该就能跑起来~~

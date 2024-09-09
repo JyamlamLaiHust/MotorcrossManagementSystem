@@ -41,6 +41,7 @@ public:
     QAction *action_result;
     QAction *action_participants_two;
     QAction *action_broadcast;
+    QAction *action_signup;
     QWidget *centralWidget;
     QStackedWidget *stackedWidget;
     QMenuBar *menuBar;
@@ -57,7 +58,7 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
-        MainWindow->resize(500, 375);
+        MainWindow->resize(500, 400);
         QSizePolicy sizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
@@ -95,6 +96,8 @@ public:
         action_participants_two->setObjectName(QString::fromUtf8("action_participants_two"));
         action_broadcast = new QAction(MainWindow);
         action_broadcast->setObjectName(QString::fromUtf8("action_broadcast"));
+        action_signup = new QAction(MainWindow);
+        action_signup->setObjectName(QString::fromUtf8("action_signup"));
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QString::fromUtf8("centralWidget"));
         stackedWidget = new QStackedWidget(centralWidget);
@@ -103,7 +106,7 @@ public:
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QString::fromUtf8("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 500, 17));
+        menuBar->setGeometry(QRect(0, 0, 500, 21));
         menu = new QMenu(menuBar);
         menu->setObjectName(QString::fromUtf8("menu"));
         menu_2 = new QMenu(menuBar);
@@ -127,8 +130,8 @@ public:
         menuBar->addAction(menu->menuAction());
         menuBar->addAction(menu_2->menuAction());
         menuBar->addAction(menu_3->menuAction());
-        menuBar->addAction(menu_4->menuAction());
         menuBar->addAction(menu_6->menuAction());
+        menuBar->addAction(menu_4->menuAction());
         menuBar->addAction(menu_5->menuAction());
         menu->addAction(action_login);
         menu->addSeparator();
@@ -149,6 +152,7 @@ public:
         menu_4->addAction(action_result);
         menu_5->addAction(action_about);
         menu_6->addAction(action_broadcast);
+        menu_6->addAction(action_signup);
 
         retranslateUi(MainWindow);
 
@@ -195,12 +199,13 @@ public:
         action_result->setText(QCoreApplication::translate("MainWindow", "\346\210\220\347\273\251\346\237\245\350\257\242", nullptr));
         action_participants_two->setText(QCoreApplication::translate("MainWindow", "\350\277\220\345\212\250\345\221\230\346\237\245\350\257\242_\345\247\223\345\220\215", nullptr));
         action_broadcast->setText(QCoreApplication::translate("MainWindow", "\346\210\220\347\273\251\345\217\221\351\200\201", nullptr));
+        action_signup->setText(QCoreApplication::translate("MainWindow", "\346\210\220\347\273\251\346\211\223\345\215\241", nullptr));
         menu->setTitle(QCoreApplication::translate("MainWindow", "\347\263\273\347\273\237\347\256\241\347\220\206", nullptr));
         menu_2->setTitle(QCoreApplication::translate("MainWindow", "\350\277\220\345\212\250\345\221\230\347\256\241\347\220\206", nullptr));
         menu_3->setTitle(QCoreApplication::translate("MainWindow", "\350\265\233\344\272\213\347\256\241\347\220\206", nullptr));
         menu_4->setTitle(QCoreApplication::translate("MainWindow", "\346\237\245\350\257\242", nullptr));
         menu_5->setTitle(QCoreApplication::translate("MainWindow", "\345\270\256\345\212\251", nullptr));
-        menu_6->setTitle(QCoreApplication::translate("MainWindow", "\346\210\220\347\273\251\345\217\221\351\200\201", nullptr));
+        menu_6->setTitle(QCoreApplication::translate("MainWindow", "\346\210\220\347\273\251\347\256\241\347\220\206", nullptr));
     } // retranslateUi
 
 };

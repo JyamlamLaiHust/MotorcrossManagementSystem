@@ -9,7 +9,7 @@
 #include <QSqlError>
 
 BroadCast::BroadCast(QWidget *parent) :
-    QWidget(parent),
+    QDialog(parent),
     ui(new Ui::BroadCast)
 {
     ui->setupUi(this);

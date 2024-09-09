@@ -38,16 +38,20 @@ void MainWindow::addWidgets()
     MainPage *welcome = new MainPage(this);
     ui->stackedWidget->addWidget(welcome); //0
 
-    CheckIn *checkin = new CheckIn(this);
+    CheckIn *checkin = new CheckIn(this, serialPortThread);
     connect(this,SIGNAL(sendCardId(QString)),checkin,SLOT(on_tagIdReceived(QString)));
     ui->stackedWidget->addWidget(checkin); //1
 
     HoldGamesPages *holdgamespages = new HoldGamesPages(this);
     ui->stackedWidget->addWidget(holdgamespages);//2
 
-    QueryPage *querypage = new QueryPage(this);
+    QueryPage *querypage = new QueryPage(this, serialPortThread);
     connect(this,SIGNAL(sendCardId(QString)),querypage,SLOT(on_tagIdReceived(QString)));
     ui->stackedWidget->addWidget(querypage); //3
+
+    SignUp *signuppage = new SignUp(this, serialPortThread);
+    connect(this,SIGNAL(sendCardId(QString)),querypage,SLOT(on_tagIdReceived(QString)));
+    ui->stackedWidget->addWidget(signuppage); //4
 
     qDebug() << "Current number of widgets in stackedWidget:" << ui->stackedWidget->count();
 }
@@ -58,18 +62,20 @@ void MainWindow::addWidgets()
  */
 void MainWindow::handConnect()
 {
-    connect(ui->action_index,SIGNAL(triggered(bool)),this,SLOT(viewMainPage()));
-    connect(ui->action_login,SIGNAL(triggered(bool)),this,SLOT(Login()));
 
-    connect(ui->action_connect,SIGNAL(triggered(bool)),this,SLOT(Connect()));
-    connect(ui->action_disconnect,SIGNAL(triggered(bool)),this,SLOT(Disconnect()));
-    connect(ui->action_exit,SIGNAL(triggered(bool)),this,SLOT(ExitApplication()));
-    connect(ui->action_export,SIGNAL(triggered(bool)),this,SLOT(ExportTable()));
     connect(settingsDialog,SIGNAL(applySettings()),this,SLOT(updateConnect()));
 
     connect(serialPortThread,SIGNAL(sendMsg(char*,int)),this,SLOT(onSendMessage(char*,int)));
     connect(serialPortThread,SIGNAL(wirteMsgError(QString)),this,SLOT(onOperationError(QString)));
     connect(serialPortThread,SIGNAL(receivedMsg(QByteArray)),this,SLOT(on_serialMsgreceived(QByteArray)));
+
+    connect(ui->action_index,SIGNAL(triggered(bool)),this,SLOT(viewMainPage())); // 主页
+    connect(ui->action_login,SIGNAL(triggered(bool)),this,SLOT(Login())); // 登录
+
+    connect(ui->action_connect,SIGNAL(triggered(bool)),this,SLOT(Connect())); // 连接
+    connect(ui->action_disconnect,SIGNAL(triggered(bool)),this,SLOT(Disconnect())); // 断开
+    connect(ui->action_exit,SIGNAL(triggered(bool)),this,SLOT(ExitApplication())); // 退出
+    connect(ui->action_export,SIGNAL(triggered(bool)),this,SLOT(ExportTable())); // 导出
 
     connect(ui->action_checkIn,SIGNAL(triggered(bool)),this,SLOT(checkIn())); // 报名参赛
     connect(ui->action_checkOut,SIGNAL(triggered(bool)),this,SLOT(checkOut())); // 退出比赛
@@ -77,13 +83,15 @@ void MainWindow::handConnect()
     connect(ui->action_holdCompetition,SIGNAL(triggered(bool)),this,SLOT(holdCompetition())); // 举办比赛
     connect(ui->action_cancelCompetition,SIGNAL(triggered(bool)),this,SLOT(cancelGames())); // 取消比赛
 
-    connect(ui->action_competition,SIGNAL(triggered(bool)),this,SLOT(queryRecords()));
+    connect(ui->action_competition,SIGNAL(triggered(bool)),this,SLOT(queryRecords())); // 查询模块
     connect(ui->action_participants_one,SIGNAL(triggered(bool)),this,SLOT(queryRecords()));
     connect(ui->action_participants_two,SIGNAL(triggered(bool)),this,SLOT(queryRecords()));
     connect(ui->action_result,SIGNAL(triggered(bool)),this,SLOT(queryRecords()));
 
+    connect(ui->action_signup, SIGNAL(triggered(bool)),this,SLOT(signUp()));
+    connect(ui->action_broadcast,SIGNAL(triggered(bool)),this,SLOT(broadcast()));
 
-    connect(ui->action_broadcast,SIGNAL(triggered(bool)),this,SLOT(queryRecords()));
+    connect(ui->action_about,SIGNAL(triggered(bool)),this,SLOT(About())); // 帮助
 }
 
 /**
@@ -165,10 +173,14 @@ void MainWindow::queryRecords()
 {
     if(!CheckLogin())
         return;
-    ui->stackedWidget->setCurrentIndex(3);
-    ui->statusBar->showMessage("记录查询");
-}
+    QAction *action = dynamic_cast<QAction*>(QObject::sender());
+    emit sendAction(action);
 
+    ui->stackedWidget->setCurrentIndex(3);
+
+    ui->statusBar->showMessage(action->text()+tr("查询"));
+    ui->statusBar->showMessage("查询各个环节的信息");
+}
 
 
 //窗口关闭响应事件
@@ -210,7 +222,7 @@ void MainWindow::About()
     QString text = tr("软件版本:%1\r\n作者:%2\r\n描述:%3")
             .arg(CURRENT_VERSION)
             .arg(tr("JaylenLaiHUST"))
-            .arg(tr("Hotel Management System"));
+            .arg(tr("越野赛成绩管理系统"));
     QMessageBox::information(this,tr("帮助"),text,QMessageBox::Yes);
 }
 
@@ -332,6 +344,34 @@ void MainWindow::ExitApplication()
 {
     this->close();
 }
+
+/**
+ * @brief MainWindow::signUp
+ * 成绩打卡按钮点击事件
+ */
+void MainWindow::signUp()
+{
+    if(!CheckLogin())
+        return;
+    ui->stackedWidget->setCurrentIndex(4);
+    ui->statusBar->showMessage("成绩打卡");
+}
+
+
+/**
+ * @brief MainWindow::broadcast
+ * 成绩发布点击事件
+ */
+void MainWindow::broadcast()
+{
+    if(!CheckLogin())
+        return;
+    BroadCast *broadcast = new BroadCast();
+    broadcast->setWindowTitle("成绩发布");
+    broadcast->exec();
+    delete broadcast;
+}
+
 /**
  * @brief MainWindow::onOperationError
  * @param msg 发送的命令

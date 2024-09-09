@@ -11,7 +11,7 @@
 ***************************************/
 
 CheckIn::CheckIn(QWidget *parent, SerialPortThread *serial) :
-    QWidget(parent), ui(new Ui::CheckIn)
+    QWidget(parent), ui(new Ui::CheckIn), serialThread(serial)
 {
     ui->setupUi(this);
     this->serialThread = serial;
@@ -121,8 +121,12 @@ void CheckIn::on_btn_reset_clicked()
  * @brief CheckIn::on_btn_Inventory_clicked
  * 识别按钮点击事件
  */
-void CheckIn::on_btn_Inventory_clicked()
+void CheckIn::on_btn_identify_clicked()
 {
+    if (!serialThread || !m1356dll) {
+        QMessageBox::critical(this, tr("错误"), tr("serialThread 或 m1356dll 未初始化！"));
+        return;
+    }
     if(!serialThread->serialPortIsOpen())
     {
         QMessageBox::warning(this,tr("温馨提示"),tr("请先连接读卡器后再试！"),QMessageBox::Yes);
@@ -151,5 +155,4 @@ void CheckIn::on_btn_refresh_clicked()
 //    ui->tableView->resizeColumnsToContents();
 //    ui->tableView->horizontalHeader()->setStretchLastSection(true);
 }
-
 

@@ -16,7 +16,7 @@ class QueryPage : public QWidget
     Q_OBJECT
 
 public:
-    explicit QueryPage(QWidget *parent = 0);
+    explicit QueryPage(QWidget *parent = 0, SerialPortThread *serial = 0);
     ~QueryPage();
 
 private slots:
@@ -38,7 +38,7 @@ private:
 
     QSqlTableModel *currentModel;//用于存放当前的model
 
-    SerialPortThread *serial;//串口线程
+    SerialPortThread *serialThread;//串口线程
 
     M1356Dll *m1356dll;//13.56MHz模块的库类
 };

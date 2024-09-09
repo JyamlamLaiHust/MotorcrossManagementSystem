@@ -72,7 +72,7 @@ public:
     {
         if (SignUp->objectName().isEmpty())
             SignUp->setObjectName(QString::fromUtf8("SignUp"));
-        SignUp->resize(500, 350);
+        SignUp->resize(481, 335);
         gridLayout = new QGridLayout(SignUp);
         gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
         groupBox = new QGroupBox(SignUp);
@@ -130,6 +130,11 @@ public:
 
         Time_timeEdit = new QTimeEdit(groupBox);
         Time_timeEdit->setObjectName(QString::fromUtf8("Time_timeEdit"));
+        QSizePolicy sizePolicy(QSizePolicy::Minimum, QSizePolicy::Fixed);
+        sizePolicy.setHorizontalStretch(1);
+        sizePolicy.setVerticalStretch(0);
+        sizePolicy.setHeightForWidth(Time_timeEdit->sizePolicy().hasHeightForWidth());
+        Time_timeEdit->setSizePolicy(sizePolicy);
 
         horizontalLayout_2->addWidget(Time_timeEdit);
 

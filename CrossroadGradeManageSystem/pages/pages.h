@@ -16,5 +16,7 @@
 #include "holdgames/holdgamespages.h"
 #include "query/querypage.h"
 #include "cancelgames/cancelgames.h"
+#include "signup/signup.h"
+#include "broadcast/broadcast.h"
 
 #endif // PAGES

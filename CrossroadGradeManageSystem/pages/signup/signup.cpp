@@ -1,11 +1,13 @@
 #include "signup.h"
 #include "ui_signup.h"
 
-SignUp::SignUp(QWidget *parent) :
+SignUp::SignUp(QWidget *parent, SerialPortThread *serial) :
     QWidget(parent),
     ui(new Ui::SignUp)
 {
     ui->setupUi(this);
+    this->serialThread = serial;
+    m1356dll = new M1356Dll();
 }
 
 SignUp::~SignUp()
@@ -75,10 +77,15 @@ void SignUp::on_btn_Time_clicked()
 
 void SignUp::on_btn_refresh_clicked()
 {
-
+    return;
 }
 
 void SignUp::on_btn_reset_clicked()
 {
+    return;
+}
 
+void SignUp::on_btn_recognize_clicked()
+{
+    return;
 }

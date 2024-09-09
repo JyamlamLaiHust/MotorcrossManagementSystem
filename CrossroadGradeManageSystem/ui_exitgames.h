@@ -43,7 +43,7 @@ public:
     {
         if (ExitGames->objectName().isEmpty())
             ExitGames->setObjectName(QString::fromUtf8("ExitGames"));
-        ExitGames->resize(417, 203);
+        ExitGames->resize(325, 172);
         gridLayout = new QGridLayout(ExitGames);
         gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
         groupBox = new QGroupBox(ExitGames);

@@ -2,6 +2,7 @@
 #define BROADCAST_H
 
 #include <QWidget>
+#include <QDialog>
 
 #include "QtMqtt/qmqttclient.h"
 
@@ -9,7 +10,7 @@ namespace Ui {
 class BroadCast;
 }
 
-class BroadCast : public QWidget
+class BroadCast : public QDialog
 {
     Q_OBJECT
 

@@ -98,7 +98,7 @@ void HoldGamesPages::on_btn_bond_clicked()
     // 校验用户名的长度，采用utf8编码，汉语占用2个字符的宽度
     if(checkPointName.toUtf8().length() < 1)
     {
-        message.setText(tr("比赛名称不能为空。"));
+        message.setText(tr("打卡点名称不能为空。"));
         message.exec();
         return;
     }

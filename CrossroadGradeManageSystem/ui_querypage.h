@@ -29,7 +29,7 @@ QT_BEGIN_NAMESPACE
 class Ui_QueryPage
 {
 public:
-    QHBoxLayout *horizontalLayout_2;
+    QGridLayout *gridLayout;
     QGroupBox *groupBox;
     QGridLayout *gridLayout_3;
     QGroupBox *groupBox_2;
@@ -68,9 +68,9 @@ public:
     {
         if (QueryPage->objectName().isEmpty())
             QueryPage->setObjectName(QString::fromUtf8("QueryPage"));
-        QueryPage->resize(500, 350);
-        horizontalLayout_2 = new QHBoxLayout(QueryPage);
-        horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
+        QueryPage->resize(500, 375);
+        gridLayout = new QGridLayout(QueryPage);
+        gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
         groupBox = new QGroupBox(QueryPage);
         groupBox->setObjectName(QString::fromUtf8("groupBox"));
         gridLayout_3 = new QGridLayout(groupBox);
@@ -160,7 +160,7 @@ public:
         event_Page->setObjectName(QString::fromUtf8("event_Page"));
         horizontalLayoutWidget_5 = new QWidget(event_Page);
         horizontalLayoutWidget_5->setObjectName(QString::fromUtf8("horizontalLayoutWidget_5"));
-        horizontalLayoutWidget_5->setGeometry(QRect(0, 10, 241, 61));
+        horizontalLayoutWidget_5->setGeometry(QRect(0, 10, 259, 61));
         horizontalLayout_5 = new QHBoxLayout(horizontalLayoutWidget_5);
         horizontalLayout_5->setObjectName(QString::fromUtf8("horizontalLayout_5"));
         horizontalLayout_5->setContentsMargins(0, 0, 0, 0);
@@ -205,7 +205,7 @@ public:
         gridLayout_3->addWidget(tableView, 1, 0, 1, 1);
 
 
-        horizontalLayout_2->addWidget(groupBox);
+        gridLayout->addWidget(groupBox, 0, 0, 1, 1);
 
 
         retranslateUi(QueryPage);

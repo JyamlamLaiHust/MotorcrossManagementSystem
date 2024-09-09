@@ -18,7 +18,7 @@ class SignUp : public QWidget
     Q_OBJECT
 
 public:
-    explicit SignUp(QWidget *parent = 0);
+    explicit SignUp(QWidget *parent = 0, SerialPortThread *serial = 0);
     ~SignUp();
 
 private slots:
@@ -29,8 +29,14 @@ private slots:
 
     void on_btn_reset_clicked();
 
+    void on_btn_recognize_clicked();
+
 private:
     Ui::SignUp *ui;
+
+    SerialPortThread *serialThread;//串口线程
+
+    M1356Dll *m1356dll;//13.56MHz模块的库类
 };
 
 #endif // SIGNUP_H

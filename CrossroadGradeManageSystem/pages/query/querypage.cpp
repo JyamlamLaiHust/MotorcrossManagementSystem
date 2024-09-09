@@ -5,7 +5,7 @@
 #include <QRegExpValidator>
 #include <QAction>
 
-QueryPage::QueryPage(QWidget *parent) :
+QueryPage::QueryPage(QWidget *parent, SerialPortThread *serial) :
     QWidget(parent),
     ui(new Ui::QueryPage)
 {
@@ -13,7 +13,7 @@ QueryPage::QueryPage(QWidget *parent) :
     ui->tableView->horizontalHeader()->stretchLastSection();
     ui->start_dateTimeEdit->setDateTime(QDateTime::currentDateTime());
     ui->end_dateTimeEdit->setDateTime(QDateTime::currentDateTime());
-    this->serial = serial;
+    this->serialThread = serial;
     m1356dll = new M1356Dll();
 //    QRegExp rx("^[1-9A-Fa-f]{0,16}");
 //    QRegExpValidator *validator = new QRegExpValidator(rx, this);
@@ -37,7 +37,12 @@ void QueryPage::on_tagIdReceived(QString tagId){
 
 void QueryPage::on_btn_recognise_clicked()
 {
-    if(!serial->serialPortIsOpen())
+    if (!serialThread || !m1356dll) {
+        QMessageBox::critical(this, tr("错误"), tr("serialThread 或 m1356dll 未初始化！"));
+        return;
+    }
+
+    if(!serialThread->serialPortIsOpen())
     {
         QMessageBox::warning(this,tr("温馨提示"),tr("请先连接读卡器后再试！"),QMessageBox::Yes);
         return;
@@ -49,14 +54,14 @@ void QueryPage::on_btn_recognise_clicked()
     buffer[0] = RC632_14443_ALL;
     p = m1356dll->RC632_SendCmdReq(RC632_CMD_REQUEST_A,buffer,1);
     frameLen = BUILD_UINT16(p[0], p[1]);
-    serial->writeData((char *)(p + 2 ),frameLen);
+    serialThread->writeData((char *)(p + 2 ),frameLen);
 }
 
 
 /**
-// * @brief QueryPage::on_btn_Query_clicked
-// * 查询按钮点击事件
-// */
+ * @brief QueryPage::on_btn_Query_clicked
+ * 查询按钮点击事件
+ */
 void QueryPage::on_btn_Query_clicked()
 {
     int index = ui->stackedWidget->currentIndex();
@@ -169,12 +174,12 @@ void QueryPage::updateTableView(QSqlTableModel *model)
  */
 void QueryPage::on_comboBox_currentIndexChanged(const QString &text)
 {
-    if(text == tr("卡号"))
+    if(text == tr("运动员查询_卡号"))
         ui->stackedWidget->setCurrentIndex(0);
-    else if(text == tr("运动员姓名"))
+    else if(text == tr("运动员查询_姓名"))
         ui->stackedWidget->setCurrentIndex(1);
-    else if(text == "比赛名称")
+    else if(text == "比赛查询")
         ui->stackedWidget->setCurrentIndex(2);
-    else if(text == tr("时间"))
+    else if(text == tr("成绩查询"))
         ui->stackedWidget->setCurrentIndex(3);
 }

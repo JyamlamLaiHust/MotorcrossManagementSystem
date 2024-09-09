@@ -23,7 +23,7 @@ QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_CheckIn_t {
     QByteArrayData data[8];
-    char stringdata0[125];
+    char stringdata0[124];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -36,16 +36,15 @@ QT_MOC_LITERAL(0, 0, 7), // "CheckIn"
 QT_MOC_LITERAL(1, 8, 16), // "on_tagIdReceived"
 QT_MOC_LITERAL(2, 25, 0), // ""
 QT_MOC_LITERAL(3, 26, 5), // "tagId"
-QT_MOC_LITERAL(4, 32, 24), // "on_btn_Inventory_clicked"
-QT_MOC_LITERAL(5, 57, 23), // "on_btn_register_clicked"
-QT_MOC_LITERAL(6, 81, 22), // "on_btn_refresh_clicked"
-QT_MOC_LITERAL(7, 104, 20) // "on_btn_reset_clicked"
+QT_MOC_LITERAL(4, 32, 23), // "on_btn_identify_clicked"
+QT_MOC_LITERAL(5, 56, 23), // "on_btn_register_clicked"
+QT_MOC_LITERAL(6, 80, 22), // "on_btn_refresh_clicked"
+QT_MOC_LITERAL(7, 103, 20) // "on_btn_reset_clicked"
 
     },
     "CheckIn\0on_tagIdReceived\0\0tagId\0"
-    "on_btn_Inventory_clicked\0"
-    "on_btn_register_clicked\0on_btn_refresh_clicked\0"
-    "on_btn_reset_clicked"
+    "on_btn_identify_clicked\0on_btn_register_clicked\0"
+    "on_btn_refresh_clicked\0on_btn_reset_clicked"
 };
 #undef QT_MOC_LITERAL
 
@@ -86,7 +85,7 @@ void CheckIn::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, voi
         Q_UNUSED(_t)
         switch (_id) {
         case 0: _t->on_tagIdReceived((*reinterpret_cast< QString(*)>(_a[1]))); break;
-        case 1: _t->on_btn_Inventory_clicked(); break;
+        case 1: _t->on_btn_identify_clicked(); break;
         case 2: _t->on_btn_register_clicked(); break;
         case 3: _t->on_btn_refresh_clicked(); break;
         case 4: _t->on_btn_reset_clicked(); break;

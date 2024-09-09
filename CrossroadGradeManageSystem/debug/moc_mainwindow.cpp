@@ -22,8 +22,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_MainWindow_t {
-    QByteArrayData data[28];
-    char stringdata0[282];
+    QByteArrayData data[30];
+    char stringdata0[299];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -50,26 +50,28 @@ QT_MOC_LITERAL(14, 125, 12), // "queryRecords"
 QT_MOC_LITERAL(15, 138, 7), // "Connect"
 QT_MOC_LITERAL(16, 146, 10), // "Disconnect"
 QT_MOC_LITERAL(17, 157, 15), // "ExitApplication"
-QT_MOC_LITERAL(18, 173, 12), // "viewMainPage"
-QT_MOC_LITERAL(19, 186, 16), // "onOperationError"
-QT_MOC_LITERAL(20, 203, 3), // "msg"
-QT_MOC_LITERAL(21, 207, 13), // "onSendMessage"
-QT_MOC_LITERAL(22, 221, 5), // "char*"
-QT_MOC_LITERAL(23, 227, 4), // "data"
-QT_MOC_LITERAL(24, 232, 8), // "frameLen"
-QT_MOC_LITERAL(25, 241, 20), // "on_serialMsgreceived"
-QT_MOC_LITERAL(26, 262, 5), // "bytes"
-QT_MOC_LITERAL(27, 268, 13) // "updateConnect"
+QT_MOC_LITERAL(18, 173, 6), // "signUp"
+QT_MOC_LITERAL(19, 180, 9), // "broadcast"
+QT_MOC_LITERAL(20, 190, 12), // "viewMainPage"
+QT_MOC_LITERAL(21, 203, 16), // "onOperationError"
+QT_MOC_LITERAL(22, 220, 3), // "msg"
+QT_MOC_LITERAL(23, 224, 13), // "onSendMessage"
+QT_MOC_LITERAL(24, 238, 5), // "char*"
+QT_MOC_LITERAL(25, 244, 4), // "data"
+QT_MOC_LITERAL(26, 249, 8), // "frameLen"
+QT_MOC_LITERAL(27, 258, 20), // "on_serialMsgreceived"
+QT_MOC_LITERAL(28, 279, 5), // "bytes"
+QT_MOC_LITERAL(29, 285, 13) // "updateConnect"
 
     },
     "MainWindow\0sendAction\0\0QAction*\0action\0"
     "sendCardId\0tagID\0About\0ExportTable\0"
     "Login\0checkIn\0checkOut\0holdCompetition\0"
     "cancelGames\0queryRecords\0Connect\0"
-    "Disconnect\0ExitApplication\0viewMainPage\0"
-    "onOperationError\0msg\0onSendMessage\0"
-    "char*\0data\0frameLen\0on_serialMsgreceived\0"
-    "bytes\0updateConnect"
+    "Disconnect\0ExitApplication\0signUp\0"
+    "broadcast\0viewMainPage\0onOperationError\0"
+    "msg\0onSendMessage\0char*\0data\0frameLen\0"
+    "on_serialMsgreceived\0bytes\0updateConnect"
 };
 #undef QT_MOC_LITERAL
 
@@ -79,7 +81,7 @@ static const uint qt_meta_data_MainWindow[] = {
        8,       // revision
        0,       // classname
        0,    0, // classinfo
-      18,   14, // methods
+      20,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -87,26 +89,28 @@ static const uint qt_meta_data_MainWindow[] = {
        2,       // signalCount
 
  // signals: name, argc, parameters, tag, flags
-       1,    1,  104,    2, 0x06 /* Public */,
-       5,    1,  107,    2, 0x06 /* Public */,
+       1,    1,  114,    2, 0x06 /* Public */,
+       5,    1,  117,    2, 0x06 /* Public */,
 
  // slots: name, argc, parameters, tag, flags
-       7,    0,  110,    2, 0x08 /* Private */,
-       8,    0,  111,    2, 0x08 /* Private */,
-       9,    0,  112,    2, 0x08 /* Private */,
-      10,    0,  113,    2, 0x08 /* Private */,
-      11,    0,  114,    2, 0x08 /* Private */,
-      12,    0,  115,    2, 0x08 /* Private */,
-      13,    0,  116,    2, 0x08 /* Private */,
-      14,    0,  117,    2, 0x08 /* Private */,
-      15,    0,  118,    2, 0x08 /* Private */,
-      16,    0,  119,    2, 0x08 /* Private */,
-      17,    0,  120,    2, 0x08 /* Private */,
-      18,    0,  121,    2, 0x08 /* Private */,
-      19,    1,  122,    2, 0x08 /* Private */,
-      21,    2,  125,    2, 0x08 /* Private */,
-      25,    1,  130,    2, 0x08 /* Private */,
-      27,    0,  133,    2, 0x08 /* Private */,
+       7,    0,  120,    2, 0x08 /* Private */,
+       8,    0,  121,    2, 0x08 /* Private */,
+       9,    0,  122,    2, 0x08 /* Private */,
+      10,    0,  123,    2, 0x08 /* Private */,
+      11,    0,  124,    2, 0x08 /* Private */,
+      12,    0,  125,    2, 0x08 /* Private */,
+      13,    0,  126,    2, 0x08 /* Private */,
+      14,    0,  127,    2, 0x08 /* Private */,
+      15,    0,  128,    2, 0x08 /* Private */,
+      16,    0,  129,    2, 0x08 /* Private */,
+      17,    0,  130,    2, 0x08 /* Private */,
+      18,    0,  131,    2, 0x08 /* Private */,
+      19,    0,  132,    2, 0x08 /* Private */,
+      20,    0,  133,    2, 0x08 /* Private */,
+      21,    1,  134,    2, 0x08 /* Private */,
+      23,    2,  137,    2, 0x08 /* Private */,
+      27,    1,  142,    2, 0x08 /* Private */,
+      29,    0,  145,    2, 0x08 /* Private */,
 
  // signals: parameters
     QMetaType::Void, 0x80000000 | 3,    4,
@@ -125,9 +129,11 @@ static const uint qt_meta_data_MainWindow[] = {
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
-    QMetaType::Void, QMetaType::QString,   20,
-    QMetaType::Void, 0x80000000 | 22, QMetaType::Int,   23,   24,
-    QMetaType::Void, QMetaType::QByteArray,   26,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void, QMetaType::QString,   22,
+    QMetaType::Void, 0x80000000 | 24, QMetaType::Int,   25,   26,
+    QMetaType::Void, QMetaType::QByteArray,   28,
     QMetaType::Void,
 
        0        // eod
@@ -152,11 +158,13 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 10: _t->Connect(); break;
         case 11: _t->Disconnect(); break;
         case 12: _t->ExitApplication(); break;
-        case 13: _t->viewMainPage(); break;
-        case 14: _t->onOperationError((*reinterpret_cast< QString(*)>(_a[1]))); break;
-        case 15: _t->onSendMessage((*reinterpret_cast< char*(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2]))); break;
-        case 16: _t->on_serialMsgreceived((*reinterpret_cast< QByteArray(*)>(_a[1]))); break;
-        case 17: _t->updateConnect(); break;
+        case 13: _t->signUp(); break;
+        case 14: _t->broadcast(); break;
+        case 15: _t->viewMainPage(); break;
+        case 16: _t->onOperationError((*reinterpret_cast< QString(*)>(_a[1]))); break;
+        case 17: _t->onSendMessage((*reinterpret_cast< char*(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2]))); break;
+        case 18: _t->on_serialMsgreceived((*reinterpret_cast< QByteArray(*)>(_a[1]))); break;
+        case 19: _t->updateConnect(); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -207,13 +215,13 @@ int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 18)
+        if (_id < 20)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 18;
+        _id -= 20;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 18)
+        if (_id < 20)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 18;
+        _id -= 20;
     }
     return _id;
 }

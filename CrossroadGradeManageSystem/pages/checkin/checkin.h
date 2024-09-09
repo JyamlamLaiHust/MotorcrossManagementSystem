@@ -23,13 +23,15 @@ public:
 private slots:
     void on_tagIdReceived(QString tagId);//卡号接收槽
 
-    void on_btn_Inventory_clicked(); //识别
+    void on_btn_identify_clicked(); //识别
 
     void on_btn_register_clicked(); //注册
 
     void on_btn_refresh_clicked(); //刷新注册表
 
     void on_btn_reset_clicked(); //重置
+
+
 
 private:
     Ui::CheckIn *ui;

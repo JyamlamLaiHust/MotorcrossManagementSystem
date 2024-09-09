@@ -36,7 +36,6 @@ private slots:
 
     void Login(); //登陆
 
-//    void ViewTables(); //显示表
 
     void checkIn(); // 运动员报名
 
@@ -44,7 +43,7 @@ private slots:
 
     void holdCompetition(); // 举办比赛
 
-    void cancelGames();
+    void cancelGames(); // 取消比赛
 
     void queryRecords(); // 查询成绩
 
@@ -54,11 +53,11 @@ private slots:
 
     void ExitApplication(); //退出应用
 
-//    void ViewConsume(); //模拟消费
+    void signUp(); // 成绩打卡
+
+    void broadcast(); // 成绩发送
 
     void viewMainPage(); //显示主页
-
-//    void Recharge(); //充值
 
     void onOperationError(QString msg); //串口发生错误时接收错误信息槽
 

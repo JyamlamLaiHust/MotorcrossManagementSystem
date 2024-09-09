@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>500</width>
-    <height>350</height>
+    <width>481</width>
+    <height>335</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -70,7 +70,14 @@
            </widget>
           </item>
           <item>
-           <widget class="QTimeEdit" name="Time_timeEdit"/>
+           <widget class="QTimeEdit" name="Time_timeEdit">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+              <horstretch>1</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+           </widget>
           </item>
           <item>
            <widget class="QPushButton" name="btn_Time">
