@@ -16,6 +16,18 @@ CheckIn::CheckIn(QWidget *parent, SerialPortThread *serial) :
     ui->setupUi(this);
     this->serialThread = serial;
     m1356dll = new M1356Dll();
+
+    // 将数据库中的比赛记录传到下拉框当中
+    QSqlQuery query;
+    query.exec("select * from table_matches;");
+    QSqlRecord rec = query.record();
+
+    while(query.next())
+    {
+         int index_name = rec.indexOf("赛事名称");
+         QString data_name = query.value(index_name).toString();
+         ui->eventName_comboBox->addItem(data_name);
+    }
 }
 
 CheckIn::~CheckIn()
@@ -30,7 +42,8 @@ CheckIn::~CheckIn()
  * 当读取到卡号时调用该方法
  */
 void CheckIn::on_tagIdReceived(QString tagId){
-      ui->rfidTag_lineEdit->setText(tagId);
+//    qDebug()<<"!!!!!!!";
+    ui->rfidTag_lineEdit->setText(tagId);
 }
 
 /**
@@ -43,6 +56,7 @@ void CheckIn::on_btn_register_clicked()
 
     // 读取前端数据
     QString participantsName = ui->participantName_lineEdit->text(); // 参赛者名称
+    QString eventName = ui->eventName_comboBox->currentText(); //参赛名称
     QString idCard = ui->idCard_lineEdit->text(); // 身份证
     QString gender = ui->gender_comboBox->currentText(); // 性别
     QString sizeTshirt = ui->sizeTshirt_comboBox->currentText(); // T恤尺码
@@ -57,12 +71,57 @@ void CheckIn::on_btn_register_clicked()
     message.setIcon(QMessageBox::Warning);
 
     // 校验用户名的长度，采用utf8编码，汉语占用2个字符的宽度
-    if(participantsName.toUtf8().length() < 1)
+    if(participantsName.toUtf8().length() < 1 && participantsName.toUtf8().length() > 50)
     {
-        message.setText(tr("用户名不能为空。"));
+        message.setText(tr("运动员姓名长度只能在1到25个汉字。"));
         message.exec();
         return;
     }
+
+    if(!gender.size())
+    {
+        message.setText(tr("请选择性别！"));
+        message.exec();
+        return;
+    }
+
+    if(!sizeTshirt.size())
+    {
+        message.setText(tr("请选择T恤尺码！"));
+        message.exec();
+        return;
+    }
+
+    QRegularExpression telephonePattern("^\\d{11}$"); // 匹配11位数字的电话号码
+    QRegularExpression idCardPattern("^\\d{17}[\\dxX]$"); // 匹配18位身份证号，最后一位可以是x或X
+
+    bool isTelephoneNumberValid = telephonePattern.match(telephoneNumber).hasMatch();
+    bool isEmergencyContactValid = telephonePattern.match(emergencyContactTelephone).hasMatch();
+    bool isIdCardValid = idCardPattern.match(idCard).hasMatch();
+
+    if (!isIdCardValid) {
+        QMessageBox::warning(this, tr("输入错误"), tr("身份证号码必须为17位数字加上最后一位数字或大写X！"));
+        return;
+    }
+
+    if (!isTelephoneNumberValid) {
+        QMessageBox::warning(this, tr("输入错误"), tr("电话号码必须为11位数字！"));
+        return;
+    }
+
+    // 校验用户名的长度，采用utf8编码，汉语占用2个字符的宽度
+    if(emergencyContactName.toUtf8().length() < 1 && emergencyContactName.toUtf8().length() > 50)
+    {
+        message.setText(tr("紧急联系人姓名长度只能在1到25个汉字。"));
+        message.exec();
+        return;
+    }
+
+    if (!isEmergencyContactValid) {
+        QMessageBox::warning(this, tr("输入错误"), tr("紧急联系人电话号码必须为11位数字！"));
+        return;
+    }
+
     if(!rfidTag.length())
     {
         message.setText(tr("没发现卡号，请先识别到卡号了再点注册按钮。"));
@@ -74,7 +133,8 @@ void CheckIn::on_btn_register_clicked()
     participantsTable->bindTable();
 
 
-    if(participantsTable->findRecord(rfidTag))
+    qDebug() << "output of findRecordByRfidTag:" << participantsTable->findRecordByRfidTag(rfidTag);
+    if(participantsTable->findRecordByRfidTag(rfidTag) != -1)
     {
         message.setText(tr("此卡已经注册，请换张卡再试!"));
         message.exec();
@@ -90,7 +150,7 @@ void CheckIn::on_btn_register_clicked()
         return ;
     }
 
-    if(!participantsTable->insertRecords(participantsName, gender, idCard,
+    if(!participantsTable->insertRecords(participantsName, eventName, gender, idCard,
                                          telephoneNumber, sizeTshirt, rfidTag,
                                          emergencyContactName, emergencyContactTelephone))
     {
@@ -100,6 +160,8 @@ void CheckIn::on_btn_register_clicked()
         return ;
     }
 
+    message.setText(tr("运动员注册成功!"));
+    message.exec();
     delete participantsTable;
 }
 
@@ -149,10 +211,22 @@ void CheckIn::on_btn_identify_clicked()
 void CheckIn::on_btn_refresh_clicked()
 {
     ParticipantsTableModel *participantsTable= new ParticipantsTableModel(this);
-    participantsTable->bindTable();
-//    ui->tableView->setModel(participantsTable);
-//    ui->tableView->setEditTriggers(QTableView::NoEditTriggers);
-//    ui->tableView->resizeColumnsToContents();
-//    ui->tableView->horizontalHeader()->setStretchLastSection(true);
-}
+//    participantsTable->bindTable();
+    participantsTable->setTable("table_participants");
+    participantsTable->select();
 
+//    qDebug() << "1";
+//    qDebug() << "RowCount:" << participantsTable->rowCount();
+//    qDebug() << "ColumnCount:" << participantsTable->columnCount();
+
+    ui->tableView->setModel(participantsTable);
+    ui->tableView->setEditTriggers(QTableView::NoEditTriggers);
+    ui->tableView->resizeColumnsToContents();
+    ui->tableView->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+
+//    qDebug() << "2";
+//    qDebug() << "RowCount:" << participantsTable->rowCount();
+//    qDebug() << "ColumnCount:" << participantsTable->columnCount();
+
+    return;
+}

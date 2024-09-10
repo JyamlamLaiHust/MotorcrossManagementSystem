@@ -10,7 +10,8 @@
 ParticipantsTableModel::ParticipantsTableModel(QObject *parent) : QSqlTableModel(parent)
 {
     tableName = TABLE_NAME_PARTICIPANTS;
-    header<<QObject::trUtf8("运动员id")<<QObject::trUtf8("姓名")<< QObject::trUtf8("性别")
+//    qDebug() << tableName;
+    header<<QObject::trUtf8("运动员id")<<QObject::trUtf8("姓名")<< QObject::trUtf8("参赛名称") << QObject::trUtf8("性别")
          <<QObject::trUtf8("身份证")<<QObject::trUtf8("联系方式")<<QObject::trUtf8("T恤尺码")
         <<QObject::trUtf8("rfid标签卡号")<<QObject::trUtf8("紧急联系人姓名")<<QObject::trUtf8("紧急联系人联系方式");
     model = new QSqlTableModel(this);
@@ -29,13 +30,14 @@ void ParticipantsTableModel::createTable()
     str  = tr("create table ") + tableName + tr(" ( ");
     str += header.at(0) + tr(" INT AUTO_INCREMENT PRIMARY KEY, ");
     str += header.at(1) + tr(" VARCHAR(100) NOT NULL, ");
-    str += header.at(2) + tr(" CHAR(1) NOT NULL, ");
-    str += header.at(3) + tr(" VARCHAR(50) UNIQUE NOT NULL, ");
-    str += header.at(4) + tr(" VARCHAR(20), ");
-    str += header.at(5) + tr(" char(5) DEFAULT 'L', ");
-    str += header.at(6) + tr(" VARCHAR(20) UNIQUE NOT NULL, ");
-    str += header.at(7) + tr(" VARCHAR(100), ");
-    str += header.at(8) + tr(" VARCHAR(20)); ");
+    str += header.at(2) + tr(" VARCHAR(100) NOT NULL, ");
+    str += header.at(3) + tr(" CHAR(100) NOT NULL, ");
+    str += header.at(4) + tr(" VARCHAR(50) UNIQUE NOT NULL, ");
+    str += header.at(5) + tr(" VARCHAR(100), ");
+    str += header.at(6) + tr(" char(100) DEFAULT 'L', ");
+    str += header.at(7) + tr(" VARCHAR(100) UNIQUE NOT NULL, ");
+    str += header.at(8) + tr(" VARCHAR(100), ");
+    str += header.at(9) + tr(" VARCHAR(100)); ");
 
     qDebug()<<"Sql: " << str.toUtf8().data();
     bool ret = query.exec(str);
@@ -53,8 +55,39 @@ void ParticipantsTableModel::createTable()
  */
 void ParticipantsTableModel::bindTable(void)
 {
+//    qDebug() << "participants's bindTable: " << tableName;
     model->setTable(tableName);
     model->select();
+//    qDebug() << "!";
+//    qDebug() << model->rowCount();
+//    qDebug() << model->columnCount();
+
+//    QList<QPair<int, QString>> tableData;
+
+//    QSqlQuery query;
+//    if (!query.exec("SELECT * FROM table_participants")) {
+//        qDebug() << "Query execution failed:" << query.lastError().text();
+//        return;
+//    }
+
+//    while (query.next()) {
+//        // 假设每行有两列：id 和 name
+//        int id = query.value(0).toInt();
+//        QString name = query.value(1).toString();
+//        tableData.append(QPair<int, QString>(id, name)); // 添加数据到容器中
+
+//        // 打印每条记录，用于调试
+//        qDebug() << "Loaded record:" << id << name;
+//    }
+
+//    bool success = model->select();
+//    if(success) {
+//        qDebug() << "Data loaded successfully";
+//        qDebug() << model->rowCount();
+//        qDebug() << model->columnCount();
+//    } else {
+//        qDebug() << "failed to load data: " << model->lastError().text();
+//    }
 }
 
 /**
@@ -77,7 +110,7 @@ int ParticipantsTableModel::findRecord(QString participantName)
 {
     int count = model->rowCount();
     for(int row=0; row < count; row++){
-        if((model->data(model->index(row, 0))).toString() == participantName)
+        if((model->data(model->index(row, 1))).toString() == participantName)
             return row;
     }
     return -1;
@@ -93,8 +126,11 @@ int ParticipantsTableModel::findRecord(QString participantName)
 int ParticipantsTableModel::findRecordByIdCard(QString idcard)
 {
     int count = model->rowCount();
+    qDebug() << count;
+
     for(int row=0; row < count; row++){
-        if(model->data(model->index(row, 0)) == idcard)
+//        qDebug() << model->data(model->index(row, 4));
+        if(model->data(model->index(row, 4)) == idcard)
             return row;
     }
     return -1;
@@ -110,7 +146,8 @@ int ParticipantsTableModel::findRecordByRfidTag(QString RfidTag)
 {
     int count = model->rowCount();
     for(int row=0; row < count; row++){
-        if(model->data(model->index(row, 0)) == RfidTag)
+//        qDebug() << model->data(model->index(row, 7));
+        if(model->data(model->index(row, 7)) == RfidTag)
             return row;
     }
     return -1;
@@ -129,7 +166,7 @@ int ParticipantsTableModel::findRecordByRfidTag(QString RfidTag)
  * @return 插入记录的行号
  * 向表格中插入记录
  */
-int ParticipantsTableModel::insertRecords(QString name, QString gender,
+int ParticipantsTableModel::insertRecords(QString name, QString eventName, QString gender,
                                           QString idCard, QString contactNumber, QString sizeTshirt,
                                           QString rfidTag, QString emergencyContactName, QString emergencyContactNumber)
 {
@@ -144,19 +181,26 @@ int ParticipantsTableModel::insertRecords(QString name, QString gender,
     record.append(QSqlField(header.at(6), QVariant::String));
     record.append(QSqlField(header.at(7), QVariant::String));
     record.append(QSqlField(header.at(8), QVariant::String));
+    record.append(QSqlField(header.at(9), QVariant::String));
 
 //    record.setValue(0, participants_id);
     record.setValue(0, name);
-    record.setValue(1, gender);
-    record.setValue(2, idCard);
-    record.setValue(3, contactNumber);
-    record.setValue(4, sizeTshirt);
-    record.setValue(5, rfidTag);
-    record.setValue(6, emergencyContactName);
-    record.setValue(7, emergencyContactNumber);
+    record.setValue(1, eventName);
+    record.setValue(2, gender);
+    record.setValue(3, idCard);
+    record.setValue(4, contactNumber);
+    record.setValue(5, sizeTshirt);
+    record.setValue(6, rfidTag);
+    record.setValue(7, emergencyContactName);
+    record.setValue(8, emergencyContactNumber);
+
+    qDebug() << record;
 
 
-    model->insertRecord(-1,record);
+    bool success = model->insertRecord(-1,record);
+    if (!success) {
+        qDebug() << "Insert failed:" << model->lastError().text();
+    }
     return model->rowCount();
 }
 

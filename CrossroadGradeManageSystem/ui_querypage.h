@@ -12,7 +12,7 @@
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QComboBox>
-#include <QtWidgets/QDateTimeEdit>
+#include <QtWidgets/QDateEdit>
 #include <QtWidgets/QGridLayout>
 #include <QtWidgets/QGroupBox>
 #include <QtWidgets/QHBoxLayout>
@@ -45,23 +45,23 @@ public:
     QLineEdit *cardId_lineEdit;
     QLabel *cardId_label;
     QWidget *participantsName_page;
-    QWidget *horizontalLayoutWidget_4;
-    QHBoxLayout *horizontalLayout_4;
-    QLabel *label_2;
-    QLineEdit *participantsName_lineEdit;
-    QWidget *result_page;
-    QWidget *horizontalLayoutWidget_3;
-    QHBoxLayout *horizontalLayout_3;
+    QWidget *gridLayoutWidget;
+    QGridLayout *gridLayout_6;
     QLabel *label;
+    QLineEdit *participantsName_lineEdit;
+    QWidget *page;
+    QWidget *gridLayoutWidget_2;
+    QGridLayout *gridLayout_7;
     QLineEdit *eventName_lineEdit;
-    QWidget *event_Page;
-    QWidget *horizontalLayoutWidget_5;
-    QHBoxLayout *horizontalLayout_5;
+    QLabel *label_2;
+    QWidget *page_2;
+    QWidget *gridLayoutWidget_3;
+    QGridLayout *gridLayout_8;
     QLabel *label_3;
-    QDateTimeEdit *start_dateTimeEdit;
+    QDateEdit *start_dateEdit;
     QLabel *label_4;
-    QDateTimeEdit *end_dateTimeEdit;
-    QPushButton *btn_query;
+    QDateEdit *end_dateEdit;
+    QPushButton *btn_Query;
     QTableView *tableView;
 
     void setupUi(QWidget *QueryPage)
@@ -120,78 +120,78 @@ public:
         stackedWidget->addWidget(card_page);
         participantsName_page = new QWidget();
         participantsName_page->setObjectName(QString::fromUtf8("participantsName_page"));
-        horizontalLayoutWidget_4 = new QWidget(participantsName_page);
-        horizontalLayoutWidget_4->setObjectName(QString::fromUtf8("horizontalLayoutWidget_4"));
-        horizontalLayoutWidget_4->setGeometry(QRect(0, 0, 251, 81));
-        horizontalLayout_4 = new QHBoxLayout(horizontalLayoutWidget_4);
-        horizontalLayout_4->setObjectName(QString::fromUtf8("horizontalLayout_4"));
-        horizontalLayout_4->setContentsMargins(5, 0, 5, 0);
-        label_2 = new QLabel(horizontalLayoutWidget_4);
-        label_2->setObjectName(QString::fromUtf8("label_2"));
-
-        horizontalLayout_4->addWidget(label_2);
-
-        participantsName_lineEdit = new QLineEdit(horizontalLayoutWidget_4);
-        participantsName_lineEdit->setObjectName(QString::fromUtf8("participantsName_lineEdit"));
-
-        horizontalLayout_4->addWidget(participantsName_lineEdit);
-
-        stackedWidget->addWidget(participantsName_page);
-        result_page = new QWidget();
-        result_page->setObjectName(QString::fromUtf8("result_page"));
-        horizontalLayoutWidget_3 = new QWidget(result_page);
-        horizontalLayoutWidget_3->setObjectName(QString::fromUtf8("horizontalLayoutWidget_3"));
-        horizontalLayoutWidget_3->setGeometry(QRect(0, 0, 251, 81));
-        horizontalLayout_3 = new QHBoxLayout(horizontalLayoutWidget_3);
-        horizontalLayout_3->setObjectName(QString::fromUtf8("horizontalLayout_3"));
-        horizontalLayout_3->setContentsMargins(5, 0, 5, 0);
-        label = new QLabel(horizontalLayoutWidget_3);
+        gridLayoutWidget = new QWidget(participantsName_page);
+        gridLayoutWidget->setObjectName(QString::fromUtf8("gridLayoutWidget"));
+        gridLayoutWidget->setGeometry(QRect(10, 30, 221, 81));
+        gridLayout_6 = new QGridLayout(gridLayoutWidget);
+        gridLayout_6->setObjectName(QString::fromUtf8("gridLayout_6"));
+        gridLayout_6->setContentsMargins(5, 0, 5, 0);
+        label = new QLabel(gridLayoutWidget);
         label->setObjectName(QString::fromUtf8("label"));
 
-        horizontalLayout_3->addWidget(label);
+        gridLayout_6->addWidget(label, 0, 0, 1, 1);
 
-        eventName_lineEdit = new QLineEdit(horizontalLayoutWidget_3);
+        participantsName_lineEdit = new QLineEdit(gridLayoutWidget);
+        participantsName_lineEdit->setObjectName(QString::fromUtf8("participantsName_lineEdit"));
+
+        gridLayout_6->addWidget(participantsName_lineEdit, 0, 1, 1, 1);
+
+        stackedWidget->addWidget(participantsName_page);
+        page = new QWidget();
+        page->setObjectName(QString::fromUtf8("page"));
+        gridLayoutWidget_2 = new QWidget(page);
+        gridLayoutWidget_2->setObjectName(QString::fromUtf8("gridLayoutWidget_2"));
+        gridLayoutWidget_2->setGeometry(QRect(10, 30, 221, 81));
+        gridLayout_7 = new QGridLayout(gridLayoutWidget_2);
+        gridLayout_7->setObjectName(QString::fromUtf8("gridLayout_7"));
+        gridLayout_7->setContentsMargins(5, 0, 5, 0);
+        eventName_lineEdit = new QLineEdit(gridLayoutWidget_2);
         eventName_lineEdit->setObjectName(QString::fromUtf8("eventName_lineEdit"));
 
-        horizontalLayout_3->addWidget(eventName_lineEdit);
+        gridLayout_7->addWidget(eventName_lineEdit, 0, 1, 1, 1);
 
-        stackedWidget->addWidget(result_page);
-        event_Page = new QWidget();
-        event_Page->setObjectName(QString::fromUtf8("event_Page"));
-        horizontalLayoutWidget_5 = new QWidget(event_Page);
-        horizontalLayoutWidget_5->setObjectName(QString::fromUtf8("horizontalLayoutWidget_5"));
-        horizontalLayoutWidget_5->setGeometry(QRect(0, 10, 259, 61));
-        horizontalLayout_5 = new QHBoxLayout(horizontalLayoutWidget_5);
-        horizontalLayout_5->setObjectName(QString::fromUtf8("horizontalLayout_5"));
-        horizontalLayout_5->setContentsMargins(0, 0, 0, 0);
-        label_3 = new QLabel(horizontalLayoutWidget_5);
+        label_2 = new QLabel(gridLayoutWidget_2);
+        label_2->setObjectName(QString::fromUtf8("label_2"));
+
+        gridLayout_7->addWidget(label_2, 0, 0, 1, 1);
+
+        stackedWidget->addWidget(page);
+        page_2 = new QWidget();
+        page_2->setObjectName(QString::fromUtf8("page_2"));
+        gridLayoutWidget_3 = new QWidget(page_2);
+        gridLayoutWidget_3->setObjectName(QString::fromUtf8("gridLayoutWidget_3"));
+        gridLayoutWidget_3->setGeometry(QRect(10, 30, 221, 81));
+        gridLayout_8 = new QGridLayout(gridLayoutWidget_3);
+        gridLayout_8->setObjectName(QString::fromUtf8("gridLayout_8"));
+        gridLayout_8->setContentsMargins(0, 0, 0, 0);
+        label_3 = new QLabel(gridLayoutWidget_3);
         label_3->setObjectName(QString::fromUtf8("label_3"));
 
-        horizontalLayout_5->addWidget(label_3);
+        gridLayout_8->addWidget(label_3, 0, 0, 1, 1);
 
-        start_dateTimeEdit = new QDateTimeEdit(horizontalLayoutWidget_5);
-        start_dateTimeEdit->setObjectName(QString::fromUtf8("start_dateTimeEdit"));
+        start_dateEdit = new QDateEdit(gridLayoutWidget_3);
+        start_dateEdit->setObjectName(QString::fromUtf8("start_dateEdit"));
 
-        horizontalLayout_5->addWidget(start_dateTimeEdit);
+        gridLayout_8->addWidget(start_dateEdit, 0, 1, 1, 1);
 
-        label_4 = new QLabel(horizontalLayoutWidget_5);
+        label_4 = new QLabel(gridLayoutWidget_3);
         label_4->setObjectName(QString::fromUtf8("label_4"));
 
-        horizontalLayout_5->addWidget(label_4);
+        gridLayout_8->addWidget(label_4, 0, 2, 1, 1);
 
-        end_dateTimeEdit = new QDateTimeEdit(horizontalLayoutWidget_5);
-        end_dateTimeEdit->setObjectName(QString::fromUtf8("end_dateTimeEdit"));
+        end_dateEdit = new QDateEdit(gridLayoutWidget_3);
+        end_dateEdit->setObjectName(QString::fromUtf8("end_dateEdit"));
 
-        horizontalLayout_5->addWidget(end_dateTimeEdit);
+        gridLayout_8->addWidget(end_dateEdit, 0, 3, 1, 1);
 
-        stackedWidget->addWidget(event_Page);
+        stackedWidget->addWidget(page_2);
 
         horizontalLayout->addWidget(stackedWidget);
 
-        btn_query = new QPushButton(groupBox_2);
-        btn_query->setObjectName(QString::fromUtf8("btn_query"));
+        btn_Query = new QPushButton(groupBox_2);
+        btn_Query->setObjectName(QString::fromUtf8("btn_Query"));
 
-        horizontalLayout->addWidget(btn_query);
+        horizontalLayout->addWidget(btn_Query);
 
 
         gridLayout_2->addLayout(horizontalLayout, 0, 0, 1, 1);
@@ -224,11 +224,11 @@ public:
         query_label->setText(QCoreApplication::translate("QueryPage", "\346\237\245\350\257\242\344\276\235\346\215\256\357\274\232", nullptr));
         btn_recognise->setText(QCoreApplication::translate("QueryPage", "\350\257\206\345\210\253", nullptr));
         cardId_label->setText(QCoreApplication::translate("QueryPage", "\345\215\241\345\217\267\357\274\232", nullptr));
-        label_2->setText(QCoreApplication::translate("QueryPage", "\350\277\220\345\212\250\345\221\230\345\247\223\345\220\215\357\274\232", nullptr));
-        label->setText(QCoreApplication::translate("QueryPage", "\350\265\233\344\272\213\345\220\215\347\247\260\357\274\232", nullptr));
-        label_3->setText(QCoreApplication::translate("QueryPage", "From: ", nullptr));
+        label->setText(QCoreApplication::translate("QueryPage", "\345\247\223\345\220\215\357\274\232", nullptr));
+        label_2->setText(QCoreApplication::translate("QueryPage", "\346\257\224\350\265\233\345\220\215\347\247\260\357\274\232", nullptr));
+        label_3->setText(QCoreApplication::translate("QueryPage", "From:", nullptr));
         label_4->setText(QCoreApplication::translate("QueryPage", "To:", nullptr));
-        btn_query->setText(QCoreApplication::translate("QueryPage", "\346\237\245\350\257\242", nullptr));
+        btn_Query->setText(QCoreApplication::translate("QueryPage", "\346\237\245\350\257\242", nullptr));
     } // retranslateUi
 
 };

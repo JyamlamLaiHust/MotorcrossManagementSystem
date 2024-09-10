@@ -31,20 +31,46 @@
            <number>5</number>
           </property>
           <item>
-           <widget class="QLabel" name="rfidTag_label">
+           <widget class="QLabel" name="rfidTags_label">
             <property name="text">
              <string>卡号：</string>
             </property>
            </widget>
           </item>
           <item>
-           <widget class="QLineEdit" name="rfidTag_lineEdit">
+           <widget class="QLineEdit" name="rfidTags_lineEdit">
             <property name="sizePolicy">
              <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
               <horstretch>3</horstretch>
               <verstretch>0</verstretch>
              </sizepolicy>
             </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_3">
+          <item>
+           <widget class="QLabel" name="eventName_label">
+            <property name="text">
+             <string>比赛名称：</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QComboBox" name="eventName_comboBox">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+              <horstretch>2</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <item>
+             <property name="text">
+              <string/>
+             </property>
+            </item>
            </widget>
           </item>
          </layout>

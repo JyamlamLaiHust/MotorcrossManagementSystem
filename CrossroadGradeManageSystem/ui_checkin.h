@@ -26,12 +26,14 @@ QT_BEGIN_NAMESPACE
 class Ui_CheckIn
 {
 public:
-    QTableView *tableView;
     QWidget *verticalLayoutWidget;
     QVBoxLayout *verticalLayout;
     QHBoxLayout *horizontalLayout;
     QLabel *participantName_label;
     QLineEdit *participantName_lineEdit;
+    QHBoxLayout *horizontalLayout_9;
+    QLabel *eventName_label;
+    QComboBox *eventName_comboBox;
     QHBoxLayout *horizontalLayout_8;
     QLabel *gender_label;
     QComboBox *gender_comboBox;
@@ -59,6 +61,9 @@ public:
     QPushButton *btn_register;
     QPushButton *btn_refresh;
     QPushButton *btn_reset;
+    QWidget *verticalLayoutWidget_2;
+    QVBoxLayout *verticalLayout_2;
+    QTableView *tableView;
 
     void setupUi(QWidget *CheckIn)
     {
@@ -70,12 +75,9 @@ public:
         sizePolicy.setVerticalStretch(0);
         sizePolicy.setHeightForWidth(CheckIn->sizePolicy().hasHeightForWidth());
         CheckIn->setSizePolicy(sizePolicy);
-        tableView = new QTableView(CheckIn);
-        tableView->setObjectName(QString::fromUtf8("tableView"));
-        tableView->setGeometry(QRect(10, 240, 481, 101));
         verticalLayoutWidget = new QWidget(CheckIn);
         verticalLayoutWidget->setObjectName(QString::fromUtf8("verticalLayoutWidget"));
-        verticalLayoutWidget->setGeometry(QRect(10, 10, 231, 221));
+        verticalLayoutWidget->setGeometry(QRect(10, 10, 241, 221));
         verticalLayout = new QVBoxLayout(verticalLayoutWidget);
         verticalLayout->setSpacing(5);
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
@@ -97,17 +99,38 @@ public:
 
         verticalLayout->addLayout(horizontalLayout);
 
+        horizontalLayout_9 = new QHBoxLayout();
+        horizontalLayout_9->setObjectName(QString::fromUtf8("horizontalLayout_9"));
+        eventName_label = new QLabel(verticalLayoutWidget);
+        eventName_label->setObjectName(QString::fromUtf8("eventName_label"));
+
+        horizontalLayout_9->addWidget(eventName_label);
+
+        eventName_comboBox = new QComboBox(verticalLayoutWidget);
+        eventName_comboBox->addItem(QString());
+        eventName_comboBox->setObjectName(QString::fromUtf8("eventName_comboBox"));
+        QSizePolicy sizePolicy1(QSizePolicy::Preferred, QSizePolicy::Fixed);
+        sizePolicy1.setHorizontalStretch(1);
+        sizePolicy1.setVerticalStretch(0);
+        sizePolicy1.setHeightForWidth(eventName_comboBox->sizePolicy().hasHeightForWidth());
+        eventName_comboBox->setSizePolicy(sizePolicy1);
+
+        horizontalLayout_9->addWidget(eventName_comboBox);
+
+
+        verticalLayout->addLayout(horizontalLayout_9);
+
         horizontalLayout_8 = new QHBoxLayout();
         horizontalLayout_8->setSpacing(0);
         horizontalLayout_8->setObjectName(QString::fromUtf8("horizontalLayout_8"));
         horizontalLayout_8->setContentsMargins(5, -1, 5, -1);
         gender_label = new QLabel(verticalLayoutWidget);
         gender_label->setObjectName(QString::fromUtf8("gender_label"));
-        QSizePolicy sizePolicy1(QSizePolicy::Preferred, QSizePolicy::Preferred);
-        sizePolicy1.setHorizontalStretch(1);
-        sizePolicy1.setVerticalStretch(0);
-        sizePolicy1.setHeightForWidth(gender_label->sizePolicy().hasHeightForWidth());
-        gender_label->setSizePolicy(sizePolicy1);
+        QSizePolicy sizePolicy2(QSizePolicy::Preferred, QSizePolicy::Preferred);
+        sizePolicy2.setHorizontalStretch(1);
+        sizePolicy2.setVerticalStretch(0);
+        sizePolicy2.setHeightForWidth(gender_label->sizePolicy().hasHeightForWidth());
+        gender_label->setSizePolicy(sizePolicy2);
 
         horizontalLayout_8->addWidget(gender_label);
 
@@ -116,18 +139,21 @@ public:
         gender_comboBox->addItem(QString());
         gender_comboBox->addItem(QString());
         gender_comboBox->setObjectName(QString::fromUtf8("gender_comboBox"));
-        QSizePolicy sizePolicy2(QSizePolicy::Preferred, QSizePolicy::Fixed);
-        sizePolicy2.setHorizontalStretch(2);
-        sizePolicy2.setVerticalStretch(0);
-        sizePolicy2.setHeightForWidth(gender_comboBox->sizePolicy().hasHeightForWidth());
-        gender_comboBox->setSizePolicy(sizePolicy2);
+        QSizePolicy sizePolicy3(QSizePolicy::Preferred, QSizePolicy::Fixed);
+        sizePolicy3.setHorizontalStretch(2);
+        sizePolicy3.setVerticalStretch(0);
+        sizePolicy3.setHeightForWidth(gender_comboBox->sizePolicy().hasHeightForWidth());
+        gender_comboBox->setSizePolicy(sizePolicy3);
 
         horizontalLayout_8->addWidget(gender_comboBox);
 
         sizeTshirt_label = new QLabel(verticalLayoutWidget);
         sizeTshirt_label->setObjectName(QString::fromUtf8("sizeTshirt_label"));
-        sizePolicy1.setHeightForWidth(sizeTshirt_label->sizePolicy().hasHeightForWidth());
-        sizeTshirt_label->setSizePolicy(sizePolicy1);
+        QSizePolicy sizePolicy4(QSizePolicy::Preferred, QSizePolicy::Preferred);
+        sizePolicy4.setHorizontalStretch(0);
+        sizePolicy4.setVerticalStretch(0);
+        sizePolicy4.setHeightForWidth(sizeTshirt_label->sizePolicy().hasHeightForWidth());
+        sizeTshirt_label->setSizePolicy(sizePolicy4);
 
         horizontalLayout_8->addWidget(sizeTshirt_label);
 
@@ -139,8 +165,8 @@ public:
         sizeTshirt_comboBox->addItem(QString());
         sizeTshirt_comboBox->addItem(QString());
         sizeTshirt_comboBox->setObjectName(QString::fromUtf8("sizeTshirt_comboBox"));
-        sizePolicy2.setHeightForWidth(sizeTshirt_comboBox->sizePolicy().hasHeightForWidth());
-        sizeTshirt_comboBox->setSizePolicy(sizePolicy2);
+        sizePolicy3.setHeightForWidth(sizeTshirt_comboBox->sizePolicy().hasHeightForWidth());
+        sizeTshirt_comboBox->setSizePolicy(sizePolicy3);
 
         horizontalLayout_8->addWidget(sizeTshirt_comboBox);
 
@@ -183,7 +209,7 @@ public:
 
         verticalLayoutWidget_3 = new QWidget(CheckIn);
         verticalLayoutWidget_3->setObjectName(QString::fromUtf8("verticalLayoutWidget_3"));
-        verticalLayoutWidget_3->setGeometry(QRect(250, 10, 241, 221));
+        verticalLayoutWidget_3->setGeometry(QRect(260, 10, 231, 221));
         verticalLayout_3 = new QVBoxLayout(verticalLayoutWidget_3);
         verticalLayout_3->setSpacing(5);
         verticalLayout_3->setObjectName(QString::fromUtf8("verticalLayout_3"));
@@ -263,6 +289,17 @@ public:
 
         verticalLayout_3->addLayout(horizontalLayout_7);
 
+        verticalLayoutWidget_2 = new QWidget(CheckIn);
+        verticalLayoutWidget_2->setObjectName(QString::fromUtf8("verticalLayoutWidget_2"));
+        verticalLayoutWidget_2->setGeometry(QRect(10, 240, 481, 101));
+        verticalLayout_2 = new QVBoxLayout(verticalLayoutWidget_2);
+        verticalLayout_2->setObjectName(QString::fromUtf8("verticalLayout_2"));
+        verticalLayout_2->setContentsMargins(0, 0, 0, 0);
+        tableView = new QTableView(verticalLayoutWidget_2);
+        tableView->setObjectName(QString::fromUtf8("tableView"));
+
+        verticalLayout_2->addWidget(tableView);
+
 
         retranslateUi(CheckIn);
 
@@ -273,6 +310,9 @@ public:
     {
         CheckIn->setWindowTitle(QCoreApplication::translate("CheckIn", "Form", nullptr));
         participantName_label->setText(QCoreApplication::translate("CheckIn", "\345\247\223\345\220\215\357\274\232", nullptr));
+        eventName_label->setText(QCoreApplication::translate("CheckIn", "\345\217\202\350\265\233\345\220\215\347\247\260\357\274\232", nullptr));
+        eventName_comboBox->setItemText(0, QString());
+
         gender_label->setText(QCoreApplication::translate("CheckIn", "\346\200\247\345\210\253\357\274\232", nullptr));
         gender_comboBox->setItemText(0, QString());
         gender_comboBox->setItemText(1, QCoreApplication::translate("CheckIn", "\347\224\267", nullptr));

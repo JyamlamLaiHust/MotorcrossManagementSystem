@@ -31,12 +31,24 @@ private slots:
 
     void on_btn_recognize_clicked();
 
+    void updateCurrentTime();
+
+    void on_tagIdReceived(QString tagId);
+
+    void onEventNameChanged(const QString &eventName);
+
 private:
     Ui::SignUp *ui;
+
+    ResultsTableModel *resultTableModel; // 房间表的model
 
     SerialPortThread *serialThread;//串口线程
 
     M1356Dll *m1356dll;//13.56MHz模块的库类
+
+    QTimer *timer;
+
+    DBManager *m_dbManager; // 指向 DbManager 的指针
 };
 
 #endif // SIGNUP_H

@@ -47,13 +47,13 @@ void MainWindow::addWidgets()
 
     QueryPage *querypage = new QueryPage(this, serialPortThread);
     connect(this,SIGNAL(sendCardId(QString)),querypage,SLOT(on_tagIdReceived(QString)));
+    connect(this,SIGNAL(sendAction(QAction*)),querypage,SLOT(currentAction(QAction*)));
     ui->stackedWidget->addWidget(querypage); //3
 
     SignUp *signuppage = new SignUp(this, serialPortThread);
-    connect(this,SIGNAL(sendCardId(QString)),querypage,SLOT(on_tagIdReceived(QString)));
     ui->stackedWidget->addWidget(signuppage); //4
 
-    qDebug() << "Current number of widgets in stackedWidget:" << ui->stackedWidget->count();
+//    qDebug() << "Current number of widgets in stackedWidget:" << ui->stackedWidget->count();
 }
 
 /**
@@ -88,7 +88,7 @@ void MainWindow::handConnect()
     connect(ui->action_participants_two,SIGNAL(triggered(bool)),this,SLOT(queryRecords()));
     connect(ui->action_result,SIGNAL(triggered(bool)),this,SLOT(queryRecords()));
 
-    connect(ui->action_signup, SIGNAL(triggered(bool)),this,SLOT(signUp()));
+    connect(ui->action_signup, SIGNAL(triggered(bool)),this,SLOT(signUp())); //
     connect(ui->action_broadcast,SIGNAL(triggered(bool)),this,SLOT(broadcast()));
 
     connect(ui->action_about,SIGNAL(triggered(bool)),this,SLOT(About())); // 帮助
@@ -114,8 +114,8 @@ void MainWindow::viewMainPage()
 */
 void MainWindow::checkIn()
 {
-    if(!CheckLogin())
-        return;
+//    if(!CheckLogin())
+//        return;
     ui->stackedWidget->setCurrentIndex(1);
     ui->statusBar->showMessage("运动员注册");
 }
@@ -129,6 +129,7 @@ void MainWindow::checkOut()
     QMessageBox message;
 
     ExitGames *exitgame = new ExitGames(this,  &rfidTags, serialPortThread);
+    connect(this,SIGNAL(sendCardId(QString)),exitgame,SLOT(on_tagIdReceived(QString)));
     exitgame->setWindowTitle("运动员退出比赛");
     exitgame->exec();
 
@@ -158,7 +159,7 @@ void MainWindow::cancelGames()
     QMessageBox message;
 
     CancelGames *cancelgame = new CancelGames();
-    cancelgame->setWindowTitle("运动员退出比赛");
+    cancelgame->setWindowTitle("取消比赛");
     cancelgame->exec();
 
     delete cancelgame;
@@ -219,6 +220,8 @@ bool MainWindow::CheckLogin()
  */
 void MainWindow::About()
 {
+    if(!CheckLogin())
+        return;
     QString text = tr("软件版本:%1\r\n作者:%2\r\n描述:%3")
             .arg(CURRENT_VERSION)
             .arg(tr("JaylenLaiHUST"))
@@ -353,6 +356,8 @@ void MainWindow::signUp()
 {
     if(!CheckLogin())
         return;
+    SignUp *signuppage = new SignUp(this, serialPortThread);
+    connect(this,SIGNAL(sendCardId(QString)),signuppage,SLOT(on_tagIdReceived(QString)));
     ui->stackedWidget->setCurrentIndex(4);
     ui->statusBar->showMessage("成绩打卡");
 }

@@ -2,6 +2,8 @@
 #include "database/database_api.h"
 #include <QSqlRecord>
 #include <QSqlField>
+#include <QMessageBox>
+
 /**************************************
  *作者: JaylenLaiHUST
  *日期: 2024-08-27
@@ -33,7 +35,7 @@ void ResultsTableModel::createTable()
     str += header.at(4) + tr(" CHAR(1) NOT NULL, ");
     str += header.at(5) + tr(" INT, ");
     str += header.at(6) + tr(" INT, ");
-    str += header.at(7) + tr(" VARCHAR(20) UNIQUE NOT NULL);");
+    str += header.at(7) + tr(" VARCHAR(20) NOT NULL);");
 
     qDebug()<<"Sql: " << str.toUtf8().data();
     bool ret = query.exec(str);
@@ -51,6 +53,9 @@ void ResultsTableModel::createTable()
  */
 void ResultsTableModel::bindTable(void)
 {
+
+    QMessageBox message;
+
     model->setTable(tableName);
     model->select();
 }
@@ -115,7 +120,27 @@ int ResultsTableModel::insertRecords(QString eventName, QString checkPointName, 
     record.setValue(5, rank);
     record.setValue(6, rfidTag);
 
-    model->insertRecord(-1,record);
+    qDebug() << record;
+
+    // 插入记录
+    bool success = model->insertRecord(-1, record);
+
+    if (success) {
+        // 如果插入成功，提交更改
+        if (model->submitAll()) {
+            // 如果提交成功，则返回新的行数
+            return model->rowCount();
+        } else {
+            // 如果提交失败，打印错误信息并返回-1
+            qDebug() << "Failed to submit changes:" << model->lastError().text();
+            return -1;
+        }
+    } else {
+        // 如果插入失败，打印错误信息并返回-1
+        qDebug() << "Failed to insert record:" << model->lastError().text();
+        return -1;
+    }
+
     return model->rowCount();
 }
 
@@ -147,6 +172,27 @@ int ResultsTableModel::getRank(const QString &matchName, const QString &checkpoi
     }
 
     return -1; // 如果查询失败或其他原因，返回-1表示无法确定排名
+}
+
+bool ResultsTableModel::checkRfidTagInMatches(const QString& rfidTag, const QString& eventName)
+{
+    QSqlQuery query;
+    query.prepare("SELECT COUNT(*) FROM table_participants WHERE rfid标签卡号 = :rfidTag AND 参赛名称 = :eventName");
+    query.bindValue(":rfidTag", rfidTag);
+    query.bindValue(":eventName", eventName);
+
+    if (!query.exec()) {
+        qDebug() << "Error executing query:" << query.lastError().text();
+        return false; // 查询执行失败
+    }
+
+    if (query.next()) {
+        int count = query.value(0).toInt();
+        qDebug() << "the number of record: " <<count;
+        return count > 0; // 如果计数大于0，则找到了对应的rfidTags
+    }
+    qDebug() << "没有找到对应的rfidTags: " << query.lastError().text();
+    return false; // 没有找到对应的rfidTags
 }
 
 ///**

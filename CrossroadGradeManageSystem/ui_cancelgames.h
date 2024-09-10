@@ -60,6 +60,7 @@ public:
         horizontalLayout->addWidget(label);
 
         eventName_comboBox = new QComboBox(verticalLayoutWidget);
+        eventName_comboBox->addItem(QString());
         eventName_comboBox->setObjectName(QString::fromUtf8("eventName_comboBox"));
         QSizePolicy sizePolicy(QSizePolicy::Preferred, QSizePolicy::Fixed);
         sizePolicy.setHorizontalStretch(3);
@@ -101,6 +102,8 @@ public:
         CancelGames->setWindowTitle(QCoreApplication::translate("CancelGames", "Form", nullptr));
         groupBox->setTitle(QCoreApplication::translate("CancelGames", "\345\217\226\346\266\210\346\257\224\350\265\233", nullptr));
         label->setText(QCoreApplication::translate("CancelGames", "\346\257\224\350\265\233\345\220\215\347\247\260\357\274\232", nullptr));
+        eventName_comboBox->setItemText(0, QString());
+
         pushButton->setText(QCoreApplication::translate("CancelGames", "\345\217\226\346\266\210\346\257\224\350\265\233", nullptr));
     } // retranslateUi
 

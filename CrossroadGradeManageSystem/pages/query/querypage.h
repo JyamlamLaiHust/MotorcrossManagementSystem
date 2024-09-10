@@ -32,7 +32,6 @@ private slots:
 
     void on_comboBox_currentIndexChanged(const QString &text);//combox索引发生改变时调用
 
-
 private:
     Ui::QueryPage *ui;
 

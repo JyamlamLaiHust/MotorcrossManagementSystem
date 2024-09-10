@@ -11,13 +11,10 @@ QueryPage::QueryPage(QWidget *parent, SerialPortThread *serial) :
 {
     ui->setupUi(this);
     ui->tableView->horizontalHeader()->stretchLastSection();
-    ui->start_dateTimeEdit->setDateTime(QDateTime::currentDateTime());
-    ui->end_dateTimeEdit->setDateTime(QDateTime::currentDateTime());
+    ui->start_dateEdit->setDate(QDate::currentDate());
+    ui->end_dateEdit->setDate(QDate::currentDate());
     this->serialThread = serial;
     m1356dll = new M1356Dll();
-//    QRegExp rx("^[1-9A-Fa-f]{0,16}");
-//    QRegExpValidator *validator = new QRegExpValidator(rx, this);
-//    ui->lineEdit->setValidator(validator);
 }
 
 QueryPage::~QueryPage()
@@ -32,6 +29,7 @@ QueryPage::~QueryPage()
  * 读取到卡号槽函数，显示卡号
  */
 void QueryPage::on_tagIdReceived(QString tagId){
+    qDebug() << "22222222";
       ui->cardId_lineEdit->setText(tagId);
  }
 
@@ -70,8 +68,28 @@ void QueryPage::on_btn_Query_clicked()
     case 0: //根据卡号进行筛选查询
     {
         QString cardId = ui->cardId_lineEdit->text();
-        QString str = tr("卡号 = '%1'").arg(cardId);
+        currentModel->setTable("table_participants");
+        currentModel->select();
+        qDebug() << currentModel->rowCount();
+
+        QString str = tr("rfid标签卡号 = '%1'").arg(cardId);
         currentModel->setFilter(str);
+
+//        // 输出过滤条件
+//        qDebug() << "Filter set to:" << currentModel->filter();
+
+//        // 如果你想看到model中的数据变化，可以遍历model并打印
+//        int rowCount = currentModel->rowCount();
+//        qDebug() << currentModel->rowCount();
+
+//        for (int row = 0; row < rowCount; ++row) {
+//            int columnCount = currentModel->columnCount();
+//            for (int column = 0; column < columnCount; ++column) {
+//                QVariant data = currentModel->data(currentModel->index(row, column));
+//                qDebug() << "Row" << row << "Column" << column << "Data:" << data.toString();
+//            }
+//        }
+
         updateTableView(currentModel);
         qDebug() << cardId;
     }
@@ -79,7 +97,7 @@ void QueryPage::on_btn_Query_clicked()
     case 1://根据运动员姓名进行筛选查询
     {
         QString participantsName = ui->participantsName_lineEdit->text();
-        QString str =  tr("运动员姓名 = '%1'").arg(participantsName);
+        QString str =  tr("姓名 = '%1'").arg(participantsName);
         currentModel->setFilter(str);
         updateTableView(currentModel);
         qDebug() << participantsName;
@@ -88,17 +106,17 @@ void QueryPage::on_btn_Query_clicked()
     case 2://根据比赛名称进行筛选查询
     {
         QString eventName = ui->eventName_lineEdit->text();
-        QString str =  tr("比赛名称 = '%1'").arg(eventName);
-        currentModel->setFilter(str);
+        QString str =  tr("赛事名称 = '%1'").arg(eventName);
         updateTableView(currentModel);
         qDebug() << eventName;
     }
         break;
     case 3: //根据时间进行筛选查询
     {
-        QString startTimeStr = ui->start_dateTimeEdit->dateTime().toString("yyyy-MM-dd hh:mm:ss");
-        QString endTimeStr = ui->end_dateTimeEdit->dateTime().toString("yyyy-MM-dd hh:mm:ss");
-        QString str = "时间 Between '" + startTimeStr + "' and '" + endTimeStr + "'";
+        QString startTimeStr = ui->start_dateEdit->dateTime().toString("yyyy-MM-dd");
+        QString endTimeStr = ui->end_dateEdit->dateTime().toString("yyyy-MM-dd");
+//        QString str = "时间 Between '" + startTimeStr + "' and '" + endTimeStr + "'";
+        QString str = tr("赛事开始时间 >= '%1' AND 赛事结束时间 <= '%2'").arg(startTimeStr, endTimeStr);
         currentModel->setFilter(str);
         // 输出筛选信息
         qDebug() << "Applying time filter:" << str;
@@ -119,11 +137,17 @@ void QueryPage::on_btn_Query_clicked()
  */
 void QueryPage::currentAction(QAction *action)
 {
+    if (action == nullptr) {
+        qDebug() << "Action is null.";
+        return;
+    }
+
     if(action->text() == tr("运动员查询_卡号"))
     {
         ParticipantsTableModel *participantsTable = new ParticipantsTableModel(this);
-        participantsTable->bindTable();
-
+//        participantsTable->bindTable();
+        participantsTable->setTable("table_participants");
+        participantsTable->select();
         updateTableView(participantsTable);
         ui->comboBox->clear();
         ui->comboBox->addItem("卡号");
@@ -131,25 +155,30 @@ void QueryPage::currentAction(QAction *action)
     else if(action->text() == tr("运动员查询_姓名"))
     {
         ParticipantsTableModel *participantsTable = new ParticipantsTableModel(this);
-        participantsTable->bindTable();
-
-        updateTableView(participantsTable);
+//        participantsTable->bindTable();
+        participantsTable->setTable("table_participants");
+        participantsTable->select();
+//        updateTableView(participantsTable);
         ui->comboBox->clear();
-        ui->comboBox->addItem("运动员姓名");
+        ui->comboBox->addItem("姓名");
     }
-    else if(action->text() == tr("比赛查询"))
+    else if(action->text() == tr("比赛查询_比赛名称"))
     {
         MatchesTableModel *matchesTable = new MatchesTableModel(this);
-        matchesTable->bindTable();
+//        matchesTable->bindTable();
+        matchesTable->setTable("table_matches");
+        matchesTable->select();
         updateTableView(matchesTable);
         ui->comboBox->clear();
         ui->comboBox->addItem("比赛名称");
     }
-    else if(action->text() == tr("成绩查询"))
+    else if(action->text() == tr("比赛查询_比赛时间"))
     {
-        ResultsTableModel *resultTable = new ResultsTableModel(this);
-        resultTable->bindTable();
-        updateTableView(resultTable);
+        MatchesTableModel *matchesTable = new MatchesTableModel(this);
+//        matchesTable->bindTable();
+        matchesTable->setTable("table_matches");
+        matchesTable->select();
+        updateTableView(matchesTable);
         ui->comboBox->clear();
         ui->comboBox->addItem("时间");
     }
@@ -174,12 +203,24 @@ void QueryPage::updateTableView(QSqlTableModel *model)
  */
 void QueryPage::on_comboBox_currentIndexChanged(const QString &text)
 {
-    if(text == tr("运动员查询_卡号"))
+    QMessageBox message;
+    if(text == tr("卡号"))
+    {
         ui->stackedWidget->setCurrentIndex(0);
-    else if(text == tr("运动员查询_姓名"))
+    }
+    else if(text == tr("姓名"))
+    {
         ui->stackedWidget->setCurrentIndex(1);
-    else if(text == "比赛查询")
+        message.setText("当前页面为 1");
+    }
+    else if(text == "比赛名称")
+    {
         ui->stackedWidget->setCurrentIndex(2);
-    else if(text == tr("成绩查询"))
+        message.setText("当前页面为 2");
+    }
+    else if(text == tr("时间"))
+    {
         ui->stackedWidget->setCurrentIndex(3);
+        message.setText("当前页面为 3");
+    }
 }

@@ -7,11 +7,9 @@
 int main(int argc, char *argv[])
 {
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling,true);
-
-    QApplication a(argc, argv);
-    a.setAttribute(Qt::AA_EnableHighDpiScaling);
-    MainWindow w;
     DB_Init();//数据库初始化
+    QApplication a(argc, argv);
+    MainWindow w;
     w.show();
     return a.exec();
 }

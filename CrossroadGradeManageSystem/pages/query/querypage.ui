@@ -69,95 +69,95 @@
               </layout>
              </widget>
              <widget class="QWidget" name="participantsName_page">
-              <widget class="QWidget" name="horizontalLayoutWidget_4">
+              <widget class="QWidget" name="gridLayoutWidget">
                <property name="geometry">
                 <rect>
-                 <x>0</x>
-                 <y>0</y>
-                 <width>251</width>
+                 <x>10</x>
+                 <y>30</y>
+                 <width>221</width>
                  <height>81</height>
                 </rect>
                </property>
-               <layout class="QHBoxLayout" name="horizontalLayout_4">
+               <layout class="QGridLayout" name="gridLayout_6">
                 <property name="leftMargin">
                  <number>5</number>
                 </property>
                 <property name="rightMargin">
                  <number>5</number>
                 </property>
-                <item>
-                 <widget class="QLabel" name="label_2">
+                <item row="0" column="0">
+                 <widget class="QLabel" name="label">
                   <property name="text">
-                   <string>运动员姓名：</string>
+                   <string>姓名：</string>
                   </property>
                  </widget>
                 </item>
-                <item>
+                <item row="0" column="1">
                  <widget class="QLineEdit" name="participantsName_lineEdit"/>
                 </item>
                </layout>
               </widget>
              </widget>
-             <widget class="QWidget" name="result_page">
-              <widget class="QWidget" name="horizontalLayoutWidget_3">
+             <widget class="QWidget" name="page">
+              <widget class="QWidget" name="gridLayoutWidget_2">
                <property name="geometry">
                 <rect>
-                 <x>0</x>
-                 <y>0</y>
-                 <width>251</width>
+                 <x>10</x>
+                 <y>30</y>
+                 <width>221</width>
                  <height>81</height>
                 </rect>
                </property>
-               <layout class="QHBoxLayout" name="horizontalLayout_3">
+               <layout class="QGridLayout" name="gridLayout_7">
                 <property name="leftMargin">
                  <number>5</number>
                 </property>
                 <property name="rightMargin">
                  <number>5</number>
                 </property>
-                <item>
-                 <widget class="QLabel" name="label">
+                <item row="0" column="1">
+                 <widget class="QLineEdit" name="eventName_lineEdit"/>
+                </item>
+                <item row="0" column="0">
+                 <widget class="QLabel" name="label_2">
                   <property name="text">
-                   <string>赛事名称：</string>
+                   <string>比赛名称：</string>
                   </property>
                  </widget>
-                </item>
-                <item>
-                 <widget class="QLineEdit" name="eventName_lineEdit"/>
                 </item>
                </layout>
               </widget>
              </widget>
-             <widget class="QWidget" name="event_Page">
-              <widget class="QWidget" name="horizontalLayoutWidget_5">
+             <widget class="QWidget" name="page_2">
+              <widget class="QWidget" name="gridLayoutWidget_3">
                <property name="geometry">
                 <rect>
-                 <x>0</x>
-                 <y>10</y>
-                 <width>259</width>
-                 <height>61</height>
+                 <x>10</x>
+                 <y>30</y>
+                 <width>221</width>
+                 <height>81</height>
                 </rect>
                </property>
-               <layout class="QHBoxLayout" name="horizontalLayout_5">
-                <item>
+               <layout class="QGridLayout" name="gridLayout_8">
+                <item row="0" column="0">
                  <widget class="QLabel" name="label_3">
                   <property name="text">
-                   <string>From: </string>
+                   <string>From:</string>
                   </property>
                  </widget>
                 </item>
-                <item>
-                 <widget class="QDateTimeEdit" name="start_dateTimeEdit"/>
+                <item row="0" column="1">
+                 <widget class="QDateEdit" name="start_dateEdit"/>
                 </item>
-                <item>
+                <item row="0" column="2">
                  <widget class="QLabel" name="label_4">
                   <property name="text">
                    <string>To:</string>
                   </property>
                  </widget>
                 </item>
-                <item>
-                 <widget class="QDateTimeEdit" name="end_dateTimeEdit"/>
+                <item row="0" column="3">
+                 <widget class="QDateEdit" name="end_dateEdit"/>
                 </item>
                </layout>
               </widget>
@@ -165,7 +165,7 @@
             </widget>
            </item>
            <item>
-            <widget class="QPushButton" name="btn_query">
+            <widget class="QPushButton" name="btn_Query">
              <property name="text">
               <string>查询</string>
              </property>

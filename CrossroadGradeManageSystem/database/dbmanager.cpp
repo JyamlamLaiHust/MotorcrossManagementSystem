@@ -154,4 +154,3 @@ QStringList getTableNames()
 {
     return dbManager->getTableNames();  // wrap for get table
 }
-

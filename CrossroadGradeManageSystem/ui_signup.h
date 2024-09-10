@@ -104,6 +104,7 @@ public:
         horizontalLayout->addWidget(eventName_label);
 
         eventName_comboBox = new QComboBox(groupBox);
+        eventName_comboBox->addItem(QString());
         eventName_comboBox->setObjectName(QString::fromUtf8("eventName_comboBox"));
 
         horizontalLayout->addWidget(eventName_comboBox);
@@ -114,6 +115,7 @@ public:
         horizontalLayout->addWidget(checkPointName_label);
 
         checkPoint_comboBox = new QComboBox(groupBox);
+        checkPoint_comboBox->addItem(QString());
         checkPoint_comboBox->setObjectName(QString::fromUtf8("checkPoint_comboBox"));
 
         horizontalLayout->addWidget(checkPoint_comboBox);
@@ -267,7 +269,11 @@ public:
         groupBox->setTitle(QCoreApplication::translate("SignUp", "\346\211\223\345\215\241", nullptr));
         time_label->setText(QCoreApplication::translate("SignUp", "\345\256\236\346\227\266\346\227\266\351\227\264\357\274\232", nullptr));
         eventName_label->setText(QCoreApplication::translate("SignUp", "\350\265\233\344\272\213\345\220\215\347\247\260\357\274\232", nullptr));
+        eventName_comboBox->setItemText(0, QString());
+
         checkPointName_label->setText(QCoreApplication::translate("SignUp", "\346\211\223\345\215\241\347\202\271\345\220\215\347\247\260\357\274\232", nullptr));
+        checkPoint_comboBox->setItemText(0, QString());
+
         Time_label->setText(QCoreApplication::translate("SignUp", "\346\227\266\351\227\264\346\210\263\357\274\232", nullptr));
         btn_Time->setText(QCoreApplication::translate("SignUp", "\350\256\260\345\275\225", nullptr));
         direction_label->setText(QCoreApplication::translate("SignUp", "\346\226\271\345\220\221\357\274\232", nullptr));

@@ -90,12 +90,12 @@
     <property name="title">
      <string>成绩管理</string>
     </property>
-    <addaction name="action_broadcast"/>
     <addaction name="action_signup"/>
+    <addaction name="action_broadcast"/>
    </widget>
    <addaction name="menu"/>
-   <addaction name="menu_2"/>
    <addaction name="menu_3"/>
+   <addaction name="menu_2"/>
    <addaction name="menu_6"/>
    <addaction name="menu_4"/>
    <addaction name="menu_5"/>
@@ -179,7 +179,7 @@
   </action>
   <action name="action_competition">
    <property name="text">
-    <string>比赛查询</string>
+    <string>比赛查询_比赛名称</string>
    </property>
   </action>
   <action name="action_participants_one">
@@ -194,7 +194,7 @@
   </action>
   <action name="action_result">
    <property name="text">
-    <string>成绩查询</string>
+    <string>比赛查询_比赛时间</string>
    </property>
   </action>
   <action name="action_participants_two">

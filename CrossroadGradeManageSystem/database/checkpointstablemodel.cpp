@@ -10,9 +10,9 @@
 CheckPointsTableModel::CheckPointsTableModel(QObject *parent) : QObject(parent)
 {
     tableName = TABLE_NAME_CHECKPOINTS;
-    header<<QObject::trUtf8("打卡点id")<<QObject::trUtf8("对应赛事id")<< QObject::trUtf8("检查站名称")
-         <<QObject::trUtf8("分段距离")<<QObject::trUtf8("累计距离")<<QObject::trUtf8("分段攀升")
-        <<QObject::trUtf8("总攀升")<<QObject::trUtf8("开放时间")<<QObject::trUtf8("关闭时间");
+    header<<QObject::trUtf8("打卡点id")<<QObject::trUtf8("对应赛事名称")<< QObject::trUtf8("检查站名称")
+         <<QObject::trUtf8("分段距离")<<QObject::trUtf8("分段攀升")
+        <<QObject::trUtf8("开放时间")<<QObject::trUtf8("关闭时间");
     model = new QSqlTableModel(this);
 }
 
@@ -28,15 +28,13 @@ void CheckPointsTableModel::createTable()
 
     str  = tr("create table ") + tableName + tr(" ( ");
     str += header.at(0) + tr(" INT AUTO_INCREMENT PRIMARY KEY, ");
-    str += header.at(1) + tr(" INT NOT NULL, ");
+    str += header.at(1) + tr(" VARCHAR(100) NOT NULL, ");
     str += header.at(2) + tr(" VARCHAR(100) NOT NULL, ");
     str += header.at(3) + tr(" FLOAT, ");
     str += header.at(4) + tr(" FLOAT, ");
-    str += header.at(5) + tr(" FLOAT, ");
-    str += header.at(6) + tr(" FLOAT, ");
-    str += header.at(7) + tr(" DATETIME, ");
-    str += header.at(8) + tr(" DATETIME, ");
-    str += tr("FOREIGN KEY (对应赛事id) REFERENCES table_matches(赛事id));");
+    str += header.at(5) + tr(" DATETIME, ");
+    str += header.at(6) + tr(" DATETIME, ");
+    str += tr("FOREIGN KEY (对应赛事名称) REFERENCES table_matches(赛事名称));");
 
     qDebug()<<"Sql: " << str.toUtf8().data();
     bool ret = query.exec(str);
@@ -98,46 +96,27 @@ int CheckPointsTableModel::findRecord(QString checkPointName)
  * @return 插入记录的行号
  * 向表格中插入记录
  */
-int CheckPointsTableModel::insertRecords(QString checkPointName, float segmentDistance,
+int CheckPointsTableModel::insertRecords(QString eventName, QString checkPointName, float segmentDistance,
                                          float segmentElevation, QDateTime openTime, QDateTime closeTime)
 {
     QSqlRecord record;
 
+    record.append(QSqlField(header.at(1), QVariant::String));
     record.append(QSqlField(header.at(2), QVariant::String));
     record.append(QSqlField(header.at(3), QVariant::Double));
     record.append(QSqlField(header.at(4), QVariant::Double));
     record.append(QSqlField(header.at(5), QVariant::DateTime));
     record.append(QSqlField(header.at(6), QVariant::DateTime));
 
-    record.setValue(0, checkPointName);
-    record.setValue(1, segmentDistance);
-    record.setValue(2, segmentElevation);
-    record.setValue(3, openTime);
-    record.setValue(4, closeTime);
+    record.setValue(0, eventName);
+    record.setValue(1, checkPointName);
+    record.setValue(2, segmentDistance);
+    record.setValue(3, segmentElevation);
+    record.setValue(4, openTime);
+    record.setValue(5, closeTime);
 
+    qDebug() << record;
 
     model->insertRecord(-1,record);
     return model->rowCount();
 }
-
-///**
-// * @brief CheckPointsTableModel::updateRecords
-// * @param personName 用户名
-// * @param pwd 新密码
-// * @param time 更新的时间
-// * @return 如果更新成功返回true，否则false
-// * 更新密码
-// */
-//bool CheckPointsTableModel::updateRecords(QString personName,QString pwd,QString time)
-//{
-//    model->setFilter(tr("用户名 = '%1'").arg(personName));
-//    model->select();
-//    if (model->rowCount() == 1)
-//    {
-//        model->setData(model->index(0, 0), QVariant(personName));
-//        model->setData(model->index(0, 1), QVariant(pwd));
-//        model->setData(model->index(0, 2), QVariant(time));
-//        return model->submitAll();
-//    }
-//    return false;
-//}

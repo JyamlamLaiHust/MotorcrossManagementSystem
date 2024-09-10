@@ -128,8 +128,8 @@ public:
         MainWindow->setStatusBar(statusBar);
 
         menuBar->addAction(menu->menuAction());
-        menuBar->addAction(menu_2->menuAction());
         menuBar->addAction(menu_3->menuAction());
+        menuBar->addAction(menu_2->menuAction());
         menuBar->addAction(menu_6->menuAction());
         menuBar->addAction(menu_4->menuAction());
         menuBar->addAction(menu_5->menuAction());
@@ -151,8 +151,8 @@ public:
         menu_4->addAction(action_competition);
         menu_4->addAction(action_result);
         menu_5->addAction(action_about);
-        menu_6->addAction(action_broadcast);
         menu_6->addAction(action_signup);
+        menu_6->addAction(action_broadcast);
 
         retranslateUi(MainWindow);
 
@@ -193,10 +193,10 @@ public:
         action_checkOut->setText(QCoreApplication::translate("MainWindow", "\351\200\200\345\207\272\346\257\224\350\265\233", nullptr));
         action_holdCompetition->setText(QCoreApplication::translate("MainWindow", "\344\270\276\345\212\236\346\257\224\350\265\233", nullptr));
         action_cancelCompetition->setText(QCoreApplication::translate("MainWindow", "\345\217\226\346\266\210\346\257\224\350\265\233", nullptr));
-        action_competition->setText(QCoreApplication::translate("MainWindow", "\346\257\224\350\265\233\346\237\245\350\257\242", nullptr));
+        action_competition->setText(QCoreApplication::translate("MainWindow", "\346\257\224\350\265\233\346\237\245\350\257\242_\346\257\224\350\265\233\345\220\215\347\247\260", nullptr));
         action_participants_one->setText(QCoreApplication::translate("MainWindow", "\350\277\220\345\212\250\345\221\230\346\237\245\350\257\242_\345\215\241\345\217\267", nullptr));
         action_about->setText(QCoreApplication::translate("MainWindow", "\345\205\263\344\272\216", nullptr));
-        action_result->setText(QCoreApplication::translate("MainWindow", "\346\210\220\347\273\251\346\237\245\350\257\242", nullptr));
+        action_result->setText(QCoreApplication::translate("MainWindow", "\346\257\224\350\265\233\346\237\245\350\257\242_\346\257\224\350\265\233\346\227\266\351\227\264", nullptr));
         action_participants_two->setText(QCoreApplication::translate("MainWindow", "\350\277\220\345\212\250\345\221\230\346\237\245\350\257\242_\345\247\223\345\220\215", nullptr));
         action_broadcast->setText(QCoreApplication::translate("MainWindow", "\346\210\220\347\273\251\345\217\221\351\200\201", nullptr));
         action_signup->setText(QCoreApplication::translate("MainWindow", "\346\210\220\347\273\251\346\211\223\345\215\241", nullptr));

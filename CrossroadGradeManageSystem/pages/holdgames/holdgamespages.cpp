@@ -6,6 +6,26 @@ HoldGamesPages::HoldGamesPages(QWidget *parent) :
     ui(new Ui::HoldGamesPages)
 {
     ui->setupUi(this);
+
+    // 将数据库中的比赛记录传到下拉框当中
+    QSqlQuery query;
+    query.exec("select * from table_matches;");
+
+//    if (!query.isActive()) {
+//       qDebug() << "Query failed:" << query.lastError().text();
+//       return;
+//   }
+
+    QSqlRecord rec = query.record();
+
+    while(query.next())
+    {
+         int index_name = rec.indexOf("赛事名称");
+         QString data_name = query.value(index_name).toString();
+//         qDebug() << "赛事名称:" << data_name;
+
+         ui->eventName_comboBox->addItem(data_name);
+    }
 }
 
 HoldGamesPages::~HoldGamesPages()
@@ -41,10 +61,19 @@ void HoldGamesPages::on_btn_create_clicked()
         message.exec();
         return;
     }
-    if(startTime > endTime)
+    if(startTime >= endTime)
     {
-        message.setText(tr("比赛开始时间晚于比赛结束时间，请重新设置！"));
+        message.setText(tr("比赛开始时间不能晚于或等于比赛结束时间，请重新设置！"));
         message.exec();
+        return;
+    }
+
+    // 检查 raceDistance, elevationGain, registrationFee 是否为空
+    QString raceDistanceStr = ui->raceDistance_lineEdit->text();
+    QString elevationGainStr = ui->elevationGain_lineEdit->text();
+    QString registrationFeeStr = ui->registrationFee_lineEdit->text();
+    if (raceDistanceStr.isEmpty() || elevationGainStr.isEmpty() || registrationFeeStr.isEmpty()) {
+        QMessageBox::warning(this, tr("输入错误"), tr("赛程距离、总攀升高度和报名费均不能为空！"), QMessageBox::Ok);
         return;
     }
 
@@ -52,14 +81,13 @@ void HoldGamesPages::on_btn_create_clicked()
     matchesTable->bindTable();
 
 
-    if(matchesTable->findRecord(eventName))
+    if(matchesTable->findRecord(eventName) != -1)
     {
         message.setText(tr("该比赛已创建，请核对名称后重新创建!"));
         message.exec();
         delete matchesTable;
         return ;
     }
-
 
     if(!matchesTable->insertRecords(eventName, startTime, endTime,
                                     raceDistance, elevationGain, registrationFee))
@@ -69,6 +97,11 @@ void HoldGamesPages::on_btn_create_clicked()
         delete matchesTable;
         return ;
     }
+
+    message.setText(tr("比赛创建成功!"));
+    message.exec();
+
+    ui->eventName_comboBox->addItem(eventName);
 
     delete matchesTable;
 }
@@ -113,7 +146,7 @@ void HoldGamesPages::on_btn_bond_clicked()
     checkPointTable->bindTable();
 
 
-    if(checkPointTable->findRecord(checkPointName))
+    if(checkPointTable->findRecord(checkPointName) != -1)
     {
         message.setText(tr("该打卡点已创建，请核对名称后重新创建!"));
         message.exec();
@@ -122,13 +155,16 @@ void HoldGamesPages::on_btn_bond_clicked()
     }
 
 
-    if(!checkPointTable->insertRecords(checkPointName, segmentDistance, segmentElevation, openTime, closeTime))
+    if(!checkPointTable->insertRecords(eventName, checkPointName, segmentDistance, segmentElevation, openTime, closeTime))
     {
-        message.setText(tr("比赛创建失败，请重试!"));
+        message.setText(tr("打卡点创建失败，请重试!"));
         message.exec();
         delete checkPointTable;
         return ;
     }
+
+    message.setText(tr("打卡点创建成功!"));
+    message.exec();
 
     delete checkPointTable;
 }

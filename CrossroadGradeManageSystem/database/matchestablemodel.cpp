@@ -2,6 +2,8 @@
 #include "database/database_api.h"
 #include <QSqlRecord>
 #include <QSqlField>
+#include <QMessageBox>
+
 /**************************************
  *作者: JaylenLaiHUST
  *日期: 2024-08-27
@@ -28,7 +30,7 @@ void MatchesTableModel::createTable()
 
     str  = tr("CREATE TABLE ") + tableName + tr(" ( ");
     str += header.at(0) + tr(" INT AUTO_INCREMENT PRIMARY KEY, ");
-    str += header.at(1) + tr(" VARCHAR(100) NOT NULL, ");
+    str += header.at(1) + tr(" VARCHAR(100) NOT NULL UNIQUE, ");
     str += header.at(2) + tr(" DATETIME NOT NULL, ");
     str += header.at(3) + tr(" DATETIME NOT NULL, ");
     str += header.at(4) + tr(" FLOAT NOT NULL, ");
@@ -100,7 +102,7 @@ int MatchesTableModel::insertRecords(QString eventName, QDateTime startTime, QDa
 {
     QSqlRecord record;
 
-    record.append(QSqlField(header.at(1), QVariant::Int));
+    record.append(QSqlField(header.at(1), QVariant::String));
     record.append(QSqlField(header.at(2), QVariant::DateTime));
     record.append(QSqlField(header.at(3), QVariant::DateTime));
     record.append(QSqlField(header.at(4), QVariant::Double));
@@ -115,7 +117,11 @@ int MatchesTableModel::insertRecords(QString eventName, QDateTime startTime, QDa
     record.setValue(4, elevationGain);
     record.setValue(5, registerationFee);
 
-    model->insertRecord(-1,record);
+    qDebug() << record;
+    bool success = model->insertRecord(-1,record);
+    if (!success) {
+        qDebug() << "Insert failed:" << model->lastError().text();
+    }
     return model->rowCount();
 }
 
@@ -124,12 +130,16 @@ bool MatchesTableModel::deleteRecord(QString eventName)
     // 添加一个查询记录逻辑
     QSqlQuery query;
     QString sql = "DELETE FROM table_matches WHERE 赛事名称 = :eventName;";
+    QMessageBox message;
 
     // 准备 SQL 语句
     query.prepare(sql);
     query.bindValue(":eventName", eventName);
 
-    if(query.exec()) {
+//    // 检查绑定的参数
+//    qDebug() << "Bound Value for :eventName:" << query.boundValue(":eventName");
+
+    if(!query.exec()) {
         qDebug() << "Delete operation failed:" << query.lastError().text();
         return false;
     } else {
@@ -159,24 +169,3 @@ QDateTime MatchesTableModel::getStartTime(const QString &eventName)
     return QDateTime(); // 返回默认的 QDateTime 对象
 }
 
-///**
-// * @brief MatchesTableModel::updateRecords
-// * @param personName 用户名
-// * @param pwd 新密码
-// * @param time 更新的时间
-// * @return 如果更新成功返回true，否则false
-// * 更新密码
-// */
-//bool MatchesTableModel::updateRecords(QString personName,QString pwd,QString time)
-//{
-//    model->setFilter(tr("用户名 = '%1'").arg(personName));
-//    model->select();
-//    if (model->rowCount() == 1)
-//    {
-//        model->setData(model->index(0, 0), QVariant(personName));
-//        model->setData(model->index(0, 1), QVariant(pwd));
-//        model->setData(model->index(0, 2), QVariant(time));
-//        return model->submitAll();
-//    }
-//    return false;
-//}

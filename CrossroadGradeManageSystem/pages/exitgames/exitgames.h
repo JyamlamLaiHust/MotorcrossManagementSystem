@@ -33,7 +33,7 @@ private:
 
     M1356Dll *m1356dll;//13.56MHz模块库
 
-    QString *rfidTag;//用户名
+    QString *rfidTag;//rfid标签卡号
 };
 
 #endif // EXITGAMES_H

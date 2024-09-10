@@ -27,6 +27,7 @@ public:
     int findRecord(QString rfidTag, QString direction);//查找记录
     int insertRecords(QString eventName, QString checkPointName, QTime time, QString direction, int sumTime, int rank, QString rfidTag);
     int getRank(const QString &matchName, const QString &checkpointName, const QString &direction, int totalTime);
+    bool checkRfidTagInMatches(const QString& rfidTag, const QString& eventName);
     //    bool updateRecords(QString personName, QString pwd, QString time);//更新记录
 
 //signals:

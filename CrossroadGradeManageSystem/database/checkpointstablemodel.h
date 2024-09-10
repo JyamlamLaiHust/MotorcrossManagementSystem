@@ -25,7 +25,7 @@ public:
     void bindTable(void);//绑定表
     QSqlTableModel* getModel(void);//获取管理员表的model
     int findRecord(QString checkPointName);//查找记录
-    int insertRecords(QString checkPointName, float segmentDistance,
+    int insertRecords(QString eventName, QString checkPointName, float segmentDistance,
                       float segmentElevation, QDateTime openTime, QDateTime closeTime);
 //    bool updateRecords(QString personName, QString pwd, QString time);//更新记录
 
