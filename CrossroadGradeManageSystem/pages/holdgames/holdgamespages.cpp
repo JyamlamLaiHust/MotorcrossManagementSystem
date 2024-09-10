@@ -26,6 +26,12 @@ HoldGamesPages::HoldGamesPages(QWidget *parent) :
 
          ui->eventName_comboBox->addItem(data_name);
     }
+
+    m_client = new QMqttClient(this);
+//    m_client->setHostname("broker.hivemq.com");
+    m_client->setHostname("8.130.126.65");
+    m_client->setPort(1883);
+    m_client->connectToHost();
 }
 
 HoldGamesPages::~HoldGamesPages()
@@ -101,6 +107,16 @@ void HoldGamesPages::on_btn_create_clicked()
     message.setText(tr("比赛创建成功!"));
     message.exec();
 
+    QString topic = "crossroadmanagesystem";
+
+    QString str = "match " + eventName + " was created sucessfully";
+
+    if (m_client->publish(topic, str.toUtf8()) == -1) {
+        QMessageBox::critical(this, QLatin1String("Error"), QLatin1String("Could not publish message"));
+    } else {
+        qDebug() << "Published message" << str;
+    }
+
     ui->eventName_comboBox->addItem(eventName);
 
     delete matchesTable;
@@ -135,9 +151,9 @@ void HoldGamesPages::on_btn_bond_clicked()
         message.exec();
         return;
     }
-    if(openTime > closeTime)
+    if(openTime >= closeTime)
     {
-        message.setText(tr("比赛开始时间晚于比赛结束时间，请重新设置！"));
+        message.setText(tr("比赛开始时间应早于比赛结束时间，请重新设置！"));
         message.exec();
         return;
     }
@@ -163,8 +179,38 @@ void HoldGamesPages::on_btn_bond_clicked()
         return ;
     }
 
+    if(checkPointTable->checkRaceDataConsistency(checkPointName) == false)
+    {
+        checkPointTable->deleteRecord(checkPointName);
+        message.setText(tr("打卡点距离或攀升高度与赛事冲突，请确认数据无误后重新尝试绑定！"));
+        message.exec();
+
+        delete checkPointTable;
+        return ;
+    }
+
+    if(checkPointTable->checkCheckpointTimes(eventName) == false)
+    {
+        checkPointTable->deleteRecord(checkPointName);
+        message.setText(tr("打卡点开始或结束时间与赛事冲突，请确认数据无误后重新尝试绑定！"));
+        message.exec();
+
+        delete checkPointTable;
+        return ;
+    }
+
     message.setText(tr("打卡点创建成功!"));
     message.exec();
+
+    QString topic = "crossroadmanagesystem";
+
+    QString str = "checkpoint " + checkPointName + " was created sucessfully";
+
+    if (m_client->publish(topic, str.toUtf8()) == -1) {
+        QMessageBox::critical(this, QLatin1String("Error"), QLatin1String("Could not publish message"));
+    } else {
+        qDebug() << "Published message" << str;
+    }
 
     delete checkPointTable;
 }

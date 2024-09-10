@@ -6,6 +6,7 @@
 #include "serialThread/serialportthread.h"
 #include "inc/m1356dll.h"
 #include <QMessageBox>
+#include "QtMqtt/qmqttclient.h"
 
 namespace Ui {
 class HoldGamesPages;
@@ -26,6 +27,7 @@ private slots:
 
 private:
     Ui::HoldGamesPages *ui;
+    QMqttClient *m_client;
 };
 
 #endif // HOLDGAMESPAGES_H

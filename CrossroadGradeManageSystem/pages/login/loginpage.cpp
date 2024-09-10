@@ -16,6 +16,15 @@ LoginPage::LoginPage(QWidget *parent, QString *name) :QDialog(parent),ui(new Ui:
     QWidget::setTabOrder(ui->lineEdit_Name, ui->lineEdit_Passwd);
     QWidget::setTabOrder(ui->lineEdit_Passwd, ui->btn_Login);
     QWidget::setTabOrder(ui->btn_Login, ui->btn_Return);
+
+    AdminTableModel *adminitable = new AdminTableModel(this);
+    adminitable->bindTable();
+    if(adminitable->getModel()->rowCount() == 0)
+    {
+       adminitable->insertRecords(tr("admin"),GetMD5String(tr("123456")),CurrentDateTime());
+    }
+
+
 }
 
 LoginPage::~LoginPage()
@@ -56,10 +65,13 @@ void LoginPage::on_btn_Login_clicked()
     {
         message.setText(tr("密码长度有问题，长度应该大于等于6个字母的长度。"));
         message.exec();
+
         return;
     }
+
     AdminTableModel *adminitable = new AdminTableModel(this);
     adminitable->bindTable();
+
 
     QSqlRecord record = adminitable->findRecord(name);
 
@@ -67,6 +79,8 @@ void LoginPage::on_btn_Login_clicked()
     {
         message.setText(tr("该用户不存在，请重新输入！"));
         message.exec();
+
+        delete adminitable;
         return;
     }
 
@@ -76,14 +90,17 @@ void LoginPage::on_btn_Login_clicked()
         {
             *(this->name) = name;
             this->close();
+
+            delete adminitable;
             return;
         }
         else
         {
             message.setText(tr("您输入的密码有误，请重新输入！"));
             message.exec();
+
+            delete adminitable;
             return;
         }
     }
-    delete adminitable;
 }

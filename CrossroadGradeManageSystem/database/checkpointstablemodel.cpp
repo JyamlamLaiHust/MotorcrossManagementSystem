@@ -120,3 +120,138 @@ int CheckPointsTableModel::insertRecords(QString eventName, QString checkPointNa
     model->insertRecord(-1,record);
     return model->rowCount();
 }
+
+bool CheckPointsTableModel::checkRaceDataConsistency(const QString &eventName)
+{
+    QSqlQuery query;
+
+    QString str = "SELECT "
+                  "    c.对应赛事名称, "
+                  "    SUM(c.分段距离) AS 总赛程距离, "
+                  "    SUM(c.分段攀升) AS 总攀升高度, "
+                  "    t.赛程距离,"
+                  "    t.总攀升高度 "
+                  "FROM "
+                  "    table_checkpoints c "
+                  "JOIN "
+                  "    table_Matches t ON c.对应赛事名称 = t.赛事名称 "
+                  "WHERE"
+                  "     c.对应赛事名称 = :eventName "
+                  "GROUP BY "
+                  "    c.对应赛事名称 "
+                  "HAVING "
+                  "    SUM(c.分段距离) <= t.赛程距离 AND SUM(c.分段攀升) <= t.总攀升高度;";
+
+
+//    qDebug() << str;
+    // 准备 SQL 查询语句
+    query.prepare(str);
+    query.bindValue(":eventName", eventName);
+
+    // 执行查询
+    if (!query.exec()) {
+        qDebug() << "Query execution failed:" << query.lastError().text();
+        return false;
+    }
+
+    // 处理查询结果
+    while (query.next()) {
+        QString eventName = query.value("对应赛事名称").toString();
+        int totalSegmentDistance = query.value("总赛程距离").toInt();
+        int totalSegmentElevation = query.value("总攀升高度").toInt();
+        int raceDistance = query.value("赛程距离").toInt();
+        int elevationGain = query.value("总攀升高度").toInt();
+
+        qDebug() << "Event Name:" << eventName
+                 << "Total Segment Distance:" << totalSegmentDistance
+                 << "Total Segment Elevation:" << totalSegmentElevation
+                 << "Race Distance:" << raceDistance
+                 << "Elevation Gain:" << elevationGain;
+
+        // 如果查询结果为空，则表示没有符合条件的记录
+        if (eventName.isEmpty()) {
+            qDebug() << "No matching events found.";
+            return false;
+        }
+
+        // 如果查询结果中有符合条件的记录，则表示数据一致
+        qDebug() << "Data consistency verified for event:" << eventName;
+        return true;
+    }
+
+//    qDebug() << "skip all the process of the function.";
+    return false;
+}
+
+bool CheckPointsTableModel::deleteRecord(QString checkpointname)
+{
+    // 添加一个查询记录逻辑
+    QSqlQuery query;
+    QString sql = "DELETE FROM table_checkpoints WHERE 检查站名称 = :checkpointname;";
+    QMessageBox message;
+
+    // 准备 SQL 语句
+    query.prepare(sql);
+    query.bindValue(":checkpointname", checkpointname);
+
+    if(!query.exec()) {
+        qDebug() << "Delete operation failed:" << query.lastError().text();
+        return false;
+    } else {
+        qDebug() << "Record deleted successfully.";
+    }
+    return true;
+}
+
+bool CheckPointsTableModel::checkCheckpointTimes(const QString &checkpointname)
+{
+    QSqlQuery query;
+
+    QString str = "SELECT "
+                  "    c.对应赛事名称, "
+                  "    c.检查站名称, "
+                  "    c.开放时间, "
+                  "    c.关闭时间,"
+                  "    t.赛事开始时间,"
+                  "    t.赛事结束时间 "
+                  "FROM "
+                  "    table_checkpoints c "
+                  "JOIN "
+                  "    table_Matches t ON c.对应赛事名称 = t.赛事名称 "
+                  "WHERE"
+                  "     c.开放时间 < t.赛事开始时间 AND c.关闭时间 > 赛事结束时间 AND c.检查站名称 = :checkpointname;";
+
+    // 准备 SQL 查询语句
+    query.prepare(str);
+    query.bindValue(":checkpointname", checkpointname);
+
+    // 执行查询
+    if (!query.exec()) {
+        qDebug() << "Query execution failed:" << query.lastError().text();
+        return false;
+    }
+
+    // 处理查询结果
+    while (query.next()) {
+        QString eventName = query.value("对应赛事名称").toString();
+        QString checkPointName = query.value("检查站名称").toString();
+        QTime openTime = query.value("开放时间").toTime();
+        QTime closeTime = query.value("关闭时间").toTime();
+        QTime raceOpenTime = query.value("赛事开始时间").toTime();
+        QTime raceCloseTime = query.value("赛事结束时间").toTime();
+
+        qDebug() << "Event Name:" << eventName
+                 << "Check Point Name:" << checkPointName
+                 << "Open Time:" << openTime.toString()
+                 << "Close Time:" << closeTime.toString()
+                 << "Race Open Time:" << raceOpenTime.toString()
+                 << "Race Close Time:" << raceCloseTime.toString();
+
+        // 如果查询结果中有符合条件的记录，则表示数据一致
+        qDebug() << "Check Point times within Race times for event:" << eventName;
+        return true;
+    }
+
+    qDebug() << "skip all the process of the function.";
+    return false;
+}

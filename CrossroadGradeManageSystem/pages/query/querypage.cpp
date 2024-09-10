@@ -107,6 +107,7 @@ void QueryPage::on_btn_Query_clicked()
     {
         QString eventName = ui->eventName_lineEdit->text();
         QString str =  tr("赛事名称 = '%1'").arg(eventName);
+        currentModel->setFilter(str);
         updateTableView(currentModel);
         qDebug() << eventName;
     }

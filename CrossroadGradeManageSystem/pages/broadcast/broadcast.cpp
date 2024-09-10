@@ -7,6 +7,7 @@
 #include <QtWidgets/QMessageBox>
 #include <QSqlQuery>
 #include <QSqlError>
+#include <QSqlRecord>
 
 BroadCast::BroadCast(QWidget *parent) :
     QDialog(parent),
@@ -15,8 +16,10 @@ BroadCast::BroadCast(QWidget *parent) :
     ui->setupUi(this);
 
     m_client = new QMqttClient(this);
-    m_client->setHostname("broker.hivemq.com");
+//    m_client->setHostname("broker.hivemq.com");
+    m_client->setHostname("8.130.126.65");
     m_client->setPort(1883);
+
 
     connect(m_client, &QMqttClient::stateChanged, this, &BroadCast::updateLogStateChange);
 //    connect(m_client, &QMqttClient::disconnected, this, &Broadcast::brokerDisconnected);
@@ -39,6 +42,20 @@ BroadCast::BroadCast(QWidget *parent) :
         ui->editLog->insertPlainText(content);
     });
 
+    QSqlQuery query;
+    query.exec("select * from table_matches;");
+
+    QSqlRecord rec = query.record();
+
+    QString eventname;
+    while(query.next())
+    {
+         int index_name = rec.indexOf("赛事名称");
+          eventname = query.value(index_name).toString();
+//         qDebug() << "赛事名称:" << data_name;
+         ui->eventName_comboBox->addItem(eventname);
+    }
+
 //    connect(ui->lineEditHost, &QLineEdit::textChanged, m_client, &QMqttClient::setHostname);
 //    connect(ui->spinBoxPort, QOverload<int>::of(&QSpinBox::valueChanged), this, &Broadcast::setClientPort);
     updateLogStateChange();
@@ -49,17 +66,49 @@ BroadCast::~BroadCast()
     delete ui;
 }
 
+
 void BroadCast::on_btn_pub_clicked()
 {
 
-    QString sql = "SELECT 成绩记录id，赛事名称，打卡点名称，时间戳，方向，总用时，名次，rfid标签卡号 FROM table_results";
-
+    QString sql = "SELECT 成绩记录id, 赛事名称, 打卡点名称, 时间戳, 方向, 总用时, 名次, rfid标签卡号 FROM table_results WHERE 方向=\"0\"";
+    QString topic = "crossroadmanagesystem";
     QSqlQuery query;
     query.prepare(sql);
 
     // 执行 SQL 语句
     if (query.exec()) {
-        qDebug() << "Record deleted successfully.";
+        qDebug() << "Record is sent successfully.";
+    } else {
+        qDebug() << "Delete operation failed:" << query.lastError().text();
+    }
+
+    while (query.next()) {
+        QString resultId = query.value(0).toString();
+        QString eventName = query.value(1).toString();
+        QString checkPointName = query.value(2).toString();    
+        QString dateStamp = query.value(3).toString();
+        QString direction = query.value(4).toString();
+        QString sumTime = query.value(5).toString();
+        QString rank = query.value(6).toString();
+        QString rfidTag = query.value(7).toString();
+
+        QString str = "resultId: "+resultId + " eventName: " + eventName + " checkPointName: " + checkPointName +
+                " dataStamp: " + dateStamp + " sumTime: " + sumTime + " direction: " + direction + " rank: " + rank + " rfidTag: " + rfidTag;
+
+        if (m_client->publish(topic, str.toUtf8()) == -1) {
+            QMessageBox::critical(this, QLatin1String("Error"), QLatin1String("Could not publish message"));
+        } else {
+            qDebug() << "Published message" << str;
+        }
+    }
+
+    sql = "SELECT 成绩记录id, 赛事名称, 打卡点名称, 时间戳, 方向, 总用时, 名次, rfid标签卡号 FROM table_results WHERE 方向=\"1\"";
+
+    query.prepare(sql);
+
+    // 执行 SQL 语句
+    if (query.exec()) {
+        qDebug() << "Record is sent successfully.";
     } else {
         qDebug() << "Delete operation failed:" << query.lastError().text();
     }
@@ -69,22 +118,20 @@ void BroadCast::on_btn_pub_clicked()
         QString eventName = query.value(1).toString();
         QString checkPointName = query.value(2).toString();
         QString dateStamp = query.value(3).toString();
-        QString sumTime = query.value(4).toString();
-        QString direction = query.value(5).toString();
+        QString direction = query.value(4).toString();
+        QString sumTime = query.value(5).toString();
         QString rank = query.value(6).toString();
         QString rfidTag = query.value(7).toString();
 
-        QString str = resultId + eventName + checkPointName + dateStamp + sumTime + direction + rank + rfidTag;
+        QString str = "resultId: "+resultId + " eventName: " + eventName + " checkPointName: " + checkPointName +
+                " dataStamp: " + dateStamp + " sumTime: " + sumTime + " direction: " + direction + " rank: " + rank + " rfidTag: " + rfidTag;
 
-        if (m_client->publish(str, str.toUtf8()) == -1) {
+        if (m_client->publish(topic, str.toUtf8()) == -1) {
             QMessageBox::critical(this, QLatin1String("Error"), QLatin1String("Could not publish message"));
         } else {
             qDebug() << "Published message" << str;
         }
     }
-
-//    if (m_client->publish(ui->lineEditTopic->text(), ui->lineEditMessage->text().toUtf8()) == -1)
-//        QMessageBox::critical(this, QLatin1String("Error"), QLatin1String("Could not publish message"));
 }
 
 void BroadCast::updateLogStateChange()

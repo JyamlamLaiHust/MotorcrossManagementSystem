@@ -33,6 +33,12 @@ SignUp::SignUp(QWidget *parent, SerialPortThread *serial) :
 
     connect(ui->eventName_comboBox, QOverload<const QString &>::of(&QComboBox::currentTextChanged),
                 this, &SignUp::onEventNameChanged);
+
+    m_client = new QMqttClient(this);
+//    m_client->setHostname("broker.hivemq.com");
+    m_client->setHostname("8.130.126.65");
+    m_client->setPort(1883);
+    m_client->connectToHost();
 }
 
 SignUp::~SignUp()
@@ -148,6 +154,24 @@ void SignUp::on_btn_Time_clicked()
     } else {
         message.setText(tr("打卡成功！"));
         message.exec();
+
+        QString topic = "crossroadmanagesystem";
+        QString str;
+
+        if(direction == "0")
+        {
+            str = "master of " + rfidTag + " arrived in the checkpoint " + checkPointName;
+        } else {
+            str = "master of " + rfidTag + " departured in the checkpoint " + checkPointName;
+        }
+
+
+        if (m_client->publish(topic, str.toUtf8()) == -1) {
+            QMessageBox::critical(this, QLatin1String("Error"), QLatin1String("Could not publish message"));
+        } else {
+            qDebug() << "Published message" << str;
+        }
+
         delete resultTable;
         return ;
     }

@@ -2,6 +2,7 @@
 #define LOGINPAGE_H
 
 #include <QDialog>
+#include "QtMqtt/qmqttclient.h"
 
 namespace Ui {
 class LoginPage;
@@ -27,6 +28,7 @@ private slots:
 private:
     Ui::LoginPage *ui;
     QString *name;//用户名
+    QMqttClient *m_client;
 };
 
 #endif // LOGINPAGE_H

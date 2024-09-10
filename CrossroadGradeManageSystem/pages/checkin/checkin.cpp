@@ -4,6 +4,7 @@
 //#include "dialogcardconfig.h"
 #include <QDebug>
 
+
 /**************************************
  *作者: JaylenLaiHUST
  *日期: 2024-09-02
@@ -28,6 +29,12 @@ CheckIn::CheckIn(QWidget *parent, SerialPortThread *serial) :
          QString data_name = query.value(index_name).toString();
          ui->eventName_comboBox->addItem(data_name);
     }
+
+    m_client = new QMqttClient(this);
+//    m_client->setHostname("broker.hivemq.com");
+    m_client->setHostname("8.130.126.65");
+    m_client->setPort(1883);
+    m_client->connectToHost();
 }
 
 CheckIn::~CheckIn()
@@ -158,6 +165,17 @@ void CheckIn::on_btn_register_clicked()
         message.exec();
         delete participantsTable;
         return ;
+    }
+
+    QString topic = "crossroadmanagesystem";
+
+
+    QString str = "participants " + participantsName + " checked in successfully.";
+
+    if (m_client->publish(topic, str.toUtf8()) == -1) {
+        QMessageBox::critical(this, QLatin1String("Error"), QLatin1String("Could not publish message"));
+    } else {
+        qDebug() << "Published message" << str;
     }
 
     message.setText(tr("运动员注册成功!"));

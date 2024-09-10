@@ -8,6 +8,7 @@
 #include <QMessageBox>
 #include <QTime>
 #include <QDateTime>
+#include "QtMqtt/qmqttclient.h"
 
 namespace Ui {
 class SignUp;
@@ -49,6 +50,8 @@ private:
     QTimer *timer;
 
     DBManager *m_dbManager; // 指向 DbManager 的指针
+
+    QMqttClient *m_client;
 };
 
 #endif // SIGNUP_H
