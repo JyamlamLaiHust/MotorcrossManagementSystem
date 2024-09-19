@@ -1,5 +1,7 @@
 #include "holdgamespages.h"
 #include "ui_holdgamespages.h"
+#include <QJsonObject>
+#include <QJsonDocument>
 
 HoldGamesPages::HoldGamesPages(QWidget *parent) :
     QWidget(parent),
@@ -95,26 +97,49 @@ void HoldGamesPages::on_btn_create_clicked()
         return ;
     }
 
-    if(!matchesTable->insertRecords(eventName, startTime, endTime,
-                                    raceDistance, elevationGain, registrationFee))
-    {
-        message.setText(tr("比赛创建失败，请重试!"));
-        message.exec();
-        delete matchesTable;
-        return ;
-    }
+//    if(!matchesTable->insertRecords(eventName, startTime, endTime,
+//                                    raceDistance, elevationGain, registrationFee))
+//    {
+//        message.setText(tr("比赛创建失败，请重试!"));
+//        message.exec();
+//        delete matchesTable;
+//        return ;
+//    }
 
     message.setText(tr("比赛创建成功!"));
     message.exec();
 
     QString topic = "crossroadmanagesystem";
 
-    QString str = "match " + eventName + " was created sucessfully";
+    // 创建一个QMap用于存储键值对
+    QMap<QString, QString> eventData;
 
-    if (m_client->publish(topic, str.toUtf8()) == -1) {
+    // 将数据添加到map中
+    eventData["tableName"] = "table_matches";
+    eventData["赛事名称"] = eventName;
+    eventData["赛事开始时间"] = startTime.toString(Qt::ISODate);
+    eventData["赛事结束时间"] = endTime.toString(Qt::ISODate);
+    eventData["赛程距离"] = QString::number(raceDistance); // 转换为字符串
+    eventData["总攀升高度"] = QString::number(elevationGain);
+    eventData["赛事报名费用"] = QString::number(registrationFee);
+
+
+    QJsonObject jsonObject;
+    for (auto it = eventData.begin(); it != eventData.end(); ++it) {
+        jsonObject.insert(it.key(), QJsonValue(it.value()));
+    }
+
+    // 将QJsonObject转换为QJsonDocument
+    QJsonDocument jsonDoc(jsonObject);
+
+    // 将QJsonDocument转换为 QByteArray
+    QByteArray mqttmessage = jsonDoc.toJson(QJsonDocument::Compact);
+
+
+    if (m_client->publish(topic, mqttmessage) == -1) {
         QMessageBox::critical(this, QLatin1String("Error"), QLatin1String("Could not publish message"));
     } else {
-        qDebug() << "Published message" << str;
+        qDebug() << "Published message" << mqttmessage;
     }
 
     ui->eventName_comboBox->addItem(eventName);
@@ -162,7 +187,7 @@ void HoldGamesPages::on_btn_bond_clicked()
     checkPointTable->bindTable();
 
 
-    if(checkPointTable->findRecord(checkPointName) != -1)
+    if(checkPointTable->findRecord(eventName, checkPointName) != -1)
     {
         message.setText(tr("该打卡点已创建，请核对名称后重新创建!"));
         message.exec();
@@ -171,25 +196,25 @@ void HoldGamesPages::on_btn_bond_clicked()
     }
 
 
-    if(!checkPointTable->insertRecords(eventName, checkPointName, segmentDistance, segmentElevation, openTime, closeTime))
-    {
-        message.setText(tr("打卡点创建失败，请重试!"));
-        message.exec();
-        delete checkPointTable;
-        return ;
-    }
+//    if(!checkPointTable->insertRecords(eventName, checkPointName, segmentDistance, segmentElevation, openTime, closeTime))
+//    {
+//        message.setText(tr("打卡点创建失败，请重试!"));
+//        message.exec();
+//        delete checkPointTable;
+//        return ;
+//    }
 
-    if(checkPointTable->checkRaceDataConsistency(checkPointName) == false)
+    if(checkPointTable->checkRaceDataConsistency(eventName) == false)
     {
         checkPointTable->deleteRecord(checkPointName);
-        message.setText(tr("打卡点距离或攀升高度与赛事冲突，请确认数据无误后重新尝试绑定！"));
+        message.setText(tr("打卡点分段距离与赛事设定冲突，请确认数据无误后重新尝试绑定！"));
         message.exec();
 
         delete checkPointTable;
         return ;
     }
 
-    if(checkPointTable->checkCheckpointTimes(eventName) == false)
+    if(checkPointTable->checkCheckpointTimes(eventName, openTime, closeTime) == false)
     {
         checkPointTable->deleteRecord(checkPointName);
         message.setText(tr("打卡点开始或结束时间与赛事冲突，请确认数据无误后重新尝试绑定！"));
@@ -204,12 +229,37 @@ void HoldGamesPages::on_btn_bond_clicked()
 
     QString topic = "crossroadmanagesystem";
 
-    QString str = "checkpoint " + checkPointName + " was created sucessfully";
+    // 创建一个QMap用于存储键值对
+    QMap<QString, QString> eventData;
 
-    if (m_client->publish(topic, str.toUtf8()) == -1) {
+    // 将数据添加到map中
+    eventData["tableName"] = "table_checkpoints";
+    eventData["对应赛事名称"] = eventName;
+    eventData["检查站名称"] = checkPointName;
+
+    eventData["分段距离"] = QString::number(segmentDistance);
+    eventData["分段攀升"] = QString::number(segmentElevation);
+
+    // 假设 openTime 和 closeTime 是 QDateTime 对象
+    eventData["开放时间"] = openTime.toString("yyyy-MM-dd hh:mm:ss");
+    eventData["关闭时间"] = closeTime.toString("yyyy-MM-dd hh:mm:ss");
+
+    QJsonObject jsonObject;
+    for (auto it = eventData.begin(); it != eventData.end(); ++it) {
+        jsonObject.insert(it.key(), QJsonValue(it.value()));
+    }
+
+    // 将QJsonObject转换为QJsonDocument
+    QJsonDocument jsonDoc(jsonObject);
+
+    // 将QJsonDocument转换为 QByteArray
+    QByteArray mqttmessage = jsonDoc.toJson(QJsonDocument::Compact);
+
+
+    if (m_client->publish(topic, mqttmessage) == -1) {
         QMessageBox::critical(this, QLatin1String("Error"), QLatin1String("Could not publish message"));
     } else {
-        qDebug() << "Published message" << str;
+        qDebug() << "Published message" << mqttmessage;
     }
 
     delete checkPointTable;

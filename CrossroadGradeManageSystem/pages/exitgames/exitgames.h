@@ -6,6 +6,7 @@
 #include "database/dbmanager.h"
 #include "inc/m1356dll.h"
 #include <QMessageBox>
+#include "QtMqtt/qmqttclient.h"
 
 namespace Ui {
 class ExitGames;
@@ -34,6 +35,8 @@ private:
     M1356Dll *m1356dll;//13.56MHz模块库
 
     QString *rfidTag;//rfid标签卡号
+
+    QMqttClient *m_client;
 };
 
 #endif // EXITGAMES_H

@@ -1,0 +1,174 @@
+12-Sep-2024 14:29:00.828 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log Server.服务器版本: Apache Tomcat/9.0.94
+12-Sep-2024 14:29:00.835 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log 服务器构建:        Sep 5 2024 13:35:59 UTC
+12-Sep-2024 14:29:00.835 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log 服务器版本号:      9.0.94.0
+12-Sep-2024 14:29:00.836 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log 操作系统名称:      Windows 11
+12-Sep-2024 14:29:00.836 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log OS.版本:           10.0
+12-Sep-2024 14:29:00.836 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log 架构:              amd64
+12-Sep-2024 14:29:00.836 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log Java 环境变量:     C:\Program Files\Java\jre-1.8
+12-Sep-2024 14:29:00.836 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log Java虚拟机版本:    1.8.0_401-b10
+12-Sep-2024 14:29:00.836 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log JVM.供应商:        Oracle Corporation
+12-Sep-2024 14:29:00.836 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:     C:\Data\hust_lesson\Four\SysDesign\tomcat
+12-Sep-2024 14:29:00.836 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:     C:\Data\hust_lesson\Four\SysDesign\tomcat
+12-Sep-2024 14:29:00.841 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log 命令行参数：       -Djava.util.logging.config.file=C:\Data\hust_lesson\Four\SysDesign\tomcat\conf\logging.properties
+12-Sep-2024 14:29:00.841 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log 命令行参数：       -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+12-Sep-2024 14:29:00.841 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log 命令行参数：       -Djdk.tls.ephemeralDHKeySize=2048
+12-Sep-2024 14:29:00.841 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log 命令行参数：       -Djava.protocol.handler.pkgs=org.apache.catalina.webresources
+12-Sep-2024 14:29:00.842 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log 命令行参数：       -Dignore.endorsed.dirs=
+12-Sep-2024 14:29:00.842 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log 命令行参数：       -Dcatalina.base=C:\Data\hust_lesson\Four\SysDesign\tomcat
+12-Sep-2024 14:29:00.842 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log 命令行参数：       -Dcatalina.home=C:\Data\hust_lesson\Four\SysDesign\tomcat
+12-Sep-2024 14:29:00.842 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log 命令行参数：       -Djava.io.tmpdir=C:\Data\hust_lesson\Four\SysDesign\tomcat\temp
+12-Sep-2024 14:29:00.847 信息 [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent 使用APR版本[1.7.4]加载了基于APR的Apache Tomcat本机库[1.3.1]。
+12-Sep-2024 14:29:00.847 信息 [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent APR功能：IPv6[true]、sendfile[true]、accept filters[false]、random[true]、UDS [true]。
+12-Sep-2024 14:29:00.848 信息 [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent APR/OpenSSL配置：useAprConnector[false]，useOpenSSL[true]
+12-Sep-2024 14:29:00.860 信息 [main] org.apache.catalina.core.AprLifecycleListener.initializeSSL OpenSSL成功初始化 [OpenSSL 3.0.14 4 Jun 2024]
+12-Sep-2024 14:29:01.383 信息 [main] org.apache.coyote.AbstractProtocol.init 初始化协议处理器 ["http-nio-8080"]
+12-Sep-2024 14:29:01.421 信息 [main] org.apache.catalina.startup.Catalina.load 服务器在[832]毫秒内初始化
+12-Sep-2024 14:29:01.477 信息 [main] org.apache.catalina.core.StandardService.startInternal 正在启动服务[Catalina]
+12-Sep-2024 14:29:01.477 信息 [main] org.apache.catalina.core.StandardEngine.startInternal 正在启动 Servlet 引擎：[Apache Tomcat/9.0.94]
+12-Sep-2024 14:29:01.501 信息 [main] org.apache.catalina.startup.HostConfig.deployDirectory 把web 应用程序部署到目录 [C:\Data\hust_lesson\Four\SysDesign\tomcat\webapps\crossroadmanagesystem]
+12-Sep-2024 14:29:02.201 警告 [main] org.apache.catalina.util.SessionIdGeneratorBase.createSecureRandom 使用[SHA1PRNG]创建会话ID生成的SecureRandom实例花费了[428]毫秒。
+12-Sep-2024 14:29:02.224 信息 [main] org.apache.catalina.startup.HostConfig.deployDirectory Web应用程序目录[C:\Data\hust_lesson\Four\SysDesign\tomcat\webapps\crossroadmanagesystem]的部署已在[723]毫秒内完成
+12-Sep-2024 14:29:02.224 信息 [main] org.apache.catalina.startup.HostConfig.deployDirectory 把web 应用程序部署到目录 [C:\Data\hust_lesson\Four\SysDesign\tomcat\webapps\docs]
+12-Sep-2024 14:29:02.261 信息 [main] org.apache.catalina.startup.HostConfig.deployDirectory Web应用程序目录[C:\Data\hust_lesson\Four\SysDesign\tomcat\webapps\docs]的部署已在[37]毫秒内完成
+12-Sep-2024 14:29:02.262 信息 [main] org.apache.catalina.startup.HostConfig.deployDirectory 把web 应用程序部署到目录 [C:\Data\hust_lesson\Four\SysDesign\tomcat\webapps\examples]
+12-Sep-2024 14:29:02.611 信息 [main] org.apache.catalina.startup.HostConfig.deployDirectory Web应用程序目录[C:\Data\hust_lesson\Four\SysDesign\tomcat\webapps\examples]的部署已在[350]毫秒内完成
+12-Sep-2024 14:29:02.612 信息 [main] org.apache.catalina.startup.HostConfig.deployDirectory 把web 应用程序部署到目录 [C:\Data\hust_lesson\Four\SysDesign\tomcat\webapps\host-manager]
+12-Sep-2024 14:29:02.649 信息 [main] org.apache.catalina.startup.HostConfig.deployDirectory Web应用程序目录[C:\Data\hust_lesson\Four\SysDesign\tomcat\webapps\host-manager]的部署已在[36]毫秒内完成
+12-Sep-2024 14:29:02.649 信息 [main] org.apache.catalina.startup.HostConfig.deployDirectory 把web 应用程序部署到目录 [C:\Data\hust_lesson\Four\SysDesign\tomcat\webapps\manager]
+12-Sep-2024 14:29:02.683 信息 [main] org.apache.catalina.startup.HostConfig.deployDirectory Web应用程序目录[C:\Data\hust_lesson\Four\SysDesign\tomcat\webapps\manager]的部署已在[34]毫秒内完成
+12-Sep-2024 14:29:02.684 信息 [main] org.apache.catalina.startup.HostConfig.deployDirectory 把web 应用程序部署到目录 [C:\Data\hust_lesson\Four\SysDesign\tomcat\webapps\ROOT]
+12-Sep-2024 14:29:02.705 信息 [main] org.apache.catalina.startup.HostConfig.deployDirectory Web应用程序目录[C:\Data\hust_lesson\Four\SysDesign\tomcat\webapps\ROOT]的部署已在[21]毫秒内完成
+12-Sep-2024 14:29:02.711 信息 [main] org.apache.coyote.AbstractProtocol.start 开始协议处理句柄["http-nio-8080"]
+12-Sep-2024 14:29:02.740 信息 [main] org.apache.catalina.startup.Catalina.start [1318]毫秒后服务器启动
+12-Sep-2024 14:29:52.045 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log Server.服务器版本: Apache Tomcat/9.0.94
+12-Sep-2024 14:29:52.050 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log 服务器构建:        Sep 5 2024 13:35:59 UTC
+12-Sep-2024 14:29:52.051 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log 服务器版本号:      9.0.94.0
+12-Sep-2024 14:29:52.051 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log 操作系统名称:      Windows 11
+12-Sep-2024 14:29:52.051 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log OS.版本:           10.0
+12-Sep-2024 14:29:52.051 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log 架构:              amd64
+12-Sep-2024 14:29:52.052 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log Java 环境变量:     C:\Program Files\Java\jre-1.8
+12-Sep-2024 14:29:52.052 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log Java虚拟机版本:    1.8.0_401-b10
+12-Sep-2024 14:29:52.052 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log JVM.供应商:        Oracle Corporation
+12-Sep-2024 14:29:52.052 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:     C:\Data\hust_lesson\Four\SysDesign\tomcat
+12-Sep-2024 14:29:52.052 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:     C:\Data\hust_lesson\Four\SysDesign\tomcat
+12-Sep-2024 14:29:52.054 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log 命令行参数：       -Djava.util.logging.config.file=C:\Data\hust_lesson\Four\SysDesign\tomcat\conf\logging.properties
+12-Sep-2024 14:29:52.054 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log 命令行参数：       -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+12-Sep-2024 14:29:52.054 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log 命令行参数：       -Djdk.tls.ephemeralDHKeySize=2048
+12-Sep-2024 14:29:52.054 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log 命令行参数：       -Djava.protocol.handler.pkgs=org.apache.catalina.webresources
+12-Sep-2024 14:29:52.054 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log 命令行参数：       -Dignore.endorsed.dirs=
+12-Sep-2024 14:29:52.055 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log 命令行参数：       -Dcatalina.base=C:\Data\hust_lesson\Four\SysDesign\tomcat
+12-Sep-2024 14:29:52.056 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log 命令行参数：       -Dcatalina.home=C:\Data\hust_lesson\Four\SysDesign\tomcat
+12-Sep-2024 14:29:52.056 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log 命令行参数：       -Djava.io.tmpdir=C:\Data\hust_lesson\Four\SysDesign\tomcat\temp
+12-Sep-2024 14:29:52.063 信息 [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent 使用APR版本[1.7.4]加载了基于APR的Apache Tomcat本机库[1.3.1]。
+12-Sep-2024 14:29:52.064 信息 [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent APR功能：IPv6[true]、sendfile[true]、accept filters[false]、random[true]、UDS [true]。
+12-Sep-2024 14:29:52.064 信息 [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent APR/OpenSSL配置：useAprConnector[false]，useOpenSSL[true]
+12-Sep-2024 14:29:52.077 信息 [main] org.apache.catalina.core.AprLifecycleListener.initializeSSL OpenSSL成功初始化 [OpenSSL 3.0.14 4 Jun 2024]
+12-Sep-2024 14:29:52.436 信息 [main] org.apache.coyote.AbstractProtocol.init 初始化协议处理器 ["http-nio-8080"]
+12-Sep-2024 14:29:52.458 信息 [main] org.apache.catalina.startup.Catalina.load 服务器在[629]毫秒内初始化
+12-Sep-2024 14:29:52.490 信息 [main] org.apache.catalina.core.StandardService.startInternal 正在启动服务[Catalina]
+12-Sep-2024 14:29:52.491 信息 [main] org.apache.catalina.core.StandardEngine.startInternal 正在启动 Servlet 引擎：[Apache Tomcat/9.0.94]
+12-Sep-2024 14:29:52.500 信息 [main] org.apache.catalina.startup.HostConfig.deployDirectory 把web 应用程序部署到目录 [C:\Data\hust_lesson\Four\SysDesign\tomcat\webapps\crossroadmanagesystem]
+12-Sep-2024 14:29:53.133 警告 [main] org.apache.catalina.util.SessionIdGeneratorBase.createSecureRandom 使用[SHA1PRNG]创建会话ID生成的SecureRandom实例花费了[395]毫秒。
+12-Sep-2024 14:29:53.158 信息 [main] org.apache.catalina.startup.HostConfig.deployDirectory Web应用程序目录[C:\Data\hust_lesson\Four\SysDesign\tomcat\webapps\crossroadmanagesystem]的部署已在[658]毫秒内完成
+12-Sep-2024 14:29:53.159 信息 [main] org.apache.catalina.startup.HostConfig.deployDirectory 把web 应用程序部署到目录 [C:\Data\hust_lesson\Four\SysDesign\tomcat\webapps\docs]
+12-Sep-2024 14:29:53.188 信息 [main] org.apache.catalina.startup.HostConfig.deployDirectory Web应用程序目录[C:\Data\hust_lesson\Four\SysDesign\tomcat\webapps\docs]的部署已在[28]毫秒内完成
+12-Sep-2024 14:29:53.188 信息 [main] org.apache.catalina.startup.HostConfig.deployDirectory 把web 应用程序部署到目录 [C:\Data\hust_lesson\Four\SysDesign\tomcat\webapps\examples]
+12-Sep-2024 14:29:53.502 信息 [main] org.apache.catalina.startup.HostConfig.deployDirectory Web应用程序目录[C:\Data\hust_lesson\Four\SysDesign\tomcat\webapps\examples]的部署已在[314]毫秒内完成
+12-Sep-2024 14:29:53.503 信息 [main] org.apache.catalina.startup.HostConfig.deployDirectory 把web 应用程序部署到目录 [C:\Data\hust_lesson\Four\SysDesign\tomcat\webapps\host-manager]
+12-Sep-2024 14:29:53.531 信息 [main] org.apache.catalina.startup.HostConfig.deployDirectory Web应用程序目录[C:\Data\hust_lesson\Four\SysDesign\tomcat\webapps\host-manager]的部署已在[28]毫秒内完成
+12-Sep-2024 14:29:53.532 信息 [main] org.apache.catalina.startup.HostConfig.deployDirectory 把web 应用程序部署到目录 [C:\Data\hust_lesson\Four\SysDesign\tomcat\webapps\manager]
+12-Sep-2024 14:29:53.554 信息 [main] org.apache.catalina.startup.HostConfig.deployDirectory Web应用程序目录[C:\Data\hust_lesson\Four\SysDesign\tomcat\webapps\manager]的部署已在[22]毫秒内完成
+12-Sep-2024 14:29:53.555 信息 [main] org.apache.catalina.startup.HostConfig.deployDirectory 把web 应用程序部署到目录 [C:\Data\hust_lesson\Four\SysDesign\tomcat\webapps\ROOT]
+12-Sep-2024 14:29:53.575 信息 [main] org.apache.catalina.startup.HostConfig.deployDirectory Web应用程序目录[C:\Data\hust_lesson\Four\SysDesign\tomcat\webapps\ROOT]的部署已在[20]毫秒内完成
+12-Sep-2024 14:29:53.579 信息 [main] org.apache.coyote.AbstractProtocol.start 开始协议处理句柄["http-nio-8080"]
+12-Sep-2024 14:29:53.594 信息 [main] org.apache.catalina.startup.Catalina.start [1135]毫秒后服务器启动
+12-Sep-2024 18:50:02.533 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log Server.服务器版本: Apache Tomcat/9.0.94
+12-Sep-2024 18:50:02.538 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log 服务器构建:        Sep 5 2024 13:35:59 UTC
+12-Sep-2024 18:50:02.539 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log 服务器版本号:      9.0.94.0
+12-Sep-2024 18:50:02.539 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log 操作系统名称:      Windows 11
+12-Sep-2024 18:50:02.539 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log OS.版本:           10.0
+12-Sep-2024 18:50:02.539 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log 架构:              amd64
+12-Sep-2024 18:50:02.539 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log Java 环境变量:     C:\Program Files\Java\jre-1.8
+12-Sep-2024 18:50:02.539 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log Java虚拟机版本:    1.8.0_401-b10
+12-Sep-2024 18:50:02.539 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log JVM.供应商:        Oracle Corporation
+12-Sep-2024 18:50:02.539 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:     C:\Data\hust_lesson\Four\SysDesign\tomcat
+12-Sep-2024 18:50:02.539 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:     C:\Data\hust_lesson\Four\SysDesign\tomcat
+12-Sep-2024 18:50:02.546 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log 命令行参数：       -Djava.util.logging.config.file=C:\Data\hust_lesson\Four\SysDesign\tomcat\conf\logging.properties
+12-Sep-2024 18:50:02.546 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log 命令行参数：       -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+12-Sep-2024 18:50:02.546 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log 命令行参数：       -Djdk.tls.ephemeralDHKeySize=2048
+12-Sep-2024 18:50:02.546 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log 命令行参数：       -Djava.protocol.handler.pkgs=org.apache.catalina.webresources
+12-Sep-2024 18:50:02.546 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log 命令行参数：       -Dignore.endorsed.dirs=
+12-Sep-2024 18:50:02.546 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log 命令行参数：       -Dcatalina.base=C:\Data\hust_lesson\Four\SysDesign\tomcat
+12-Sep-2024 18:50:02.547 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log 命令行参数：       -Dcatalina.home=C:\Data\hust_lesson\Four\SysDesign\tomcat
+12-Sep-2024 18:50:02.547 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log 命令行参数：       -Djava.io.tmpdir=C:\Data\hust_lesson\Four\SysDesign\tomcat\temp
+12-Sep-2024 18:50:02.553 信息 [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent 使用APR版本[1.7.4]加载了基于APR的Apache Tomcat本机库[1.3.1]。
+12-Sep-2024 18:50:02.554 信息 [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent APR功能：IPv6[true]、sendfile[true]、accept filters[false]、random[true]、UDS [true]。
+12-Sep-2024 18:50:02.554 信息 [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent APR/OpenSSL配置：useAprConnector[false]，useOpenSSL[true]
+12-Sep-2024 18:50:02.574 信息 [main] org.apache.catalina.core.AprLifecycleListener.initializeSSL OpenSSL成功初始化 [OpenSSL 3.0.14 4 Jun 2024]
+12-Sep-2024 18:50:02.942 信息 [main] org.apache.coyote.AbstractProtocol.init 初始化协议处理器 ["http-nio-8080"]
+12-Sep-2024 18:50:02.969 信息 [main] org.apache.catalina.startup.Catalina.load 服务器在[630]毫秒内初始化
+12-Sep-2024 18:50:03.008 信息 [main] org.apache.catalina.core.StandardService.startInternal 正在启动服务[Catalina]
+12-Sep-2024 18:50:03.009 信息 [main] org.apache.catalina.core.StandardEngine.startInternal 正在启动 Servlet 引擎：[Apache Tomcat/9.0.94]
+12-Sep-2024 18:50:03.019 信息 [main] org.apache.catalina.startup.HostConfig.deployDirectory 把web 应用程序部署到目录 [C:\Data\hust_lesson\Four\SysDesign\tomcat\webapps\crossroadmanagesystem]
+12-Sep-2024 18:50:03.598 警告 [main] org.apache.catalina.util.SessionIdGeneratorBase.createSecureRandom 使用[SHA1PRNG]创建会话ID生成的SecureRandom实例花费了[381]毫秒。
+12-Sep-2024 18:50:03.623 信息 [main] org.apache.catalina.startup.HostConfig.deployDirectory Web应用程序目录[C:\Data\hust_lesson\Four\SysDesign\tomcat\webapps\crossroadmanagesystem]的部署已在[604]毫秒内完成
+12-Sep-2024 18:50:03.624 信息 [main] org.apache.catalina.startup.HostConfig.deployDirectory 把web 应用程序部署到目录 [C:\Data\hust_lesson\Four\SysDesign\tomcat\webapps\docs]
+12-Sep-2024 18:50:03.654 信息 [main] org.apache.catalina.startup.HostConfig.deployDirectory Web应用程序目录[C:\Data\hust_lesson\Four\SysDesign\tomcat\webapps\docs]的部署已在[30]毫秒内完成
+12-Sep-2024 18:50:03.654 信息 [main] org.apache.catalina.startup.HostConfig.deployDirectory 把web 应用程序部署到目录 [C:\Data\hust_lesson\Four\SysDesign\tomcat\webapps\examples]
+12-Sep-2024 18:50:04.016 信息 [main] org.apache.catalina.startup.HostConfig.deployDirectory Web应用程序目录[C:\Data\hust_lesson\Four\SysDesign\tomcat\webapps\examples]的部署已在[361]毫秒内完成
+12-Sep-2024 18:50:04.016 信息 [main] org.apache.catalina.startup.HostConfig.deployDirectory 把web 应用程序部署到目录 [C:\Data\hust_lesson\Four\SysDesign\tomcat\webapps\host-manager]
+12-Sep-2024 18:50:04.048 信息 [main] org.apache.catalina.startup.HostConfig.deployDirectory Web应用程序目录[C:\Data\hust_lesson\Four\SysDesign\tomcat\webapps\host-manager]的部署已在[32]毫秒内完成
+12-Sep-2024 18:50:04.049 信息 [main] org.apache.catalina.startup.HostConfig.deployDirectory 把web 应用程序部署到目录 [C:\Data\hust_lesson\Four\SysDesign\tomcat\webapps\manager]
+12-Sep-2024 18:50:04.074 信息 [main] org.apache.catalina.startup.HostConfig.deployDirectory Web应用程序目录[C:\Data\hust_lesson\Four\SysDesign\tomcat\webapps\manager]的部署已在[25]毫秒内完成
+12-Sep-2024 18:50:04.074 信息 [main] org.apache.catalina.startup.HostConfig.deployDirectory 把web 应用程序部署到目录 [C:\Data\hust_lesson\Four\SysDesign\tomcat\webapps\ROOT]
+12-Sep-2024 18:50:04.094 信息 [main] org.apache.catalina.startup.HostConfig.deployDirectory Web应用程序目录[C:\Data\hust_lesson\Four\SysDesign\tomcat\webapps\ROOT]的部署已在[20]毫秒内完成
+12-Sep-2024 18:50:04.099 信息 [main] org.apache.coyote.AbstractProtocol.start 开始协议处理句柄["http-nio-8080"]
+12-Sep-2024 18:50:04.115 信息 [main] org.apache.catalina.startup.Catalina.start [1147]毫秒后服务器启动
+12-Sep-2024 20:35:11.817 信息 [Catalina-utility-2] org.apache.catalina.startup.HostConfig.deployDirectory 把web 应用程序部署到目录 [C:\Data\hust_lesson\Four\SysDesign\tomcat\webapps\.git]
+12-Sep-2024 20:35:11.851 信息 [Catalina-utility-2] org.apache.catalina.startup.HostConfig.deployDirectory Web应用程序目录[C:\Data\hust_lesson\Four\SysDesign\tomcat\webapps\.git]的部署已在[34]毫秒内完成
+12-Sep-2024 22:19:52.671 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log Server.服务器版本: Apache Tomcat/9.0.94
+12-Sep-2024 22:19:52.676 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log 服务器构建:        Sep 5 2024 13:35:59 UTC
+12-Sep-2024 22:19:52.677 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log 服务器版本号:      9.0.94.0
+12-Sep-2024 22:19:52.677 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log 操作系统名称:      Windows 11
+12-Sep-2024 22:19:52.677 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log OS.版本:           10.0
+12-Sep-2024 22:19:52.677 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log 架构:              amd64
+12-Sep-2024 22:19:52.677 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log Java 环境变量:     C:\Program Files\Java\jre-1.8
+12-Sep-2024 22:19:52.677 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log Java虚拟机版本:    1.8.0_401-b10
+12-Sep-2024 22:19:52.678 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log JVM.供应商:        Oracle Corporation
+12-Sep-2024 22:19:52.678 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:     C:\Data\hust_lesson\Four\SysDesign\tomcat
+12-Sep-2024 22:19:52.678 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:     C:\Data\hust_lesson\Four\SysDesign\tomcat
+12-Sep-2024 22:19:52.680 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log 命令行参数：       -Djava.util.logging.config.file=C:\Data\hust_lesson\Four\SysDesign\tomcat\conf\logging.properties
+12-Sep-2024 22:19:52.680 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log 命令行参数：       -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+12-Sep-2024 22:19:52.680 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log 命令行参数：       -Djdk.tls.ephemeralDHKeySize=2048
+12-Sep-2024 22:19:52.680 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log 命令行参数：       -Djava.protocol.handler.pkgs=org.apache.catalina.webresources
+12-Sep-2024 22:19:52.680 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log 命令行参数：       -Dignore.endorsed.dirs=
+12-Sep-2024 22:19:52.681 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log 命令行参数：       -Dcatalina.base=C:\Data\hust_lesson\Four\SysDesign\tomcat
+12-Sep-2024 22:19:52.681 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log 命令行参数：       -Dcatalina.home=C:\Data\hust_lesson\Four\SysDesign\tomcat
+12-Sep-2024 22:19:52.681 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log 命令行参数：       -Djava.io.tmpdir=C:\Data\hust_lesson\Four\SysDesign\tomcat\temp
+12-Sep-2024 22:19:52.687 信息 [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent 使用APR版本[1.7.4]加载了基于APR的Apache Tomcat本机库[1.3.1]。
+12-Sep-2024 22:19:52.767 信息 [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent APR功能：IPv6[true]、sendfile[true]、accept filters[false]、random[true]、UDS [true]。
+12-Sep-2024 22:19:52.768 信息 [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent APR/OpenSSL配置：useAprConnector[false]，useOpenSSL[true]
+12-Sep-2024 22:19:52.783 信息 [main] org.apache.catalina.core.AprLifecycleListener.initializeSSL OpenSSL成功初始化 [OpenSSL 3.0.14 4 Jun 2024]
+12-Sep-2024 22:19:53.113 信息 [main] org.apache.coyote.AbstractProtocol.init 初始化协议处理器 ["http-nio-8080"]
+12-Sep-2024 22:19:53.135 信息 [main] org.apache.catalina.startup.Catalina.load 服务器在[636]毫秒内初始化
+12-Sep-2024 22:19:53.186 信息 [main] org.apache.catalina.core.StandardService.startInternal 正在启动服务[Catalina]
+12-Sep-2024 22:19:53.186 信息 [main] org.apache.catalina.core.StandardEngine.startInternal 正在启动 Servlet 引擎：[Apache Tomcat/9.0.94]
+12-Sep-2024 22:19:53.194 信息 [main] org.apache.catalina.startup.HostConfig.deployDirectory 把web 应用程序部署到目录 [C:\Data\hust_lesson\Four\SysDesign\tomcat\webapps\.git]
+12-Sep-2024 22:19:53.674 警告 [main] org.apache.catalina.util.SessionIdGeneratorBase.createSecureRandom 使用[SHA1PRNG]创建会话ID生成的SecureRandom实例花费了[307]毫秒。
+12-Sep-2024 22:19:53.692 信息 [main] org.apache.catalina.startup.HostConfig.deployDirectory Web应用程序目录[C:\Data\hust_lesson\Four\SysDesign\tomcat\webapps\.git]的部署已在[498]毫秒内完成
+12-Sep-2024 22:19:53.716 信息 [main] org.apache.catalina.startup.HostConfig.deployDirectory 把web 应用程序部署到目录 [C:\Data\hust_lesson\Four\SysDesign\tomcat\webapps\crossroadmanagesystem]
+12-Sep-2024 22:19:53.732 信息 [main] org.apache.catalina.startup.HostConfig.deployDirectory Web应用程序目录[C:\Data\hust_lesson\Four\SysDesign\tomcat\webapps\crossroadmanagesystem]的部署已在[16]毫秒内完成
+12-Sep-2024 22:19:53.732 信息 [main] org.apache.catalina.startup.HostConfig.deployDirectory 把web 应用程序部署到目录 [C:\Data\hust_lesson\Four\SysDesign\tomcat\webapps\docs]
+12-Sep-2024 22:19:53.756 信息 [main] org.apache.catalina.startup.HostConfig.deployDirectory Web应用程序目录[C:\Data\hust_lesson\Four\SysDesign\tomcat\webapps\docs]的部署已在[24]毫秒内完成
+12-Sep-2024 22:19:53.757 信息 [main] org.apache.catalina.startup.HostConfig.deployDirectory 把web 应用程序部署到目录 [C:\Data\hust_lesson\Four\SysDesign\tomcat\webapps\examples]
+12-Sep-2024 22:19:54.052 信息 [main] org.apache.catalina.startup.HostConfig.deployDirectory Web应用程序目录[C:\Data\hust_lesson\Four\SysDesign\tomcat\webapps\examples]的部署已在[295]毫秒内完成
+12-Sep-2024 22:19:54.053 信息 [main] org.apache.catalina.startup.HostConfig.deployDirectory 把web 应用程序部署到目录 [C:\Data\hust_lesson\Four\SysDesign\tomcat\webapps\host-manager]
+12-Sep-2024 22:19:54.083 信息 [main] org.apache.catalina.startup.HostConfig.deployDirectory Web应用程序目录[C:\Data\hust_lesson\Four\SysDesign\tomcat\webapps\host-manager]的部署已在[30]毫秒内完成
+12-Sep-2024 22:19:54.083 信息 [main] org.apache.catalina.startup.HostConfig.deployDirectory 把web 应用程序部署到目录 [C:\Data\hust_lesson\Four\SysDesign\tomcat\webapps\manager]
+12-Sep-2024 22:19:54.110 信息 [main] org.apache.catalina.startup.HostConfig.deployDirectory Web应用程序目录[C:\Data\hust_lesson\Four\SysDesign\tomcat\webapps\manager]的部署已在[27]毫秒内完成
+12-Sep-2024 22:19:54.111 信息 [main] org.apache.catalina.startup.HostConfig.deployDirectory 把web 应用程序部署到目录 [C:\Data\hust_lesson\Four\SysDesign\tomcat\webapps\mqtt]
+12-Sep-2024 22:19:54.135 信息 [main] org.apache.catalina.startup.HostConfig.deployDirectory Web应用程序目录[C:\Data\hust_lesson\Four\SysDesign\tomcat\webapps\mqtt]的部署已在[24]毫秒内完成
+12-Sep-2024 22:19:54.136 信息 [main] org.apache.catalina.startup.HostConfig.deployDirectory 把web 应用程序部署到目录 [C:\Data\hust_lesson\Four\SysDesign\tomcat\webapps\ROOT]
+12-Sep-2024 22:19:54.158 信息 [main] org.apache.catalina.startup.HostConfig.deployDirectory Web应用程序目录[C:\Data\hust_lesson\Four\SysDesign\tomcat\webapps\ROOT]的部署已在[22]毫秒内完成
+12-Sep-2024 22:19:54.162 信息 [main] org.apache.coyote.AbstractProtocol.start 开始协议处理句柄["http-nio-8080"]
+12-Sep-2024 22:19:54.177 信息 [main] org.apache.catalina.startup.Catalina.start [1024]毫秒后服务器启动

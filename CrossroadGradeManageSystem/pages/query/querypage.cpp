@@ -74,33 +74,19 @@ void QueryPage::on_btn_Query_clicked()
 
         QString str = tr("rfid标签卡号 = '%1'").arg(cardId);
         currentModel->setFilter(str);
-
-//        // 输出过滤条件
-//        qDebug() << "Filter set to:" << currentModel->filter();
-
-//        // 如果你想看到model中的数据变化，可以遍历model并打印
-//        int rowCount = currentModel->rowCount();
-//        qDebug() << currentModel->rowCount();
-
-//        for (int row = 0; row < rowCount; ++row) {
-//            int columnCount = currentModel->columnCount();
-//            for (int column = 0; column < columnCount; ++column) {
-//                QVariant data = currentModel->data(currentModel->index(row, column));
-//                qDebug() << "Row" << row << "Column" << column << "Data:" << data.toString();
-//            }
-//        }
-
         updateTableView(currentModel);
         qDebug() << cardId;
     }
         break;
     case 1://根据运动员姓名进行筛选查询
     {
-        QString participantsName = ui->participantsName_lineEdit->text();
-        QString str =  tr("姓名 = '%1'").arg(participantsName);
+        QString gender = ui->gender_comboBox->currentText();
+        qDebug() << gender;
+
+        QString str =  tr("性别 = '%1'").arg(gender);
         currentModel->setFilter(str);
         updateTableView(currentModel);
-        qDebug() << participantsName;
+        qDebug() << gender;
     }
         break;
     case 2://根据比赛名称进行筛选查询
@@ -125,10 +111,19 @@ void QueryPage::on_btn_Query_clicked()
         updateTableView(currentModel);
     }
         break;
+    case 4:
+    {
+        QString year = ui->year_lineEdit->text();
+
+        // 构造过滤条件
+        QString str = tr("SUBSTR(身份证, 7, 4) > '%1'").arg(year);
+        currentModel->setFilter(str);
+        updateTableView(currentModel);
+    }
+        break;
     default:
         break;
     }
-
 }
 
 /**
@@ -138,12 +133,7 @@ void QueryPage::on_btn_Query_clicked()
  */
 void QueryPage::currentAction(QAction *action)
 {
-    if (action == nullptr) {
-        qDebug() << "Action is null.";
-        return;
-    }
-
-    if(action->text() == tr("运动员查询_卡号"))
+    if(action->text() == tr("运动员查询"))
     {
         ParticipantsTableModel *participantsTable = new ParticipantsTableModel(this);
 //        participantsTable->bindTable();
@@ -152,16 +142,20 @@ void QueryPage::currentAction(QAction *action)
         updateTableView(participantsTable);
         ui->comboBox->clear();
         ui->comboBox->addItem("卡号");
+
+        ui->comboBox->addItem("性别");
+        ui->comboBox->addItem("年龄");
+
     }
-    else if(action->text() == tr("运动员查询_姓名"))
+    else if(action->text() == tr("运动员查询_性别"))
     {
         ParticipantsTableModel *participantsTable = new ParticipantsTableModel(this);
 //        participantsTable->bindTable();
         participantsTable->setTable("table_participants");
         participantsTable->select();
-//        updateTableView(participantsTable);
+        updateTableView(participantsTable);
         ui->comboBox->clear();
-        ui->comboBox->addItem("姓名");
+        ui->comboBox->addItem("性别");
     }
     else if(action->text() == tr("比赛查询_比赛名称"))
     {
@@ -209,7 +203,7 @@ void QueryPage::on_comboBox_currentIndexChanged(const QString &text)
     {
         ui->stackedWidget->setCurrentIndex(0);
     }
-    else if(text == tr("姓名"))
+    else if(text == tr("性别"))
     {
         ui->stackedWidget->setCurrentIndex(1);
         message.setText("当前页面为 1");
@@ -223,5 +217,9 @@ void QueryPage::on_comboBox_currentIndexChanged(const QString &text)
     {
         ui->stackedWidget->setCurrentIndex(3);
         message.setText("当前页面为 3");
+    } else if(text == tr("年龄"))
+    {
+        ui->stackedWidget->setCurrentIndex(4);
+        message.setText("当前页面为 4");
     }
 }

@@ -65,7 +65,8 @@ bool DBManager::tableExist(const QString &tableName)    //judge DB exist
 bool DBManager::createDB() // createDB by name
 {
     QSqlDatabase db = QSqlDatabase::addDatabase("QMYSQL");
-    db.setHostName("127.0.0.1");
+//    db.setHostName("127.0.0.1");
+    db.setHostName("8.130.126.65");
     db.setPort(3306);
     db.setDatabaseName("crossroadmanagesystem");
     db.setUserName("root");

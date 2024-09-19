@@ -5,6 +5,7 @@
 #include "serialThread/serialportthread.h"
 #include "database/dbmanager.h"
 #include "inc/m1356dll.h"
+#include "QtMqtt/qmqttclient.h"
 #include <QMessageBox>
 
 namespace Ui {
@@ -28,6 +29,8 @@ private:
     SerialPortThread *serialPortThread;//串口线程
 
     M1356Dll *m1356dll;//13.56MHz模块库
+
+    QMqttClient *m_client;
 };
 
 #endif // CANCELGAMES_H

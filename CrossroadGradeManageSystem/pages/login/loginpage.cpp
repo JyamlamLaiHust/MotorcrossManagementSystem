@@ -21,7 +21,7 @@ LoginPage::LoginPage(QWidget *parent, QString *name) :QDialog(parent),ui(new Ui:
     adminitable->bindTable();
     if(adminitable->getModel()->rowCount() == 0)
     {
-       adminitable->insertRecords(tr("admin"),GetMD5String(tr("123456")),CurrentDateTime());
+       adminitable->insertRecords(tr("admin"),tr("123456"),CurrentDateTime());
     }
 
 
@@ -86,7 +86,7 @@ void LoginPage::on_btn_Login_clicked()
 
     else
     {
-        if(GetMD5String(pwd) == record.value(1).toString())//密码采用简单的MD5加密,在实际的使用中需要结合多种加密技术
+        if(pwd == record.value(1).toString())//密码采用简单的MD5加密,在实际的使用中需要结合多种加密技术
         {
             *(this->name) = name;
             this->close();

@@ -3,7 +3,8 @@
 #include "tools/tools.h"
 //#include "dialogcardconfig.h"
 #include <QDebug>
-
+#include <QJsonObject>
+#include <QJsonDocument>
 
 /**************************************
  *作者: JaylenLaiHUST
@@ -18,16 +19,18 @@ CheckIn::CheckIn(QWidget *parent, SerialPortThread *serial) :
     this->serialThread = serial;
     m1356dll = new M1356Dll();
 
-    // 将数据库中的比赛记录传到下拉框当中
     QSqlQuery query;
     query.exec("select * from table_matches;");
+
     QSqlRecord rec = query.record();
 
+    QString eventname;
     while(query.next())
     {
          int index_name = rec.indexOf("赛事名称");
-         QString data_name = query.value(index_name).toString();
-         ui->eventName_comboBox->addItem(data_name);
+          eventname = query.value(index_name).toString();
+//         qDebug() << "赛事名称:" << data_name;
+         ui->eventName_comboBox->addItem(eventname);
     }
 
     m_client = new QMqttClient(this);
@@ -157,30 +160,55 @@ void CheckIn::on_btn_register_clicked()
         return ;
     }
 
-    if(!participantsTable->insertRecords(participantsName, eventName, gender, idCard,
-                                         telephoneNumber, sizeTshirt, rfidTag,
-                                         emergencyContactName, emergencyContactTelephone))
-    {
-        message.setText(tr("运动员注册失败，请重试!"));
-        message.exec();
-        delete participantsTable;
-        return ;
-    }
+//    if(participantsTable->insertRecords(participantsName, eventName, gender, idCard,
+//                                         telephoneNumber, sizeTshirt, rfidTag,
+//                                         emergencyContactName, emergencyContactTelephone) == -1)
+//    {
+//        message.setText(tr("运动员注册失败，请重试!"));
+//        message.exec();
+//        delete participantsTable;
+//        return ;
+//    }
 
     QString topic = "crossroadmanagesystem";
 
+    // 创建一个QMap用于存储键值对
+    QMap<QString, QString> eventData;
 
-    QString str = "participants " + participantsName + " checked in successfully.";
+    // 将数据添加到map中
+    eventData["tableName"] = "table_participants";
+    eventData["姓名"] = participantsName;
+    eventData["参赛名称"] = eventName;
+    eventData["身份证"] = idCard;
+    eventData["性别"] = gender;
+    eventData["联系方式"] = sizeTshirt;
+    eventData["T恤尺码"] = telephoneNumber;
+    eventData["紧急联系人姓名"] = emergencyContactName;
+    eventData["紧急联系人联系方式"] = emergencyContactTelephone;
+    eventData["rfid标签卡号"] = rfidTag;
 
-    if (m_client->publish(topic, str.toUtf8()) == -1) {
+    QJsonObject jsonObject;
+    for (auto it = eventData.begin(); it != eventData.end(); ++it) {
+        jsonObject.insert(it.key(), QJsonValue(it.value()));
+    }
+
+    // 将QJsonObject转换为QJsonDocument
+    QJsonDocument jsonDoc(jsonObject);
+
+    // 将QJsonDocument转换为 QByteArray
+    QByteArray mqttmessage = jsonDoc.toJson(QJsonDocument::Compact);
+
+
+    if (m_client->publish(topic, mqttmessage) == -1) {
         QMessageBox::critical(this, QLatin1String("Error"), QLatin1String("Could not publish message"));
     } else {
-        qDebug() << "Published message" << str;
+        qDebug() << "Published message" << mqttmessage;
     }
 
     message.setText(tr("运动员注册成功!"));
     message.exec();
     delete participantsTable;
+    return ;
 }
 
 /**

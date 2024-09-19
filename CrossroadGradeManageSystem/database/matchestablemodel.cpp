@@ -75,6 +75,7 @@ QSqlTableModel* MatchesTableModel::getModel(void)
  */
 int MatchesTableModel::findRecord(QString eventName)
 {
+
     int count = model->rowCount();
     for(int row=0; row < count; row++){
         if((model->data(model->index(row, 1))).toString() == eventName)

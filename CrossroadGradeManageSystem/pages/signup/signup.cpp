@@ -1,6 +1,9 @@
 #include "signup.h"
 #include "ui_signup.h"
 
+#include <QJsonObject>
+#include <QJsonDocument>
+
 SignUp::SignUp(QWidget *parent, SerialPortThread *serial) :
     QWidget(parent),
     ui(new Ui::SignUp),
@@ -83,8 +86,14 @@ void SignUp::on_btn_Time_clicked()
     int minutes = sumTime / 60;
     int seconds = sumTime % 60;
 
-    // 格式化输出为 mm:ss 格式
-    QString formattedTime = QString("%1:%2").arg(minutes, 2, 10, QChar('0')).arg(seconds, 2, 10, QChar('0'));
+    // 获取当前时间
+    QDateTime aTime = QDateTime::currentDateTime();
+
+//    // 将时间差加到当前时间上
+//    QDateTime futureTime = aTime.addSecs(sumTime);
+
+    // 格式化输出为 yyyy-MM-dd hh:mm:ss 格式
+    QString formattedTime = aTime.toString("yyyy-MM-dd hh:mm:ss");
 
     // 设置到 lineEdit 控件中
     ui->sumTime_lineEdit->setText(formattedTime);
@@ -125,16 +134,18 @@ void SignUp::on_btn_Time_clicked()
         return;
     }
 
-    if(resultTable->findRecord(rfidTag, direction) != -1)
+    if(resultTable->findRecord(rfidTag, checkPointName, direction) != -1)
     {
-        if(direction == '1' && resultTable->findRecord(rfidTag, "0") == -1) {
-            message.setText(tr("该运动员需要先打到达卡才能打离开卡。"));
-            message.exec();
-        }
         message.setText(tr("该运动员在同一方向上已打卡。"));
         message.exec();
         delete resultTable;
         return ;
+    }
+
+    if(direction == '1' && resultTable->findRecord(rfidTag, checkPointName, "0") == -1) {
+        message.setText(tr("该运动员需要先打到达卡才能打离开卡。"));
+        message.exec();
+        return;
     }
 
     if(resultTable->checkRfidTagInMatches(rfidTag, eventName) == false)
@@ -145,37 +156,58 @@ void SignUp::on_btn_Time_clicked()
         return ;
     }
 
-    if(!resultTable->insertRecords(eventName, checkPointName, currentTime, direction, sumTime, rank, rfidTag))
-    {
-        message.setText(tr("打卡失败，请稍后重试！"));
-        message.exec();
-        delete resultTable;
-        return ;
-    } else {
-        message.setText(tr("打卡成功！"));
-        message.exec();
+//    if(!resultTable->insertRecords(eventName, checkPointName, currentTime, direction, sumTime, rank, rfidTag))
+//    {
+//        message.setText(tr("打卡失败，请稍后重试！"));
+//        message.exec();
+//        delete resultTable;
+//        return ;
+//    } else {
+//        message.setText(tr("打卡成功！"));
+//        message.exec();
+//    }
 
-        QString topic = "crossroadmanagesystem";
-        QString str;
+    QString topic = "crossroadmanagesystem";
 
-        if(direction == "0")
-        {
-            str = "master of " + rfidTag + " arrived in the checkpoint " + checkPointName;
-        } else {
-            str = "master of " + rfidTag + " departured in the checkpoint " + checkPointName;
-        }
+    // 创建一个QMap用于存储键值对
+    QMap<QString, QString> eventData;
 
+    // 将数据添加到map中
+    eventData["tableName"] = "table_results";
+    eventData["赛事名称"] = eventName;
+    eventData["打卡点名称"] = checkPointName;
 
-        if (m_client->publish(topic, str.toUtf8()) == -1) {
-            QMessageBox::critical(this, QLatin1String("Error"), QLatin1String("Could not publish message"));
-        } else {
-            qDebug() << "Published message" << str;
-        }
+    eventData["时间戳"] = formattedTime;
+    eventData["方向"] = direction;
+    eventData["总用时"] = QString::number(sumTime);
+    eventData["名次"] = QString::number(rank);
+    eventData["rfid标签卡号"] = rfidTag;
 
-        delete resultTable;
-        return ;
+    QJsonObject jsonObject;
+    for (auto it = eventData.begin(); it != eventData.end(); ++it) {
+        jsonObject.insert(it.key(), QJsonValue(it.value()));
     }
+
+    // 将QJsonObject转换为QJsonDocument
+    QJsonDocument jsonDoc(jsonObject);
+
+    // 将QJsonDocument转换为 QByteArray
+    QByteArray mqttmessage = jsonDoc.toJson(QJsonDocument::Compact);
+
+
+    if (m_client->publish(topic, mqttmessage) == -1) {
+        QMessageBox::critical(this, QLatin1String("Error"), QLatin1String("Could not publish message"));
+    } else {
+        qDebug() << "Published message" << mqttmessage;
+    }
+
+
+    message.setText(tr("打卡成功。"));
+    message.exec();
+    delete resultTable;
+    return ;
 }
+
 
 
 void SignUp::on_btn_refresh_clicked()

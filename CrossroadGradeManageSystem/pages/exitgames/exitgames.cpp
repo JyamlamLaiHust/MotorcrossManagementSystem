@@ -1,5 +1,7 @@
 #include "exitgames.h"
 #include "ui_exitgames.h"
+#include <QJsonObject>
+#include <QJsonDocument>
 
 ExitGames::ExitGames(QWidget *parent, QString *rfidTags, SerialPortThread *serial) :
     QDialog(parent),
@@ -24,6 +26,12 @@ ExitGames::ExitGames(QWidget *parent, QString *rfidTags, SerialPortThread *seria
 //         qDebug() << "赛事名称:" << data_name;
          ui->eventName_comboBox->addItem(eventname);
     }
+
+    m_client = new QMqttClient(this);
+//    m_client->setHostname("broker.hivemq.com");
+    m_client->setHostname("8.130.126.65");
+    m_client->setPort(1883);
+    m_client->connectToHost();
 }
 
 ExitGames::~ExitGames()
@@ -52,18 +60,45 @@ void ExitGames::on_btn_exitgame_clicked()
 {
     QMessageBox message;
 
-    if(rfidTag->isEmpty()) {
-        QMessageBox::warning(this,tr("温馨提示"),tr("请先识别标签后尝试！"),QMessageBox::Yes);
-        return ;
-    }
+    QString rfidTag = ui->rfidTags_lineEdit->text();
 
     ParticipantsTableModel *participantsTable = new ParticipantsTableModel(this);
     participantsTable->bindTable();
 
-    int row = participantsTable->findRecordByRfidTag(*rfidTag);
+    qDebug() << "rfidTag: " <<rfidTag;
+    int row = participantsTable->findRecordByRfidTag(rfidTag);
 
-    if(row) {
-        participantsTable->deleteRecords(row);
+    QString topic = "crossroadmanagesystem";
+
+    // 创建一个QMap用于存储键值对
+    QMap<QString, QString> eventData;
+
+    // 将数据添加到map中
+    eventData["rfidTag"] = rfidTag;
+
+    QJsonObject jsonObject;
+    for (auto it = eventData.begin(); it != eventData.end(); ++it) {
+        jsonObject.insert(it.key(), QJsonValue(it.value()));
+    }
+
+    // 将QJsonObject转换为QJsonDocument
+    QJsonDocument jsonDoc(jsonObject);
+
+    // 将QJsonDocument转换为 QByteArray
+    QByteArray mqttmessage = jsonDoc.toJson(QJsonDocument::Compact);
+
+
+    if (m_client->publish(topic, mqttmessage) == -1) {
+        QMessageBox::critical(this, QLatin1String("Error"), QLatin1String("Could not publish message"));
+    } else {
+        qDebug() << "Published message" << mqttmessage;
+    }
+
+    if(row != -1) {
+        participantsTable->deleteRecord(rfidTag);
+        message.setText(tr("运动员退出比赛成功！"));
+        message.exec();
+        return ;
     } else
     {
         message.setText(tr("找不到该运动员记录。"));

@@ -26,12 +26,12 @@ public:
     void createTable();//创建表
     void bindTable(void);//绑定表
     QSqlTableModel* getModel(void);//获取管理员表的model
-    int findRecord(QString checkPointName);//查找记录
+    int findRecord(QString eventName, QString checkPointName);//查找记录
     int insertRecords(QString eventName, QString checkPointName, float segmentDistance,
                       float segmentElevation, QDateTime openTime, QDateTime closeTime);
     bool deleteRecord(QString checkpointname);
     bool checkRaceDataConsistency(const QString &eventName);
-    bool checkCheckpointTimes(const QString &eventName);
+    bool checkCheckpointTimes(const QString &eventName, QDateTime openTime, QDateTime closeTime);
 //    bool updateRecords(QString personName, QString pwd, QString time);//更新记录
 
 //signals:

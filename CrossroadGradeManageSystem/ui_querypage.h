@@ -47,8 +47,8 @@ public:
     QWidget *participantsName_page;
     QWidget *gridLayoutWidget;
     QGridLayout *gridLayout_6;
+    QComboBox *gender_comboBox;
     QLabel *label;
-    QLineEdit *participantsName_lineEdit;
     QWidget *page;
     QWidget *gridLayoutWidget_2;
     QGridLayout *gridLayout_7;
@@ -61,6 +61,12 @@ public:
     QDateEdit *start_dateEdit;
     QLabel *label_4;
     QDateEdit *end_dateEdit;
+    QWidget *page_3;
+    QWidget *gridLayoutWidget_4;
+    QGridLayout *gridLayout_9;
+    QLineEdit *year_lineEdit;
+    QLabel *label_5;
+    QLabel *label_6;
     QPushButton *btn_Query;
     QTableView *tableView;
 
@@ -126,15 +132,23 @@ public:
         gridLayout_6 = new QGridLayout(gridLayoutWidget);
         gridLayout_6->setObjectName(QString::fromUtf8("gridLayout_6"));
         gridLayout_6->setContentsMargins(5, 0, 5, 0);
+        gender_comboBox = new QComboBox(gridLayoutWidget);
+        gender_comboBox->addItem(QString());
+        gender_comboBox->addItem(QString());
+        gender_comboBox->addItem(QString());
+        gender_comboBox->setObjectName(QString::fromUtf8("gender_comboBox"));
+        QSizePolicy sizePolicy(QSizePolicy::Preferred, QSizePolicy::Fixed);
+        sizePolicy.setHorizontalStretch(2);
+        sizePolicy.setVerticalStretch(0);
+        sizePolicy.setHeightForWidth(gender_comboBox->sizePolicy().hasHeightForWidth());
+        gender_comboBox->setSizePolicy(sizePolicy);
+
+        gridLayout_6->addWidget(gender_comboBox, 0, 1, 1, 1);
+
         label = new QLabel(gridLayoutWidget);
         label->setObjectName(QString::fromUtf8("label"));
 
         gridLayout_6->addWidget(label, 0, 0, 1, 1);
-
-        participantsName_lineEdit = new QLineEdit(gridLayoutWidget);
-        participantsName_lineEdit->setObjectName(QString::fromUtf8("participantsName_lineEdit"));
-
-        gridLayout_6->addWidget(participantsName_lineEdit, 0, 1, 1, 1);
 
         stackedWidget->addWidget(participantsName_page);
         page = new QWidget();
@@ -160,7 +174,7 @@ public:
         page_2->setObjectName(QString::fromUtf8("page_2"));
         gridLayoutWidget_3 = new QWidget(page_2);
         gridLayoutWidget_3->setObjectName(QString::fromUtf8("gridLayoutWidget_3"));
-        gridLayoutWidget_3->setGeometry(QRect(10, 30, 221, 81));
+        gridLayoutWidget_3->setGeometry(QRect(10, 30, 244, 81));
         gridLayout_8 = new QGridLayout(gridLayoutWidget_3);
         gridLayout_8->setObjectName(QString::fromUtf8("gridLayout_8"));
         gridLayout_8->setContentsMargins(0, 0, 0, 0);
@@ -185,6 +199,30 @@ public:
         gridLayout_8->addWidget(end_dateEdit, 0, 3, 1, 1);
 
         stackedWidget->addWidget(page_2);
+        page_3 = new QWidget();
+        page_3->setObjectName(QString::fromUtf8("page_3"));
+        gridLayoutWidget_4 = new QWidget(page_3);
+        gridLayoutWidget_4->setObjectName(QString::fromUtf8("gridLayoutWidget_4"));
+        gridLayoutWidget_4->setGeometry(QRect(10, 30, 211, 81));
+        gridLayout_9 = new QGridLayout(gridLayoutWidget_4);
+        gridLayout_9->setObjectName(QString::fromUtf8("gridLayout_9"));
+        gridLayout_9->setContentsMargins(0, 0, 0, 0);
+        year_lineEdit = new QLineEdit(gridLayoutWidget_4);
+        year_lineEdit->setObjectName(QString::fromUtf8("year_lineEdit"));
+
+        gridLayout_9->addWidget(year_lineEdit, 0, 1, 1, 1);
+
+        label_5 = new QLabel(gridLayoutWidget_4);
+        label_5->setObjectName(QString::fromUtf8("label_5"));
+
+        gridLayout_9->addWidget(label_5, 0, 0, 1, 1);
+
+        label_6 = new QLabel(gridLayoutWidget_4);
+        label_6->setObjectName(QString::fromUtf8("label_6"));
+
+        gridLayout_9->addWidget(label_6, 0, 2, 1, 1);
+
+        stackedWidget->addWidget(page_3);
 
         horizontalLayout->addWidget(stackedWidget);
 
@@ -210,7 +248,7 @@ public:
 
         retranslateUi(QueryPage);
 
-        stackedWidget->setCurrentIndex(0);
+        stackedWidget->setCurrentIndex(4);
 
 
         QMetaObject::connectSlotsByName(QueryPage);
@@ -224,10 +262,16 @@ public:
         query_label->setText(QCoreApplication::translate("QueryPage", "\346\237\245\350\257\242\344\276\235\346\215\256\357\274\232", nullptr));
         btn_recognise->setText(QCoreApplication::translate("QueryPage", "\350\257\206\345\210\253", nullptr));
         cardId_label->setText(QCoreApplication::translate("QueryPage", "\345\215\241\345\217\267\357\274\232", nullptr));
-        label->setText(QCoreApplication::translate("QueryPage", "\345\247\223\345\220\215\357\274\232", nullptr));
+        gender_comboBox->setItemText(0, QString());
+        gender_comboBox->setItemText(1, QCoreApplication::translate("QueryPage", "\347\224\267", nullptr));
+        gender_comboBox->setItemText(2, QCoreApplication::translate("QueryPage", "\345\245\263", nullptr));
+
+        label->setText(QCoreApplication::translate("QueryPage", "\346\200\247\345\210\253\357\274\232", nullptr));
         label_2->setText(QCoreApplication::translate("QueryPage", "\346\257\224\350\265\233\345\220\215\347\247\260\357\274\232", nullptr));
         label_3->setText(QCoreApplication::translate("QueryPage", "From:", nullptr));
         label_4->setText(QCoreApplication::translate("QueryPage", "To:", nullptr));
+        label_5->setText(QCoreApplication::translate("QueryPage", "\345\234\250", nullptr));
+        label_6->setText(QCoreApplication::translate("QueryPage", "\345\271\264\345\220\216\345\207\272\347\224\237", nullptr));
         btn_Query->setText(QCoreApplication::translate("QueryPage", "\346\237\245\350\257\242", nullptr));
     } // retranslateUi
 

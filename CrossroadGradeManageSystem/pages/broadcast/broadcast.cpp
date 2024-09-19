@@ -69,68 +69,59 @@ BroadCast::~BroadCast()
 
 void BroadCast::on_btn_pub_clicked()
 {
-
-    QString sql = "SELECT 成绩记录id, 赛事名称, 打卡点名称, 时间戳, 方向, 总用时, 名次, rfid标签卡号 FROM table_results WHERE 方向=\"0\"";
     QString topic = "crossroadmanagesystem";
     QSqlQuery query;
+
+    // 获取当前选中的赛事名称
+    QString eventName = ui->eventName_comboBox->currentText();
+
+    // SQL 查询语句
+    QString sql = "SELECT 成绩记录id, 赛事名称, 打卡点名称, 时间戳, 方向, 总用时, 名次, rfid标签卡号 "
+                  "FROM table_results "
+                  "WHERE 方向='1' AND 赛事名称 = :eventName "
+                  "AND (rfid标签卡号, 时间戳) IN ("
+                  "    SELECT rfid标签卡号, MAX(时间戳) "
+                  "    FROM table_results "
+                  "    WHERE 方向='1' AND 赛事名称 = :eventName "
+                  "    GROUP BY rfid标签卡号"
+                  ") "
+                  "ORDER BY rfid标签卡号";
+
     query.prepare(sql);
+    query.bindValue(":eventName", eventName);
 
     // 执行 SQL 语句
     if (query.exec()) {
-        qDebug() << "Record is sent successfully.";
-    } else {
-        qDebug() << "Delete operation failed:" << query.lastError().text();
-    }
+        while (query.next()) {
+            QString resultId = query.value(0).toString();
+            QString eventName = query.value(1).toString();
+            QString checkPointName = query.value(2).toString();
+            QString dateStamp = query.value(3).toString();
+            QString direction = query.value(4).toString();
+            QString sumTime = query.value(5).toString();
+            QString rank = query.value(6).toString();
+            QString rfidTag = query.value(7).toString();
 
-    while (query.next()) {
-        QString resultId = query.value(0).toString();
-        QString eventName = query.value(1).toString();
-        QString checkPointName = query.value(2).toString();    
-        QString dateStamp = query.value(3).toString();
-        QString direction = query.value(4).toString();
-        QString sumTime = query.value(5).toString();
-        QString rank = query.value(6).toString();
-        QString rfidTag = query.value(7).toString();
+            // 构建马拉松成绩格式的消息
+//            QString str = "resultId: " + resultId + " eventName: " + eventName + " checkPointName: " + checkPointName +
+//                          " timestamp: " + dateStamp + " totalTime: " + sumTime + " direction: " + direction + " rank: " + rank + " rfidTag: " + rfidTag;
 
-        QString str = "resultId: "+resultId + " eventName: " + eventName + " checkPointName: " + checkPointName +
-                " dataStamp: " + dateStamp + " sumTime: " + sumTime + " direction: " + direction + " rank: " + rank + " rfidTag: " + rfidTag;
+            QString str = "尊敬的 " + rfidTag + " 号运动员：\n"
+                    + "恭喜您成功完成了 " + eventName +" 比赛！\n"
+                    + "您的比赛成绩为： "+ dateStamp + "\n"
+                    + "您的名次为：" + rank + "\n"
+                    + "感谢您的参与，希望您在 " + eventName + " 中收获了美好的记忆。期待下一次再次见到充满活力的您！\n"
+                    + eventName + "组织方";
 
-        if (m_client->publish(topic, str.toUtf8()) == -1) {
-            QMessageBox::critical(this, QLatin1String("Error"), QLatin1String("Could not publish message"));
-        } else {
-            qDebug() << "Published message" << str;
+            // 发布消息
+            if (m_client->publish(topic, str.toUtf8()) == -1) {
+                qDebug() << "Could not publish message: " << str;
+            } else {
+                qDebug() << "Published message: " << str;
+            }
         }
-    }
-
-    sql = "SELECT 成绩记录id, 赛事名称, 打卡点名称, 时间戳, 方向, 总用时, 名次, rfid标签卡号 FROM table_results WHERE 方向=\"1\"";
-
-    query.prepare(sql);
-
-    // 执行 SQL 语句
-    if (query.exec()) {
-        qDebug() << "Record is sent successfully.";
     } else {
-        qDebug() << "Delete operation failed:" << query.lastError().text();
-    }
-
-    while (query.next()) {
-        QString resultId = query.value(0).toString();
-        QString eventName = query.value(1).toString();
-        QString checkPointName = query.value(2).toString();
-        QString dateStamp = query.value(3).toString();
-        QString direction = query.value(4).toString();
-        QString sumTime = query.value(5).toString();
-        QString rank = query.value(6).toString();
-        QString rfidTag = query.value(7).toString();
-
-        QString str = "resultId: "+resultId + " eventName: " + eventName + " checkPointName: " + checkPointName +
-                " dataStamp: " + dateStamp + " sumTime: " + sumTime + " direction: " + direction + " rank: " + rank + " rfidTag: " + rfidTag;
-
-        if (m_client->publish(topic, str.toUtf8()) == -1) {
-            QMessageBox::critical(this, QLatin1String("Error"), QLatin1String("Could not publish message"));
-        } else {
-            qDebug() << "Published message" << str;
-        }
+        qDebug() << "Query execution failed:" << query.lastError().text();
     }
 }
 

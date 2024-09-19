@@ -8,6 +8,7 @@
 #include <QtSql/QSqlError>
 #include <QString>
 #include <QDebug>
+#include <QMessageBox>
 
 class ParticipantsTableModel : public QSqlTableModel
 {
@@ -32,7 +33,7 @@ public:
     int insertRecords(QString name, QString eventName, QString gender,
                       QString idCard, QString contactNumber, QString sizeTshirt,
                       QString rfidTag, QString emergencyContactName, QString emergencyContactNumber);
-    bool deleteRecords(int row);
+    bool deleteRecord(QString rfidTag);
 
 //    bool updateRecords(QString personName, QString pwd, QString time);//更新记录
 

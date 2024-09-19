@@ -76,11 +76,11 @@ QSqlTableModel* ResultsTableModel::getModel(void)
  * @return QSqlRecord型记录集
  * 根据运动员id查找记录
  */
-int ResultsTableModel::findRecord(QString rfidTag, QString direction)
+int ResultsTableModel::findRecord(QString rfidTag, QString checkPointName, QString direction)
 {
     int count = model->rowCount();
     for(int row=0; row < count; row++){
-        if((model->data(model->index(row, 7))).toString() == rfidTag && model->data(model->index(row, 4)) == direction)
+        if(model->data(model->index(row, 7)) == rfidTag && model->data(model->index(row, 2)) == checkPointName && model->data(model->index(row, 4)) == direction)
             return row;
     }
     return -1;

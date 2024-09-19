@@ -94,6 +94,7 @@ public:
         action_result->setObjectName(QString::fromUtf8("action_result"));
         action_participants_two = new QAction(MainWindow);
         action_participants_two->setObjectName(QString::fromUtf8("action_participants_two"));
+        action_participants_two->setEnabled(false);
         action_broadcast = new QAction(MainWindow);
         action_broadcast->setObjectName(QString::fromUtf8("action_broadcast"));
         action_signup = new QAction(MainWindow);
@@ -194,10 +195,10 @@ public:
         action_holdCompetition->setText(QCoreApplication::translate("MainWindow", "\344\270\276\345\212\236\346\257\224\350\265\233", nullptr));
         action_cancelCompetition->setText(QCoreApplication::translate("MainWindow", "\345\217\226\346\266\210\346\257\224\350\265\233", nullptr));
         action_competition->setText(QCoreApplication::translate("MainWindow", "\346\257\224\350\265\233\346\237\245\350\257\242_\346\257\224\350\265\233\345\220\215\347\247\260", nullptr));
-        action_participants_one->setText(QCoreApplication::translate("MainWindow", "\350\277\220\345\212\250\345\221\230\346\237\245\350\257\242_\345\215\241\345\217\267", nullptr));
+        action_participants_one->setText(QCoreApplication::translate("MainWindow", "\350\277\220\345\212\250\345\221\230\346\237\245\350\257\242", nullptr));
         action_about->setText(QCoreApplication::translate("MainWindow", "\345\205\263\344\272\216", nullptr));
         action_result->setText(QCoreApplication::translate("MainWindow", "\346\257\224\350\265\233\346\237\245\350\257\242_\346\257\224\350\265\233\346\227\266\351\227\264", nullptr));
-        action_participants_two->setText(QCoreApplication::translate("MainWindow", "\350\277\220\345\212\250\345\221\230\346\237\245\350\257\242_\345\247\223\345\220\215", nullptr));
+        action_participants_two->setText(QCoreApplication::translate("MainWindow", "\350\277\220\345\212\250\345\221\230\346\237\245\350\257\242_\346\200\247\345\210\253", nullptr));
         action_broadcast->setText(QCoreApplication::translate("MainWindow", "\346\210\220\347\273\251\345\217\221\351\200\201", nullptr));
         action_signup->setText(QCoreApplication::translate("MainWindow", "\346\210\220\347\273\251\346\211\223\345\215\241", nullptr));
         menu->setTitle(QCoreApplication::translate("MainWindow", "\347\263\273\347\273\237\347\256\241\347\220\206", nullptr));

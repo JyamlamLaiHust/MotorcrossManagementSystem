@@ -200,8 +200,10 @@ int ParticipantsTableModel::insertRecords(QString name, QString eventName, QStri
     bool success = model->insertRecord(-1,record);
     if (!success) {
         qDebug() << "Insert failed:" << model->lastError().text();
+        return -1;
+    } else {
+        return model->rowCount();
     }
-    return model->rowCount();
 }
 
 /**
@@ -210,7 +212,22 @@ int ParticipantsTableModel::insertRecords(QString name, QString eventName, QStri
  * @return  如果删除成功返回true，否则false
  * 删除一行记录
  */
-bool ParticipantsTableModel::deleteRecords(int row)
+bool ParticipantsTableModel::deleteRecord(QString rfidTag)
 {
-    return removeRow(row);
+    // 添加一个查询记录逻辑
+    QSqlQuery query;
+    QString sql = "DELETE FROM table_participants WHERE rfid标签卡号=:rfidTag;";
+    QMessageBox message;
+
+    // 准备 SQL 语句
+    query.prepare(sql);
+    query.bindValue(":rfidTag", rfidTag);
+
+    if(!query.exec()) {
+        qDebug() << "Delete operation failed:" << query.lastError().text();
+        return false;
+    } else {
+        qDebug() << "Record deleted successfully.";
+    }
+    return true;
 }
